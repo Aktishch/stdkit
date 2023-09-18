@@ -1,3 +1,10 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+const App = () => (
+  <section className='container bg-white'>dsdsdsdsdsds</section>
+)
+
 import fancybox from './ts/fancybox'
 import sliderSwiper from './ts/slider-swiper'
 import yandexMap from './ts/yandex-map'
@@ -97,4 +104,8 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   timer.init()
   worldMap.init()
   preloader.init()
+
+  const root = ReactDOM.createRoot(document.getElementById('root'))
+
+  root.render(<App />)
 }) as EventListener)

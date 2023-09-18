@@ -45,11 +45,11 @@ module.exports = {
   mode: 'production',
 
   entry: {
-    filename: path.resolve(__dirname, 'src/webpack.ts'),
+    filename: path.resolve(__dirname, 'src/webpack.tsx'),
   },
 
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
 
     alias: {
       '@src': path.resolve(__dirname, 'src/'),
@@ -108,6 +108,19 @@ module.exports = {
 
           options: {
             presets: ['@babel/preset-env', '@babel/preset-typescript'],
+          },
+        },
+      },
+
+      {
+        test: /\.?[jt]sx$/,
+        exclude: /(node_modules|bower_components)/,
+
+        use: {
+          loader: 'babel-loader',
+
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-typescript', '@babel/preset-react'],
           },
         },
       },
