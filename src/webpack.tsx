@@ -1,8 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { compositions } from './costants/compositions'
+import { Composition } from './components/Composition/Composition'
 
 const App = () => (
-  <section className='container bg-white'>dsdsdsdsdsds</section>
+  <section className="container bg-white">
+    <div className="grid grid-cols-3 gap-5">
+      {compositions.map(({ song, artist }) => (
+        <Composition song={song} artist={artist} />
+      ))}
+    </div>
+  </section>
 )
 
 import fancybox from './ts/fancybox'

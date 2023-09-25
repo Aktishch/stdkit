@@ -1,11 +1,25 @@
-<% var data = {
-  title: 'Second page',
-  status: false
-} %>
+<%
+  var data = {
+    title: 'Second page',
+    status: false
+  }
 
-<%= _.template(require('./includes/header.html').default)({data}) %>
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon: icon({id: 'loader'})})
+  var preloader = require('./components/preloader.html').default
+  var header = _.template(require('./includes/header.html').default)
+  var heading = _.template(require('./includes/heading.html').default)
+  var worldMap = require('./includes/world-map.html').default
+  var player = _.template(require('./includes/player.html').default)
+  var footer = _.template(require('./includes/footer.html').default)
+%>
 
-<%= _.template(require('./includes/heading.html').default)({data}) %>
+<%= header({data, loader, preloader, icon, picture}) %>
+
+<!-- Шапка страницы -->
+
+<%= heading({data}) %>
 
 <!-- Сетка -->
 
@@ -17,17 +31,9 @@
   <div class="grid grid-flow-row-dense grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 lg:gap-8 w-full">
     <% for (var i = 0; i < grid.length; i++) { %>
     <div class="<%= grid[i] %> duration-10 anim anim-circle" data-anim="hidden">
-      <a class="pack pack-box bg-grey dark:bg-dark rounded-3 shadow-md h-full" data-movement="light" data-fancybox="grid" href="https://picsum.photos/600/400?random=<%= i %>">
-        <div class="loader">
-          <span class="loader-progress">
-            <svg class="loader-icon icon">
-              <use xlink:href="img/icons.svg#loader"></use>
-            </svg>
-          </span>
-        </div>
-        <picture>
-          <img class="image image-rise" src="https://picsum.photos/600/400?random=<%= i %>" loading="lazy" alt="">
-        </picture>
+      <a class="pack pack-box bg-grey dark:bg-dark rounded-3 shadow-md h-full" data-movement="light" data-fancybox="grid" href="img/pictures/town-grey.jpg">
+        <%= loader %>
+        <%= picture({src: 'img/pictures/town-grey', format: '.jpg', webp: true, classes: 'image image-rise', data: false, loading: 'lazy'}) %>
       </a>
     </div>
     <% } %>
@@ -39,28 +45,14 @@
 <section class="container container-distance flex flex-col items-center justify-between bg-grey dark:bg-dark">
   <h2 class="font-alt font-bold text-center text-36 lg:text-48 leading-2 mb-5 md:mb-10 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">Comparison</h2>
   <div class="relative bg-grey dark:bg-dark rounded-4 overflow-hidden w-full duration-5 anim anim-fade" data-anim="hidden" data-compare>
-    <div class="loader">
-      <span class="loader-progress">
-        <svg class="loader-icon icon">
-          <use xlink:href="img/icons.svg#loader"></use>
-        </svg>
-      </span>
-    </div>
+    <%= loader %>
     <div class="pack pack-half absolute z-1 w-1/2 h-full" data-compare-before>
-      <picture>
-        <source srcset="img/pictures/town-grey.webp" type="image/webp">
-        <img class="image" data-compare-image src="img/pictures/town-grey.jpg" loading="lazy" alt="">
-      </picture>
+      <%= picture({src: 'img/pictures/town-grey', format: '.jpg', webp: true, classes: 'image', data: 'data-compare-image', loading: 'lazy'}) %>
     </div>
-    <picture>
-      <source srcset="img/pictures/town.webp" type="image/webp">
-      <img class="block relative w-full h-full" src="img/pictures/town.jpg" loading="lazy" alt="">
-    </picture>
+    <%= picture({src: 'img/pictures/town', format: '.jpg', webp: true, classes: 'block relative w-full h-full', data: false, loading: 'lazy'}) %>
     <div class="flex items-center justify-center absolute top-0 bottom-0 left-2/4 z-2 bg-white dark:bg-black -translate-x-1/2 w-1 h-[95%] my-auto" data-compare-change>
       <button class="btn btn-primary btn-fill text-20 rounded-max cursor-col-resize w-12 min-w-[48px] h-12">
-        <svg class="icon">
-          <use xlink:href="img/icons.svg#arrows"></use>
-        </svg>
+        <%= icon({id: 'arrows'}) %>
       </button>
     </div>
   </div>
@@ -125,9 +117,7 @@
     <time class="text-white text-center text-24 font-semibold mb-5" data-timer-units></time>
     <div class="flex items-center justify-center gap-4">
       <button class="btn btn-second btn-fade text-36 rounded-max w-10 h-10" data-timer-turn data-waved="dark">
-        <svg class="icon">
-          <use xlink:href="img/icons.svg#play"></use>
-        </svg>
+        <%= icon({id: 'play'}) %>
       </button>
       <button class="btn btn-second btn-sm btn-light" data-timer-reset data-waved="dark">Reset</button>
     </div>
@@ -154,14 +144,16 @@
 <section class="container bg-white dark:bg-black" data-world>
   <h2 class="font-alt font-bold text-center text-36 lg:text-48 leading-2 mb-5 md:mb-10 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">World map</h2>
   <div class="bg-grey dark:bg-dark rounded-5 p-5 lg:p-10 duration-5 anim anim-fade" data-anim="hidden" id="country">
-    <%= require('./includes/world-map.html').default %>
+    <%= worldMap %>
     <div class="flex items-center justify-center mt-5 md:mt-10">
-      <img class="icon text-40 md:text-50 mr-5" data-world-flag src="img/pictures/russia.svg" alt="">
+      <%= picture({src: 'img/pictures/russia', format: '.svg', webp: false, classes: 'block w-10 md:w-12 mr-5', data: 'data-world-flag', loading: 'eager'}) %>
       <h4 class="font-bold text-18 md:text-24" data-world-title>Россия</h4>
     </div>
   </div>
 </section>
 
-<%= _.template(require('./includes/player.html').default)() %>
+<!-- Плеер -->
 
-<%= require('./includes/footer.html').default %>
+<%= player({loader, icon, picture}) %>
+
+<%= footer({loader, picture}) %>
