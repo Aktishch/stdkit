@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
-const useCount = () => {
-  const [count, setCount] = useState(0)
+const useCount = ({ value = 0, min = 0, max = 0 } = {}) => {
+  const [count, setCount] = useState(value)
+  const decrement = useCallback(() => setCount((prev) => (prev === min ? min : prev - 1)), [min])
+  const increment = useCallback(() => setCount((prev) => (prev === max ? max : prev + 1)), [max])
 
-  const decrement = () => setCount(count - 1)
-  const increment = () => setCount(count + 1)
+  console.log(count)
 
   return { count, decrement, increment }
 }

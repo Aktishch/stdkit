@@ -3,7 +3,7 @@ import { useCount } from '../../hooks/useCount'
 import { Button } from '../Button/Button'
 
 const Composition = ({ song, artist }) => {
-  const { count, decrement, increment } = useCount()
+  const { count, decrement, increment } = useCount({ value: 0, min: 0, max: 6 })
 
   return (
     <div className="card">
@@ -19,7 +19,7 @@ const Composition = ({ song, artist }) => {
             -
           </Button>
           {count}
-          <Button disabled={count === 5} onClick={increment}>
+          <Button disabled={count === 6} onClick={increment}>
             +
           </Button>
         </div>
