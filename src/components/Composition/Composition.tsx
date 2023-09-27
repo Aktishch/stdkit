@@ -1,16 +1,22 @@
 import React from 'react'
+import { useMemo } from 'react'
 import { useCount } from '../../hooks/useCount'
 import { Button } from '../Button/Button'
 
-const Composition = ({ song, artist }) => {
+const Composition = ({ composition }) => {
   const { count, decrement, increment } = useCount({ value: 0, min: 0, max: 6 })
+  const rating = useMemo(
+    () => Math.round(composition.reviews.reduce((sum, review) => sum + review.rating, 0) / composition.reviews.length),
+    [composition.reviews]
+  )
 
   return (
     <div className="card">
       <div className="card-content">
-        <h2 className="font-alt font-semibold text-24 mb-4">{song}</h2>
+        <h2 className="font-alt font-semibold text-24 mb-4">{composition.song}</h2>
+        <div>{rating}</div>
         <ul className="mb-10">
-          {artist.map((artist) => (
+          {composition.artist.map((artist) => (
             <li>{artist}</li>
           ))}
         </ul>
@@ -23,7 +29,18 @@ const Composition = ({ song, artist }) => {
             +
           </Button>
         </div>
-        {count > 0 ? <span>{song}</span> : ''}
+        {count > 0 ? (
+          <div>
+            {composition.reviews.map((review) => (
+              <ul>
+                <li>{review.user}</li>
+                <li>{review.rating}</li>
+              </ul>
+            ))}
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   )
