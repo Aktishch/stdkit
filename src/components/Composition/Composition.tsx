@@ -2,6 +2,8 @@ import React from 'react'
 import { useMemo } from 'react'
 import { useCount } from '../../hooks/useCount'
 import { Button } from '../Button/Button'
+import { ReviewForm } from '../ReviewForm/ReviewForm'
+import classnames from 'classnames'
 
 const Composition = ({ composition }) => {
   const { count, decrement, increment } = useCount({ value: 0, min: 0, max: 6 })
@@ -12,15 +14,21 @@ const Composition = ({ composition }) => {
 
   return (
     <div className="card">
-      <div className="card-content">
+      <div className="card-content p-5">
         <h2 className="font-alt font-semibold text-24 mb-4">{composition.song}</h2>
-        <div>{rating}</div>
+        <div
+          className={classnames('bg-primary', {
+            ['bg-opacity-50']: count > 4,
+          })}
+        >
+          {rating}
+        </div>
         <ul className="mb-10">
           {composition.artist.map((artist) => (
             <li>{artist}</li>
           ))}
         </ul>
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 mb-5">
           <Button disabled={count === 0} onClick={decrement}>
             -
           </Button>
@@ -29,6 +37,7 @@ const Composition = ({ composition }) => {
             +
           </Button>
         </div>
+        <ReviewForm></ReviewForm>
         {count > 0 ? (
           <div>
             {composition.reviews.map((review) => (
