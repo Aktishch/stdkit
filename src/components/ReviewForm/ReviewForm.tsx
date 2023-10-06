@@ -1,5 +1,5 @@
-import React from 'react'
-import { useReducer } from 'react'
+import React, { useReducer } from 'react'
+import { Rating } from '../Rating/Rating'
 
 const defaultFormValue = {
   name: '',
@@ -41,9 +41,6 @@ const ReviewForm = ({}) => {
 
   return (
     <div>
-      <svg className="icon text-primary">
-        <use xlinkHref="img/icons.svg#star"></use>
-      </svg>
       <label className="form-label mb-5">
         <span className="text-20 mb-3">Name</span>
         <div className="form-wrapper">
@@ -72,16 +69,15 @@ const ReviewForm = ({}) => {
       </label>
       <label className="form-label mb-5">
         <span className="text-20 mb-3">Rating</span>
-        <div className="form-wrapper">
-          <div className="input-cover">
-            <input
-              className="input input-gray input-lg"
-              type="number"
-              value={formValue.rating}
-              onChange={(event) => dispatch({ type: 'changeRating', payload: event.target.value })}
-            />
-          </div>
-        </div>
+        <Rating
+          value={formValue.rating}
+          onChange={(value) =>
+            dispatch({
+              type: 'changeRating',
+              payload: value,
+            })
+          }
+        />
       </label>
     </div>
   )

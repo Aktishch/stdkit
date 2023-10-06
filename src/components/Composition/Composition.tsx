@@ -1,12 +1,18 @@
-import React from 'react'
-import { useMemo } from 'react'
-import { useCount } from '../../hooks/useCount'
+import React, { useMemo } from 'react'
+// import { useCount } from '../../hooks/useCount'
 import { Button } from '../Button/Button'
+import { Cart } from '../Cart/Cart'
 import { ReviewForm } from '../ReviewForm/ReviewForm'
 import classnames from 'classnames'
+import { useSelector } from '../../customStore/hooks/useSelector'
+import { useDispatch } from '../../customStore/hooks/useDispatch'
 
 const Composition = ({ composition }) => {
-  const { count, decrement, increment } = useCount({ value: 0, min: 0, max: 6 })
+  // const { count, decrement, increment } = useCount({ value: 0, min: 0, max: 6 })
+  const count = useSelector((state) => state.cart[composition.song] || 0)
+  const dispatch = useDispatch()
+  const decrement = () => dispatch({ type: 'remove', payload: composition.song })
+  const increment = () => dispatch({ type: 'add', payload: composition.song })
   const rating = useMemo(
     () => Math.round(composition.reviews.reduce((sum, review) => sum + review.rating, 0) / composition.reviews.length),
     [composition.reviews]
@@ -29,11 +35,25 @@ const Composition = ({ composition }) => {
           ))}
         </ul>
         <div className="flex items-center justify-between gap-4 mb-5">
-          <Button disabled={count === 0} onClick={decrement}>
+          <Button
+            color="primary"
+            size="sm"
+            variant="contur"
+            classes="w-10 h-10 px-0"
+            disabled={count === 0}
+            onClick={decrement}
+          >
             -
           </Button>
           {count}
-          <Button disabled={count === 6} onClick={increment}>
+          <Button
+            color="primary"
+            size="sm"
+            variant="contur"
+            classes="w-10 h-10 px-0"
+            disabled={count === 6}
+            onClick={increment}
+          >
             +
           </Button>
         </div>
@@ -50,6 +70,7 @@ const Composition = ({ composition }) => {
         ) : (
           ''
         )}
+        <Cart />
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { Button } from '../Button/Button'
 
 const Tab = ({ item, onClick, activeIndex }) => {
   return (
-    <Button onClick={onClick} disabled={activeIndex}>
+    <Button color="second" size="sm" variant="contur" disabled={activeIndex} onClick={onClick}>
       {item}
     </Button>
   )
