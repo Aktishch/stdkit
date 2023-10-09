@@ -57,7 +57,7 @@ module.exports = {
     new CssMinimizerPlugin(),
     new MiniCssExtractPlugin({ filename: 'css/style.css' }),
     ...generatePlugins('src', 'head'),
-    ...generatePlugins('src/dialogs', false, 'dialogs/'),
+    // ...generatePlugins('src/dialogs', false, 'dialogs/'),
 
     new CopyPlugin({
       patterns: [
@@ -71,12 +71,6 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        test: /\.html$/i,
-        include: [path.resolve(__dirname, 'src/includes'), path.resolve(__dirname, 'src/components')],
-        use: ['raw-loader'],
-      },
-
       {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],

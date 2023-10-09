@@ -4,15 +4,18 @@ import { Button } from '../Button/Button'
 import { Cart } from '../Cart/Cart'
 import { ReviewForm } from '../ReviewForm/ReviewForm'
 import classnames from 'classnames'
-import { useSelector } from '../../customStore/hooks/useSelector'
-import { useDispatch } from '../../customStore/hooks/useDispatch'
+// import { useSelector } from '../../customStore/hooks/useSelector'
+// import { useDispatch } from '../../customStore/hooks/useDispatch'
+import { useSelector, useDispatch } from 'react-redux'
+import { addCart, removeCart } from '../../store/modules/cart/actions'
+import { selectCompositionCountBySong } from '../../store/modules/cart/selectors'
 
 const Composition = ({ composition }) => {
   // const { count, decrement, increment } = useCount({ value: 0, min: 0, max: 6 })
-  const count = useSelector((state) => state.cart[composition.song] || 0)
+  const count = useSelector((state) => selectCompositionCountBySong(state, { compositionSong: composition.song }))
   const dispatch = useDispatch()
-  const decrement = () => dispatch({ type: 'remove', payload: composition.song })
-  const increment = () => dispatch({ type: 'add', payload: composition.song })
+  const decrement = () => dispatch(removeCart(composition.song))
+  const increment = () => dispatch(addCart(composition.song))
   const rating = useMemo(
     () => Math.round(composition.reviews.reduce((sum, review) => sum + review.rating, 0) / composition.reviews.length),
     [composition.reviews]

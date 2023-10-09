@@ -7,7 +7,7 @@ const useSelector = (selector) => {
   const [value, setValue] = useState(() => selector(store.getState()))
 
   useEffect(() => {
-    store.subscribe(id, (value) => setValue(selector(value)))
+    store.subscribe(id, (state) => setValue(selector(state)))
 
     return () => store.unsubscribe(id)
   }, [store, id])

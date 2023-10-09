@@ -4,7 +4,8 @@ import { Composition } from './components/Composition/Composition'
 import { Tabs } from './components/Tabs/Tabs'
 // import { Button } from './components/Button/Button'
 // import { ThemeContext } from './contexts/ThemeContext'
-import { Provider } from './customStore/components/Provider/Provider'
+// import { Provider } from './customStore/components/Provider/Provider'
+import { Provider } from 'react-redux'
 import { store } from './store/store'
 
 const App = () => {

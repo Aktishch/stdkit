@@ -1,6 +1,0 @@
-<picture>
-  <% if (webp) { %>
-  <source srcset="<%= src %>.webp" type="image/webp">
-  <% } %>
-  <img class="<%= classes %>" <%= data ? data : '' %> loading="<%= loading %>" src="<%= src + format %>" alt="">
-</picture>
