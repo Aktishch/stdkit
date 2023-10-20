@@ -5,8 +5,8 @@ const CopyPlugin = require('copy-webpack-plugin')
 const fs = require('fs')
 const path = require('path')
 
-const generatePlugins = (templateDir, script, src = '') => {
-  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
+const generatePlugins = () => {
+  const templateFiles = fs.readdirSync(path.resolve(__dirname, 'src'))
 
   return templateFiles
     .map((templateFile) => {
@@ -17,10 +17,10 @@ const generatePlugins = (templateDir, script, src = '') => {
       if (extension !== 'html') return null
 
       return new HtmlWebpackPlugin({
-        inject: script,
+        inject: 'head',
         scriptLoading: 'blocking',
-        filename: `${src}${name}.html`,
-        template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+        filename: `${name}.html`,
+        template: path.resolve(__dirname, `src/${name}.${extension}`),
 
         minify: {
           collapseWhitespace: false,
@@ -56,8 +56,7 @@ module.exports = {
   plugins: [
     new CssMinimizerPlugin(),
     new MiniCssExtractPlugin({ filename: 'css/style.css' }),
-    ...generatePlugins('src', 'head'),
-    // ...generatePlugins('src/dialogs', false, 'dialogs/'),
+    ...generatePlugins(),
 
     new CopyPlugin({
       patterns: [
