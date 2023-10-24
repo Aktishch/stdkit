@@ -8,19 +8,19 @@ interface buttonProps {
   variant?: string | null
   effect?: string | null
   classes?: string | null
-  type?: string | boolean
+  type?: string
   href?: string | null
   disabled?: boolean
   onClick?: () => void | undefined
   children?: HTMLElement | SVGElement | string
 }
 
-const buttonColor = {
+const buttonColors = {
   primary: 'btn-primary',
   second: 'btn-second',
 }
 
-const buttonSize = {
+const buttonSizes = {
   xs: 'btn-xs',
   sm: 'btn-sm',
   md: 'btn-md',
@@ -29,16 +29,22 @@ const buttonSize = {
   xxl: 'btn-xxl',
 }
 
-const buttonVariant = {
+const buttonVariants = {
   fill: 'btn-fill',
   fade: 'btn-fade',
   light: 'btn-light',
   contur: 'btn-contur',
 }
 
-const buttonEffect = {
+const buttonEffects = {
   swipe: 'btn-swipe',
   glow: 'btn-glow',
+}
+
+const buttonTypes = {
+  button: 'button',
+  reset: 'reset',
+  submit: 'submit',
 }
 
 export const Button = ({
@@ -56,19 +62,19 @@ export const Button = ({
 }: buttonProps) => {
   const classNames = classnames(
     'btn',
-    color ? buttonColor[color] : null,
-    size ? buttonSize[size] : null,
-    variant ? buttonVariant[variant] : null,
-    effect ? buttonEffect[effect] : null,
+    color ? buttonColors[color] : null,
+    size ? buttonSizes[size] : null,
+    variant ? buttonVariants[variant] : null,
+    effect ? buttonEffects[effect] : null,
     classes
   )
 
   return (
     <Tag
       className={classNames}
+      type={Tag === 'button' ? buttonTypes[type] : null}
+      href={Tag === 'a' ? href : null}
       disabled={Tag === 'button' ? disabled : null}
-      type={Tag === 'button' ? type : null}
-      href={Tag === 'button' ? null : href}
       onClick={onClick}
     >
       {children}

@@ -1,19 +1,19 @@
 import React from 'react'
-import { Button } from '../components/Button'
+import { Loader } from '../components/Loader'
+import { Pack } from '../components/Pack'
+import { Switch } from '../components/Switch'
 
-export const Index = (): HTMLElement => {
+export const Index = () => {
   return (
-    <div>
-      <Button
-        Tag="a"
-        color="primary"
-        size="sm"
-        variant="contur"
-        href="fdsfdsfsd"
-        onClick={(): void => console.log('fdfdfd')}
-      >
-        btn
-      </Button>
-    </div>
+    <section className="container h-[3000px] pt-72">
+      <Pack size="lg" classes="bg-grey rounded-4 w-56">
+        <Loader />
+      </Pack>
+      <div>
+        <Switch color="green" variant="checkbox" type="checkbox" />
+        <Switch color="green" variant="radio" type="radio" />
+        <Switch color="green" variant="toggle" type="checkbox" />
+      </div>
+    </section>
   )
 }
