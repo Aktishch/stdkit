@@ -3,11 +3,11 @@ import classnames from 'classnames'
 
 interface iconProps {
   id: string
-  classes?: string | null
+  className?: string | null
 }
 
-export const Icon = ({ id, classes = null }: iconProps) => {
-  const classNames = classnames('icon', classes)
+export const Icon = ({ id, className = null }: iconProps) => {
+  const classNames: string = classnames('icon', className)
 
   return (
     <svg className={classNames}>

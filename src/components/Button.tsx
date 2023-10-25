@@ -7,7 +7,7 @@ interface buttonProps {
   size?: string | null
   variant?: string | null
   effect?: string | null
-  classes?: string | null
+  className?: string | null
   type?: string
   href?: string | null
   disabled?: boolean
@@ -18,6 +18,7 @@ interface buttonProps {
 const buttonColors = {
   primary: 'btn-primary',
   second: 'btn-second',
+  gray: 'btn-gray',
 }
 
 const buttonSizes = {
@@ -53,20 +54,20 @@ export const Button = ({
   size = 'lg',
   variant = 'fill',
   effect = null,
-  classes = null,
+  className = null,
   type = 'button',
   href = null,
   disabled = false,
   onClick = undefined,
   children,
 }: buttonProps) => {
-  const classNames = classnames(
+  const classNames: string = classnames(
     'btn',
     color ? buttonColors[color] : null,
     size ? buttonSizes[size] : null,
     variant ? buttonVariants[variant] : null,
     effect ? buttonEffects[effect] : null,
-    classes
+    className
   )
 
   return (

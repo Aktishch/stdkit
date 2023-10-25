@@ -1,16 +1,14 @@
 import React, { Suspense } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import { ProgressLine } from '../components/ProgressLine'
 import { Header } from './Header'
 import { Preloader } from '../components/Preloader'
 
 export const Layout = () => {
   return (
     <>
+      <ProgressLine />
       <Header />
-      {/* <header>
-        <Link to="/">Home</Link>
-        <Link to="/second">Second</Link>
-      </header> */}
       <Suspense fallback={<Preloader />}>
         <Outlet />
       </Suspense>

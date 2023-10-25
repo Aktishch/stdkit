@@ -16,4 +16,21 @@ export const nav = {
       text: 'Second-page',
     },
   ],
+  blocks: [
+    {
+      id: 0,
+      href: '#header',
+      text: 'Header',
+    },
+    {
+      id: 1,
+      href: '#player',
+      text: 'Player',
+    },
+    {
+      id: 2,
+      href: '#footer',
+      text: 'Footer',
+    },
+  ],
 }

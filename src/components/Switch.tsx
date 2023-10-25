@@ -4,7 +4,7 @@ import classnames from 'classnames'
 interface switchProps {
   color?: string | null
   variant: string
-  classes?: string | null
+  className?: string | null
   type?: string
   disabled?: boolean
   checked?: boolean
@@ -31,17 +31,17 @@ const switchTypes = {
 export const Switch = ({
   color = null,
   variant = 'checkbox',
-  classes = null,
+  className = null,
   type = 'checkbox',
   disabled = false,
   checked = false,
   onChange = undefined,
 }: switchProps) => {
-  const classNames = classnames(
+  const classNames: string = classnames(
     'switch',
     color ? switchColors[color] : null,
     variant ? switchVariant[variant] : null,
-    classes
+    className
   )
 
   return (

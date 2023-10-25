@@ -5,16 +5,22 @@ interface containerProps {
   Tag?: string
   distance?: boolean
   xs?: boolean
-  classes?: string | null
+  className?: string | null
   children?: HTMLElement | SVGElement | string
 }
 
-export const Container = ({ Tag = 'section', distance = false, xs = false, classes, children }: containerProps) => {
-  const classNames = classnames(
+export const Container = ({
+  Tag = 'section',
+  distance = false,
+  xs = false,
+  className = null,
+  children,
+}: containerProps) => {
+  const classNames: string = classnames(
     'container',
     distance ? 'container-distance' : null,
     xs ? 'container-xs' : null,
-    classes
+    className
   )
 
   return <Tag className={classNames}>{children}</Tag>

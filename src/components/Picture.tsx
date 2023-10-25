@@ -5,7 +5,7 @@ interface pictureProps {
   webp?: boolean
   src: string
   format?: string
-  classes?: string | null
+  className?: string | null
   loading?: string
   alt?: string
 }
@@ -24,8 +24,8 @@ const pictureLoading = {
   lazy: 'lazy',
 }
 
-export const Picture = ({ webp = false, src, format, classes = null, loading = 'auto', alt = '' }: pictureProps) => {
-  const classNames = classnames(classes)
+export const Picture = ({ webp = false, src, format, className = null, loading = 'auto', alt = '' }: pictureProps) => {
+  const classNames: string = classnames(className)
 
   return (
     <picture>

@@ -4,7 +4,7 @@ import classnames from 'classnames'
 interface packProps {
   Tag?: string
   size: string | null
-  classes?: string | null
+  className?: string | null
   href?: string | null
   onClick?: () => void | undefined
   children?: HTMLElement | SVGElement | string
@@ -22,12 +22,12 @@ const packSizes = {
 export const Pack = ({
   Tag = 'div',
   size = 'box',
-  classes = null,
+  className = null,
   href = null,
   onClick = undefined,
   children,
 }: packProps) => {
-  const classNames = classnames('pack', size ? packSizes[size] : null, classes)
+  const classNames: string = classnames('pack', size ? packSizes[size] : null, className)
 
   return (
     <Tag className={classNames} href={Tag === 'a' ? href : null} onClick={onClick}>
