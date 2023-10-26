@@ -1,37 +1,37 @@
-import React from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Container } from '../components/Container'
+import { scrolledPage } from '../functions/scrolled-page'
+import { Accordion, AccordionToggle, AccordionContent } from '../components/Accordion'
+import { SidebarContext } from '../components/Sidebar'
 import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { Picture } from '../components/Picture'
-import { Accordion, AccordionToggle, AccordionContent } from '../components/Accordion'
 import { nav } from '../data/nav'
-import { scrolledPage } from '../functions/scrolled-page'
 
 export const Header = () => {
-  const [top, setTop] = React.useState('0px')
-  const header = React.useRef()
-  const prevOffsetTop = React.useRef(scrolledPage().top)
+  const [top, setTop] = useState('0px')
+  const header = useRef()
+  const prevOffsetTop = useRef(scrolledPage().top)
+  const { createState } = useContext(SidebarContext)
 
-  const scrollHeader = (): void => {
-    const currentOffsetTop: number = scrolledPage().top
-    const headerHeight: number = header.current.offsetHeight
+  useEffect((): (() => void) | undefined => {
+    const scrollHeader = (): void => {
+      const currentOffsetTop: number = scrolledPage().top
+      const headerHeight: number = header.current.offsetHeight
 
-    prevOffsetTop.current > currentOffsetTop ? setTop('0px') : setTop(`${headerHeight}px`)
+      prevOffsetTop.current > currentOffsetTop ? setTop('0px') : setTop(`-${headerHeight}px`)
 
-    prevOffsetTop.current = currentOffsetTop
-  }
+      prevOffsetTop.current = currentOffsetTop
+    }
 
-  React.useEffect((): (() => void) | undefined => {
     document.addEventListener('scroll', scrollHeader as EventListener)
 
     return () => document.removeEventListener('scroll', scrollHeader as EventListener)
   }, [])
 
   return (
-    <Container
-      Tag="header"
-      className="flex items-center justify-between gap-5 fixed z-3 top-0 left-0 right-0 bg-black py-4 duration-3"
+    <header
+      className="container flex items-center justify-between gap-5 fixed z-3 top-0 left-0 right-0 bg-black py-4 duration-3"
       style={{ transform: `translateY(${top})` }}
       ref={header}
     >
@@ -72,9 +72,9 @@ export const Header = () => {
           </AccordionContent>
         </Accordion>
       </nav>
-      <Button color="second" size={null} variant={null} className="lg:hidden text-48">
+      <Button color="second" size={null} variant={null} className="lg:hidden text-48" onClick={createState}>
         <Icon id="burger" />
       </Button>
-    </Container>
+    </header>
   )
 }

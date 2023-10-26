@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
 import classnames from 'classnames'
+import { useToggle } from '../hooks/useToggle'
+import { ToggleContext } from '../contexts/ToggleContext'
 
 interface accordionProps {
   active?: boolean
@@ -18,26 +20,20 @@ interface accordionContentProps {
   children?: HTMLElement | SVGElement | string
 }
 
-export const AccordionContext = React.createContext(false)
-
 export const Accordion = ({ active = false, scroll = false, className = null, children }: accordionProps) => {
-  const [state, setState] = React.useState(active)
-  const item = React.useRef()
+  const { value, off, toggle } = useToggle({ status: active })
+  const accordion = useRef()
 
-  const createState = React.useCallback((): void => {
-    state ? setState(false) : setState(true)
-  })
-
-  React.useEffect((): void => {
+  useEffect((): void => {
     document.addEventListener('click', ((event: Event): void => {
-      if ((item.current === null || item.current.contains(event.target)) === false) setState(false)
+      if ((accordion.current === null || accordion.current.contains(event.target)) === false) off()
     }) as EventListener)
   }, [])
 
-  React.useEffect((): (() => void) | undefined => {
+  useEffect((): (() => void) | undefined => {
     if (!scroll) return
 
-    const closeToScroll = (): void => setState(false)
+    const closeToScroll = (): void => off()
 
     document.addEventListener('scroll', closeToScroll as EventListener)
 
@@ -47,35 +43,35 @@ export const Accordion = ({ active = false, scroll = false, className = null, ch
   const classNames = classnames(className)
 
   return (
-    <AccordionContext.Provider value={{ state, createState }}>
-      <div className={classNames} ref={item}>
+    <ToggleContext.Provider value={{ value, toggle }}>
+      <div className={classNames} ref={accordion}>
         {children}
       </div>
-    </AccordionContext.Provider>
+    </ToggleContext.Provider>
   )
 }
 
 export const AccordionToggle = ({ className = null, children }: accordionToggleProps) => {
-  const { createState } = React.useContext(AccordionContext)
+  const { toggle } = useContext(ToggleContext)
   const classNames: string = classnames('cursor-pointer', className)
 
   return (
-    <div className={classNames} onClick={createState}>
+    <div className={classNames} onClick={toggle}>
       {children}
     </div>
   )
 }
 
 export const AccordionContent = ({ className = null, children }: accordionContentProps) => {
-  const [height, setHeight] = React.useState('0px')
-  const [duration, setDuration] = React.useState(null)
-  const [hidden, setHidden] = React.useState(null)
-  const { state } = React.useContext(AccordionContext)
-  const content = React.useRef()
-  const timeOut = React.useRef()
-  const flag = React.useRef(false)
+  const [height, setHeight] = useState('0px')
+  const [duration, setDuration] = useState(null)
+  const [hidden, setHidden] = useState(null)
+  const { value } = useContext(ToggleContext)
+  const content = useRef()
+  const timeOut = useRef()
+  const flag = useRef(false)
 
-  React.useEffect((): void => {
+  useEffect((): void => {
     if (timeOut.current) clearTimeout(timeOut.current)
 
     const transition: number = flag.current ? Math.max(content.current.scrollHeight / 2, 100) : 0
@@ -83,7 +79,7 @@ export const AccordionContent = ({ className = null, children }: accordionConten
     setHeight(`${content.current.scrollHeight}px`)
     setDuration(flag.current ? `${transition / 1000}s` : '0s')
 
-    switch (state) {
+    switch (value) {
     case true: {
       timeOut.current = setTimeout((): void => {
         setHeight('')
@@ -105,7 +101,7 @@ export const AccordionContent = ({ className = null, children }: accordionConten
     }
 
     flag.current = true
-  }, [state])
+  }, [value])
 
   const classNames: string = classnames(hidden, className)
 

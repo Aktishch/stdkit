@@ -10,9 +10,11 @@ interface buttonProps {
   className?: string | null
   type?: string
   href?: string | null
+  target?: boolean
   disabled?: boolean
   onClick?: () => void | undefined
   children?: HTMLElement | SVGElement | string
+  key?: number | string
 }
 
 const buttonColors = {
@@ -57,6 +59,7 @@ export const Button = ({
   className = null,
   type = 'button',
   href = null,
+  target = false,
   disabled = false,
   onClick = undefined,
   children,
@@ -75,6 +78,7 @@ export const Button = ({
       className={classNames}
       type={Tag === 'button' ? buttonTypes[type] : null}
       href={Tag === 'a' ? href : null}
+      target={target ? '_blank' : null}
       disabled={Tag === 'button' ? disabled : null}
       onClick={onClick}
     >

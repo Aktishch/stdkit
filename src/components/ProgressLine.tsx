@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { scrolledPage } from '../functions/scrolled-page'
 
 export const ProgressLine = () => {
-  const [progress, setProgress] = React.useState('')
+  const [progress, setProgress] = useState('')
 
   const createProgress = (): void => {
     const width = `${Math.floor(
@@ -12,7 +12,7 @@ export const ProgressLine = () => {
     setProgress(width)
   }
 
-  React.useEffect((): (() => void) | undefined => {
+  useEffect((): (() => void) | undefined => {
     document.addEventListener('scroll', createProgress as EventListener)
 
     return () => document.removeEventListener('scroll', createProgress as EventListener)
