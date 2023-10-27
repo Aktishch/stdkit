@@ -1,13 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface packProps {
+interface PackProps extends React.PropsWithChildren {
   Tag?: string
-  size: string | null
-  className?: string | null
+  size: string
+  className?: string
   href?: string | null
-  onClick?: () => void | undefined
-  children?: HTMLElement | SVGElement | string
+  onClick?: (() => void | undefined) | undefined
 }
 
 const packSizes = {
@@ -22,11 +21,11 @@ const packSizes = {
 export const Pack = ({
   Tag = 'div',
   size = 'box',
-  className = null,
-  href = null,
-  onClick = undefined,
+  className,
+  href,
+  onClick,
   children,
-}: packProps) => {
+}: PackProps): React.JSX.Element => {
   const classNames: string = classnames('pack', size ? packSizes[size] : null, className)
 
   return (

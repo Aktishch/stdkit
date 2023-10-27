@@ -1,21 +1,16 @@
-import React, { createContext, useState, useCallback } from 'react'
+import React, { createContext } from 'react'
+import { useToggle } from '../hooks/useToggle'
 
-export const SidebarContext = createContext(false)
-
-export const Sidebar = ({ children }) => {
-  const [state, setState] = useState(false)
-
-  const createState = useCallback((): void => {
-    state ? setState(false) : setState(true)
-  })
-
-  return <SidebarContext.Provider value={{ state, createState }}>{children}</SidebarContext.Provider>
+interface SidebarContextProps {
+  value?: boolean
+  on?: () => void
+  off?: () => void
 }
 
-// export const SidebarToggle = ({ children }) => {
-//   const { state, createState } = useContext(SidebarContext)
+export const SidebarContext = createContext<SidebarContextProps>({})
 
-//   console.log(state)
+export const Sidebar = ({ children }: React.PropsWithChildren): React.JSX.Element => {
+  const { value, on, off } = useToggle({ status: false })
 
-//   return <div onClick={createState}>{children}</div>
-// }
+  return <SidebarContext.Provider value={{ value, on, off }}>{children}</SidebarContext.Provider>
+}

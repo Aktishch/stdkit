@@ -1,21 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface pictureProps {
-  webp?: boolean
+interface PictureProps {
+  webp?: string
   src: string
-  format?: string
-  className?: string | null
+  className?: string
   loading?: string
   alt?: string
-}
-
-const pictureFormats = {
-  jpg: 'jpg',
-  jpeg: 'jpeg',
-  png: 'png',
-  svg: 'svg',
-  gif: 'gif',
 }
 
 const pictureLoading = {
@@ -24,18 +15,13 @@ const pictureLoading = {
   lazy: 'lazy',
 }
 
-export const Picture = ({ webp = false, src, format, className = null, loading = 'auto', alt = '' }: pictureProps) => {
+export const Picture = ({ webp, src, className, loading = 'auto', alt }: PictureProps): React.JSX.Element => {
   const classNames: string = classnames(className)
 
   return (
     <picture>
-      {webp ? <source srcSet={`${src}.webp`} type="image/webp" /> : null}
-      <img
-        className={classNames}
-        loading={pictureLoading[loading]}
-        src={src + (format ? `.${pictureFormats[format]}` : '')}
-        alt={alt}
-      />
+      {webp !== null ? <source srcSet={webp} type="image/webp" /> : null}
+      <img className={classNames} loading={pictureLoading[loading]} src={src} alt={alt} />
     </picture>
   )
 }

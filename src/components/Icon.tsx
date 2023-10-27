@@ -1,12 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface iconProps {
+interface IconProps {
   id: string
-  className?: string | null
+  className?: string
 }
 
-export const Icon = ({ id, className = null }: iconProps) => {
+export const Icon = ({ id, className }: IconProps): React.JSX.Element => {
   const classNames: string = classnames('icon', className)
 
   return (

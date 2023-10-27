@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { scrolledPage } from '../functions/scrolled-page'
 
-export const ProgressLine = () => {
+export const ProgressLine = (): React.JSX.Element => {
   const [progress, setProgress] = useState('')
 
   const createProgress = (): void => {
-    const width = `${Math.floor(
+    const width: string = `${Math.floor(
       (scrolledPage().top / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100
     )}%`
 
@@ -15,7 +15,7 @@ export const ProgressLine = () => {
   useEffect((): (() => void) | undefined => {
     document.addEventListener('scroll', createProgress as EventListener)
 
-    return () => document.removeEventListener('scroll', createProgress as EventListener)
+    return (): void => document.removeEventListener('scroll', createProgress as EventListener)
   }, [])
 
   return (

@@ -1,20 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface buttonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   Tag?: string
-  color: string | null
   size?: string | null
   variant?: string | null
   effect?: string | null
-  className?: string | null
-  type?: string
   href?: string | null
   target?: boolean
-  disabled?: boolean
-  onClick?: () => void | undefined
-  children?: HTMLElement | SVGElement | string
-  key?: number | string
 }
 
 const buttonColors = {
@@ -52,18 +45,18 @@ const buttonTypes = {
 
 export const Button = ({
   Tag = 'button',
-  color = null,
+  color,
   size = 'lg',
   variant = 'fill',
-  effect = null,
-  className = null,
+  effect,
+  className,
   type = 'button',
-  href = null,
+  href,
   target = false,
   disabled = false,
   onClick = undefined,
   children,
-}: buttonProps) => {
+}: ButtonProps): React.JSX.Element => {
   const classNames: string = classnames(
     'btn',
     color ? buttonColors[color] : null,

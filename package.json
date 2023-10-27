@@ -64,6 +64,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@fancyapps/ui": "^5.0.19",
+    "@types/react": "^18.2.33",
     "air-datepicker": "^3.3.0",
     "copy-webpack-plugin": "^11.0.0",
     "mini-css-extract-plugin": "^2.6.1",

@@ -1,26 +1,23 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { scrolledPage } from '../functions/scrolled-page'
-import { Accordion, AccordionToggle, AccordionContent } from '../components/Accordion'
 import { SidebarContext } from '../components/Sidebar'
+import { Accordion, AccordionToggle, AccordionContent } from '../components/Accordion'
 import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { Picture } from '../components/Picture'
 import { nav } from '../data/nav'
 
-export const Header = () => {
-  const [top, setTop] = useState('0px')
-  const header = useRef()
-  const prevOffsetTop = useRef(scrolledPage().top)
-  const { createState } = useContext(SidebarContext)
+export const Header = (): React.JSX.Element => {
+  const [top, setTop] = useState('')
+  const prevOffsetTop = useRef(scrolledPage().top) as React.MutableRefObject<number>
+  const { on } = useContext(SidebarContext)
 
   useEffect((): (() => void) | undefined => {
     const scrollHeader = (): void => {
       const currentOffsetTop: number = scrolledPage().top
-      const headerHeight: number = header.current.offsetHeight
 
-      prevOffsetTop.current > currentOffsetTop ? setTop('0px') : setTop(`-${headerHeight}px`)
-
+      prevOffsetTop.current > currentOffsetTop ? setTop('') : setTop('-translate-y-full')
       prevOffsetTop.current = currentOffsetTop
     }
 
@@ -31,12 +28,11 @@ export const Header = () => {
 
   return (
     <header
-      className="container flex items-center justify-between gap-5 fixed z-3 top-0 left-0 right-0 bg-black py-4 duration-3"
-      style={{ transform: `translateY(${top})` }}
-      ref={header}
+      className={`container flex items-center justify-between gap-5 
+      fixed z-3 top-0 left-0 right-0 bg-black ${top} py-4 duration-3`}
     >
       <Link className="btn btn-white w-36" to="/">
-        <Picture webp={true} src="img/pictures/logo" format="png" className="w-full"></Picture>
+        <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full"></Picture>
       </Link>
       <nav className="hidden lg:flex items-center justify-between gap-4 w-full max-w-[800px] ml-auto">
         {nav.pages.map((item) => (
@@ -72,7 +68,7 @@ export const Header = () => {
           </AccordionContent>
         </Accordion>
       </nav>
-      <Button color="second" size={null} variant={null} className="lg:hidden text-48" onClick={createState}>
+      <Button color="second" size={null} variant={null} className="lg:hidden text-48" onClick={on}>
         <Icon id="burger" />
       </Button>
     </header>

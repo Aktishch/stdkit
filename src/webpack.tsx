@@ -5,7 +5,9 @@ import { Layout } from './includes/Layout'
 
 import './scss/style.scss'
 
-const Index = lazy(() => import('./pages/Index').then((module) => ({ default: module.Index })))
+const Index: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
+  import('./pages/Index').then((module) => ({ default: module.Index }))
+)
 
 window.addEventListener('DOMContentLoaded', ((): void => {
   const root = document.getElementById('root') as HTMLElement

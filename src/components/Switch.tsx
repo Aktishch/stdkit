@@ -1,14 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface switchProps {
-  color?: string | null
+interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant: string
-  className?: string | null
-  type?: string
-  disabled?: boolean
-  checked?: boolean
-  onChange?: () => void | undefined
 }
 
 const switchColors = {
@@ -29,14 +23,14 @@ const switchTypes = {
 }
 
 export const Switch = ({
-  color = null,
+  color,
   variant = 'checkbox',
-  className = null,
+  className,
   type = 'checkbox',
   disabled = false,
   checked = false,
-  onChange = undefined,
-}: switchProps) => {
+  onChange,
+}: SwitchProps): React.JSX.Element => {
   const classNames: string = classnames(
     'switch',
     color ? switchColors[color] : null,
