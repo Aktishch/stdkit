@@ -11,7 +11,7 @@ import { nav } from '../data/nav'
 export const Header = (): React.JSX.Element => {
   const [top, setTop] = useState('')
   const prevOffsetTop = useRef(scrolledPage().top) as React.MutableRefObject<number>
-  const { on } = useContext(SidebarContext)
+  const { sidebarOn } = useContext(SidebarContext)
 
   useEffect((): (() => void) | undefined => {
     const scrollHeader = (): void => {
@@ -29,10 +29,10 @@ export const Header = (): React.JSX.Element => {
   return (
     <header
       className={`container flex items-center justify-between gap-5 
-      fixed z-3 top-0 left-0 right-0 bg-black ${top} py-4 duration-3`}
+      sticky z-3 top-0 left-0 right-0 bg-black ${top} py-4 duration-3`}
     >
       <Link className="btn btn-white w-36" to="/">
-        <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full"></Picture>
+        <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />
       </Link>
       <nav className="hidden lg:flex items-center justify-between gap-4 w-full max-w-[800px] ml-auto">
         {nav.pages.map((item) => (
@@ -68,7 +68,7 @@ export const Header = (): React.JSX.Element => {
           </AccordionContent>
         </Accordion>
       </nav>
-      <Button color="second" size={null} variant={null} className="lg:hidden text-48" onClick={on}>
+      <Button color="second" size={null} variant={null} className="lg:hidden text-48" onClick={sidebarOn}>
         <Icon id="burger" />
       </Button>
     </header>

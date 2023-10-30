@@ -3,8 +3,8 @@ import classnames from 'classnames'
 import { useToggle } from '../hooks/useToggle'
 
 interface AccordionContextProps {
-  value?: boolean
-  toggle?: () => void
+  accordionValue?: boolean
+  accordionToggle?: () => void
 }
 
 interface AccordionProps extends React.PropsWithChildren {
@@ -31,6 +31,7 @@ export const Accordion = ({
 }: AccordionProps): React.JSX.Element => {
   const { value, off, toggle } = useToggle({ status: active })
   const accordion = useRef<HTMLDivElement>(null)
+  const closeToScroll = (): void => off()
 
   useEffect((): void => {
     document.addEventListener('click', ((event: Event): void => {
@@ -41,8 +42,6 @@ export const Accordion = ({
   useEffect((): (() => void) | undefined => {
     if (!scroll) return
 
-    const closeToScroll = (): void => off()
-
     document.addEventListener('scroll', closeToScroll as EventListener)
 
     return () => document.removeEventListener('scroll', closeToScroll as EventListener)
@@ -51,7 +50,7 @@ export const Accordion = ({
   const classNames = classnames(className)
 
   return (
-    <AccordionContext.Provider value={{ value, toggle }}>
+    <AccordionContext.Provider value={{ accordionValue: value, accordionToggle: toggle }}>
       <div className={classNames} ref={accordion}>
         {children}
       </div>
@@ -60,11 +59,11 @@ export const Accordion = ({
 }
 
 export const AccordionToggle = ({ className, children }: AccordionToggleProps): React.JSX.Element => {
-  const { toggle } = useContext(AccordionContext)
+  const { accordionToggle } = useContext(AccordionContext)
   const classNames: string = classnames('cursor-pointer', className)
 
   return (
-    <div className={classNames} onClick={toggle}>
+    <div className={classNames} onClick={accordionToggle}>
       {children}
     </div>
   )
@@ -74,7 +73,7 @@ export const AccordionContent = ({ className, children }: AccordionContentProps)
   const [height, setHeight] = useState('0')
   const [duration, setDuration] = useState('')
   const [hidden, setHidden] = useState('')
-  const { value } = useContext(AccordionContext)
+  const { accordionValue } = useContext(AccordionContext)
   const content = useRef<HTMLDivElement>(null)
   const timeOut = useRef<NodeJS.Timeout>()
   const flag = useRef<boolean>(false)
@@ -89,7 +88,7 @@ export const AccordionContent = ({ className, children }: AccordionContentProps)
     setHeight(`${content.current?.scrollHeight}px`)
     setDuration(flag.current ? `${transition / 1000}s` : '0s')
 
-    switch (value) {
+    switch (accordionValue) {
     case true: {
       timeOut.current = setTimeout((): void => {
         setHeight('')
@@ -111,7 +110,7 @@ export const AccordionContent = ({ className, children }: AccordionContentProps)
     }
 
     flag.current = true
-  }, [value])
+  }, [accordionValue])
 
   const classNames: string = classnames(hidden, className)
 

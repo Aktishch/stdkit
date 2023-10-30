@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef } from 'react'
+import React, { createContext, useEffect } from 'react'
 import { useToggle } from '../hooks/useToggle'
 
 interface ThemeContextProps {
@@ -9,18 +9,17 @@ interface ThemeContextProps {
 export const ThemeContext = createContext<ThemeContextProps>({})
 
 export const Theme = ({ children }: React.PropsWithChildren): React.JSX.Element => {
-  // const status: boolean = localStorage.getItem('theme') && localStorage.getItem('theme') === 'dark' ? true : false
-  const { value, on, toggle } = useToggle({ status: false })
-  const flag = useRef<boolean>(false)
-
-  // useEffect((): void => {
-  //   if (localStorage.getItem('theme') && localStorage.getItem('theme') === 'dark') off()
-  // }, [])
+  const { value, toggle } = useToggle({
+    status: localStorage.getItem('theme') && localStorage.getItem('theme') === 'dark' ? true : false,
+  })
 
   useEffect((): void => {
-    // if (flag.current === false) {
-    //   if (localStorage.getItem('theme') && localStorage.getItem('theme') === 'dark') on()
-    // } else {
+    document.addEventListener('keyup', ((event: KeyboardEvent): void => {
+      if (event.altKey && event.code === 'Digit5') toggle()
+    }) as EventListener)
+  }, [])
+
+  useEffect((): void => {
     const html = document.documentElement as HTMLElement
 
     switch (value) {
@@ -36,11 +35,6 @@ export const Theme = ({ children }: React.PropsWithChildren): React.JSX.Element 
       break
     }
     }
-    // }
-
-    // flag.current = true
-
-    // if (localStorage.getItem('theme') && localStorage.getItem('theme') === 'dark') on()
   }, [value])
 
   return <ThemeContext.Provider value={{ themeValue: value, themeToggle: toggle }}>{children}</ThemeContext.Provider>

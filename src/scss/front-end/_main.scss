@@ -9,28 +9,6 @@
 //   }
 // }
 
-// Меню
-.menu {
-  &__content {
-    box-shadow: 0 0 0 100vw theme("colors.black.DEFAULT / 50%");
-  }
-}
-
-// // Перетаскиваемое социальное меню
-// .social {
-//   left: calc(100vw - 150px);
-
-//   &__round[data-social-round="hidden"] {
-//     transform: scale(0) rotate(-180deg);
-//   }
-
-//   &__btn {
-//     &::before {
-//       @apply content-auto block bg-current rounded-inherit w-full h-full;
-//     }
-//   }
-// }
-
 // // Переключатель темы
 // .theme {
 //   left: calc(100vw - 240px);

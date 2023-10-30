@@ -28,7 +28,8 @@ export const Switch = ({
   className,
   type = 'checkbox',
   disabled = false,
-  checked = false,
+  defaultChecked = false,
+  defaultValue,
   onChange,
 }: SwitchProps): React.JSX.Element => {
   const classNames: string = classnames(
@@ -43,7 +44,8 @@ export const Switch = ({
       className={classNames}
       type={switchTypes[type]}
       disabled={disabled}
-      defaultChecked={checked}
+      defaultChecked={defaultChecked}
+      defaultValue={defaultValue}
       onChange={onChange}
     />
   )
