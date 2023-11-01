@@ -13,10 +13,14 @@ export const Theme = ({ children }: React.PropsWithChildren): React.JSX.Element 
     status: localStorage.getItem('theme') && localStorage.getItem('theme') === 'dark' ? true : false,
   })
 
-  useEffect((): void => {
-    document.addEventListener('keyup', ((event: KeyboardEvent): void => {
-      if (event.altKey && event.code === 'Digit5') toggle()
-    }) as EventListener)
+  const toggleKeyUp = (event: KeyboardEvent): void => {
+    if (event.altKey && event.code === 'Digit5') toggle()
+  }
+
+  useEffect((): (() => void) | undefined => {
+    document.addEventListener('keyup', toggleKeyUp as EventListener)
+
+    return (): void => document.removeEventListener('keyup', toggleKeyUp as EventListener)
   }, [])
 
   useEffect((): void => {

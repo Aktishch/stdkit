@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { media } from '../functions/media'
 import { scrollbarShow, scrollbarHidden } from '../functions/scrollbar'
-import { ThemeContext } from '../components/Theme'
-import { Accordion, AccordionToggle, AccordionContent } from '../components/Accordion'
-import { SidebarContext } from '../components/Sidebar'
+import { ThemeContext } from '../contexts/Theme'
+import { AccordionContext, Accordion, AccordionToggle, AccordionContent } from '../contexts/Accordion'
+import { SidebarContext } from '../contexts/Sidebar'
 import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { Picture } from '../components/Picture'
@@ -29,7 +29,7 @@ export const Menu = (): React.JSX.Element => {
 
     window.addEventListener('resize', windowResize as EventListener)
 
-    return () => window.removeEventListener('resize', windowResize as EventListener)
+    return (): void => window.removeEventListener('resize', windowResize as EventListener)
   }, [sidebarValue])
 
   return (
@@ -48,10 +48,10 @@ export const Menu = (): React.JSX.Element => {
             sidebarValue ? '' : '-translate-y-full'
           } p-4 duration-5 delay-3`}
         >
-          <Link className="btn btn-white w-36" to="/">
+          <Button as={Link} color="white" size={null} variant={null} className="w-36" to="/">
             <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />
-          </Link>
-          <Switch variant="toggle" type="checkbox" defaultChecked={themeValue} onChange={themeToggle} />
+          </Button>
+          <Switch variant="toggle" type="checkbox" checked={themeValue} onChange={themeToggle} />
           <Button color="second" size={null} variant={null} className="text-white text-24 p-1" onClick={sidebarOff}>
             <Icon id="close" />
           </Button>
@@ -69,7 +69,14 @@ export const Menu = (): React.JSX.Element => {
           <Accordion scroll={true}>
             <AccordionToggle className="flex items-center hover:underline underline-offset-4 text-20">
               Navigation
-              <Icon className="text-14 opacity-60 ml-2 ease-linear duration-3" id="arrow-right" />
+              <AccordionContext.Consumer>
+                {({ accordionValue }) => (
+                  <Icon
+                    className={`text-14 opacity-60 ml-2 ease-linear ${accordionValue ? 'rotate-90' : ''} duration-3`}
+                    id="arrow-right"
+                  />
+                )}
+              </AccordionContext.Consumer>
             </AccordionToggle>
             <AccordionContent>
               <div className="flex flex-col items-start gap-2 mt-2 pl-5">
@@ -95,7 +102,7 @@ export const Menu = (): React.JSX.Element => {
           <div className="flex items-center justify-center gap-4">
             {social.map((item) => (
               <Button
-                Tag="a"
+                as="a"
                 color="second"
                 size={null}
                 variant={null}

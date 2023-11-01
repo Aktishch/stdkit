@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { ElementType, forwardRef } from 'react'
 import classnames from 'classnames'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  Tag?: string
+  as?: ElementType
   size?: string | null
   variant?: string | null
   effect?: string | null
   href?: string | null
   target?: boolean
+  to?: string | null
 }
 
 const buttonColors = {
   primary: 'btn-primary',
   second: 'btn-second',
+  white: 'btn-white',
   gray: 'btn-gray',
 }
 
@@ -37,26 +39,24 @@ const buttonEffects = {
   glow: 'btn-glow',
 }
 
-const buttonTypes = {
-  button: 'button',
-  reset: 'reset',
-  submit: 'submit',
-}
-
-export const Button = ({
-  Tag = 'button',
-  color,
-  size = 'lg',
-  variant = 'fill',
-  effect,
-  className,
-  type = 'button',
-  href,
-  target = false,
-  disabled = false,
-  onClick = undefined,
-  children,
-}: ButtonProps): React.JSX.Element => {
+const ButtonComponent = (
+  {
+    as: Tag = 'button',
+    color,
+    size = 'lg',
+    variant = 'fill',
+    effect,
+    className,
+    type = 'button',
+    href,
+    target = false,
+    to,
+    disabled = false,
+    onClick = undefined,
+    children,
+  }: ButtonProps,
+  ref: React.ForwardedRef<HTMLElement>
+): React.JSX.Element => {
   const classNames: string = classnames(
     'btn',
     color ? buttonColors[color] : null,
@@ -69,13 +69,19 @@ export const Button = ({
   return (
     <Tag
       className={classNames}
-      type={Tag === 'button' ? buttonTypes[type] : null}
-      href={Tag === 'a' ? href : null}
+      type={Tag === 'button' ? type : null}
+      href={href}
       target={target ? '_blank' : null}
+      to={to}
       disabled={Tag === 'button' ? disabled : null}
       onClick={onClick}
+      ref={ref}
     >
       {children}
     </Tag>
   )
 }
+
+export const Button = forwardRef(ButtonComponent) as React.ForwardRefExoticComponent<
+  ButtonProps & React.RefAttributes<HTMLElement>
+>

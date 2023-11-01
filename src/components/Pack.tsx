@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { ElementType, forwardRef } from 'react'
 import classnames from 'classnames'
 
-interface PackProps extends React.PropsWithChildren {
-  Tag?: string
-  size: string
-  className?: string
+interface PackProps extends React.ButtonHTMLAttributes<HTMLOrSVGElement> {
+  as?: ElementType
+  size: string | null
   href?: string | null
-  onClick?: (() => void | undefined) | undefined
+  target?: boolean
 }
 
 const packSizes = {
@@ -18,19 +17,19 @@ const packSizes = {
   sheet: 'pack-sheet',
 }
 
-export const Pack = ({
-  Tag = 'div',
-  size = 'box',
-  className,
-  href,
-  onClick,
-  children,
-}: PackProps): React.JSX.Element => {
+const PackComponent = (
+  { as: Tag = 'div', size = 'box', className, href, target = false, onClick, children }: PackProps,
+  ref: React.ForwardedRef<HTMLElement>
+): React.JSX.Element => {
   const classNames: string = classnames('pack', size ? packSizes[size] : null, className)
 
   return (
-    <Tag className={classNames} href={Tag === 'a' ? href : null} onClick={onClick}>
+    <Tag className={classNames} href={href} target={target ? '_blank' : null} onClick={onClick} ref={ref}>
       {children}
     </Tag>
   )
 }
+
+export const Pack = forwardRef(PackComponent) as React.ForwardRefExoticComponent<
+  PackProps & React.RefAttributes<HTMLElement>
+>

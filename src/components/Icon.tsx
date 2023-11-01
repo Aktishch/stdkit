@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 interface IconProps {
@@ -6,12 +6,14 @@ interface IconProps {
   className?: string
 }
 
-export const Icon = ({ id, className }: IconProps): React.JSX.Element => {
+const IconComponent = ({ id, className }: IconProps, ref: React.ForwardedRef<null>): React.JSX.Element => {
   const classNames: string = classnames('icon', className)
 
   return (
-    <svg className={classNames}>
-      <use xlinkHref={`img/icons.svg#${id}`}></use>
+    <svg className={classNames} ref={ref}>
+      <use xlinkHref={`img/icons.svg#${id}`} />
     </svg>
   )
 }
+
+export const Icon = forwardRef(IconComponent) as React.ForwardRefExoticComponent<IconProps & React.RefAttributes<null>>

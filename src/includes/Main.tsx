@@ -8,7 +8,7 @@ export const Main = (): React.JSX.Element => {
     <section className="container flex flex-col items-center justify-center bg-white dark:bg-black min-h-[500px] xl:min-h-[600px]">
       <Picture src="img/pictures/logo.svg" className="block mb-10" loading="eager" />
       <Title className="mb-5 md:mb-10">Main block</Title>
-      <Button Tag="a" color="primary" effect="glow" className="w-full max-w-[200px] mx-auto" href="#block">
+      <Button as="a" color="primary" effect="glow" className="w-full max-w-[200px] mx-auto" href="#block">
         Show more
       </Button>
     </section>

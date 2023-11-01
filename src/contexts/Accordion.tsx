@@ -29,25 +29,28 @@ export const Accordion = ({
   className,
   children,
 }: AccordionProps): React.JSX.Element => {
-  const { value, off, toggle } = useToggle({ status: active })
   const accordion = useRef<HTMLDivElement>(null)
+  const classNames: string = classnames(className)
+  const { value, off, toggle } = useToggle({ status: active })
   const closeToScroll = (): void => off()
 
-  useEffect((): void => {
-    document.addEventListener('click', ((event: Event): void => {
-      if ((accordion.current === null || accordion.current?.contains(event.target as Node)) === false) off()
-    }) as EventListener)
-  }, [])
+  const closeOnClick = (event: Event): void => {
+    if ((accordion.current === null || accordion.current?.contains(event.target as Node)) === false) off()
+  }
 
   useEffect((): (() => void) | undefined => {
     if (!scroll) return
 
     document.addEventListener('scroll', closeToScroll as EventListener)
 
-    return () => document.removeEventListener('scroll', closeToScroll as EventListener)
+    return (): void => document.removeEventListener('scroll', closeToScroll as EventListener)
   }, [scroll])
 
-  const classNames = classnames(className)
+  useEffect((): (() => void) | undefined => {
+    document.addEventListener('click', closeOnClick as EventListener)
+
+    return (): void => document.removeEventListener('click', closeOnClick as EventListener)
+  }, [])
 
   return (
     <AccordionContext.Provider value={{ accordionValue: value, accordionToggle: toggle }}>
@@ -73,15 +76,16 @@ export const AccordionContent = ({ className, children }: AccordionContentProps)
   const [height, setHeight] = useState('0')
   const [duration, setDuration] = useState('')
   const [hidden, setHidden] = useState('')
-  const { accordionValue } = useContext(AccordionContext)
   const content = useRef<HTMLDivElement>(null)
   const timeOut = useRef<NodeJS.Timeout>()
   const flag = useRef<boolean>(false)
+  const { accordionValue } = useContext(AccordionContext)
+  const classNames: string = classnames(hidden, className)
 
   useEffect((): void => {
-    if (timeOut.current) clearTimeout(timeOut.current)
-
     if (content.current === null) return
+
+    if (timeOut.current) clearTimeout(timeOut.current)
 
     const transition: number = flag.current ? Math.max(content.current.scrollHeight / 2, 100) : 0
 
@@ -99,20 +103,13 @@ export const AccordionContent = ({ className, children }: AccordionContentProps)
 
     case false: {
       setHidden('overflow-hidden')
-      timeOut.current = setTimeout(
-        (): void => {
-          setHeight('0')
-        },
-        flag.current ? 10 : 0
-      )
+      timeOut.current = setTimeout((): void => setHeight('0'), flag.current ? 50 : 0)
       break
     }
     }
 
     flag.current = true
   }, [accordionValue])
-
-  const classNames: string = classnames(hidden, className)
 
   return (
     <div className={classNames} ref={content} style={{ height: height, transitionDuration: duration }}>

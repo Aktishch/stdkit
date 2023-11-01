@@ -1,27 +1,24 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-interface PictureProps {
+interface PictureProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   webp?: string
-  src: string
-  className?: string
-  loading?: string
-  alt?: string
 }
 
-const pictureLoading = {
-  auto: 'auto',
-  eager: 'eager',
-  lazy: 'lazy',
-}
-
-export const Picture = ({ webp, src, className, loading = 'auto', alt }: PictureProps): React.JSX.Element => {
+const PictureComponent = (
+  { webp, src, className, loading, alt }: PictureProps,
+  ref: React.ForwardedRef<HTMLImageElement>
+): React.JSX.Element => {
   const classNames: string = classnames(className)
 
   return (
     <picture>
       {webp !== null ? <source srcSet={webp} type="image/webp" /> : null}
-      <img className={classNames} loading={pictureLoading[loading]} src={src} alt={alt} />
+      <img className={classNames} loading={loading} src={src} alt={alt} ref={ref} />
     </picture>
   )
 }
+
+export const Picture = forwardRef(PictureComponent) as React.ForwardRefExoticComponent<
+  PictureProps & React.RefAttributes<HTMLImageElement>
+>
