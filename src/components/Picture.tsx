@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 interface PictureProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-  webp?: string
+  webp?: string | null
 }
 
 const PictureComponent = (

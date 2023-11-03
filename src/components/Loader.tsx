@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Icon } from './Icon'
 
-export const Loader = (): React.JSX.Element => {
+const LoaderComponent = ({}, ref: React.ForwardedRef<HTMLDivElement>): React.JSX.Element => {
   return (
-    <div className="loader">
+    <div className="loader" ref={ref}>
       <span className="loader-progress">
         <Icon id="loader" />
       </span>
     </div>
   )
 }
+
+export const Loader = forwardRef(LoaderComponent) as React.ForwardRefExoticComponent<
+  React.RefAttributes<HTMLDivElement>
+>

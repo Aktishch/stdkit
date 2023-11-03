@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 interface TitleProps extends React.PropsWithChildren {
   className?: string
 }
 
-export const Title = ({ className, children }: TitleProps): React.JSX.Element => {
+const TitleComponent = (
+  { className, children }: TitleProps,
+  ref: React.ForwardedRef<HTMLHeadingElement>
+): React.JSX.Element => {
   const classNames: string = classnames(
     'font-alt',
     'font-bold',
@@ -16,5 +19,13 @@ export const Title = ({ className, children }: TitleProps): React.JSX.Element =>
     className
   )
 
-  return <h1 className={classNames}>{children}</h1>
+  return (
+    <h1 className={classNames} ref={ref}>
+      {children}
+    </h1>
+  )
 }
+
+export const Title = forwardRef(TitleComponent) as React.ForwardRefExoticComponent<
+  TitleProps & React.RefAttributes<HTMLHeadingElement>
+>

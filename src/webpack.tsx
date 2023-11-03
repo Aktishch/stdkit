@@ -1,7 +1,7 @@
 import React, { lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Layout } from './includes/Layout'
+import { Layout } from './templates/Layout'
 
 import './scss/style.scss'
 
@@ -28,3 +28,5 @@ window.addEventListener('DOMContentLoaded', ((): void => {
     </BrowserRouter>
   )
 }) as EventListener)
+
+// react, class, data, func, use, context, page, temp, inc, comp

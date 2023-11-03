@@ -1,22 +1,22 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { nav } from '../data/nav'
+import { social } from '../data/social'
 import { media } from '../functions/media'
 import { scrollbarShow, scrollbarHidden } from '../functions/scrollbar'
 import { ThemeContext } from '../contexts/Theme'
-import { AccordionContext, Accordion, AccordionToggle, AccordionContent } from '../contexts/Accordion'
 import { SidebarContext } from '../contexts/Sidebar'
+import { AccordionContext, Accordion, AccordionToggle, AccordionContent } from '../contexts/Accordion'
 import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { Picture } from '../components/Picture'
 import { Switch } from '../components/Switch'
-import { nav } from '../data/nav'
-import { social } from '../data/social'
 
 export const Menu = (): React.JSX.Element => {
   const { sidebarValue, sidebarOff } = useContext(SidebarContext)
   const { themeValue, themeToggle } = useContext(ThemeContext)
 
-  const windowResize = (): void => {
+  const onResizeHandler = (): void => {
     if (sidebarOff && (document.documentElement as HTMLElement).clientWidth > media.lg) sidebarOff()
   }
 
@@ -27,9 +27,9 @@ export const Menu = (): React.JSX.Element => {
   useEffect((): (() => void) | undefined => {
     if (!sidebarValue) return
 
-    window.addEventListener('resize', windowResize as EventListener)
+    window.addEventListener('resize', onResizeHandler as EventListener)
 
-    return (): void => window.removeEventListener('resize', windowResize as EventListener)
+    return (): void => window.removeEventListener('resize', onResizeHandler as EventListener)
   }, [sidebarValue])
 
   return (

@@ -4,7 +4,7 @@ import { scrolledPage } from '../functions/scrolled-page'
 export const ProgressLine = (): React.JSX.Element => {
   const [progress, setProgress] = useState('')
 
-  const createProgress = (): void => {
+  const onScrollHandler = (): void => {
     const width: string = `${Math.floor(
       (scrolledPage().top / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100
     )}%`
@@ -13,9 +13,9 @@ export const ProgressLine = (): React.JSX.Element => {
   }
 
   useEffect((): (() => void) | undefined => {
-    document.addEventListener('scroll', createProgress as EventListener)
+    document.addEventListener('scroll', onScrollHandler as EventListener)
 
-    return (): void => document.removeEventListener('scroll', createProgress as EventListener)
+    return (): void => document.removeEventListener('scroll', onScrollHandler as EventListener)
   }, [])
 
   return <div className="hidden lg:block fixed inset-0 z-4 bg-primary w-0 h-1 duration-2" style={{ width: progress }} />

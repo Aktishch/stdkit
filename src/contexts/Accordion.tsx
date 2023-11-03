@@ -32,24 +32,24 @@ export const Accordion = ({
   const accordion = useRef<HTMLDivElement>(null)
   const classNames: string = classnames(className)
   const { value, off, toggle } = useToggle({ status: active })
-  const closeToScroll = (): void => off()
+  const onScrollHandler = (): void => off()
 
-  const closeOnClick = (event: Event): void => {
+  const onClickHandler = (event: Event): void => {
     if ((accordion.current === null || accordion.current?.contains(event.target as Node)) === false) off()
   }
 
   useEffect((): (() => void) | undefined => {
     if (!scroll) return
 
-    document.addEventListener('scroll', closeToScroll as EventListener)
+    document.addEventListener('scroll', onScrollHandler as EventListener)
 
-    return (): void => document.removeEventListener('scroll', closeToScroll as EventListener)
+    return (): void => document.removeEventListener('scroll', onScrollHandler as EventListener)
   }, [scroll])
 
   useEffect((): (() => void) | undefined => {
-    document.addEventListener('click', closeOnClick as EventListener)
+    document.addEventListener('click', onClickHandler as EventListener)
 
-    return (): void => document.removeEventListener('click', closeOnClick as EventListener)
+    return (): void => document.removeEventListener('click', onClickHandler as EventListener)
   }, [])
 
   return (

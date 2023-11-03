@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -22,16 +22,19 @@ const switchTypes = {
   radio: 'radio',
 }
 
-export const Switch = ({
-  color,
-  variant = 'checkbox',
-  className,
-  type = 'checkbox',
-  disabled = false,
-  checked = false,
-  value,
-  onChange,
-}: SwitchProps): React.JSX.Element => {
+const SwitchComponent = (
+  {
+    color,
+    variant = 'checkbox',
+    className,
+    type = 'checkbox',
+    disabled = false,
+    checked = false,
+    value,
+    onChange,
+  }: SwitchProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+): React.JSX.Element => {
   const classNames: string = classnames(
     'switch',
     color ? switchColors[color] : null,
@@ -47,6 +50,11 @@ export const Switch = ({
       checked={checked}
       value={value}
       onChange={onChange}
+      ref={ref}
     />
   )
 }
+
+export const Switch = forwardRef(SwitchComponent) as React.ForwardRefExoticComponent<
+  SwitchProps & React.RefAttributes<HTMLInputElement>
+>

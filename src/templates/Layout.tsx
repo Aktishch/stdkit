@@ -1,11 +1,12 @@
 import React, { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Theme } from '../contexts/Theme'
+import { Sidebar } from '../contexts/Sidebar'
 import { Header } from './Header'
 import { Menu } from './Menu'
-import { ProgressLine } from '../components/ProgressLine'
-import { SocialToggle } from '../components/SocialToggle'
-import { Sidebar } from '../contexts/Sidebar'
+import { ProgressLine } from './ProgressLine'
+import { SocialToggle } from './SocialToggle'
+import { ThemeToggle } from './ThemeToggle'
 import { Preloader } from '../components/Preloader'
 
 export const Layout = (): React.JSX.Element => {
@@ -17,6 +18,7 @@ export const Layout = (): React.JSX.Element => {
         <Menu />
       </Sidebar>
       <SocialToggle />
+      <ThemeToggle />
       <Suspense fallback={<Preloader />}>
         <Outlet />
       </Suspense>

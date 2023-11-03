@@ -1,19 +1,19 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { nav } from '../data/nav'
 import { scrolledPage } from '../functions/scrolled-page'
 import { SidebarContext } from '../contexts/Sidebar'
 import { AccordionContext, Accordion, AccordionToggle, AccordionContent } from '../contexts/Accordion'
 import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { Picture } from '../components/Picture'
-import { nav } from '../data/nav'
 
 export const Header = (): React.JSX.Element => {
   const [top, setTop] = useState('')
   const prevOffsetTop = useRef(scrolledPage().top) as React.MutableRefObject<number>
   const { sidebarOn } = useContext(SidebarContext)
 
-  const scrollHeader = (): void => {
+  const onScrollHandler = (): void => {
     const currentOffsetTop: number = scrolledPage().top
 
     prevOffsetTop.current > currentOffsetTop ? setTop('') : setTop('-translate-y-full')
@@ -21,9 +21,9 @@ export const Header = (): React.JSX.Element => {
   }
 
   useEffect((): (() => void) | undefined => {
-    document.addEventListener('scroll', scrollHeader as EventListener)
+    document.addEventListener('scroll', onScrollHandler as EventListener)
 
-    return (): void => document.removeEventListener('scroll', scrollHeader as EventListener)
+    return (): void => document.removeEventListener('scroll', onScrollHandler as EventListener)
   }, [])
 
   return (

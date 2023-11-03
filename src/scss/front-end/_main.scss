@@ -1,31 +1,26 @@
-// // Переключатель темы
-// .theme {
-//   left: calc(100vw - 240px);
-// }
-
 // // Снежинки
-// .snowflake {
-//   background-image: url("../img/pictures/snow.png");
-//   animation       : snowflake 3s linear both 1;
+.snowflake {
+  background-image: url("../img/pictures/snow.png");
+  animation       : snowflake 3s linear both 1;
 
-//   @apply absolute bg-no-repeat bg-center bg-contain;
-// }
+  @apply absolute bg-no-repeat bg-center bg-contain;
+}
 
-// @keyframes snowflake {
-//   0% {
-//     transform: translate(-50%, 0);
-//     filter   : hue-rotate(0deg);
+@keyframes snowflake {
+  0% {
+    transform: translate(-50%, 0);
+    filter   : hue-rotate(0deg);
 
-//     @apply opacity-100;
-//   }
+    @apply opacity-100;
+  }
 
-//   100% {
-//     transform: translate(-50%, 1000%);
-//     filter   : hue-rotate(500deg);
+  100% {
+    transform: translate(-50%, 1000%);
+    filter   : hue-rotate(500deg);
 
-//     @apply opacity-0;
-//   }
-// }
+    @apply opacity-0;
+  }
+}
 
 // // Корзина
 // .basket[data-basket="hidden"] {
