@@ -1,9 +1,6 @@
 // // Снежинки
 .snowflake {
-  background-image: url("../img/pictures/snow.png");
-  animation       : snowflake 3s linear both 1;
-
-  @apply absolute bg-no-repeat bg-center bg-contain;
+  animation: snowflake 3s linear both 1;
 }
 
 @keyframes snowflake {

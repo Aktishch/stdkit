@@ -7,6 +7,7 @@ import { Menu } from './Menu'
 import { ProgressLine } from './ProgressLine'
 import { SocialToggle } from './SocialToggle'
 import { ThemeToggle } from './ThemeToggle'
+import { Snowflakes } from './Snowflakes'
 import { Preloader } from '../components/Preloader'
 
 export const Layout = (): React.JSX.Element => {
@@ -19,6 +20,7 @@ export const Layout = (): React.JSX.Element => {
       </Sidebar>
       <SocialToggle />
       <ThemeToggle />
+      <Snowflakes />
       <Suspense fallback={<Preloader />}>
         <Outlet />
       </Suspense>
