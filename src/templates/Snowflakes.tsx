@@ -1,4 +1,6 @@
 import React, { useRef, useEffect } from 'react'
+import { Coordinates } from '../functions/coordinates'
+import { touchDevice } from '../functions/touch-device'
 
 export const Snowflakes = (): React.JSX.Element => {
   const snowflakes = useRef<HTMLDivElement>(null)
@@ -13,7 +15,7 @@ export const Snowflakes = (): React.JSX.Element => {
 
     const snowflake = document.createElement('img') as HTMLImageElement
     const size: number = Math.random() * 60
-    const coordinates = {
+    const coordinates: Coordinates = {
       top: event.clientY,
       left: event.clientX,
     }
@@ -29,6 +31,8 @@ export const Snowflakes = (): React.JSX.Element => {
   }
 
   useEffect((): (() => void) | undefined => {
+    if (touchDevice()) return
+
     document.addEventListener('mousemove', onMousemoveHandler as EventListener)
 
     return (): void => document.removeEventListener('mousemove', onMousemoveHandler as EventListener)

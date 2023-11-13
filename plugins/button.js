@@ -4,10 +4,6 @@ const { parseColor, formatColor } = require('tailwindcss/lib/util/color')
 module.exports = plugin(({ addComponents, matchComponents, theme }) => {
   addComponents({
     '.btn': {
-      '*': {
-        pointerEvents: 'none',
-      },
-
       '--btn-color': theme('colors.black.DEFAULT'),
       '--btn-accent': theme('colors.white.DEFAULT'),
       color: 'var(--btn-color)',

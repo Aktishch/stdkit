@@ -7,6 +7,7 @@ import { AccordionContext, Accordion, AccordionToggle, AccordionContent } from '
 import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { Picture } from '../components/Picture'
+import { Waved } from '../components/Waved'
 
 export const Header = (): React.JSX.Element => {
   const [top, setTop] = useState('')
@@ -33,6 +34,7 @@ export const Header = (): React.JSX.Element => {
     >
       <Button as={Link} color="white" size={null} variant={null} className="w-36" to="/">
         <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />
+        <Waved />
       </Button>
       <nav className="hidden lg:flex items-center justify-between gap-4 w-full max-w-[800px] ml-auto">
         {nav.pages.map((item) => (
@@ -46,6 +48,7 @@ export const Header = (): React.JSX.Element => {
             key={item.id}
           >
             {item.text}
+            <Waved />
           </Button>
         ))}
         <Accordion className="relative" scroll={true}>
@@ -65,6 +68,7 @@ export const Header = (): React.JSX.Element => {
                 />
               )}
             </AccordionContext.Consumer>
+            <Waved />
           </Button>
           <AccordionContent className="absolute top-10 right-0 bg-white rounded-2 shadow-md w-full">
             <div className="flex flex-col gap-4 p-4">
@@ -79,6 +83,7 @@ export const Header = (): React.JSX.Element => {
                   key={item.id}
                 >
                   {item.text}
+                  <Waved variant="dark" />
                 </Button>
               ))}
             </div>
@@ -87,6 +92,7 @@ export const Header = (): React.JSX.Element => {
       </nav>
       <Button color="second" size={null} variant={null} className="lg:hidden text-48" onClick={sidebarOn}>
         <Icon id="burger" />
+        <Waved />
       </Button>
     </header>
   )

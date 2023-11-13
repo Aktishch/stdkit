@@ -11,6 +11,7 @@ import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { Picture } from '../components/Picture'
 import { Switch } from '../components/Switch'
+import { Waved } from '../components/Waved'
 
 export const Menu = (): React.JSX.Element => {
   const { sidebarValue, sidebarOff } = useContext(SidebarContext)
@@ -50,10 +51,12 @@ export const Menu = (): React.JSX.Element => {
         >
           <Button as={Link} color="white" size={null} variant={null} className="w-36" to="/">
             <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />
+            <Waved />
           </Button>
           <Switch variant="toggle" type="checkbox" checked={themeValue} onChange={themeToggle} />
           <Button color="second" size={null} variant={null} className="text-white text-24 p-1" onClick={sidebarOff}>
             <Icon id="close" />
+            <Waved />
           </Button>
         </div>
         <div
@@ -112,6 +115,7 @@ export const Menu = (): React.JSX.Element => {
                 key={item.id}
               >
                 <Icon className="text-30" id={item.icon} />
+                <Waved variant="dark" />
               </Button>
             ))}
           </div>

@@ -1,5 +1,5 @@
 .waved {
-  @apply absolute z-1 inset-0 rounded-inherit overflow-hidden pointer-events-none;
+  @apply absolute z-1 inset-0 rounded-inherit overflow-hidden;
 
   &-circle {
     background-color: var(--waved-color);
@@ -9,11 +9,11 @@
     @apply block absolute rounded-max w-10 h-10;
   }
 
-  [data-waved="light"] & {
+  &--light {
     --waved-color: theme("colors.white.DEFAULT / 40%");
   }
 
-  [data-waved="dark"] & {
+  &--dark {
     --waved-color: theme("colors.black.DEFAULT / 40%");
   }
 }
