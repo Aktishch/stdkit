@@ -12,13 +12,17 @@ import { Waved } from '../components/Waved'
 export const Header = (): React.JSX.Element => {
   const [top, setTop] = useState('')
   const prevOffsetTop = useRef(scrolledPage().top) as React.MutableRefObject<number>
+  const header = useRef<HTMLElement>(null)
   const { sidebarOn } = useContext(SidebarContext)
 
   const onScrollHandler = (): void => {
+    const headerHeight: number = (header.current as HTMLElement).offsetHeight
     const currentOffsetTop: number = scrolledPage().top
 
-    prevOffsetTop.current > currentOffsetTop ? setTop('') : setTop('-translate-y-full')
-    prevOffsetTop.current = currentOffsetTop
+    if (headerHeight < currentOffsetTop) {
+      prevOffsetTop.current > currentOffsetTop ? setTop('') : setTop('lg:-translate-y-full')
+      prevOffsetTop.current = currentOffsetTop
+    }
   }
 
   useEffect((): (() => void) | undefined => {
@@ -31,6 +35,7 @@ export const Header = (): React.JSX.Element => {
     <header
       className={`container flex items-center justify-between gap-5 
       sticky z-3 top-0 left-0 right-0 bg-black ${top} py-4 duration-3`}
+      ref={header}
     >
       <Button as={Link} color="white" size={null} variant={null} className="w-36" to="/">
         <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />

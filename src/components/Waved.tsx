@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { Coordinates } from '../functions/coordinates'
 import { touchDevice } from '../functions/touch-device'
 
-interface WavedProps {
+interface WavedProps extends React.DOMAttributes<HTMLDivElement> {
   className?: string
   variant?: string
 }
@@ -21,15 +21,16 @@ export const Waved = ({ variant = 'light', className }: WavedProps): React.JSX.E
     const circle = document.createElement('div') as HTMLDivElement
 
     const createCircle = (yPos: number, xPos: number): void => {
+      const current = waved.current as HTMLElement
       const coordinates: Coordinates = {
-        top: yPos - waved.current.getBoundingClientRect().top,
-        left: xPos - waved.current.getBoundingClientRect().left,
+        top: yPos - current.getBoundingClientRect().top,
+        left: xPos - current.getBoundingClientRect().left,
       }
 
       circle.classList.add('waved-circle')
       circle.style.top = `${coordinates.top}px`
       circle.style.left = `${coordinates.left}px`
-      waved.current.appendChild(circle)
+      current.appendChild(circle)
       setTimeout((): void => circle.remove(), 1000)
     }
 

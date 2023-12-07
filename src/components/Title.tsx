@@ -1,28 +1,28 @@
-import React, { forwardRef } from 'react'
+import React, { ElementType, forwardRef } from 'react'
 import classnames from 'classnames'
 
 interface TitleProps extends React.PropsWithChildren {
+  as?: ElementType
   className?: string
 }
 
 const TitleComponent = (
-  { className, children }: TitleProps,
+  { as: Tag = 'h2', className, children }: TitleProps,
   ref: React.ForwardedRef<HTMLHeadingElement>
 ): React.JSX.Element => {
   const classNames: string = classnames(
     'font-alt',
     'font-bold',
     'text-center',
-    'text-48',
-    'lg:text-6xl',
+    Tag === 'h1' ? 'text-48 lg:text-6xl' : 'text-36 lg:text-48',
     'leading-2',
     className
   )
 
   return (
-    <h1 className={classNames} ref={ref}>
+    <Tag className={classNames} ref={ref}>
       {children}
-    </h1>
+    </Tag>
   )
 }
 

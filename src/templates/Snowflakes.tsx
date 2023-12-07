@@ -13,6 +13,7 @@ export const Snowflakes = (): React.JSX.Element => {
 
     setTimeout((): boolean => (flag.current = true), 300)
 
+    const current = snowflakes.current as HTMLElement
     const snowflake = document.createElement('img') as HTMLImageElement
     const size: number = Math.random() * 60
     const coordinates: Coordinates = {
@@ -25,7 +26,7 @@ export const Snowflakes = (): React.JSX.Element => {
     snowflake.style.top = `${coordinates.top}px`
     snowflake.style.left = `${coordinates.left}px`
     snowflake.style.width = `${20 + size}px`
-    snowflakes.current.appendChild(snowflake)
+    current.appendChild(snowflake)
 
     setTimeout((): void => snowflake.remove(), 3000)
   }
