@@ -3,6 +3,7 @@ import { articles } from '../data/articles'
 import { Title } from '../components/Title'
 import { Subtitle } from '../components/Subtitle'
 import { ArticleCard } from '../components/ArticleCard'
+import { ArticleInvertedCard } from '../components/ArticleInvertedCard'
 
 export const Articles = (): React.JSX.Element => {
   return (
@@ -14,7 +15,11 @@ export const Articles = (): React.JSX.Element => {
           <ArticleCard item={item} key={index} />
         ))}
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-8 w-full"></div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-8 w-full">
+        {articles.map((item, index) => (
+          <ArticleInvertedCard item={item} key={index} />
+        ))}
+      </div>
     </section>
   )
 }
