@@ -4,6 +4,7 @@ import { Theme } from '../contexts/Theme'
 import { Sidebar } from '../contexts/Sidebar'
 import { Header } from './Header'
 import { Menu } from './Menu'
+import { SmartMenu } from './Smart-menu'
 import { ProgressLine } from './ProgressLine'
 import { SocialToggle } from './SocialToggle'
 import { ThemeToggle } from './ThemeToggle'
@@ -18,6 +19,7 @@ export const Layout = (): React.JSX.Element => {
         <Header />
         <Menu />
       </Sidebar>
+      <SmartMenu />
       <SocialToggle />
       <ThemeToggle />
       <Snowflakes />
