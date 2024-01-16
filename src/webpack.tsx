@@ -9,6 +9,10 @@ const Index: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
   import('./pages/Index').then((module) => ({ default: module.Index }))
 )
 
+const Second: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
+  import('./pages/Second').then((module) => ({ default: module.Second }))
+)
+
 window.addEventListener('DOMContentLoaded', ((): void => {
   const root = document.getElementById('root') as HTMLElement
 
@@ -22,8 +26,10 @@ window.addEventListener('DOMContentLoaded', ((): void => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Index />} />
         </Route>
-        {/* <Route path="Second" element={<Second />} />
-          <Route path="*" element={<Error />} /> */}
+        <Route path="/second" element={<Layout />}>
+          <Route index element={<Second />} />
+        </Route>
+        {/* <Route path="*" element={<Error />} /> */}
       </Routes>
     </BrowserRouter>
   )

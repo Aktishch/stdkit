@@ -2,6 +2,7 @@ import React from 'react'
 import { Picture } from '../components/Picture'
 import { Title } from '../components/Title'
 import { Button } from '../components/Button'
+import { Waved } from '../components/Waved'
 
 export const Main = (): React.JSX.Element => {
   return (
@@ -11,6 +12,7 @@ export const Main = (): React.JSX.Element => {
         Main block
       </Title>
       <Button as="a" color="primary" effect="glow" className="w-full max-w-[200px] mx-auto" href="#block">
+        <Waved />
         Show more
       </Button>
     </section>

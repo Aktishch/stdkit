@@ -50,13 +50,13 @@ export const Menu = (): React.JSX.Element => {
           } p-4 duration-5 delay-3`}
         >
           <Button as={Link} color="white" size={null} variant={null} className="w-36" to="/">
-            <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />
             <Waved />
+            <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />
           </Button>
           <Switch variant="toggle" type="checkbox" checked={themeValue} onChange={themeToggle} />
           <Button color="second" size={null} variant={null} className="text-white text-24 p-1" onClick={sidebarOff}>
-            <Icon id="close" />
             <Waved />
+            <Icon id="close" />
           </Button>
         </div>
         <div
@@ -114,8 +114,8 @@ export const Menu = (): React.JSX.Element => {
                 target={true}
                 key={item.id}
               >
-                <Icon className="text-30" id={item.icon} />
                 <Waved variant="dark" />
+                <Icon className="text-30" id={item.icon} />
               </Button>
             ))}
           </div>

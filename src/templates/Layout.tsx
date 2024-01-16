@@ -9,6 +9,7 @@ import { ProgressLine } from './ProgressLine'
 import { SocialToggle } from './SocialToggle'
 import { ThemeToggle } from './ThemeToggle'
 import { Snowflakes } from './Snowflakes'
+import { Footer } from './Footer'
 import { Preloader } from '../components/Preloader'
 
 export const Layout = (): React.JSX.Element => {
@@ -26,7 +27,7 @@ export const Layout = (): React.JSX.Element => {
       <Suspense fallback={<Preloader />}>
         <Outlet />
       </Suspense>
-      <footer>Footer</footer>
+      <Footer />
     </Theme>
   )
 }

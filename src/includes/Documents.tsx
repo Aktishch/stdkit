@@ -15,6 +15,7 @@ export const Documents = (): React.JSX.Element => {
       <div className="flex flex-col gap-5 w-full">
         {documents.map((item) => (
           <Accordion
+            active={item.active}
             className="relative bg-second bg-opacity-10 rounded-4 shadow-md overflow-hidden py-4 md:py-6 px-4"
             key={item.id}
           >

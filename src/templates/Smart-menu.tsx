@@ -68,6 +68,7 @@ export const SmartMenu = (): React.JSX.Element => {
           {menuItems.map((item) => (
             <li key={item.id}>
               <Button color="primary" variant="light" className="dark:bg-dark font-semibold shadow-md w-full min-w-max">
+                <Waved variant="dark" />
                 {item.text}
               </Button>
             </li>
