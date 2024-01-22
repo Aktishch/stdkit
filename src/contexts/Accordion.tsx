@@ -66,9 +66,9 @@ export const AccordionToggle = ({ className, children }: AccordionToggleProps): 
   const classNames: string = classnames('cursor-pointer', className)
 
   return (
-    <div className={classNames} onClick={accordionToggle}>
+    <button className={classNames} onClick={accordionToggle}>
       {children}
-    </div>
+    </button>
   )
 }
 

@@ -4,6 +4,7 @@ import { Pack } from '../components/Pack'
 import { Loader } from '../components/Loader'
 import { Picture } from '../components/Picture'
 import { Button } from '../components/Button'
+import { Movement } from '../components/Movement'
 import { Waved } from '../components/Waved'
 
 interface ArticleCardProps {
@@ -19,10 +20,12 @@ const ArticleCardComponent = (
 
   return (
     <article className={classNames} ref={ref}>
-      <Pack size="md" className="bg-grey dark:bg-dark">
-        <Loader />
-        <Picture webp={item.images[0]} src={item.images[1]} className="image image-rise" loading="lazy" />
-      </Pack>
+      <Movement>
+        <Pack size="md" className="bg-grey dark:bg-dark">
+          <Loader />
+          <Picture webp={item.images[0]} src={item.images[1]} className="image image-rise" loading="lazy" />
+        </Pack>
+      </Movement>
       <div className="card-content py-5 px-3 md:px-5">
         <h4 className="font-alt font-semibold text-24 mb-4">{item.title}</h4>
         <p className="text-justify text-14 md:text-16 leading-5 mb-5">{item.text}</p>

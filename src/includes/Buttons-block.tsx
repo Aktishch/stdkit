@@ -3,6 +3,7 @@ import { useBubbles } from '../hooks/useBubbles'
 import { Title } from '../components/Title'
 import { Subtitle } from '../components/Subtitle'
 import { Button } from '../components/Button'
+import { Movement } from '../components/Movement'
 import { Waved } from '../components/Waved'
 
 export const ButtonsBlock = (): React.JSX.Element => {
@@ -10,8 +11,12 @@ export const ButtonsBlock = (): React.JSX.Element => {
 
   return (
     <section className="container container-xs flex flex-col items-center justify-center bg-white dark:bg-black overflow-hidden">
-      <Title className="mb-3">Buttons</Title>
-      <Subtitle className="mb-5 md:mb-10">Buttons standard</Subtitle>
+      <Movement variant="blend" className="mb-3">
+        <Title>Buttons</Title>
+      </Movement>
+      <Movement variant="blend" className="mb-5 md:mb-10">
+        <Subtitle>Buttons standard</Subtitle>
+      </Movement>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 md:mb-10">
         <Button color="primary" variant={null}>
           btn-primary
@@ -30,7 +35,9 @@ export const ButtonsBlock = (): React.JSX.Element => {
           btn-primary btn-light
         </Button>
       </div>
-      <Subtitle className="mb-5 md:mb-10">Buttons size</Subtitle>
+      <Movement variant="blend" className="mb-5 md:mb-10">
+        <Subtitle>Buttons size</Subtitle>
+      </Movement>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 md:mb-10">
         <Button color="primary" size="xxl">
           btn-xxl
@@ -51,7 +58,9 @@ export const ButtonsBlock = (): React.JSX.Element => {
           btn-xs
         </Button>
       </div>
-      <Subtitle className="mb-5 md:mb-10">Buttons effects</Subtitle>
+      <Movement variant="blend" className="mb-5 md:mb-10">
+        <Subtitle>Buttons effects</Subtitle>
+      </Movement>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 md:mb-10">
         <Button color="primary" variant="contur" effect="swipe">
           btn-swipe
@@ -60,7 +69,9 @@ export const ButtonsBlock = (): React.JSX.Element => {
           btn-glow
         </Button>
       </div>
-      <Subtitle className="mb-5 md:mb-10">Buttons click</Subtitle>
+      <Movement variant="blend" className="mb-5 md:mb-10">
+        <Subtitle>Buttons click</Subtitle>
+      </Movement>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 md:mb-10">
         <Button color="primary">
           <Waved />

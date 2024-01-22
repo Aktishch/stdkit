@@ -36,33 +36,33 @@
 // }
 
 // // Фильтер
-// .filtering {
-//   &__category.filter-active {
-//     @apply text-white bg-second pointer-events-none;
+.filtering {
+  &__category.filter-active {
+    @apply text-white bg-second pointer-events-none;
 
-//     @screen md {
-//       @apply font-bold text-primary bg-opacity-0;
-//     }
-//   }
+    @screen md {
+      @apply font-bold text-primary bg-opacity-0;
+    }
+  }
 
-//   &__card.filter-show {
-//     animation: filtering-show 0.3s ease both 1;
-//   }
-// }
+  &__card.filter-show {
+    animation: filtering-show 0.3s ease both 1;
+  }
+}
 
-// @keyframes filtering-show {
-//   0% {
-//     transform: translateY(50px);
+@keyframes filtering-show {
+  0% {
+    transform: translateY(50px);
 
-//     @apply opacity-0;
-//   }
+    @apply opacity-0;
+  }
 
-//   100% {
-//     transform: translateY(0);
+  100% {
+    transform: translateY(0);
 
-//     @apply opacity-100;
-//   }
-// }
+    @apply opacity-100;
+  }
+}
 
 // // Плеер
 // .player {

@@ -5,13 +5,18 @@ import { Title } from '../components/Title'
 import { Subtitle } from '../components/Subtitle'
 import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
+import { Movement } from '../components/Movement'
 import { Waved } from '../components/Waved'
 
 export const Documents = (): React.JSX.Element => {
   return (
     <section className="documents container container-distance flex flex-col items-center justify-center bg-grey dark:bg-dark">
-      <Title className="mb-3">Documents</Title>
-      <Subtitle className="mb-5 md:mb-10">Drop-down list</Subtitle>
+      <Movement variant="blend" className="mb-3">
+        <Title>Documents</Title>
+      </Movement>
+      <Movement variant="blend" className="mb-5 md:mb-10">
+        <Subtitle>Drop-down list</Subtitle>
+      </Movement>
       <div className="flex flex-col gap-5 w-full">
         {documents.map((item) => (
           <Accordion

@@ -4,6 +4,7 @@ import { Pack } from '../components/Pack'
 import { Loader } from '../components/Loader'
 import { Picture } from '../components/Picture'
 import { Button } from '../components/Button'
+import { Movement } from '../components/Movement'
 import { Waved } from '../components/Waved'
 
 interface ArticleInvertedCardProps {
@@ -20,10 +21,12 @@ const ArticleInvertedCardComponent = (
   return (
     <article className={classNames} ref={ref}>
       <div className="inverted-before card dark:bg-black">
-        <Pack size="half" className="bg-grey dark:bg-dark">
-          <Loader />
-          <Picture webp={item.images[0]} src={item.images[1]} className="image image-rise" loading="lazy" />
-        </Pack>
+        <Movement>
+          <Pack size="half" className="bg-grey dark:bg-dark">
+            <Loader />
+            <Picture webp={item.images[0]} src={item.images[1]} className="image image-rise" loading="lazy" />
+          </Pack>
+        </Movement>
         <div className="card-content py-5 px-3 md:px-5">
           <h4 className="font-alt font-semibold text-24">{item.title}</h4>
         </div>
