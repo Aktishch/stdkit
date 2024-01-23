@@ -18,7 +18,7 @@ export const Movement = ({ variant = 'light', className, children }: MovementPro
   const [position, setPosition] = useState({ top: 0, left: 0 })
   const classNames: string = classnames('movement', variant ? movementVariants[variant] : null, className)
 
-  const setMovement = (event: MouseEvent): void => {
+  const setMovement = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
     if (touchDevice()) return
 
     const coordinates: Coordinates = {

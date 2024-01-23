@@ -1,7 +1,7 @@
 import React, { ElementType, forwardRef } from 'react'
 import classnames from 'classnames'
 
-interface PackProps extends React.ButtonHTMLAttributes<HTMLOrSVGElement> {
+interface PackProps extends React.ButtonHTMLAttributes<HTMLElement> {
   as?: ElementType
   size: string | null
   href?: string | null

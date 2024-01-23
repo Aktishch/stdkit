@@ -1,4 +1,4 @@
-import { touchDevice } from './touch-device'
+import { touchDevice } from '../functions/touch-device'
 
 export const scrollbarShow = (): void => {
   const html = document.documentElement as HTMLElement

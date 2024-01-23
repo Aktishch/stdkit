@@ -60,17 +60,23 @@ export const Tabs = (): React.JSX.Element => {
               File
             </FilterToggle>
             <FilterContext.Consumer>
-              {({ filterWidth, filterLeft }) => (
+              {({ width, left }) => (
                 <span
                   className="hidden md:block absolute left-0 bottom-0 bg-primary rounded-t-2 h-1 ease-linear duration-3"
-                  style={{ width: filterWidth, left: filterLeft }}
+                  style={{ width: width, left: left }}
                 />
               )}
             </FilterContext.Consumer>
           </div>
           <div className="bg-white text-black rounded-6 shadow-md p-7 md:p-10">
             <FilterCategory name="filtering" value="text" className="filtering__card">
-              Text
+              <ul className="flex flex-col gap-4 list-disc list-inside text-primary">
+                <li>
+                  <div className="inline-block text-second text-36">
+                    --text-<span>36</span>
+                  </div>
+                </li>
+              </ul>
             </FilterCategory>
             <FilterCategory name="filtering" value="form" className="filtering__card">
               Form

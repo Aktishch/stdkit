@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import classnames from 'classnames'
 import { Coordinates } from '../functions/coordinates'
 import { touchDevice } from '../functions/touch-device'
@@ -49,5 +49,17 @@ export const Waved = ({ variant = 'light', className }: WavedProps): React.JSX.E
     }
   }
 
-  return <div className={classNames} onTouchStart={onClickHandler} onMouseDown={onClickHandler} ref={waved} />
+  useEffect((): (() => void) | undefined => {
+    const parent = (waved.current as HTMLDivElement).parentElement as HTMLElement
+
+    parent.addEventListener('touchstart', onClickHandler as EventListener)
+    parent.addEventListener('mousedown', onClickHandler as EventListener)
+
+    return (): void => {
+      parent.removeEventListener('touchstart', onClickHandler as EventListener)
+      parent.removeEventListener('mousedown', onClickHandler as EventListener)
+    }
+  }, [])
+
+  return <div className={classNames} ref={waved} />
 }

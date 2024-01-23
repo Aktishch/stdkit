@@ -2,13 +2,13 @@ import React, { createContext, useState, useEffect, useRef, useContext } from 'r
 import classnames from 'classnames'
 
 interface FilterContextProps {
-  filterName: string
-  filterValue: string
-  setFilterValue: () => void
-  filterWidth: string
-  setFilterWidth: () => void
-  filterLeft: string
-  setFilterLeft: () => void
+  currentName: string
+  currentValue: string
+  setCurrentValue: () => void
+  width: string
+  setWidth: () => void
+  left: string
+  setLeft: () => void
 }
 
 interface FilterProps extends React.PropsWithChildren {
@@ -22,19 +22,19 @@ export const FilterContext = createContext<FilterContextProps>({})
 export const Filter = ({ name, value, className, children }: FilterProps): React.JSX.Element => {
   const classNames: string = classnames(className)
   const [currentValue, setCurrentValue] = useState(value)
-  const [currentWidth, setCurrentWidth] = useState('')
-  const [currentLeft, setCurrentLeft] = useState('')
+  const [width, setWidth] = useState('')
+  const [left, setLeft] = useState('')
 
   return (
     <FilterContext.Provider
       value={{
-        filterName: name,
-        filterValue: currentValue,
-        setFilterValue: setCurrentValue,
-        filterWidth: currentWidth,
-        setFilterWidth: setCurrentWidth,
-        filterLeft: currentLeft,
-        setFilterLeft: setCurrentLeft,
+        currentName: name,
+        currentValue: currentValue,
+        setCurrentValue: setCurrentValue,
+        width: width,
+        setWidth: setWidth,
+        left: left,
+        setLeft: setLeft,
       }}
     >
       <div className={classNames}>{children}</div>
@@ -44,22 +44,22 @@ export const Filter = ({ name, value, className, children }: FilterProps): React
 
 export const FilterToggle = ({ name, value, className, children }: FilterProps): React.JSX.Element => {
   const toggle = useRef<HTMLButtonElement>(null)
-  const { filterName, filterValue, setFilterValue, setFilterWidth, setFilterLeft } = useContext(FilterContext)
-  const classNames: string = classnames('cursor-pointer', filterValue === value ? 'filter-active' : null, className)
+  const { currentName, currentValue, setCurrentValue, setWidth, setLeft } = useContext(FilterContext)
+  const classNames: string = classnames('cursor-pointer', currentValue === value ? 'filter-active' : null, className)
 
   const onClickHandler = (): void => {
-    if (name === filterName) setFilterValue(value)
+    if (name === currentName) setCurrentValue(value)
   }
 
   useEffect((): void => {
-    if (value === filterValue) {
+    if (value === currentValue) {
       const width: string = `${(toggle.current as HTMLElement).offsetWidth}px`
       const left: string = `${(toggle.current as HTMLElement).offsetLeft}px`
 
-      setFilterWidth(width)
-      setFilterLeft(left)
+      setWidth(width)
+      setLeft(left)
     }
-  }, [filterValue])
+  }, [currentValue])
 
   return (
     <button className={classNames} onClick={onClickHandler} ref={toggle}>
@@ -69,12 +69,12 @@ export const FilterToggle = ({ name, value, className, children }: FilterProps):
 }
 
 export const FilterCategory = ({ name, value, className, children }: FilterProps): React.JSX.Element => {
-  const { filterName, filterValue } = useContext(FilterContext)
-  const absence: boolean = value.split(' ').includes(filterValue) === false
-  const showAll: boolean = filterValue.toLowerCase() === 'all'
+  const { currentName, currentValue } = useContext(FilterContext)
+  const absence: boolean = value.split(' ').includes(currentValue) === false
+  const showAll: boolean = currentValue.toLowerCase() === 'all'
 
   const classNames: string = classnames(
-    name === filterName && absence && !showAll ? 'hidden' : 'filter-show',
+    name === currentName && absence && !showAll ? 'hidden' : 'filter-show',
     className
   )
 

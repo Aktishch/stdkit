@@ -46,11 +46,11 @@
   }
 
   &__card.filter-show {
-    animation: filtering-show 0.3s ease both 1;
+    animation: filter-show 0.3s ease both 1;
   }
 }
 
-@keyframes filtering-show {
+@keyframes filter-show {
   0% {
     transform: translateY(50px);
 

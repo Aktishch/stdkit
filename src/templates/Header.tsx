@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { nav } from '../data/nav'
 import { scrolledPage } from '../functions/scrolled-page'
+import { scrollTo } from '../functions/scroll-to'
 import { SidebarContext } from '../contexts/Sidebar'
 import { AccordionContext, Accordion, AccordionToggle, AccordionContent } from '../contexts/Accordion'
 import { Button } from '../components/Button'
@@ -86,6 +87,7 @@ export const Header = (): React.JSX.Element => {
                   className="hover:underline underline-offset-4 text-14"
                   href={item.href}
                   key={item.id}
+                  onClick={scrollTo}
                 >
                   <Waved variant="dark" />
                   {item.text}
