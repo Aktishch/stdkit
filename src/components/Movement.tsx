@@ -21,24 +21,24 @@ export const Movement = ({ variant = 'light', className, children }: MovementPro
   const setMovement = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
     if (touchDevice()) return
 
+    const current = movement.current as HTMLDivElement
+
     const coordinates: Coordinates = {
-      top: event.clientY - (movement.current as HTMLDivElement).getBoundingClientRect().top,
-      left: event.clientX - (movement.current as HTMLDivElement).getBoundingClientRect().left,
+      top: event.clientY - current.getBoundingClientRect().top,
+      left: event.clientX - current.getBoundingClientRect().left,
     }
 
     setPosition({
       top: coordinates.top,
       left: coordinates.left,
     })
+
+    current.style.setProperty('--y', `${position.top}px`)
+    current.style.setProperty('--x', `${position.left}px`)
   }
 
   return (
-    <div
-      className={classNames}
-      onMouseMove={setMovement}
-      style={{ '--y': `${position.top}px`, '--x': `${position.left}px` }}
-      ref={movement}
-    >
+    <div className={classNames} onMouseMove={setMovement} ref={movement}>
       {children}
     </div>
   )

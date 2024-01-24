@@ -1,5 +1,5 @@
-import { scrolledPage } from '../functions/scrolled-page'
-import { media } from '../functions/media'
+import { scrolledPage } from './scrolled-page'
+import { media } from './media'
 
 export const scrollTo = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
   event.preventDefault()

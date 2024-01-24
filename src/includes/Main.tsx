@@ -1,4 +1,5 @@
 import React from 'react'
+import { scrollTo } from '../functions/scroll-to'
 import { Picture } from '../components/Picture'
 import { Title } from '../components/Title'
 import { Button } from '../components/Button'
@@ -12,7 +13,14 @@ export const Main = (): React.JSX.Element => {
       <Movement variant="blend" className="mb-5 md:mb-10">
         <Title as="h1">Main block</Title>
       </Movement>
-      <Button as="a" color="primary" effect="glow" className="w-full max-w-[200px] mx-auto" href="#block">
+      <Button
+        as="a"
+        color="primary"
+        effect="glow"
+        className="w-full max-w-[200px] mx-auto"
+        href="#block"
+        onClick={scrollTo}
+      >
         <Waved />
         Show more
       </Button>

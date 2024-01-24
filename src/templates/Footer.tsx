@@ -22,6 +22,7 @@ export const Footer = (): React.JSX.Element => {
         ​Рождественская набережная, <br /> 45/1​5 офис; 3 этаж
       </address>
       <Button color="second" size={null} variant={null} className="text-18 w-max p-1">
+        <Waved />
         Privacy policy
       </Button>
       <div className="font-normal text-16">© {currentYear()}</div>

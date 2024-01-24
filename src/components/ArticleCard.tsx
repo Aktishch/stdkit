@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
-import { Pack } from '../components/Pack'
-import { Loader } from '../components/Loader'
-import { Picture } from '../components/Picture'
-import { Button } from '../components/Button'
-import { Movement } from '../components/Movement'
-import { Waved } from '../components/Waved'
+import { Pack } from './Pack'
+import { Loader } from './Loader'
+import { Picture } from './Picture'
+import { Button } from './Button'
+import { Movement } from './Movement'
+import { Waved } from './Waved'
 
 interface ArticleCardProps {
   item: { id: number; images: string[]; title: string; text: string }

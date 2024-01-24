@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { Icon } from '../components/Icon'
+import { Icon } from './Icon'
 
 const LoaderComponent = ({}, ref: React.ForwardedRef<HTMLDivElement>): React.JSX.Element => {
   return (

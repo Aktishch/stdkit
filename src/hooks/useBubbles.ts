@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useToggle } from '../hooks/useToggle'
+import { useToggle } from './useToggle'
 import classnames from 'classnames'
 
 export const useBubbles = () => {

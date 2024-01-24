@@ -8,7 +8,10 @@ import { Movement } from '../components/Movement'
 
 export const Articles = (): React.JSX.Element => {
   return (
-    <section className="container container-xs container-distance flex flex-col items-center justify-center bg-grey dark:bg-dark">
+    <section
+      className="container container-xs container-distance flex flex-col items-center justify-center bg-grey dark:bg-dark"
+      id="block"
+    >
       <Movement variant="blend" className="mb-3">
         <Title>Cards</Title>
       </Movement>
