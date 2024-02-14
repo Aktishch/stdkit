@@ -27,14 +27,14 @@ const ArticleInvertedCardComponent = (
             <Picture webp={item.images[0]} src={item.images[1]} className="image image-rise" loading="lazy" />
           </Pack>
         </Movement>
-        <div className="card-content py-5 px-3 md:px-5">
-          <h4 className="font-alt font-semibold text-24">{item.title}</h4>
+        <div className="px-3 py-5 card-content md:px-5">
+          <h4 className="font-semibold font-alt text-24">{item.title}</h4>
         </div>
       </div>
       <div className="inverted-after card dark:bg-black">
-        <div className="card-content py-5 px-3 md:px-5">
-          <h4 className="font-alt font-semibold text-24 mb-4">{item.title}</h4>
-          <p className="text-justify text-14 md:text-16 leading-5 mb-5">{item.text}</p>
+        <div className="px-3 py-5 card-content md:px-5">
+          <h4 className="mb-4 font-semibold font-alt text-24">{item.title}</h4>
+          <p className="mb-5 leading-5 text-justify text-14 md:text-16">{item.text}</p>
           <Button color="primary" variant="fill" className="mt-auto">
             <Waved />
             Button

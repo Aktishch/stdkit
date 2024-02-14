@@ -27,7 +27,7 @@ export const SocialToggle = (): React.JSX.Element => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center fixed z-2 left-0 bottom-10 rounded-max pointer-events-none touch-none select-none w-48 h-48"
+      className="fixed left-0 flex flex-col items-center justify-center w-48 h-48 pointer-events-none select-none z-2 bottom-10 rounded-max touch-none"
       style={{
         transform: `translate(${position.left}px, ${position.top}px)`,
       }}
@@ -57,8 +57,9 @@ export const SocialToggle = (): React.JSX.Element => {
         color="primary"
         variant="contur"
         size={null}
-        className="rounded-max shadow-md overflow-hidden pointer-events-auto w-10 h-10 p-1 after:content-auto after:block after:bg-current after:rounded-inherit after:w-full after:h-full"
+        className="w-10 h-10 p-1 overflow-hidden shadow-md pointer-events-auto rounded-max after:content-auto after:block after:bg-current after:rounded-inherit after:w-full after:h-full"
         onClick={onDoubleTapHandler}
+        onTouchStart={onDoubleTapHandler}
         ref={drag}
       />
     </div>

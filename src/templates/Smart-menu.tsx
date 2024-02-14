@@ -61,13 +61,13 @@ export const SmartMenu = (): React.JSX.Element => {
   }, [])
 
   return (
-    <nav className="container relative z-2 py-4">
-      <div className="flex items-center justify-between gap-5 w-full max-w-full" ref={menu}>
+    <nav className="container relative py-4 z-2">
+      <div className="flex items-center justify-between w-full max-w-full gap-5" ref={menu}>
         <Subtitle ref={subtitle}>Smart-menu items</Subtitle>
         <ul className="flex justify-between gap-3" ref={length}>
           {menuItems.map((item) => (
             <li key={item.id}>
-              <Button color="primary" variant="light" className="dark:bg-dark font-semibold shadow-md w-full min-w-max">
+              <Button color="primary" variant="light" className="w-full font-semibold shadow-md dark:bg-dark min-w-max">
                 <Waved variant="dark" />
                 {item.text}
               </Button>
@@ -83,7 +83,7 @@ export const SmartMenu = (): React.JSX.Element => {
                 0
               </span>
             </Button>
-            <AccordionContent className="absolute top-12 right-0 bg-white dark:bg-opacity-0 rounded-2 shadow-md w-52">
+            <AccordionContent className="absolute right-0 bg-white shadow-md top-12 dark:bg-opacity-0 rounded-2 w-52">
               <ul className="flex flex-col gap-3 p-3" ref={list}></ul>
             </AccordionContent>
           </Accordion>

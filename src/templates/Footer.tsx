@@ -11,17 +11,17 @@ export const Footer = (): React.JSX.Element => {
 
   return (
     <footer
-      className="container flex flex-wrap flex-col md:flex-row items-center justify-between gap-4 bg-black text-second pt-4 pb-10 md:pb-4"
+      className="container flex flex-col flex-wrap items-center justify-between gap-4 pt-4 pb-10 bg-black md:flex-row text-second md:pb-4"
       id="footer"
     >
       <Button as={Link} color="white" size={null} variant={null} className="w-36" to="/">
         <Waved />
         <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />
       </Button>
-      <address className="text-center text-16 leading-4">
+      <address className="leading-4 text-center text-16">
         ​Рождественская набережная, <br /> 45/1​5 офис; 3 этаж
       </address>
-      <Button color="second" size={null} variant={null} className="text-18 w-max p-1">
+      <Button color="second" size={null} variant={null} className="p-1 text-18 w-max">
         <Waved />
         Privacy policy
       </Button>

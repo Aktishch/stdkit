@@ -18,5 +18,5 @@ export const ProgressLine = (): React.JSX.Element => {
     return (): void => document.removeEventListener('scroll', onScrollHandler as EventListener)
   }, [])
 
-  return <div className="hidden lg:block fixed inset-0 z-4 bg-primary w-0 h-1 duration-2" style={{ width: progress }} />
+  return <div className="fixed inset-0 hidden w-0 h-1 lg:block z-4 bg-primary duration-2" style={{ width: progress }} />
 }

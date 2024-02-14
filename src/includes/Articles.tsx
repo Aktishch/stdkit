@@ -9,7 +9,7 @@ import { Movement } from '../components/Movement'
 export const Articles = (): React.JSX.Element => {
   return (
     <section
-      className="container container-xs container-distance flex flex-col items-center justify-center bg-grey dark:bg-dark"
+      className="container flex flex-col items-center justify-center container-xs container-distance bg-grey dark:bg-dark"
       id="block"
     >
       <Movement variant="blend" className="mb-3">
@@ -18,12 +18,12 @@ export const Articles = (): React.JSX.Element => {
       <Movement variant="blend" className="mb-5 md:mb-10">
         <Subtitle>Construction and effect</Subtitle>
       </Movement>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-8 w-full mb-5 md:md-10">
+      <div className="grid w-full gap-5 mb-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8 md:md-10">
         {articles.map((item, index) => (
           <ArticleCard item={item} key={index} />
         ))}
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-8 w-full">
+      <div className="grid w-full gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
         {articles.map((item, index) => (
           <ArticleInvertedCard item={item} key={index} />
         ))}

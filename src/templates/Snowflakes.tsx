@@ -39,5 +39,5 @@ export const Snowflakes = (): React.JSX.Element => {
     return (): void => document.removeEventListener('mousemove', onMousemoveHandler as EventListener)
   }, [])
 
-  return <div className="fixed inset-0 z-5 pointer-events-none" ref={snowflakes} />
+  return <div className="fixed inset-0 pointer-events-none z-5" ref={snowflakes} />
 }

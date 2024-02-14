@@ -6,8 +6,8 @@ export const ThemeToggle = (): React.JSX.Element => {
   const { themeValue, themeToggle } = useContext(ThemeContext)
 
   return (
-    <div className="hidden lg:flex items-center justify-center fixed left-5 bottom-5 z-5 bg-white dark:bg-black rounded-4 border border-solid border-gray dark:border-white shadow-md w-max p-4">
-      <span className="text-14 mr-2">Темная тема</span>
+    <div className="fixed items-center justify-center hidden p-4 bg-white border border-solid shadow-md lg:flex left-5 bottom-5 z-5 dark:bg-black rounded-4 border-gray dark:border-white w-max">
+      <span className="mr-2 text-14">Темная тема</span>
       <Switch variant="toggle" type="checkbox" checked={themeValue} onChange={themeToggle} />
     </div>
   )

@@ -54,7 +54,7 @@ export const Menu = (): React.JSX.Element => {
             <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />
           </Button>
           <Switch variant="toggle" type="checkbox" checked={themeValue} onChange={themeToggle} />
-          <Button color="second" size={null} variant={null} className="text-white text-24 p-1" onClick={sidebarOff}>
+          <Button color="second" size={null} variant={null} className="p-1 text-white text-24" onClick={sidebarOff}>
             <Waved />
             <Icon id="close" />
           </Button>
@@ -82,7 +82,7 @@ export const Menu = (): React.JSX.Element => {
               </AccordionContext.Consumer>
             </AccordionToggle>
             <AccordionContent>
-              <div className="flex flex-col items-start gap-2 mt-2 pl-5">
+              <div className="flex flex-col items-start gap-2 pl-5 mt-2">
                 {nav.blocks.map((item) => (
                   <a
                     className="hover:underline underline-offset-4 text-18"

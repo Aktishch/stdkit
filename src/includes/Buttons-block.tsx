@@ -10,14 +10,14 @@ export const ButtonsBlock = (): React.JSX.Element => {
   const { classNames, createBubbles } = useBubbles()
 
   return (
-    <section className="container container-xs flex flex-col items-center justify-center bg-white dark:bg-black overflow-hidden">
+    <section className="container flex flex-col items-center justify-center overflow-hidden bg-white container-xs dark:bg-black">
       <Movement variant="blend" className="mb-3">
         <Title>Buttons</Title>
       </Movement>
       <Movement variant="blend" className="mb-5 md:mb-10">
         <Subtitle>Buttons standard</Subtitle>
       </Movement>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 md:mb-10">
+      <div className="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
         <Button color="primary" variant={null}>
           btn-primary
         </Button>
@@ -38,7 +38,7 @@ export const ButtonsBlock = (): React.JSX.Element => {
       <Movement variant="blend" className="mb-5 md:mb-10">
         <Subtitle>Buttons size</Subtitle>
       </Movement>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 md:mb-10">
+      <div className="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
         <Button color="primary" size="xxl">
           btn-xxl
         </Button>
@@ -61,7 +61,7 @@ export const ButtonsBlock = (): React.JSX.Element => {
       <Movement variant="blend" className="mb-5 md:mb-10">
         <Subtitle>Buttons effects</Subtitle>
       </Movement>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 md:mb-10">
+      <div className="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
         <Button color="primary" variant="contur" effect="swipe">
           btn-swipe
         </Button>
@@ -72,7 +72,7 @@ export const ButtonsBlock = (): React.JSX.Element => {
       <Movement variant="blend" className="mb-5 md:mb-10">
         <Subtitle>Buttons click</Subtitle>
       </Movement>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 md:mb-10">
+      <div className="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
         <Button color="primary">
           <Waved />
           waved light

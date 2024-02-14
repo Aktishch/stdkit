@@ -49,7 +49,7 @@ export const Header = (): React.JSX.Element => {
             color="second"
             size={null}
             variant={null}
-            className="hover:underline underline-offset-4 text-14 font-normal uppercase p-1"
+            className="p-1 font-normal uppercase hover:underline underline-offset-4 text-14"
             to={item.to}
             key={item.id}
           >
@@ -63,7 +63,7 @@ export const Header = (): React.JSX.Element => {
             color="second"
             size={null}
             variant={null}
-            className="hover:underline underline-offset-4 text-14 font-normal uppercase p-1"
+            className="p-1 font-normal uppercase hover:underline underline-offset-4 text-14"
           >
             <Waved />
             Navigation
@@ -76,7 +76,7 @@ export const Header = (): React.JSX.Element => {
               )}
             </AccordionContext.Consumer>
           </Button>
-          <AccordionContent className="absolute top-10 right-0 bg-white rounded-2 shadow-md w-full">
+          <AccordionContent className="absolute right-0 w-full bg-white shadow-md top-10 rounded-2">
             <div className="flex flex-col gap-4 p-4">
               {nav.blocks.map((item) => (
                 <Button

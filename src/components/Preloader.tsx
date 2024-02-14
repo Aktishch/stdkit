@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react'
 export const PreloaderComponent = ({}, ref: React.ForwardedRef<HTMLDivElement>): React.JSX.Element => {
   return (
     <div
-      className="flex flex-col items-center justify-center fixed z-10 inset-0 bg-white dark:bg-black duration-5"
+      className="fixed inset-0 z-10 flex flex-col items-center justify-center bg-white dark:bg-black duration-5"
       ref={ref}
     >
       <div className="preloader preloader--circles">
