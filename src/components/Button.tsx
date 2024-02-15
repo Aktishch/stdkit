@@ -74,6 +74,7 @@ const ButtonComponent = (
       target={target ? '_blank' : null}
       to={to}
       disabled={Tag === 'button' ? disabled : null}
+      draggable={false}
       onClick={onClick}
       ref={ref}
     >

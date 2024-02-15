@@ -3,6 +3,7 @@ import { FilterContext, Filter, FilterToggle, FilterCategory } from '../contexts
 import { Title } from '../components/Title'
 import { Subtitle } from '../components/Subtitle'
 // import { Button } from '../components/Button'
+import { Cover } from '../components/Cover'
 import { Input } from '../components/Input'
 import { Pack } from '../components/Pack'
 import { Loader } from '../components/Loader'
@@ -80,7 +81,19 @@ export const Tabs = (): React.JSX.Element => {
               </ul>
             </FilterCategory>
             <FilterCategory name="filtering" value="form" className="filtering__card">
-              <Input cover="full" />
+              <Cover className="mb-5">
+                <Input name="name" />
+              </Cover>
+              {/* <Cover className="mb-5">
+                <Input tag="textarea" name="text" className="h-48" />
+              </Cover>
+              <Cover className="mb-5">
+                <Input tag="select" name="select">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </Input>
+              </Cover> */}
+              <Input type="hidden" />
             </FilterCategory>
             <FilterCategory name="filtering" value="switches" className="filtering__card">
               Switches

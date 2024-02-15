@@ -14,7 +14,7 @@ const PictureComponent = (
   return (
     <picture>
       {webp !== null ? <source srcSet={webp} type="image/webp" /> : null}
-      <img className={classNames} loading={loading} src={src} alt={alt} ref={ref} />
+      <img className={classNames} loading={loading} draggable={false} src={src} alt={alt} ref={ref} />
     </picture>
   )
 }

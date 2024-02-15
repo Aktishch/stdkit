@@ -1,28 +1,11 @@
-import React, { ElementType, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  as?: ElementType
-  cover?: string | null
-  color?: string | null
-  size?: string | null
+  tag?: string | null
+  // color?: string | null
+  // size?: string | null
   fade?: boolean
-  type?: string | null
-  name?: string | null
-}
-
-const inputCover = {
-  1: 'input-cover-1',
-  2: 'input-cover-2',
-  3: 'input-cover-3',
-  4: 'input-cover-4',
-  5: 'input-cover-5',
-  6: 'input-cover-6',
-  7: 'input-cover-7',
-  8: 'input-cover-8',
-  9: 'input-cover-9',
-  10: 'input-cover-10',
-  full: 'input-cover-full',
 }
 
 const inputColors = {
@@ -40,16 +23,17 @@ const inputSizes = {
 
 const InputComponent = (
   {
-    as: Tag = 'input',
-    cover = null,
+    tag = 'input',
     color = 'gray',
     size = 'lg',
     fade = false,
     type = 'text',
+    value,
     name,
     className,
+    children,
   }: InputProps,
-  ref: React.ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<null>
 ): React.JSX.Element => {
   const classNames: string = classnames(
     'input',
@@ -59,10 +43,14 @@ const InputComponent = (
     className
   )
 
-  return (
-    <div className={`input-cover ${cover ? inputCover[cover] : null}`}>
-      <Tag className={classNames} type={Tag === 'input' ? type : null} name={name} ref={ref} />
-    </div>
+  return tag === 'input' ? (
+    <input className={type === 'hidden' ? '' : classNames} type={type} value={value} name={name} ref={ref} />
+  ) : tag === 'textarea' ? (
+    <textarea className={classNames} value={value} name={name} ref={ref} />
+  ) : (
+    <select className={classNames} value={value} name={name} ref={ref}>
+      {children}
+    </select>
   )
 }
 
