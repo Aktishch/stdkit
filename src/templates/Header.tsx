@@ -20,10 +20,10 @@ export const Header = (): React.JSX.Element => {
     const headerHeight: number = (header.current as HTMLElement).offsetHeight
     const currentOffsetTop: number = scrolledPage().top
 
-    if (headerHeight < currentOffsetTop) {
+    if (headerHeight < currentOffsetTop)
       prevOffsetTop.current > currentOffsetTop ? setTop('') : setTop('lg:-translate-y-full')
-      prevOffsetTop.current = currentOffsetTop
-    }
+
+    prevOffsetTop.current = currentOffsetTop
   }
 
   useEffect((): (() => void) | undefined => {

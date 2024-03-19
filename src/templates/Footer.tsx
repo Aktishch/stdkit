@@ -11,7 +11,7 @@ export const Footer = (): React.JSX.Element => {
 
   return (
     <footer
-      className="container flex flex-col flex-wrap items-center justify-between gap-4 pt-4 pb-10 bg-black md:flex-row text-second md:pb-4"
+      className="container flex flex-col flex-wrap items-center justify-between gap-4 pt-4 pb-10 bg-black md:flex-row text-second md:pb-4 mt-auto"
       id="footer"
     >
       <Button as={Link} color="white" size={null} variant={null} className="w-36" to="/">

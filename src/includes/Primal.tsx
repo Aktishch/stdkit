@@ -6,7 +6,7 @@ import { Button } from '../components/Button'
 import { Movement } from '../components/Movement'
 import { Waved } from '../components/Waved'
 
-export const Main = (): React.JSX.Element => {
+export const Primal = (): React.JSX.Element => {
   return (
     <section className="container flex flex-col items-center justify-center bg-white dark:bg-black min-h-[500px] xl:min-h-[600px]">
       <Picture src="img/pictures/logo.svg" className="block mb-10" loading="eager" />
