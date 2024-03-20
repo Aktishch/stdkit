@@ -1,16 +1,22 @@
 import React from 'react'
+import { usePhoneMask } from '../hooks/usePhoneMask'
 import { FilterContext, Filter, FilterToggle, FilterCategory } from '../contexts/Filter'
+import { Handler } from '../contexts/Handler'
 import { Title } from '../components/Title'
 import { Subtitle } from '../components/Subtitle'
-// import { Button } from '../components/Button'
+import { FormLabel, FormWrapper, FormIcon, FormError } from '../components/Form'
 import { Cover } from '../components/Cover'
 import { Input } from '../components/Input'
 import { Pack } from '../components/Pack'
 import { Loader } from '../components/Loader'
 import { Picture } from '../components/Picture'
+import { Button } from '../components/Button'
 import { Movement } from '../components/Movement'
+import { Waved } from '../components/Waved'
 
 export const Tabs = (): React.JSX.Element => {
+  const { inputTel } = usePhoneMask()
+
   return (
     <section className="container relative min-h-screen overflow-hidden text-white bg-white filtering dark:bg-black">
       <div className="absolute inset-0">
@@ -81,9 +87,22 @@ export const Tabs = (): React.JSX.Element => {
               </ul>
             </FilterCategory>
             <FilterCategory name="filtering" value="form" className="filtering__card">
-              <Cover className="mb-5">
-                <Input name="name" />
-              </Cover>
+              <Handler value="submit" className="w-full max-w-[400px] mx-auto">
+                <Input type="hidden" value="Главная" name="theme" />
+                <FormLabel className="mb-5">
+                  <span className="mb-3 font-normal text-20 leading-1"></span>
+                  <FormWrapper>
+                    <Cover>
+                      <Input type="tel" placeholder="+7 (" name="tel" ref={inputTel} />
+                    </Cover>
+                    <FormError>Пожалуйста, введите ваш номер!</FormError>
+                  </FormWrapper>
+                </FormLabel>
+                <Button color="primary" type="submit">
+                  <Waved />
+                  Submit
+                </Button>
+              </Handler>
               {/* <Cover className="mb-5">
                 <Input tag="textarea" name="text" className="h-48" />
               </Cover>
@@ -93,7 +112,6 @@ export const Tabs = (): React.JSX.Element => {
                   <option value="2">2</option>
                 </Input>
               </Cover> */}
-              <Input type="hidden" />
             </FilterCategory>
             <FilterCategory name="filtering" value="switches" className="filtering__card">
               Switches

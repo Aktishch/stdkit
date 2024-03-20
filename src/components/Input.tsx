@@ -29,6 +29,7 @@ const InputComponent = (
     fade = false,
     type = 'text',
     value,
+    placeholder,
     name,
     className,
     children,
@@ -44,7 +45,14 @@ const InputComponent = (
   )
 
   return tag === 'input' ? (
-    <input className={type === 'hidden' ? '' : classNames} type={type} value={value} name={name} ref={ref} />
+    <input
+      className={type === 'hidden' ? '' : classNames}
+      type={type}
+      value={value}
+      placeholder={placeholder}
+      name={name}
+      ref={ref}
+    />
   ) : tag === 'textarea' ? (
     <textarea className={classNames} value={value} name={name} ref={ref} />
   ) : (
