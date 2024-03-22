@@ -1,5 +1,6 @@
 import React, { createContext } from 'react'
 import classnames from 'classnames'
+import { fancyboxOpen, fancyboxNotClosing, fancyboxClose } from '../components/Fancybox'
 
 interface HandlerProps extends React.PropsWithChildren {
   value: string
@@ -18,7 +19,47 @@ const submitHandler = (event: Event, value: string): void => {
 
   default: {
     event.preventDefault()
-    console.log(value)
+
+    const formData: FormData = new FormData(form)
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+    let requestUrl = ''
+
+    switch (value) {
+    case 'submit': {
+      requestUrl = './ajax/submit-handler.php'
+      submitBtn.setAttribute('disabled', 'disabled')
+      fancyboxNotClosing('#dialog-preloader')
+
+      fetch(requestUrl, {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response: Response): Promise<any> => {
+          return response.json()
+        })
+        .then((response: Response): void => {
+          fancyboxClose()
+
+          switch (response.status) {
+          case true: {
+            fancyboxOpen('#dialog-success')
+            break
+          }
+
+          case false: {
+            fancyboxOpen('#dialog-error')
+            break
+          }
+          }
+
+          form.reset()
+          submitBtn.removeAttribute('disabled')
+        })
+        .catch((error: string): void => console.log('The form has not been sent', error))
+      break
+    }
+    }
+
     break
   }
   }

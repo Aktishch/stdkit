@@ -10,7 +10,11 @@ import { SocialToggle } from './SocialToggle'
 import { ThemeToggle } from './ThemeToggle'
 import { Snowflakes } from './Snowflakes'
 import { Footer } from './Footer'
-import { Preloader } from '../components/Preloader'
+import { Loaded } from './Loaded'
+import { DialogPreloader } from '../dialogs/dialog-preloader'
+import { DialogPolitics } from '../dialogs/dialog-politics'
+import { DialogSuccess } from '../dialogs/dialog-success'
+import { DialogError } from '../dialogs/dialog-error'
 
 export const Layout = (): React.JSX.Element => {
   return (
@@ -24,10 +28,14 @@ export const Layout = (): React.JSX.Element => {
       <SocialToggle />
       <ThemeToggle />
       <Snowflakes />
-      <Suspense fallback={<Preloader />}>
+      <Suspense fallback={<Loaded />}>
         <Outlet />
       </Suspense>
       <Footer />
+      <DialogPreloader />
+      <DialogPolitics />
+      <DialogSuccess />
+      <DialogError />
     </Theme>
   )
 }
