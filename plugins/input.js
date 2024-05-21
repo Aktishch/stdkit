@@ -1,5 +1,4 @@
 const plugin = require('tailwindcss/plugin')
-const { parseColor, formatColor } = require('tailwindcss/lib/util/color')
 
 module.exports = plugin(({ addComponents, matchComponents, theme }) => {
   addComponents({
@@ -31,12 +30,12 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       color: 'var(--input-text)',
       backgroundColor: theme('colors.white.DEFAULT'),
       padding: 'calc(var(--input-size) / 4) calc(var(--input-size) / 3)',
-      border: '1px solid var(--input-color)',
+      border: `1px solid ${theme('colors.grey.DEFAULT')}`,
       transition: '0.2s ease',
       userSelect: 'initial',
 
       '&:not(&-error):focus': {
-        borderColor: 'var(--input-focus)',
+        borderColor: theme('colors.primary.DEFAULT'),
       },
 
       '&:disabled': {
@@ -55,7 +54,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
 
       '&:-webkit-autofill': {
         color: 'var(--input-text) !important',
-        borderColor: 'var(--input-color)',
+        borderColor: theme('colors.grey.DEFAULT'),
         background: 'none !important',
         appearance: 'none',
         transition: 'background-color 10000s ease-in-out 0s',
@@ -76,25 +75,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
 
     {
       values: theme('borderRadius'),
-    }
-  )
-
-  matchComponents(
-    {
-      input: (color) => {
-        const parsed = parseColor(color.DEFAULT)
-
-        if (!parsed.color) return null
-
-        return {
-          '--input-color': formatColor({ mode: 'rgba', color: parsed.color, alpha: 0.3 }),
-          '--input-focus': color.DEFAULT,
-        }
-      },
-    },
-
-    {
-      values: theme('colors'),
     }
   )
 

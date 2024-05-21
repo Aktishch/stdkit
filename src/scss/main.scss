@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  // @import "@fancyapps/ui/dist/fancybox/fancybox.css";
+  // @import "swiper/swiper-bundle.min.css";
+  // @import "air-datepicker/air-datepicker.css";
+  @import "./ui-kit/fonts";
+  @import "./ui-kit/basic";
+  // @import "./ui-kit/scrollbar";
+  // @import "./ui-kit/custom";
+  @import "./ui-kit/waved";
+  // @import "./ui-kit/movement";
+}
+
+@layer components {
+  // @import "./ui-kit/inverted";
+  // @import "./ui-kit/postcards";
+  // @import "./ui-kit/like";
+  @import "./ui-kit/load";
+  // @import "./ui-kit/button-swipe";
+  // @import "./ui-kit/button-glow";
+  // @import "./ui-kit/button-bubbles";
+  // @import "./ui-kit/button-border";
+  // @import "./ui-kit/quantity";
+  // @import "./ui-kit/rating";
+  // @import "./ui-kit/range";
+}
+
+// // Фильтр
+// .filtering {
+//   &__category.filter-active {
+//     @apply text-white bg-second pointer-events-none;
+
+//     @screen md {
+//       @apply font-bold text-primary bg-opacity-0;
+//     }
+//   }
+
+//   &__card.filter-show {
+//     animation: filter-show 0.3s ease both 1;
+//   }
+// }
+
+// @keyframes filter-show {
+//   0% {
+//     transform: translateY(50px);
+
+//     @apply opacity-0;
+//   }
+
+//   100% {
+//     transform: translateY(0);
+
+//     @apply opacity-100;
+//   }
+// }

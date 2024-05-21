@@ -3,8 +3,8 @@ import classnames from 'classnames'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   tag?: string | null
-  // color?: string | null
-  // size?: string | null
+  color?: string | null
+  size?: string | null
   fade?: boolean
 }
 

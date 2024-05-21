@@ -6,7 +6,7 @@ interface PictureProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 }
 
 const PictureComponent = (
-  { webp, src, className, loading, alt }: PictureProps,
+  { webp = null, src, className, loading, alt }: PictureProps,
   ref: React.ForwardedRef<HTMLImageElement>
 ): React.JSX.Element => {
   const classNames: string = classnames(className)

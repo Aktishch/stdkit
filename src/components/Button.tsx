@@ -13,9 +13,6 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const buttonColors = {
   primary: 'btn-primary',
-  second: 'btn-second',
-  white: 'btn-white',
-  gray: 'btn-gray',
 }
 
 const buttonSizes = {
@@ -34,18 +31,12 @@ const buttonVariants = {
   contur: 'btn-contur',
 }
 
-const buttonEffects = {
-  swipe: 'btn-swipe',
-  glow: 'btn-glow',
-}
-
 const ButtonComponent = (
   {
     as: Tag = 'button',
-    color,
+    color = 'primary',
     size = 'lg',
     variant = 'fill',
-    effect,
     className,
     type = 'button',
     href,
@@ -62,7 +53,6 @@ const ButtonComponent = (
     color ? buttonColors[color] : null,
     size ? buttonSizes[size] : null,
     variant ? buttonVariants[variant] : null,
-    effect ? buttonEffects[effect] : null,
     className
   )
 

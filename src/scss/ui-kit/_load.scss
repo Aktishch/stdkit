@@ -3,12 +3,12 @@
 
   &-progress {
     animation: progress 1.8s linear infinite;
-
-    @apply text-40 text-primary;
   }
 
-  .icon {
+  &-icon {
     animation: loader 1.5s ease-in-out infinite;
+
+    @apply text-40 text-primary;
   }
 }
 

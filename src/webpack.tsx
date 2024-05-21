@@ -1,16 +1,16 @@
 import React, { lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Layout } from './templates/Layout'
-import './scss/style.scss'
+// import { Layout } from './templates/Layout'
+import './scss/main.scss'
 
 const Index: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
   import('./pages/Index').then((module) => ({ default: module.Index }))
 )
 
-const Second: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
-  import('./pages/Second').then((module) => ({ default: module.Second }))
-)
+// const Second: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
+//   import('./pages/Second').then((module) => ({ default: module.Second }))
+// )
 
 window.addEventListener('DOMContentLoaded', ((): void => {
   const root = document.getElementById('root') as HTMLElement
@@ -22,12 +22,12 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   createRoot.render(
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/">
           <Route index element={<Index />} />
         </Route>
-        <Route path="/second" element={<Layout />}>
+        {/* <Route path="/second" element={<Layout />}>
           <Route index element={<Second />} />
-        </Route>
+        </Route> */}
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
     </BrowserRouter>

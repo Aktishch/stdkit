@@ -132,7 +132,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
     {
       btn: (size) => {
         return {
-          borderRadius: '6px',
+          borderRadius: '8px',
           height: size,
           paddingInline: `calc(${size} / 2)`,
         }

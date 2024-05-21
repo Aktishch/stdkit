@@ -25,19 +25,15 @@ module.exports = {
 
     colors: {
       primary: {
-        DEFAULT: '#af1a4c',
-      },
-
-      second: {
-        DEFAULT: '#d7a751',
+        DEFAULT: '#7352CF',
       },
 
       black: {
-        DEFAULT: '#000000',
+        DEFAULT: '#1F1F1F',
       },
 
       white: {
-        DEFAULT: '#ffffff',
+        DEFAULT: '#FFFFFF',
       },
 
       gray: {
@@ -45,24 +41,15 @@ module.exports = {
       },
 
       grey: {
-        DEFAULT: '#f6f7f9',
-      },
-
-      dark: {
-        DEFAULT: '#303030',
+        DEFAULT: '#CDCDCD',
       },
 
       red: {
-        DEFAULT: '#be1b1b',
-      },
-
-      green: {
-        DEFAULT: '#27ae60',
+        DEFAULT: '#ED2F4B',
       },
     },
 
     fontFamily: {
-      alt: 'var(--font-alt)',
       base: 'var(--font-base)',
     },
 
@@ -214,23 +201,23 @@ module.exports = {
     size: {
       xs: '28px',
       sm: '36px',
-      md: '40px',
-      lg: '45px',
-      xl: '56px',
-      xxl: '64px',
+      md: '46px',
+      lg: '52px',
+      xl: '60px',
+      xxl: '66px',
     },
   },
 
   plugins: [
     require('./plugins/container'),
-    require('./plugins/dialog'),
-    require('./plugins/card'),
+    // require('./plugins/dialog'),
+    // require('./plugins/card'),
     require('./plugins/pack'),
     require('./plugins/picture'),
     require('./plugins/form'),
     require('./plugins/input'),
     require('./plugins/button'),
-    require('./plugins/switch'),
-    require('./plugins/animation'),
+    // require('./plugins/switch'),
+    // require('./plugins/animation'),
   ],
 }
