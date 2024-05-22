@@ -13,7 +13,7 @@ import { Password } from '../components/Password'
 import { Button } from '../components/Button'
 import { Waved } from '../components/Waved'
 
-export const Index = (): React.JSX.Element => {
+export const Registration = (): React.JSX.Element => {
   const { value, on, off } = useToggle({ status: false })
 
   return (
@@ -86,7 +86,7 @@ export const Index = (): React.JSX.Element => {
               color="grey"
               size={null}
               variant={null}
-              to="/registration"
+              to="/sec"
             >
               <Waved variant="dark" />
               Забыл пароль? А голову свою не забыл?

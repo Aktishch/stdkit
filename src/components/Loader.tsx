@@ -5,7 +5,7 @@ const LoaderComponent = ({}, ref: React.ForwardedRef<HTMLDivElement>): React.JSX
   return (
     <div className="loader" ref={ref}>
       <span className="loader-progress">
-        <Icon id="loader" className="loader-icon" />
+        <Icon className="loader-icon" id="loader" />
       </span>
     </div>
   )

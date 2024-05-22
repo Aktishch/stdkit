@@ -3,13 +3,8 @@ import classnames from 'classnames'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   tag?: string | null
-  color?: string | null
   size?: string | null
-  fade?: boolean
-}
-
-const inputColors = {
-  gray: 'input-gray',
+  data?: string | null
 }
 
 const inputSizes = {
@@ -22,41 +17,25 @@ const inputSizes = {
 }
 
 const InputComponent = (
-  {
-    tag = 'input',
-    color = 'gray',
-    size = 'lg',
-    fade = false,
-    type = 'text',
-    value,
-    placeholder,
-    name,
-    className,
-    children,
-  }: InputProps,
+  { tag = 'input', size = 'lg', type = 'text', value, placeholder, name, className, data = null, children }: InputProps,
   ref: React.ForwardedRef<null>
 ): React.JSX.Element => {
-  const classNames: string = classnames(
-    'input',
-    color ? inputColors[color] : null,
-    size ? inputSizes[size] : null,
-    fade ? 'input-fade' : null,
-    className
-  )
+  const classNames: string = classnames('input', size ? inputSizes[size] : null, className)
 
   return tag === 'input' ? (
     <input
       className={type === 'hidden' ? '' : classNames}
+      data-input={data}
       type={type}
-      value={value}
+      defaultValue={value}
       placeholder={placeholder}
       name={name}
       ref={ref}
     />
   ) : tag === 'textarea' ? (
-    <textarea className={classNames} value={value} name={name} ref={ref} />
+    <textarea className={classNames} defaultValue={value} name={name} ref={ref} />
   ) : (
-    <select className={classNames} value={value} name={name} ref={ref}>
+    <select className={classNames} defaultValue={value} name={name} ref={ref}>
       {children}
     </select>
   )

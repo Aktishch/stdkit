@@ -5,8 +5,7 @@ export const Placeholder = ({ children }: React.DOMAttributes<HTMLSpanElement>):
   const placeholderText = useRef<HTMLSpanElement>(null)
   const classNames: string = classnames(
     'absolute',
-    'top-0',
-    'bottom-0',
+    'top-1/2',
     'left-4',
     'flex',
     'items-center',
@@ -14,7 +13,9 @@ export const Placeholder = ({ children }: React.DOMAttributes<HTMLSpanElement>):
     'leading-1',
     'text-black',
     'text-opacity-50',
-    'duration-2'
+    'duration-2',
+    'pointer-events-none',
+    '-translate-y-1/2'
   )
 
   useEffect((): (() => void) | undefined => {
@@ -28,13 +29,26 @@ export const Placeholder = ({ children }: React.DOMAttributes<HTMLSpanElement>):
     const inputHandler = (): void => {
       switch (input.value !== '') {
       case true: {
-        currentPlaceholderText.classList.remove('text-black', 'text-opacity-50', 'text-16')
-        currentPlaceholderText.classList.add('text-primary', 'text-14')
+        currentPlaceholderText.classList.remove(
+          'text-black',
+          'text-opacity-50',
+          'text-16',
+          'top-1/2',
+          '-translate-y-1/2'
+        )
+        currentPlaceholderText.classList.add('text-primary', 'text-14', '-top-2', 'bg-white')
         break
       }
 
       case false: {
-        console.log('empty')
+        currentPlaceholderText.classList.add(
+          'text-black',
+          'text-opacity-50',
+          'text-16',
+          'top-1/2',
+          '-translate-y-1/2'
+        )
+        currentPlaceholderText.classList.remove('text-primary', 'text-14', '-top-2', 'bg-white')
         break
       }
       }
@@ -42,9 +56,11 @@ export const Placeholder = ({ children }: React.DOMAttributes<HTMLSpanElement>):
 
     inputHandler()
     input.addEventListener('input', inputHandler as EventListener)
+    input.addEventListener('keydown', inputHandler as EventListener)
 
     return (): void => {
       input.removeEventListener('input', inputHandler as EventListener)
+      input.removeEventListener('keydown', inputHandler as EventListener)
     }
   }, [])
 

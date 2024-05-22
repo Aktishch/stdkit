@@ -1,16 +1,16 @@
 import React, { lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-// import { Layout } from './templates/Layout'
+import { Layout } from './templates/Layout'
 import './scss/main.scss'
 
 const Index: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
   import('./pages/Index').then((module) => ({ default: module.Index }))
 )
 
-// const Second: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
-//   import('./pages/Second').then((module) => ({ default: module.Second }))
-// )
+const Registration: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
+  import('./pages/Registration').then((module) => ({ default: module.Registration }))
+)
 
 window.addEventListener('DOMContentLoaded', ((): void => {
   const root = document.getElementById('root') as HTMLElement
@@ -22,13 +22,13 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   createRoot.render(
     <BrowserRouter>
       <Routes>
-        <Route path="/">
+        <Route path="/" element={<Layout />}>
           <Route index element={<Index />} />
         </Route>
-        {/* <Route path="/second" element={<Layout />}>
-          <Route index element={<Second />} />
-        </Route> */}
-        {/* <Route path="*" element={<Error />} /> */}
+        <Route path="/registration" element={<Layout />}>
+          <Route index element={<Registration />} />
+        </Route>
+        <Route path="*" element={<div>404</div>} />
       </Routes>
     </BrowserRouter>
   )

@@ -7,7 +7,7 @@ const getValue = (input: HTMLInputElement): string => {
 const formatterValue = (value: string): string => {
   if (value[0] === '9') value = '7' + value
 
-  const firstVal = value[0] === '8' ? '8' : '+7'
+  const firstVal = '+7'
   let formatted: string
 
   formatted = firstVal + ' '
@@ -39,22 +39,6 @@ const onInput = (event: InputEvent): '' | undefined => {
   input.value = formatterValue(value)
 }
 
-const onKeyUp = (event: KeyboardEvent): void => {
-  const input = event.target as HTMLInputElement
-
-  switch (input.value[0]) {
-  case '8': {
-    input.maxLength = 17
-    break
-  }
-
-  default: {
-    input.maxLength = 18
-    break
-  }
-  }
-}
-
 const onKeyDown = (event: KeyboardEvent): void => {
   const input = event.target as HTMLInputElement
   const value: string = getValue(input)
@@ -77,23 +61,21 @@ const onPaste = (event: ClipboardEvent): void => {
 }
 
 export const usePhoneMask = () => {
-  const inputTel = useRef<HTMLInputElement>(null)
+  const tel = useRef<HTMLInputElement>(null)
 
   useEffect((): (() => void) | undefined => {
-    const currentInputTel = inputTel.current as HTMLInputElement
+    const currentTel = tel.current as HTMLInputElement
 
-    currentInputTel.addEventListener('input', onInput as EventListener)
-    currentInputTel.addEventListener('keyup', onKeyUp as EventListener)
-    currentInputTel.addEventListener('keydown', onKeyDown as EventListener)
-    currentInputTel.addEventListener('paste', onPaste as EventListener)
+    currentTel.addEventListener('input', onInput as EventListener)
+    currentTel.addEventListener('keydown', onKeyDown as EventListener)
+    currentTel.addEventListener('paste', onPaste as EventListener)
 
     return (): void => {
-      currentInputTel.removeEventListener('input', onInput as EventListener)
-      currentInputTel.removeEventListener('keyup', onKeyUp as EventListener)
-      currentInputTel.removeEventListener('keydown', onKeyDown as EventListener)
-      currentInputTel.removeEventListener('paste', onPaste as EventListener)
+      currentTel.removeEventListener('input', onInput as EventListener)
+      currentTel.removeEventListener('keydown', onKeyDown as EventListener)
+      currentTel.removeEventListener('paste', onPaste as EventListener)
     }
   }, [])
 
-  return { inputTel }
+  return { tel }
 }

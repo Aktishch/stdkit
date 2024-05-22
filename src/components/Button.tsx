@@ -13,6 +13,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const buttonColors = {
   primary: 'btn-primary',
+  grey: 'btn-grey',
 }
 
 const buttonSizes = {

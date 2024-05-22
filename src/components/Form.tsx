@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { Icon } from './Icon'
 
 interface FormLabelProps extends React.HtmlHTMLAttributes<HTMLLabelElement> {
-  name?: string | null
+  data?: string | null
 }
 
 interface FormWrapperProps extends React.DOMAttributes<HTMLDivElement> {
@@ -22,13 +22,13 @@ interface FormErrorProps extends React.PropsWithChildren {
 }
 
 const FormLabelComponent = (
-  { name = 'input', className, children }: FormLabelProps,
+  { className, data = null, children }: FormLabelProps,
   ref: React.ForwardedRef<HTMLLabelElement>
 ): React.JSX.Element => {
   const classNames: string = classnames('form-label', className)
 
   return (
-    <label className={classNames} data-label={name} ref={ref}>
+    <label className={classNames} data-label={data} ref={ref}>
       {children}
     </label>
   )
