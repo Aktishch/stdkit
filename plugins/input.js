@@ -30,7 +30,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       color: 'var(--input-text)',
       backgroundColor: theme('colors.white.DEFAULT'),
       padding: 'calc(var(--input-size) / 4) calc(var(--input-size) / 3)',
-      border: `1px solid ${theme('colors.grey.DEFAULT')}`,
+      border: `1px solid ${theme('colors.gray.DEFAULT')}`,
       transition: '0.2s ease',
       userSelect: 'initial',
 
@@ -54,7 +54,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
 
       '&:-webkit-autofill': {
         color: 'var(--input-text) !important',
-        borderColor: theme('colors.grey.DEFAULT'),
+        borderColor: theme('colors.gray.DEFAULT'),
         background: 'none !important',
         appearance: 'none',
         transition: 'background-color 10000s ease-in-out 0s',

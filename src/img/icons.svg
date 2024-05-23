@@ -15,5 +15,32 @@
       <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7703 12C20.7703 11.6412 20.5762 11.4056 20.188 10.9343C18.768 9.21014 15.6357 6 12 6C8.36428 6 5.23207 9.21014 3.81198 10.9343C3.42382 11.4056 3.22974 11.6412 3.22974 12C3.22974 12.3588 3.42382 12.5944 3.81198 13.0657C5.23207 14.7899 8.36428 18 12 18C15.6357 18 18.768 14.7899 20.188 13.0657C20.5762 12.5944 20.7703 12.3588 20.7703 12ZM12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3432 9 9.00002 10.3431 9.00002 12C9.00002 13.6569 10.3432 15 12 15Z" fill="currentColor" />
     </symbol>
 
+    <symbol id="arrow-left" width="100%" height="100%" viewBox="0 0 11 18">
+      <path d="M3.76777 9L9.88388 2.88388C10.372 2.39573 10.372 1.60427 9.88388 1.11612C9.39573 0.627961 8.60427 0.627961 8.11612 1.11612L1.11612 8.11612C0.62796 8.60427 0.62796 9.39573 1.11612 9.88388L8.11612 16.8839C8.60427 17.372 9.39573 17.372 9.88388 16.8839C10.372 16.3957 10.372 15.6043 9.88388 15.1161L3.76777 9Z" fill="currentColor" />
+    </symbol>
+
+    <symbol id="arrow-right" width="100%" height="100%" viewBox="0 0 11 18">
+      <path d="M7.23223 9L1.11612 2.88388C0.627961 2.39573 0.627961 1.60427 1.11612 1.11612C1.60427 0.627961 2.39573 0.627961 2.88388 1.11612L9.88388 8.11612C10.372 8.60427 10.372 9.39573 9.88388 9.88388L2.88388 16.8839C2.39573 17.372 1.60427 17.372 1.11612 16.8839C0.627961 16.3957 0.627961 15.6043 1.11612 15.1161L7.23223 9Z" fill="currentColor" />
+    </symbol>
+
+    <symbol id="user" width="100%" height="100%" viewBox="0 0 20 20">
+      <path d="M16.3763 17.0045C16.837 16.9085 17.1114 16.4264 16.8825 16.0153C16.3778 15.1089 15.5828 14.3124 14.5658 13.7054C13.2559 12.9237 11.6511 12.5 10.0001 12.5C8.34905 12.5 6.74418 12.9237 5.43435 13.7054C4.41732 14.3124 3.6223 15.1089 3.11765 16.0153C2.88873 16.4264 3.1631 16.9085 3.62378 17.0045C7.82945 17.881 12.1707 17.881 16.3763 17.0045Z" fill="currentColor" />
+      <circle cx="10" cy="6.66667" r="4.16667" fill="currentColor" />
+    </symbol>
+
+    <symbol id="users" width="100%" height="100%" viewBox="0 0 24 25">
+      <circle cx="9" cy="6.5" r="4" fill="transparent" stroke="currentColor" stroke-width="1.5" />
+      <path d="M15 9.5C16.6569 9.5 18 8.15685 18 6.5C18 4.84315 16.6569 3.5 15 3.5" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      <ellipse cx="9" cy="17.5" rx="7" ry="4" fill="transparent" stroke="currentColor" stroke-width="1.5" />
+      <path d="M18 14.5C19.7542 14.8847 21 15.8589 21 17C21 18.0293 19.9863 18.9229 18.5 19.3704" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    </symbol>
+
+    <symbol id="notification" width="100%" height="100%" viewBox="0 0 24 25">
+      <path d="M22 11V12.5C22 17.214 22 19.5711 20.5355 21.0355C19.0711 22.5 16.714 22.5 12 22.5C7.28595 22.5 4.92893 22.5 3.46447 21.0355C2 19.5711 2 17.214 2 12.5C2 7.78595 2 5.42893 3.46447 3.96447C4.92893 2.5 7.28595 2.5 12 2.5H13.5" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      <circle cx="19" cy="5.5" r="3" fill="transparent" stroke="currentColor" stroke-width="1.5" />
+      <path d="M7 14.5H16" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      <path d="M7 18H13" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    </symbol>
+
   </defs>
 </svg>

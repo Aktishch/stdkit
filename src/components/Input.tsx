@@ -1,7 +1,9 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+type Extension = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
+
+interface InputProps extends Extension {
   tag?: string | null
   size?: string | null
   data?: string | null
@@ -17,7 +19,19 @@ const inputSizes = {
 }
 
 const InputComponent = (
-  { tag = 'input', size = 'lg', type = 'text', value, placeholder, name, className, data = null, children }: InputProps,
+  {
+    tag = 'input',
+    size = 'lg',
+    type = 'text',
+    value,
+    placeholder,
+    name,
+    className,
+    maxLength,
+    data = null,
+    onInput = undefined,
+    children,
+  }: InputProps,
   ref: React.ForwardedRef<null>
 ): React.JSX.Element => {
   const classNames: string = classnames('input', size ? inputSizes[size] : null, className)
@@ -29,13 +43,24 @@ const InputComponent = (
       type={type}
       defaultValue={value}
       placeholder={placeholder}
+      maxLength={maxLength}
+      autoComplete={type === 'password' ? 'new-password' : undefined}
+      name={name}
+      ref={ref}
+      onInput={onInput}
+    />
+  ) : tag === 'textarea' ? (
+    <textarea
+      className={classNames}
+      data-input={data}
+      defaultValue={value}
+      placeholder={placeholder}
+      maxLength={maxLength}
       name={name}
       ref={ref}
     />
-  ) : tag === 'textarea' ? (
-    <textarea className={classNames} defaultValue={value} name={name} ref={ref} />
   ) : (
-    <select className={classNames} defaultValue={value} name={name} ref={ref}>
+    <select className={classNames} data-input={data} name={name} ref={ref}>
       {children}
     </select>
   )

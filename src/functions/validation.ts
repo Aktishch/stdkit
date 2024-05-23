@@ -67,6 +67,11 @@ export const validation = (form: HTMLFormElement): boolean => {
       break
     }
 
+    case 'password': {
+      if (input.value.length < 8) inputError()
+      break
+    }
+
     case 'select': {
       if (input.value === 'empty') inputError()
       break
@@ -74,10 +79,10 @@ export const validation = (form: HTMLFormElement): boolean => {
 
     case 'text': {
       if (input.value.length > 0 && input.value.length < 10) {
-        error.innerText = 'Введите не менее 10 символов!'
+        error.innerText = 'Не менее 10 символов'
         inputError()
       } else {
-        error.innerText = 'Пожалуйста, заполните это поле!'
+        error.innerText = 'Заполните это поле'
       }
 
       break

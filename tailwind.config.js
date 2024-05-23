@@ -37,11 +37,11 @@ module.exports = {
       },
 
       gray: {
-        DEFAULT: '#b2b2b2',
+        DEFAULT: '#CDCDCD',
       },
 
       grey: {
-        DEFAULT: '#CDCDCD',
+        DEFAULT: '#EDEFF1',
       },
 
       red: {

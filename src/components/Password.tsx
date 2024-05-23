@@ -40,5 +40,5 @@ export const Password = ({ className }: PasswordProps): React.JSX.Element => {
     return (): void => currentIcon.removeEventListener('click', showPassword as EventListener)
   }, [])
 
-  return <FormIcon className={classNames} id={id} right={true} pointer={true} ref={icon}></FormIcon>
+  return <FormIcon className={classNames} id={id} right={true} pointer={true} ref={icon} />
 }
