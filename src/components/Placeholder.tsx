@@ -15,7 +15,9 @@ export const Placeholder = ({ children }: React.DOMAttributes<HTMLSpanElement>):
     'text-opacity-50',
     'duration-2',
     'pointer-events-none',
-    '-translate-y-1/2'
+    '-translate-y-1/2',
+    'rounded-1',
+    'px-1'
   )
 
   useEffect((): (() => void) | undefined => {

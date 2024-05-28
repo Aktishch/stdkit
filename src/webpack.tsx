@@ -5,23 +5,23 @@ import { Layout } from './layout/Layout'
 import './scss/main.scss'
 
 const Index: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
-  import('./pages/Index').then((module) => ({ default: module.Index }))
+  import('./pages/auth/Index').then((module) => ({ default: module.Index }))
 )
 
 const Registration: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
-  import('./pages/Registration').then((module) => ({ default: module.Registration }))
+  import('./pages/auth/Registration').then((module) => ({ default: module.Registration }))
 )
 
-const PasswordEmail: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
-  import('./pages/PasswordEmail').then((module) => ({ default: module.PasswordEmail }))
+const Recovery: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
+  import('./pages/auth/Recovery').then((module) => ({ default: module.Recovery }))
 )
 
-const PasswordCode: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
-  import('./pages/PasswordCode').then((module) => ({ default: module.PasswordCode }))
+const Code: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
+  import('./pages/auth/Code').then((module) => ({ default: module.Code }))
 )
 
-const PasswordNew: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
-  import('./pages/PasswordNew').then((module) => ({ default: module.PasswordNew }))
+const Password: React.LazyExoticComponent<() => React.JSX.Element> = lazy(() =>
+  import('./pages/auth/Password').then((module) => ({ default: module.Password }))
 )
 
 window.addEventListener('DOMContentLoaded', ((): void => {
@@ -40,14 +40,14 @@ window.addEventListener('DOMContentLoaded', ((): void => {
         <Route path="/registration" element={<Layout auth={false} />}>
           <Route index element={<Registration />} />
         </Route>
-        <Route path="/password-email" element={<Layout auth={false} />}>
-          <Route index element={<PasswordEmail />} />
+        <Route path="/recovery" element={<Layout auth={false} />}>
+          <Route index element={<Recovery />} />
         </Route>
-        <Route path="/password-code" element={<Layout auth={false} />}>
-          <Route index element={<PasswordCode />} />
+        <Route path="/code" element={<Layout auth={false} />}>
+          <Route index element={<Code />} />
         </Route>
-        <Route path="/password-new" element={<Layout auth={false} />}>
-          <Route index element={<PasswordNew />} />
+        <Route path="/password" element={<Layout auth={false} />}>
+          <Route index element={<Password />} />
         </Route>
         <Route path="*" element={<div>404</div>} />
       </Routes>

@@ -1,17 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { validation } from '../functions/validation'
-import { useToggle } from '../hooks/useToggle'
-import { Pack } from '../components/Pack'
-import { Loader } from '../components/Loader'
-import { Picture } from '../components/Picture'
-import { FormLabel, FormWrapper, FormError } from '../components/Form'
-import { Cover } from '../components/Cover'
-import { Input } from '../components/Input'
-import { Placeholder } from '../components/Placeholder'
-import { Password } from '../components/Password'
-import { Button } from '../components/Button'
-import { Waved } from '../components/Waved'
+import { validation } from '../../functions/validation'
+import { useToggle } from '../../hooks/useToggle'
+import { Pack } from '../../components/Pack'
+import { Loader } from '../../components/Loader'
+import { Picture } from '../../components/Picture'
+import { FormLabel, FormWrapper, FormError } from '../../components/Form'
+import { Cover } from '../../components/Cover'
+import { Input } from '../../components/Input'
+import { Placeholder } from '../../components/Placeholder'
+import { Eye } from '../../components/Eye'
+import { Button } from '../../components/Button'
+import { Icon } from '../../components/Icon'
+import { Waved } from '../../components/Waved'
 
 export const Index = (): React.JSX.Element => {
   const { value, on, off } = useToggle({ status: false })
@@ -24,7 +25,7 @@ export const Index = (): React.JSX.Element => {
 
   return (
     <section className="container relative flex items-center justify-center min-h-screen">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 dark:hidden">
         <Pack className="h-full bg-gray" size={null}>
           <Loader />
           <Picture
@@ -35,9 +36,9 @@ export const Index = (): React.JSX.Element => {
           />
         </Pack>
       </div>
-      <div className="w-full max-w-[435px] bg-white rounded-6 pt-10 md:pt-20 px-4 sm:px-8 pb-7 md:pb-10 relative">
-        <Picture className="block w-full mx-auto mb-4 md:mb-8 max-w-24" src="img/pictures/logo-practice.svg" />
-        <Picture className="block w-full mx-auto mb-8 sm:mb-12 lg:mb-24 max-w-56" src="img/pictures/logo-stdkit.svg" />
+      <div className="w-full max-w-[435px] bg-white dark:bg-dark rounded-6 pt-10 md:pt-20 px-4 sm:px-8 pb-7 md:pb-10 relative">
+        <Icon className="w-24 h-3 mx-auto mb-5 min-w-24 md:mb-8 opacity-60" id="practice" />
+        <Icon className="w-56 h-16 mx-auto mb-12 min-w-56 lg:mb-24" id="logo" />
         <form className="form" action="" onSubmit={submitHandler}>
           <Input type="hidden" value="Авторизация" name="theme" />
           <div className="flex items-center justify-between border border-gray border-solid rounded-2 mb-5 h-[52px] overflow-hidden">
@@ -82,17 +83,17 @@ export const Index = (): React.JSX.Element => {
               </Cover>
               <Placeholder>Пароль</Placeholder>
               <FormError>Минимальная длинна пароля 8 символов</FormError>
-              <Password />
+              <Eye />
             </FormWrapper>
           </FormLabel>
           <div className="flex mb-6">
             <Button
-              className="font-semibold text-black border-b border-black border-opacity-50 border-dashed text-14 sm:text-16"
+              className="font-semibold text-black border-b border-black border-opacity-50 border-dashed text-14 sm:text-16 dark:text-white dark:border-white"
               as={Link}
               color="gray"
               size={null}
               variant={null}
-              to="/password-email"
+              to="/recovery"
             >
               <Waved variant="dark" />
               Забыл пароль? А голову свою не забыл?
@@ -107,7 +108,7 @@ export const Index = (): React.JSX.Element => {
           <div className="flex items-center justify-center mt-8">
             <span className="mr-2 font-normal text-14 sm:text-16 leading-1">Нет аккаунта?</span>
             <Button
-              className="font-semibold text-black border-b border-black border-opacity-50 border-dashed text-14 sm:text-16"
+              className="font-semibold text-black border-b border-black border-opacity-50 border-dashed text-14 sm:text-16 dark:text-white dark:border-white"
               as={Link}
               color="gray"
               size={null}

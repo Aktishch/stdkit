@@ -47,6 +47,10 @@ module.exports = {
       red: {
         DEFAULT: '#ED2F4B',
       },
+
+      dark: {
+        DEFAULT: '#26283B',
+      },
     },
 
     fontFamily: {
@@ -200,7 +204,7 @@ module.exports = {
 
     size: {
       xs: '28px',
-      sm: '36px',
+      sm: '34px',
       md: '46px',
       lg: '52px',
       xl: '60px',

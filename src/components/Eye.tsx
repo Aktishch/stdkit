@@ -6,10 +6,10 @@ interface PasswordProps {
   className?: string
 }
 
-export const Password = ({ className }: PasswordProps): React.JSX.Element => {
+export const Eye = ({ className }: PasswordProps): React.JSX.Element => {
   const icon = useRef<HTMLDivElement>(null)
   const [id, setId] = useState('eye-visible')
-  const classNames: string = classnames('text-24', 'opacity-50', 'pr-4', className)
+  const classNames: string = classnames('text-24', 'opacity-50', 'pr-4', 'text-black', className)
 
   useEffect((): (() => void) | undefined => {
     const currentIcon = icon.current as HTMLDivElement

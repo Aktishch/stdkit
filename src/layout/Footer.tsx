@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Fancybox } from '../components/Fancybox'
 import { Button } from '../components/Button'
-import { Picture } from '../components/Picture'
+import { Icon } from '../components/Icon'
 import { Waved } from '../components/Waved'
 
 export const Footer = (): React.JSX.Element => {
@@ -11,28 +9,22 @@ export const Footer = (): React.JSX.Element => {
   }
 
   return (
-    <footer
-      className="container flex flex-col flex-wrap items-center justify-between gap-4 pt-4 pb-10 mt-auto bg-black md:flex-row text-second md:pb-4"
-      id="footer"
-    >
-      <Button as={Link} color="white" size={null} variant={null} className="w-36" to="/">
-        <Waved />
-        <Picture webp="img/pictures/logo.webp" src="img/pictures/logo.png" className="w-full" />
-      </Button>
-      <address className="leading-4 text-center text-16">
-        ​Рождественская набережная, <br /> 45/1​5 офис; 3 этаж
-      </address>
-      <Fancybox options={{ dragToClose: false }} className="color-second">
-        <a className="text-18 w-max underline-offset-4 hover:underline" data-fancybox href="#dialog-politics">
-          Privacy policy
-        </a>
-      </Fancybox>
-      <div className="font-normal text-16">© {currentYear()}</div>
-      <div className="flex items-start gap-1 text-18">
-        Разработка:
-        <a className="underline underline-offset-4 w-max" href="https://stdkit.ru/" target="_blank" rel="noreferrer">
-          Студия К.И.Т.
-        </a>
+    <footer className="container flex items-center justify-between gap-3 py-2 mt-auto bg-white border-t border-solid sm:py-4 dark:bg-black border-grey">
+      <span className="font-normal text-16 leading-1">© {currentYear()}</span>
+      <div className="flex items-center">
+        <span className="mr-3 font-normal text-16 leading-1">Разработка:</span>
+        <Button
+          className="rounded-1"
+          as="a"
+          color="gray"
+          size={null}
+          variant={null}
+          href="https://stdkit.ru/"
+          target={true}
+        >
+          <Waved variant="dark" />
+          <Icon className="w-20 text-black h-7 min-w-20 dark:text-white" id="logo" />
+        </Button>
       </div>
     </footer>
   )

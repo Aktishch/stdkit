@@ -15,6 +15,7 @@ const buttonColors = {
   primary: 'btn-primary',
   gray: 'btn-gray',
   black: 'btn-black',
+  red: 'btn-red',
 }
 
 const buttonSizes = {
