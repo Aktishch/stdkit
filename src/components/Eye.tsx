@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import classnames from 'classnames'
-import { FormIcon } from './Form'
+import { FormIcon } from '@ui/Form'
 
 interface PasswordProps {
   className?: string
@@ -9,7 +9,13 @@ interface PasswordProps {
 export const Eye = ({ className }: PasswordProps): React.JSX.Element => {
   const icon = useRef<HTMLDivElement>(null)
   const [id, setId] = useState('eye-visible')
-  const classNames: string = classnames('text-24', 'opacity-50', 'pr-4', 'text-black', className)
+  const classNames: string = classnames(
+    'text-24',
+    'opacity-50',
+    'pr-4',
+    'text-black',
+    className
+  )
 
   useEffect((): (() => void) | undefined => {
     const currentIcon = icon.current as HTMLDivElement
@@ -21,24 +27,33 @@ export const Eye = ({ className }: PasswordProps): React.JSX.Element => {
 
     const showPassword = (): void => {
       switch (input.type) {
-      case 'password': {
-        setId('eye-hidden')
-        input.type = 'text'
-        break
-      }
+        case 'password': {
+          setId('eye-hidden')
+          input.type = 'text'
+          break
+        }
 
-      case 'text': {
-        setId('eye-visible')
-        input.type = 'password'
-        break
-      }
+        case 'text': {
+          setId('eye-visible')
+          input.type = 'password'
+          break
+        }
       }
     }
 
     currentIcon.addEventListener('click', showPassword as EventListener)
 
-    return (): void => currentIcon.removeEventListener('click', showPassword as EventListener)
+    return (): void =>
+      currentIcon.removeEventListener('click', showPassword as EventListener)
   }, [])
 
-  return <FormIcon className={classNames} id={id} right={true} pointer={true} ref={icon} />
+  return (
+    <FormIcon
+      className={classNames}
+      id={id}
+      right={true}
+      pointer={true}
+      ref={icon}
+    />
+  )
 }

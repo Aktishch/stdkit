@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import classnames from 'classnames'
-import { Coordinates } from '../functions/coordinates'
-import { touchDevice } from '../functions/touch-device'
+import { Coordinates } from '@utils/coordinates'
+import { touchDevice } from '@utils/touch-device'
 
 const wavedVariants = {
   light: 'waved--light',
@@ -13,9 +13,16 @@ interface WavedProps extends React.DOMAttributes<HTMLDivElement> {
   variant?: keyof typeof wavedVariants
 }
 
-export const Waved = ({ variant = 'light', className }: WavedProps): React.JSX.Element => {
+export const Waved = ({
+  variant = 'light',
+  className,
+}: WavedProps): React.JSX.Element => {
   const waved = useRef<HTMLDivElement>(null)
-  const classNames: string = classnames('waved', variant ? wavedVariants[variant] : null, className)
+  const classNames: string = classnames(
+    'waved',
+    variant ? wavedVariants[variant] : null,
+    className
+  )
 
   const onClickHandler = (event: Event): void => {
     const circle = document.createElement('div') as HTMLDivElement
@@ -35,22 +42,29 @@ export const Waved = ({ variant = 'light', className }: WavedProps): React.JSX.E
     }
 
     switch (event.type) {
-    case 'touchstart': {
-      if (!touchDevice()) return
-      createCircle((event as TouchEvent).touches[0].clientY, (event as TouchEvent).touches[0].clientX)
-      break
-    }
+      case 'touchstart': {
+        if (!touchDevice()) return
+        createCircle(
+          (event as TouchEvent).touches[0].clientY,
+          (event as TouchEvent).touches[0].clientX
+        )
+        break
+      }
 
-    case 'mousedown': {
-      if (touchDevice()) return
-      createCircle((event as MouseEvent).clientY, (event as MouseEvent).clientX)
-      break
-    }
+      case 'mousedown': {
+        if (touchDevice()) return
+        createCircle(
+          (event as MouseEvent).clientY,
+          (event as MouseEvent).clientX
+        )
+        break
+      }
     }
   }
 
   useEffect((): (() => void) | undefined => {
-    const parent = (waved.current as HTMLDivElement).parentElement as HTMLElement
+    const parent = (waved.current as HTMLDivElement)
+      .parentElement as HTMLElement
 
     parent.addEventListener('touchstart', onClickHandler as EventListener)
     parent.addEventListener('mousedown', onClickHandler as EventListener)

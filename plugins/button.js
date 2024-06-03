@@ -111,14 +111,26 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         if (!parsed.color) return null
 
         const [r, g, b] = parsed.color
-        const hex = '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)
+        const hex =
+          '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)
         const amount = 25
 
         return {
           '--btn-color': color.DEFAULT,
-          '--btn-fade': formatColor({ mode: 'rgba', color: parsed.color, alpha: 0.3 }),
-          '--btn-focus': formatColor({ mode: 'rgba', color: parsed.color, alpha: 0.4 }),
-          '--btn-hovered': checkColor(hex, -amount) !== '0' ? getColor(hex, -amount) : getColor(hex, amount),
+          '--btn-fade': formatColor({
+            mode: 'rgba',
+            color: parsed.color,
+            alpha: 0.3,
+          }),
+          '--btn-focus': formatColor({
+            mode: 'rgba',
+            color: parsed.color,
+            alpha: 0.4,
+          }),
+          '--btn-hovered':
+            checkColor(hex, -amount) !== '0'
+              ? getColor(hex, -amount)
+              : getColor(hex, amount),
         }
       },
     },
@@ -180,7 +192,9 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       value = value > 0 ? value : 0
       value = Math.round(value)
 
-      return value.toString(16).length === 1 ? '0' + value.toString(16) : value.toString(16)
+      return value.toString(16).length === 1
+        ? '0' + value.toString(16)
+        : value.toString(16)
     }
 
     const red = getColorValue(r)

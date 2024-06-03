@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Theme } from '../contexts/Theme'
-import { Header } from './Header'
-import { Footer } from './Footer'
-import { Preloader } from './Preloader'
+import { Theme } from '@components/Theme'
+import { Header } from '@layout/Header/Header'
+import { Footer } from '@layout/Footer/Footer'
+import { Preloader } from '@layout/Preloader/Preloader'
 
 interface LayoutProps {
   status?: boolean
@@ -19,7 +19,9 @@ export const LayoutAuthorization = (): React.JSX.Element => {
   )
 }
 
-export const LayoutDefault = ({ status = false }: LayoutProps): React.JSX.Element => {
+export const LayoutDefault = ({
+  status = false,
+}: LayoutProps): React.JSX.Element => {
   return (
     <Theme>
       <Header status={status} />

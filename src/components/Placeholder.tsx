@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from 'react'
 import classnames from 'classnames'
 
-export const Placeholder = ({ children }: React.DOMAttributes<HTMLSpanElement>): React.JSX.Element => {
+export const Placeholder = ({
+  children,
+}: React.DOMAttributes<HTMLSpanElement>): React.JSX.Element => {
   const placeholderText = useRef<HTMLSpanElement>(null)
   const classNames: string = classnames(
     'absolute',
@@ -22,7 +24,9 @@ export const Placeholder = ({ children }: React.DOMAttributes<HTMLSpanElement>):
 
   useEffect((): (() => void) | undefined => {
     const currentPlaceholderText = placeholderText.current as HTMLSpanElement
-    const label = currentPlaceholderText.closest('.form-label') as HTMLLabelElement
+    const label = currentPlaceholderText.closest(
+      '.form-label'
+    ) as HTMLLabelElement
 
     if (!label) return
 
@@ -30,29 +34,39 @@ export const Placeholder = ({ children }: React.DOMAttributes<HTMLSpanElement>):
 
     const inputHandler = (): void => {
       switch (input.value !== '') {
-      case true: {
-        currentPlaceholderText.classList.remove(
-          'text-black',
-          'text-opacity-50',
-          'text-16',
-          'top-1/2',
-          '-translate-y-1/2'
-        )
-        currentPlaceholderText.classList.add('text-primary', 'text-14', '-top-2', 'bg-white')
-        break
-      }
+        case true: {
+          currentPlaceholderText.classList.remove(
+            'text-black',
+            'text-opacity-50',
+            'text-16',
+            'top-1/2',
+            '-translate-y-1/2'
+          )
+          currentPlaceholderText.classList.add(
+            'text-primary',
+            'text-14',
+            '-top-2',
+            'bg-white'
+          )
+          break
+        }
 
-      case false: {
-        currentPlaceholderText.classList.add(
-          'text-black',
-          'text-opacity-50',
-          'text-16',
-          'top-1/2',
-          '-translate-y-1/2'
-        )
-        currentPlaceholderText.classList.remove('text-primary', 'text-14', '-top-2', 'bg-white')
-        break
-      }
+        case false: {
+          currentPlaceholderText.classList.add(
+            'text-black',
+            'text-opacity-50',
+            'text-16',
+            'top-1/2',
+            '-translate-y-1/2'
+          )
+          currentPlaceholderText.classList.remove(
+            'text-primary',
+            'text-14',
+            '-top-2',
+            'bg-white'
+          )
+          break
+        }
       }
     }
 

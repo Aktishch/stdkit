@@ -24,11 +24,23 @@
       "@/*": [
         "src/*"
       ],
-      "@icons/*": [
-        "src/assets/icons/*"
+      "@components/*": [
+        "src/components/*"
       ],
-      "@icons": [
-        "src/assets/icons"
+      "@components": [
+        "src/components"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@hooks": [
+        "src/hooks"
+      ],
+      "@layout/*": [
+        "src/layout/*"
+      ],
+      "@layout": [
+        "src/layout"
       ],
       "@ui/*": [
         "src/ui/*"
@@ -42,17 +54,11 @@
       "@utils": [
         "src/utils"
       ],
-      "@libs/*": [
-        "src/libs/*"
+      "@views/*": [
+        "src/views/*"
       ],
-      "@libs": [
-        "src/libs"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@hooks": [
-        "src/hooks"
+      "@views": [
+        "src/views"
       ],
     }
   },
