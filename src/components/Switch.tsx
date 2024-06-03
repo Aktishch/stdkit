@@ -1,10 +1,6 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  variant: string
-}
-
 const switchColors = {
   second: 'text-second',
   green: 'text-green',
@@ -20,6 +16,12 @@ const switchVariant = {
 const switchTypes = {
   checkbox: 'checkbox',
   radio: 'radio',
+}
+
+interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  color?: keyof typeof switchColors
+  variant?: keyof typeof switchVariant
+  type?: keyof typeof switchTypes
 }
 
 const SwitchComponent = (

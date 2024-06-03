@@ -1,13 +1,6 @@
 import React, { ElementType, forwardRef } from 'react'
 import classnames from 'classnames'
 
-interface PackProps extends React.ButtonHTMLAttributes<HTMLElement> {
-  as?: ElementType
-  size: string | null
-  href?: string | null
-  target?: boolean
-}
-
 const packSizes = {
   half: 'pack-half',
   sm: 'pack-rect-sm',
@@ -15,6 +8,13 @@ const packSizes = {
   lg: 'pack-rect-lg',
   box: 'pack-box',
   sheet: 'pack-sheet',
+}
+
+interface PackProps extends React.ButtonHTMLAttributes<HTMLElement> {
+  as?: ElementType
+  size: keyof typeof packSizes | null
+  href?: string | null
+  target?: boolean
 }
 
 const PackComponent = (

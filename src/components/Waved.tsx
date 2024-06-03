@@ -3,14 +3,14 @@ import classnames from 'classnames'
 import { Coordinates } from '../functions/coordinates'
 import { touchDevice } from '../functions/touch-device'
 
-interface WavedProps extends React.DOMAttributes<HTMLDivElement> {
-  className?: string
-  variant?: string
-}
-
 const wavedVariants = {
   light: 'waved--light',
   dark: 'waved--dark',
+}
+
+interface WavedProps extends React.DOMAttributes<HTMLDivElement> {
+  className?: string
+  variant?: keyof typeof wavedVariants
 }
 
 export const Waved = ({ variant = 'light', className }: WavedProps): React.JSX.Element => {

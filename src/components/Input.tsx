@@ -1,14 +1,6 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-type Extension = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
-
-interface InputProps extends Extension {
-  tag?: string | null
-  size?: string | null
-  data?: string | null
-}
-
 const inputSizes = {
   xs: 'input-xs',
   sm: 'input-sm',
@@ -16,6 +8,14 @@ const inputSizes = {
   lg: 'input-lg',
   xl: 'input-xl',
   xxl: 'input-xxl',
+}
+
+type Extension = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
+
+export interface InputProps extends Extension {
+  tag?: string | null
+  size?: keyof typeof inputSizes | null
+  data?: string | null
 }
 
 const InputComponent = (

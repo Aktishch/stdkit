@@ -1,10 +1,6 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-interface CoverProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
-  size?: string | null
-}
-
 const coverSizes = {
   1: 'input-cover-1',
   2: 'input-cover-2',
@@ -17,6 +13,10 @@ const coverSizes = {
   9: 'input-cover-9',
   10: 'input-cover-10',
   full: 'input-cover-full',
+}
+
+interface CoverProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+  size?: keyof typeof coverSizes | null
 }
 
 const CoverComponent = (

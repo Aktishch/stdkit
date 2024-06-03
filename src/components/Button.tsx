@@ -1,16 +1,6 @@
 import React, { ElementType, forwardRef } from 'react'
 import classnames from 'classnames'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  as?: ElementType
-  size?: string | null
-  variant?: string | null
-  effect?: string | null
-  href?: string | null
-  target?: boolean
-  to?: string | null
-}
-
 const buttonColors = {
   primary: 'btn-primary',
   gray: 'btn-gray',
@@ -32,6 +22,18 @@ const buttonVariants = {
   fade: 'btn-fade',
   light: 'btn-light',
   contur: 'btn-contur',
+}
+
+type Extension = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>
+
+interface ButtonProps extends Extension {
+  as?: ElementType
+  color?: keyof typeof buttonColors | null
+  size?: keyof typeof buttonSizes | null
+  variant?: keyof typeof buttonVariants | null
+  href?: string | null
+  target?: boolean
+  to?: string | null
 }
 
 const ButtonComponent = (
