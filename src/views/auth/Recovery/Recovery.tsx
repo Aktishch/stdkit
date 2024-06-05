@@ -1,6 +1,6 @@
 import React from 'react'
 import { validation } from '@utils/validation'
-import { FormLabel, FormWrapper, FormError } from '@ui/Form'
+import { Form, FormLabel, FormWrapper, FormError } from '@ui/Form'
 import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -27,12 +27,12 @@ export const Recovery = (): React.JSX.Element => {
         <AuthSubtitle>
           Введите e-mail и мы вышлем <br /> код для смены пароля
         </AuthSubtitle>
-        <form className="form" action="/code" onSubmit={submitHandler}>
+        <Form className="gap-6" action="/code" onSubmit={submitHandler}>
           <Input type="hidden" value="Восстановление пароля" name="theme" />
-          <FormLabel className="mb-6" data="input">
+          <FormLabel data="input">
             <FormWrapper>
               <Cover>
-                <Input type="text" data="email" name="email" />
+                <Input data="email" type="text" name="email" />
               </Cover>
               <Placeholder>E-Mail</Placeholder>
               <FormError>Некорректный адрес</FormError>
@@ -42,7 +42,7 @@ export const Recovery = (): React.JSX.Element => {
             <Waved />
             Восстановить
           </Button>
-        </form>
+        </Form>
       </AuthContent>
     </AuthSection>
   )

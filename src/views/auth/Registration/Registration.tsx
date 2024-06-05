@@ -1,8 +1,7 @@
 import React from 'react'
 import { onInputName, onInputNumber } from '@utils/inputs'
 import { validation } from '@utils/validation'
-import { Picture } from '@ui/Picture'
-import { FormLabel, FormWrapper, FormError, FormIcon } from '@ui/Form'
+import { Form, FormLabel, FormWrapper, FormError, FormIcon } from '@ui/Form'
 import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -29,16 +28,16 @@ export const Registration = (): React.JSX.Element => {
       <AuthBg />
       <AuthContent>
         <AuthLogo />
-        <form className="form" action="/" onSubmit={submitHandler}>
+        <Form className="gap-7 md:gap-10" action="/" onSubmit={submitHandler}>
           <Input type="hidden" value="Регистрация" name="theme" />
-          <div className="flex flex-col gap-6 mb-7 md:mb-10">
+          <div className="flex flex-col gap-6">
             <AuthChapter src="img/pictures/chicken.svg">
               Личная информация
             </AuthChapter>
             <FormLabel data="input">
               <FormWrapper>
                 <Cover>
-                  <Input type="text" data="" name="login" />
+                  <Input data="" type="text" name="login" />
                 </Cover>
                 <Placeholder>Логин</Placeholder>
                 <FormError>Введите логин</FormError>
@@ -48,8 +47,8 @@ export const Registration = (): React.JSX.Element => {
               <FormWrapper>
                 <Cover>
                   <Input
-                    type="text"
                     data="name"
+                    type="text"
                     name="surname"
                     onInput={onInputName}
                   />
@@ -62,8 +61,8 @@ export const Registration = (): React.JSX.Element => {
               <FormWrapper>
                 <Cover>
                   <Input
-                    type="text"
                     data="name"
+                    type="text"
                     name="name"
                     onInput={onInputName}
                   />
@@ -76,8 +75,8 @@ export const Registration = (): React.JSX.Element => {
               <FormWrapper>
                 <Cover>
                   <Input
-                    type="text"
                     data="name"
+                    type="text"
                     name="father-name"
                     onInput={onInputName}
                   />
@@ -89,7 +88,7 @@ export const Registration = (): React.JSX.Element => {
             <FormLabel data="input">
               <FormWrapper>
                 <Cover>
-                  <Input tag="select" data="select" name="activity">
+                  <Input data="select" tag="select" name="activity">
                     <option value="empty" hidden>
                       Ваш вид деятельности
                     </option>
@@ -118,12 +117,12 @@ export const Registration = (): React.JSX.Element => {
               </FormWrapper>
             </FormLabel>
           </div>
-          <div className="flex flex-col gap-6 mb-7 md:mb-10">
+          <div className="flex flex-col gap-6">
             <AuthChapter src="img/pictures/school.svg">Университет</AuthChapter>
             <FormLabel data="input">
               <FormWrapper>
                 <Cover>
-                  <Input type="text" data="" name="father-name" />
+                  <Input data="" type="text" name="father-name" />
                 </Cover>
                 <Placeholder>Полное название ВУЗа</Placeholder>
                 <FormError>Укажите ВУЗ</FormError>
@@ -132,7 +131,7 @@ export const Registration = (): React.JSX.Element => {
             <FormLabel data="input">
               <FormWrapper>
                 <Cover>
-                  <Input type="text" data="" name="father-name" />
+                  <Input data="" type="text" name="father-name" />
                 </Cover>
                 <Placeholder>Факультет</Placeholder>
                 <FormError>Укажите факультет</FormError>
@@ -142,8 +141,8 @@ export const Registration = (): React.JSX.Element => {
               <FormWrapper>
                 <Cover>
                   <Input
-                    type="text"
                     data=""
+                    type="text"
                     maxLength={1}
                     name="father-name"
                     onInput={onInputNumber}
@@ -156,19 +155,19 @@ export const Registration = (): React.JSX.Element => {
             <FormLabel data="input">
               <FormWrapper>
                 <Cover>
-                  <Input type="text" data="" name="father-name" />
+                  <Input data="" type="text" name="father-name" />
                 </Cover>
                 <Placeholder>Группа</Placeholder>
                 <FormError>Укажите группу</FormError>
               </FormWrapper>
             </FormLabel>
           </div>
-          <div className="flex flex-col gap-6 mb-7 md:mb-10">
+          <div className="flex flex-col gap-6">
             <AuthChapter src="img/pictures/locked.svg">Пароль</AuthChapter>
             <FormLabel data="input">
               <FormWrapper>
                 <Cover>
-                  <Input type="password" data="password" name="password" />
+                  <Input data="password" type="password" name="password" />
                 </Cover>
                 <Placeholder>Пароль</Placeholder>
                 <FormError>Минимальная длинна пароля 8 символов</FormError>
@@ -179,8 +178,8 @@ export const Registration = (): React.JSX.Element => {
               <FormWrapper>
                 <Cover>
                   <Input
-                    type="password"
                     data="password"
+                    type="password"
                     name="passwod-replay"
                   />
                 </Cover>
@@ -194,7 +193,7 @@ export const Registration = (): React.JSX.Element => {
             <Waved />
             Зарегистрироваться
           </Button>
-        </form>
+        </Form>
         <div className="flex items-center justify-center mt-8">
           <span className="mr-2 font-normal text-14 sm:text-16 leading-1">
             Есть аккаунт?

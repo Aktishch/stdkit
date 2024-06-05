@@ -5,5 +5,5 @@ import { Input, InputProps } from '@ui/Input'
 export const InputTel = ({ size = 'lg' }: InputProps): React.JSX.Element => {
   const { tel } = usePhoneMask()
 
-  return <Input size={size} type="tel" data="tel" name="tel" ref={tel} />
+  return <Input data="tel" size={size} type="tel" name="tel" ref={tel} />
 }

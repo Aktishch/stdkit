@@ -2,23 +2,32 @@ import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { Icon } from '@ui/Icon'
 
-interface FormLabelProps extends React.HtmlHTMLAttributes<HTMLLabelElement> {
+interface FormLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   data?: string | null
 }
 
-interface FormWrapperProps extends React.DOMAttributes<HTMLDivElement> {
-  className?: string
-}
-
-interface FormIconProps extends React.DOMAttributes<HTMLDivElement> {
+interface FormIconProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   id: string
   right?: boolean
   pointer?: boolean
-  className?: string
 }
 
-interface FormErrorProps extends React.PropsWithChildren {
-  className?: string
+const FormComponent = (
+  {
+    className,
+    action = undefined,
+    onSubmit = undefined,
+    children,
+  }: React.FormHTMLAttributes<HTMLFormElement>,
+  ref: React.ForwardedRef<HTMLFormElement>
+): React.JSX.Element => {
+  const classNames: string = classnames('form', className)
+
+  return (
+    <form className={classNames} action={action} onSubmit={onSubmit} ref={ref}>
+      {children}
+    </form>
+  )
 }
 
 const FormLabelComponent = (
@@ -35,7 +44,7 @@ const FormLabelComponent = (
 }
 
 const FormWrapperComponent = (
-  { className, children }: FormWrapperProps,
+  { className, children }: React.HtmlHTMLAttributes<HTMLDivElement>,
   ref: React.ForwardedRef<HTMLDivElement>
 ): React.JSX.Element => {
   const classNames: string = classnames('form-wrapper', className)
@@ -66,7 +75,7 @@ const FormIconComponent = (
 }
 
 const FormErrorComponent = (
-  { className, children }: FormErrorProps,
+  { className, children }: React.HtmlHTMLAttributes<HTMLSpanElement>,
   ref: React.ForwardedRef<HTMLSpanElement>
 ): React.JSX.Element => {
   const classNames: string = classnames('form-error', className)
@@ -78,6 +87,13 @@ const FormErrorComponent = (
   )
 }
 
+export const Form = forwardRef(
+  FormComponent
+) as React.ForwardRefExoticComponent<
+  React.FormHTMLAttributes<HTMLFormElement> &
+    React.RefAttributes<HTMLFormElement>
+>
+
 export const FormLabel = forwardRef(
   FormLabelComponent
 ) as React.ForwardRefExoticComponent<
@@ -87,7 +103,7 @@ export const FormLabel = forwardRef(
 export const FormWrapper = forwardRef(
   FormWrapperComponent
 ) as React.ForwardRefExoticComponent<
-  FormWrapperProps & React.RefAttributes<HTMLDivElement>
+  React.HtmlHTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>
 >
 
 export const FormIcon = forwardRef(
@@ -99,5 +115,6 @@ export const FormIcon = forwardRef(
 export const FormError = forwardRef(
   FormErrorComponent
 ) as React.ForwardRefExoticComponent<
-  FormErrorProps & React.RefAttributes<HTMLSpanElement>
+  React.HtmlHTMLAttributes<HTMLSpanElement> &
+    React.RefAttributes<HTMLSpanElement>
 >

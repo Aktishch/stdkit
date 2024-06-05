@@ -1,6 +1,6 @@
 import React from 'react'
 import { validation } from '@utils/validation'
-import { FormLabel, FormWrapper, FormError } from '@ui/Form'
+import { Form, FormLabel, FormWrapper, FormError } from '@ui/Form'
 import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -26,22 +26,22 @@ export const Password = (): React.JSX.Element => {
       <AuthContent>
         <AuthTitle>Восстановление пароля</AuthTitle>
         <AuthSubtitle>Придумайте новый пароль</AuthSubtitle>
-        <form className="form" action="/" onSubmit={submitHandler}>
+        <Form className="gap-6" action="/" onSubmit={submitHandler}>
           <Input type="hidden" value="Новый пароль" name="theme" />
-          <FormLabel className="mb-6" data="input">
+          <FormLabel data="input">
             <FormWrapper>
               <Cover>
-                <Input type="password" data="password" name="password" />
+                <Input data="password" type="password" name="password" />
               </Cover>
               <Placeholder>Пароль</Placeholder>
               <FormError>Минимальная длинна пароля 8 символов</FormError>
               <Eye />
             </FormWrapper>
           </FormLabel>
-          <FormLabel className="mb-6" data="input">
+          <FormLabel data="input">
             <FormWrapper>
               <Cover>
-                <Input type="password" data="password" name="passwod-replay" />
+                <Input data="password" type="password" name="passwod-replay" />
               </Cover>
               <Placeholder>Повторите пароль</Placeholder>
               <FormError>Минимальная длинна пароля 8 символов</FormError>
@@ -52,7 +52,7 @@ export const Password = (): React.JSX.Element => {
             <Waved />
             Восстановить
           </Button>
-        </form>
+        </Form>
       </AuthContent>
     </AuthSection>
   )

@@ -4,6 +4,7 @@ import classnames from 'classnames'
 const buttonColors = {
   primary: 'btn-primary',
   gray: 'btn-gray',
+  grey: 'btn-grey',
   black: 'btn-black',
   red: 'btn-red',
 }

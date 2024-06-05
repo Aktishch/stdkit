@@ -30,6 +30,7 @@ const InputComponent = (
     maxLength,
     data = null,
     onInput = undefined,
+    onChange = undefined,
     children,
   }: InputProps,
   ref: React.ForwardedRef<null>
@@ -52,6 +53,7 @@ const InputComponent = (
       name={name}
       ref={ref}
       onInput={onInput}
+      onChange={onChange}
     />
   ) : tag === 'textarea' ? (
     <textarea

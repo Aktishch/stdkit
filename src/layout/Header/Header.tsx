@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from '@ui/Button'
 import { Icon } from '@ui/Icon'
 import {
   AccordionContext,
@@ -11,6 +10,7 @@ import {
 import { ThemeContext } from '@components/Theme'
 import { Waved } from '@components/Waved'
 import { HeaderLink } from '@layout/Header/components/HeaderLink'
+import { HeaderButton } from '@layout/Header/components/HeaderButton'
 
 interface HeaderProps {
   status: boolean
@@ -73,50 +73,20 @@ export const Header = ({ status }: HeaderProps): React.JSX.Element => {
               </span>
             </div>
             <nav className="flex flex-col">
-              <Button
-                className="justify-start px-2"
-                as={Link}
-                size="sm"
-                variant={null}
-                to="/lk-tutor"
-              >
-                <Waved variant="dark" />
-                <Icon className="text-20" id="settings" />
-                <span className="ml-1 font-normal text-black dark:text-white text-16">
-                  Настройки
+              <HeaderButton as={Link} to="/lk-tutor" id="settings">
+                Настройки
+              </HeaderButton>
+              <HeaderButton id="pallete" onClick={themeToggle}>
+                Тема:{' '}
+                <span className="text-primary">
+                  <ThemeContext.Consumer>
+                    {({ themeValue }) => (themeValue ? 'Тёмная' : 'Светлая')}
+                  </ThemeContext.Consumer>
                 </span>
-              </Button>
-              <Button
-                className="justify-start px-2"
-                size="sm"
-                variant={null}
-                onClick={themeToggle}
-              >
-                <Waved variant="dark" />
-                <Icon className="text-20" id="pallete" />
-                <div className="ml-1 font-normal text-black dark:text-white text-16">
-                  Тема:{' '}
-                  <span className="text-primary">
-                    <ThemeContext.Consumer>
-                      {({ themeValue }) => (themeValue ? 'Тёмная' : 'Светлая')}
-                    </ThemeContext.Consumer>
-                  </span>
-                </div>
-              </Button>
-              <Button
-                className="justify-start px-2"
-                as={Link}
-                color="red"
-                size="sm"
-                variant={null}
-                to="/"
-              >
-                <Waved variant="dark" />
-                <Icon className="text-20" id="arrow-back" />
-                <span className="ml-1 font-normal text-black dark:text-white text-16">
-                  Выйти
-                </span>
-              </Button>
+              </HeaderButton>
+              <HeaderButton color="red" as={Link} to="/" id="arrow-back">
+                Выйти
+              </HeaderButton>
             </nav>
           </div>
         </AccordionContent>

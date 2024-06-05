@@ -1,6 +1,6 @@
 import React from 'react'
 import { validation } from '@utils/validation'
-import { FormLabel, FormWrapper, FormError } from '@ui/Form'
+import { Form, FormLabel, FormWrapper, FormError } from '@ui/Form'
 import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -30,12 +30,12 @@ export const Code = (): React.JSX.Element => {
           <br className="hidden sm:block" /> введите его нижу, чтобы изменить
           пароль
         </AuthSubtitle>
-        <form className="form" action="/password" onSubmit={submitHandler}>
+        <Form className="gap-6" action="/password" onSubmit={submitHandler}>
           <Input type="hidden" value="Код" name="theme" />
-          <FormLabel className="mb-6" data="input">
+          <FormLabel data="input">
             <FormWrapper>
               <Cover>
-                <Input type="text" data="" name="code" />
+                <Input data="" type="text" name="code" />
               </Cover>
               <Placeholder>Код</Placeholder>
               <FormError>Введите Код</FormError>
@@ -45,7 +45,7 @@ export const Code = (): React.JSX.Element => {
             <Waved />
             Восстановить
           </Button>
-        </form>
+        </Form>
         <div className="flex items-center justify-center mt-8">
           <AuthLink to="/code">Не получил код?</AuthLink>
         </div>
