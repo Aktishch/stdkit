@@ -53,9 +53,6 @@ module.exports = plugin(({ addComponents, theme }) => {
         right: 0,
         bottom: '-16px',
         height: '16px',
-        opacity: 0,
-        visibility: 'hidden',
-        transition: '0.3s ease',
       },
     },
   })

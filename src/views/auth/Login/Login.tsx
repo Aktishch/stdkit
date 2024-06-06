@@ -1,5 +1,4 @@
-import React from 'react'
-import { validation } from '@utils/validation'
+import React, { useState } from 'react'
 import { useToggle } from '@hooks/useToggle'
 import { Form } from '@ui/Form'
 import { Label } from '@ui/Label'
@@ -21,10 +20,94 @@ import { Toggle } from '@views/auth/components/Toggle'
 export const Login = (): React.JSX.Element => {
   const { value, on, off } = useToggle({ status: false })
 
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
-    const form = event.target as HTMLFormElement
+  const [data, setData] = useState({
+    login: '',
+    password: '',
+  })
 
-    if (!validation(form)) event.preventDefault()
+  const [error, setError] = useState({
+    login: '',
+    password: '',
+  })
+
+  const [validate, setValidate] = useState({
+    login: false,
+    password: false,
+  })
+
+  const setState = ({
+    name,
+    text,
+    status,
+  }: {
+    name: string
+    text: string
+    status: boolean
+  }): void => {
+    setError((prevState) => ({
+      ...prevState,
+      [name]: text,
+    }))
+
+    setValidate((prevState) => ({
+      ...prevState,
+      [name]: status,
+    }))
+  }
+
+  const inputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
+    const { name, value } = event.target as HTMLInputElement
+
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
+
+    switch (name) {
+      case 'login': {
+        switch (value.length === 0) {
+          case true: {
+            setState({ name: name, text: 'Введите логин', status: false })
+            break
+          }
+
+          case false: {
+            setState({ name: name, text: '', status: true })
+            break
+          }
+        }
+
+        break
+      }
+
+      case 'password': {
+        switch (value.length < 8) {
+          case true: {
+            setState({
+              name: name,
+              text: 'Минимальная длинна пароля 8 символов',
+              status: false,
+            })
+            break
+          }
+
+          case false: {
+            setState({ name: name, text: '', status: true })
+            break
+          }
+        }
+
+        break
+      }
+    }
+  }
+
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    const validation: boolean = Object.values(validate).every(
+      (item) => item === true
+    )
+
+    if (!validation) event.preventDefault()
   }
 
   return (
@@ -52,22 +135,34 @@ export const Login = (): React.JSX.Element => {
               Куратор
             </Toggle>
           </div>
-          <Label data="input">
+          <Label>
             <Wrapper>
               <Cover>
-                <Input data="" type="text" name="login" />
+                <Input
+                  className={error.login !== '' ? 'input-error' : ''}
+                  type="text"
+                  value={data.login}
+                  name="login"
+                  onInput={inputHandler}
+                />
               </Cover>
               <Placeholder>Логин</Placeholder>
-              <Error>Введите логин</Error>
+              {error.login !== '' ? <Error>{error.login}</Error> : ''}
             </Wrapper>
           </Label>
           <Label data="input">
             <Wrapper>
               <Cover>
-                <Input data="password" type="password" name="password" />
+                <Input
+                  className={error.password !== '' ? 'input-error' : ''}
+                  type="password"
+                  value={data.password}
+                  name="password"
+                  onInput={inputHandler}
+                />
               </Cover>
               <Placeholder>Пароль</Placeholder>
-              <Error>Минимальная длинна пароля 8 символов</Error>
+              {error.password !== '' ? <Error>{error.password}</Error> : ''}
               <Eye />
             </Wrapper>
           </Label>
