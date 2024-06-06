@@ -7,11 +7,11 @@ import { Button } from '@ui/Button'
 import { Placeholder } from '@components/Placeholder'
 import { Eye } from '@components/Eye'
 import { Waved } from '@components/Waved'
-import { AuthSection } from '@views/auth/components/AuthSection'
-import { AuthBg } from '@views/auth/components/AuthBg'
-import { AuthContent } from '@views/auth/components/AuthContent'
-import { AuthTitle } from '@views/auth/components/AuthTitle'
-import { AuthSubtitle } from '@views/auth/components/AuthSubtitle'
+import { Section } from '@views/auth/components/Section'
+import { Bg } from '@views/auth/components/Bg'
+import { Content } from '@views/auth/components/Content'
+import { Subtitle } from '@views/auth/components/Subtitle'
+import { Text } from '@views/auth/components/Text'
 
 export const Password = (): React.JSX.Element => {
   const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -21,11 +21,11 @@ export const Password = (): React.JSX.Element => {
   }
 
   return (
-    <AuthSection>
-      <AuthBg />
-      <AuthContent>
-        <AuthTitle>Восстановление пароля</AuthTitle>
-        <AuthSubtitle>Придумайте новый пароль</AuthSubtitle>
+    <Section>
+      <Bg />
+      <Content>
+        <Subtitle>Восстановление пароля</Subtitle>
+        <Text>Придумайте новый пароль</Text>
         <Form className="gap-6" action="/" onSubmit={submitHandler}>
           <Input type="hidden" value="Новый пароль" name="theme" />
           <FormLabel data="input">
@@ -53,7 +53,7 @@ export const Password = (): React.JSX.Element => {
             Восстановить
           </Button>
         </Form>
-      </AuthContent>
-    </AuthSection>
+      </Content>
+    </Section>
   )
 }

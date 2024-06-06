@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-const AuthContentComponent = (
+const ContentComponent = (
   { children }: React.PropsWithChildren,
   ref: React.ForwardedRef<HTMLDivElement>
 ): React.JSX.Element => {
@@ -27,8 +27,8 @@ const AuthContentComponent = (
   )
 }
 
-export const AuthContent = forwardRef(
-  AuthContentComponent
+export const Content = forwardRef(
+  ContentComponent
 ) as React.ForwardRefExoticComponent<
   {
     children?: React.ReactNode

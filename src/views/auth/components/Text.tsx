@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-const AuthSubtitleComponent = (
+const TextComponent = (
   { className, children }: React.HtmlHTMLAttributes<HTMLParagraphElement>,
   ref: React.ForwardedRef<HTMLParagraphElement>
 ): React.JSX.Element => {
@@ -24,8 +24,8 @@ const AuthSubtitleComponent = (
   )
 }
 
-export const AuthSubtitle = forwardRef(
-  AuthSubtitleComponent
+export const Text = forwardRef(
+  TextComponent
 ) as React.ForwardRefExoticComponent<
   React.HtmlHTMLAttributes<HTMLParagraphElement> &
     React.RefAttributes<HTMLParagraphElement>

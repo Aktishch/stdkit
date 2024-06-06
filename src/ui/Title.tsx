@@ -1,30 +1,26 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-const AuthTitleComponent = (
+const TitleComponent = (
   { className, children }: React.HtmlHTMLAttributes<HTMLHeadingElement>,
   ref: React.ForwardedRef<HTMLHeadingElement>
 ): React.JSX.Element => {
   const classNames: string = classnames(
-    'mb-2',
     'font-medium',
-    'text-center',
-    'sm:mb-4',
-    'text-20',
-    'sm:text-24',
+    'text-24',
     'leading-2',
     className
   )
 
   return (
-    <h4 className={classNames} ref={ref}>
+    <h1 className={classNames} ref={ref}>
       {children}
-    </h4>
+    </h1>
   )
 }
 
-export const AuthTitle = forwardRef(
-  AuthTitleComponent
+export const Title = forwardRef(
+  TitleComponent
 ) as React.ForwardRefExoticComponent<
   React.HtmlHTMLAttributes<HTMLHeadingElement> &
     React.RefAttributes<HTMLHeadingElement>

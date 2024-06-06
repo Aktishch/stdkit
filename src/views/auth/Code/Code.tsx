@@ -6,12 +6,12 @@ import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
 import { Placeholder } from '@components/Placeholder'
 import { Waved } from '@components/Waved'
-import { AuthSection } from '@views/auth/components/AuthSection'
-import { AuthBg } from '@views/auth/components/AuthBg'
-import { AuthContent } from '@views/auth/components/AuthContent'
-import { AuthLink } from '@views/auth/components/AuthLink'
-import { AuthTitle } from '@views/auth/components/AuthTitle'
-import { AuthSubtitle } from '@views/auth/components/AuthSubtitle'
+import { Section } from '@views/auth/components/Section'
+import { Bg } from '@views/auth/components/Bg'
+import { Content } from '@views/auth/components/Content'
+import { Anchor } from '@views/auth/components/Anchor'
+import { Subtitle } from '@views/auth/components/Subtitle'
+import { Text } from '@views/auth/components/Text'
 
 export const Code = (): React.JSX.Element => {
   const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -21,15 +21,15 @@ export const Code = (): React.JSX.Element => {
   }
 
   return (
-    <AuthSection>
-      <AuthBg />
-      <AuthContent>
-        <AuthTitle>Восстановление пароля</AuthTitle>
-        <AuthSubtitle>
+    <Section>
+      <Bg />
+      <Content>
+        <Subtitle>Восстановление пароля</Subtitle>
+        <Text>
           На ваш e-mail отправили код подтверждения,{' '}
           <br className="hidden sm:block" /> введите его нижу, чтобы изменить
           пароль
-        </AuthSubtitle>
+        </Text>
         <Form className="gap-6" action="/password" onSubmit={submitHandler}>
           <Input type="hidden" value="Код" name="theme" />
           <FormLabel data="input">
@@ -47,9 +47,9 @@ export const Code = (): React.JSX.Element => {
           </Button>
         </Form>
         <div className="flex items-center justify-center mt-8">
-          <AuthLink to="/code">Не получил код?</AuthLink>
+          <Anchor as="button">Не получил код?</Anchor>
         </div>
-      </AuthContent>
-    </AuthSection>
+      </Content>
+    </Section>
   )
 }

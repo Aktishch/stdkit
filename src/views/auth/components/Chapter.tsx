@@ -2,12 +2,12 @@ import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { Picture } from '@ui/Picture'
 
-interface AuthChapterProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+interface ChapterProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   src: string
 }
 
-const AuthChapterComponent = (
-  { className, children, src }: AuthChapterProps,
+const ChapterComponent = (
+  { className, children, src }: ChapterProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ): React.JSX.Element => {
   const classNames: string = classnames(
@@ -27,8 +27,8 @@ const AuthChapterComponent = (
   )
 }
 
-export const AuthChapter = forwardRef(
-  AuthChapterComponent
+export const Chapter = forwardRef(
+  ChapterComponent
 ) as React.ForwardRefExoticComponent<
-  AuthChapterProps & React.RefAttributes<HTMLDivElement>
+  ChapterProps & React.RefAttributes<HTMLDivElement>
 >

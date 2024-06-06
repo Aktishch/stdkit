@@ -4,7 +4,7 @@ import { Pack } from '@ui/Pack'
 import { Loader } from '@ui/Loader'
 import { Picture } from '@ui/Picture'
 
-const AuthBgComponent = (
+const BgComponent = (
   {},
   ref: React.ForwardedRef<HTMLDivElement>
 ): React.JSX.Element => {
@@ -25,6 +25,6 @@ const AuthBgComponent = (
   )
 }
 
-export const AuthBg = forwardRef(
-  AuthBgComponent
-) as React.ForwardRefExoticComponent<React.RefAttributes<HTMLDivElement>>
+export const Bg = forwardRef(BgComponent) as React.ForwardRefExoticComponent<
+  React.RefAttributes<HTMLDivElement>
+>

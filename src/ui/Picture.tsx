@@ -3,7 +3,6 @@ import classnames from 'classnames'
 
 interface PictureProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   webp?: string | null
-  data?: string | null
 }
 
 const PictureComponent = (
@@ -11,7 +10,6 @@ const PictureComponent = (
     webp = null,
     src,
     className,
-    data = null,
     draggable = false,
     loading,
     alt,
@@ -26,7 +24,6 @@ const PictureComponent = (
       <img
         className={classNames}
         loading={loading}
-        data-file={data}
         draggable={draggable}
         src={src}
         alt={alt}

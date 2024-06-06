@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-const AuthSectionComponent = (
+const SectionComponent = (
   { children }: React.PropsWithChildren,
   ref: React.ForwardedRef<HTMLElement>
 ): React.JSX.Element => {
@@ -21,8 +21,8 @@ const AuthSectionComponent = (
   )
 }
 
-export const AuthSection = forwardRef(
-  AuthSectionComponent
+export const Section = forwardRef(
+  SectionComponent
 ) as React.ForwardRefExoticComponent<
   React.HtmlHTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>
 >

@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { Icon } from '@ui/Icon'
 
-const AuthLogoComponent = (
+const LogoComponent = (
   { className }: React.HtmlHTMLAttributes<HTMLDivElement>,
   ref: React.ForwardedRef<HTMLDivElement>
 ): React.JSX.Element => {
@@ -28,7 +28,7 @@ const AuthLogoComponent = (
   )
 }
 
-export const AuthLogo = forwardRef(AuthLogoComponent) as (
+export const Logo = forwardRef(LogoComponent) as (
   { className }: React.HtmlHTMLAttributes<HTMLDivElement>,
   ref: React.ForwardedRef<HTMLDivElement>
 ) => React.JSX.Element

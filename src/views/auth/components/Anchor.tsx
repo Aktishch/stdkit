@@ -4,8 +4,8 @@ import classnames from 'classnames'
 import { Button, ButtonProps } from '@ui/Button'
 import { Waved } from '@components/Waved'
 
-const AuthLinkComponent = (
-  { children, to }: ButtonProps,
+const AnchorComponent = (
+  { as: Tag = Link, children, to }: ButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
 ): React.JSX.Element => {
   const classNames: string = classnames(
@@ -24,7 +24,7 @@ const AuthLinkComponent = (
   return (
     <Button
       className={classNames}
-      as={Link}
+      as={Tag}
       color="gray"
       size={null}
       variant={null}
@@ -37,8 +37,8 @@ const AuthLinkComponent = (
   )
 }
 
-export const AuthLink = forwardRef(
-  AuthLinkComponent
+export const Anchor = forwardRef(
+  AnchorComponent
 ) as React.ForwardRefExoticComponent<
   ButtonProps & React.RefAttributes<HTMLButtonElement | HTMLAnchorElement>
 >

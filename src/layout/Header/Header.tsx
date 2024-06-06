@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon } from '@ui/Icon'
+import { UserName } from '@ui/UserName'
+import { UserPost } from '@ui/UserPost'
 import {
   AccordionContext,
   Accordion,
@@ -9,8 +11,8 @@ import {
 } from '@components/Accordion'
 import { ThemeContext } from '@components/Theme'
 import { Waved } from '@components/Waved'
-import { HeaderLink } from '@layout/Header/components/HeaderLink'
-import { HeaderButton } from '@layout/Header/components/HeaderButton'
+import { HeaderLink } from '@layout/components/HeaderLink'
+import { HeaderButton } from '@layout/components/HeaderButton'
 
 interface HeaderProps {
   status: boolean
@@ -65,12 +67,8 @@ export const Header = ({ status }: HeaderProps): React.JSX.Element => {
         <AccordionContent className="absolute right-0 top-12 w-44">
           <div className="px-2 py-6 overflow-hidden bg-white shadow dark:bg-dark rounded-4">
             <div className="flex flex-col px-2 mb-4">
-              <span className="mb-3 font-normal truncate text-16 leading-1">
-                Щербаков Иван
-              </span>
-              <span className="font-normal truncate text-14 leading-1 opacity-40">
-                Куратор, веб-дизайн
-              </span>
+              <UserName>Щербаков Иван</UserName>
+              <UserPost>Куратор, веб-дизайн</UserPost>
             </div>
             <nav className="flex flex-col">
               <HeaderButton as={Link} to="/lk-tutor" id="settings">

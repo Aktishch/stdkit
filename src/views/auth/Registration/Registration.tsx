@@ -9,12 +9,12 @@ import { InputTel } from '@components/InputTel'
 import { Placeholder } from '@components/Placeholder'
 import { Eye } from '@components/Eye'
 import { Waved } from '@components/Waved'
-import { AuthSection } from '@views/auth/components/AuthSection'
-import { AuthBg } from '@views/auth/components/AuthBg'
-import { AuthContent } from '@views/auth/components/AuthContent'
-import { AuthLogo } from '@views/auth/components/AuthLogo'
-import { AuthChapter } from '@views/auth/components/AuthChapter'
-import { AuthLink } from '@views/auth/components/AuthLink'
+import { Section } from '@views/auth/components/Section'
+import { Bg } from '@views/auth/components/Bg'
+import { Content } from '@views/auth/components/Content'
+import { Logo } from '@views/auth/components/Logo'
+import { Chapter } from '@views/auth/components/Chapter'
+import { Anchor } from '@views/auth/components/Anchor'
 
 export const Registration = (): React.JSX.Element => {
   const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -24,16 +24,14 @@ export const Registration = (): React.JSX.Element => {
   }
 
   return (
-    <AuthSection>
-      <AuthBg />
-      <AuthContent>
-        <AuthLogo />
+    <Section>
+      <Bg />
+      <Content>
+        <Logo />
         <Form className="gap-7 md:gap-10" action="/" onSubmit={submitHandler}>
           <Input type="hidden" value="Регистрация" name="theme" />
           <div className="flex flex-col gap-6">
-            <AuthChapter src="img/pictures/chicken.svg">
-              Личная информация
-            </AuthChapter>
+            <Chapter src="img/pictures/chicken.svg">Личная информация</Chapter>
             <FormLabel data="input">
               <FormWrapper>
                 <Cover>
@@ -118,7 +116,7 @@ export const Registration = (): React.JSX.Element => {
             </FormLabel>
           </div>
           <div className="flex flex-col gap-6">
-            <AuthChapter src="img/pictures/school.svg">Университет</AuthChapter>
+            <Chapter src="img/pictures/school.svg">Университет</Chapter>
             <FormLabel data="input">
               <FormWrapper>
                 <Cover>
@@ -163,7 +161,7 @@ export const Registration = (): React.JSX.Element => {
             </FormLabel>
           </div>
           <div className="flex flex-col gap-6">
-            <AuthChapter src="img/pictures/locked.svg">Пароль</AuthChapter>
+            <Chapter src="img/pictures/locked.svg">Пароль</Chapter>
             <FormLabel data="input">
               <FormWrapper>
                 <Cover>
@@ -198,9 +196,9 @@ export const Registration = (): React.JSX.Element => {
           <span className="mr-2 font-normal text-14 sm:text-16 leading-1">
             Есть аккаунт?
           </span>
-          <AuthLink to="/">Войти</AuthLink>
+          <Anchor to="/">Войти</Anchor>
         </div>
-      </AuthContent>
-    </AuthSection>
+      </Content>
+    </Section>
   )
 }

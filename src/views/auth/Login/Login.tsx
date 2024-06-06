@@ -8,12 +8,12 @@ import { Button } from '@ui/Button'
 import { Placeholder } from '@components/Placeholder'
 import { Eye } from '@components/Eye'
 import { Waved } from '@components/Waved'
-import { AuthSection } from '@views/auth/components/AuthSection'
-import { AuthBg } from '@views/auth/components/AuthBg'
-import { AuthContent } from '@views/auth/components/AuthContent'
-import { AuthLogo } from '@views/auth/components/AuthLogo'
-import { AuthLink } from '@views/auth/components/AuthLink'
-import { LoginToggle } from '@views/auth/Login/components/LoginToggle'
+import { Section } from '@views/auth/components/Section'
+import { Bg } from '@views/auth/components/Bg'
+import { Content } from '@views/auth/components/Content'
+import { Logo } from '@views/auth/components/Logo'
+import { Anchor } from '@views/auth/components/Anchor'
+import { Toggle } from '@views/auth/components/Toggle'
 
 export const Login = (): React.JSX.Element => {
   const { value, on, off } = useToggle({ status: false })
@@ -25,10 +25,10 @@ export const Login = (): React.JSX.Element => {
   }
 
   return (
-    <AuthSection>
-      <AuthBg />
-      <AuthContent>
-        <AuthLogo />
+    <Section>
+      <Bg />
+      <Content>
+        <Logo />
         <Form className="gap-6" action="/lk-tutor" onSubmit={submitHandler}>
           <Input
             type="hidden"
@@ -36,18 +36,18 @@ export const Login = (): React.JSX.Element => {
             name="theme"
           />
           <div className="flex items-center justify-between border border-gray border-solid rounded-2 h-[52px] overflow-hidden">
-            <LoginToggle
+            <Toggle
               className={`${!value ? 'bg-primary text-white font-semibold pointer-events-none' : 'font-normal'}`}
               onClick={off}
             >
               Студент
-            </LoginToggle>
-            <LoginToggle
+            </Toggle>
+            <Toggle
               className={`${value ? 'bg-primary text-white font-semibold pointer-events-none' : 'font-normal'}`}
               onClick={on}
             >
               Куратор
-            </LoginToggle>
+            </Toggle>
           </div>
           <FormLabel data="input">
             <FormWrapper>
@@ -69,9 +69,9 @@ export const Login = (): React.JSX.Element => {
             </FormWrapper>
           </FormLabel>
           <div className="flex">
-            <AuthLink to="/recovery">
+            <Anchor to="/recovery">
               Забыл пароль? А голову свою не забыл?
-            </AuthLink>
+            </Anchor>
           </div>
           <Button type="submit">
             <Waved />
@@ -83,12 +83,12 @@ export const Login = (): React.JSX.Element => {
             <span className="mr-2 font-normal text-14 sm:text-16 leading-1">
               Нет аккаунта?
             </span>
-            <AuthLink to="/registration">Зарегистрируйтесь</AuthLink>
+            <Anchor to="/registration">Зарегистрируйтесь</Anchor>
           </div>
         ) : (
           ''
         )}
-      </AuthContent>
-    </AuthSection>
+      </Content>
+    </Section>
   )
 }

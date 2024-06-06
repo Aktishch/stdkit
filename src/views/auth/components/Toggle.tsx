@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { Waved } from '@components/Waved'
 
-const LoginToggleComponent = (
+const ToggleComponent = (
   {
     className,
     onClick = undefined,
@@ -37,8 +37,8 @@ const LoginToggleComponent = (
   )
 }
 
-export const LoginToggle = forwardRef(
-  LoginToggleComponent
+export const Toggle = forwardRef(
+  ToggleComponent
 ) as React.ForwardRefExoticComponent<
   React.HtmlHTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>
 >
