@@ -1,7 +1,10 @@
 import React from 'react'
 import { validation } from '@utils/validation'
 import { useToggle } from '@hooks/useToggle'
-import { Form, FormLabel, FormWrapper, FormError } from '@ui/Form'
+import { Form } from '@ui/Form'
+import { Label } from '@ui/Label'
+import { Wrapper } from '@ui/Wrapper'
+import { Error } from '@ui/Error'
 import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -49,25 +52,25 @@ export const Login = (): React.JSX.Element => {
               Куратор
             </Toggle>
           </div>
-          <FormLabel data="input">
-            <FormWrapper>
+          <Label data="input">
+            <Wrapper>
               <Cover>
                 <Input data="" type="text" name="login" />
               </Cover>
               <Placeholder>Логин</Placeholder>
-              <FormError>Введите логин</FormError>
-            </FormWrapper>
-          </FormLabel>
-          <FormLabel data="input">
-            <FormWrapper>
+              <Error>Введите логин</Error>
+            </Wrapper>
+          </Label>
+          <Label data="input">
+            <Wrapper>
               <Cover>
                 <Input data="password" type="password" name="password" />
               </Cover>
               <Placeholder>Пароль</Placeholder>
-              <FormError>Минимальная длинна пароля 8 символов</FormError>
+              <Error>Минимальная длинна пароля 8 символов</Error>
               <Eye />
-            </FormWrapper>
-          </FormLabel>
+            </Wrapper>
+          </Label>
           <div className="flex">
             <Anchor to="/recovery">
               Забыл пароль? А голову свою не забыл?

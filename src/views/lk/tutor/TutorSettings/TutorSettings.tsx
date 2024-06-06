@@ -2,7 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { onInputName } from '@utils/inputs'
 import { validation } from '@utils/validation'
-import { Form, FormLabel, FormWrapper, FormError } from '@ui/Form'
+import { Form } from '@ui/Form'
+import { Label } from '@ui/Label'
+import { Wrapper } from '@ui/Wrapper'
+import { Error } from '@ui/Error'
 import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -15,6 +18,7 @@ import { InputTel } from '@components/InputTel'
 import { Placeholder } from '@components/Placeholder'
 import { Waved } from '@components/Waved'
 import { LkSidebar } from '@views/lk/components/LkSidebar'
+import { LkButton } from '@views/lk/components/LkButton'
 import { DownloadImage } from '@views/lk/components/DownloadImage'
 
 export const TutorSettings = (): React.JSX.Element => {
@@ -36,28 +40,23 @@ export const TutorSettings = (): React.JSX.Element => {
             </div>
           </div>
           <nav className="flex flex-col">
-            <Button
-              className="justify-start px-4 font-normal text-black"
-              color="gray"
-              variant={null}
-              as={Link}
-              to="/lk-tutor"
-            >
-              <Waved variant="dark" />
-              <Icon className="mr-4 text-primary text-24" id="settings" />
+            <LkButton id="settings" to="/lk-tutor">
               Настройки профиля
-            </Button>
-            <Button
-              className="justify-start px-4 font-normal text-black"
-              color="gray"
-              variant={null}
-              as={Link}
-              to="/lk-tutor"
-            >
-              <Waved variant="dark" />
-              <Icon className="mr-4 text-primary text-24" id="lock" />
+            </LkButton>
+            <LkButton id="lock" to="/lk-tutor">
               Изменить пароль
-            </Button>
+            </LkButton>
+            <Form className="mt-4" action="/">
+              <LkButton
+                as="button"
+                type="submit"
+                exit={true}
+                id="arrow-back"
+                to="/lk-tutor"
+              >
+                Выйти
+              </LkButton>
+            </Form>
           </nav>
         </LkSidebar>
         <div className="w-full lg:max-w-[420px]">
@@ -66,8 +65,8 @@ export const TutorSettings = (): React.JSX.Element => {
             <Input type="hidden" value="Личные данные" name="theme" />
             <DownloadImage className="mb-6 sm:mb-9" />
             <div className="flex flex-col gap-6">
-              <FormLabel data="input">
-                <FormWrapper>
+              <Label data="input">
+                <Wrapper>
                   <Cover>
                     <Input
                       data="name"
@@ -77,11 +76,11 @@ export const TutorSettings = (): React.JSX.Element => {
                     />
                   </Cover>
                   <Placeholder>Фамилия</Placeholder>
-                  <FormError>Введите фамилию</FormError>
-                </FormWrapper>
-              </FormLabel>
-              <FormLabel data="input">
-                <FormWrapper>
+                  <Error>Введите фамилию</Error>
+                </Wrapper>
+              </Label>
+              <Label data="input">
+                <Wrapper>
                   <Cover>
                     <Input
                       data="name"
@@ -91,11 +90,11 @@ export const TutorSettings = (): React.JSX.Element => {
                     />
                   </Cover>
                   <Placeholder>Имя</Placeholder>
-                  <FormError>Введите имя</FormError>
-                </FormWrapper>
-              </FormLabel>
-              <FormLabel data="input">
-                <FormWrapper>
+                  <Error>Введите имя</Error>
+                </Wrapper>
+              </Label>
+              <Label data="input">
+                <Wrapper>
                   <Cover>
                     <Input
                       data="name"
@@ -105,36 +104,36 @@ export const TutorSettings = (): React.JSX.Element => {
                     />
                   </Cover>
                   <Placeholder>Отчество</Placeholder>
-                  <FormError>Введите отчество</FormError>
-                </FormWrapper>
-              </FormLabel>
-              <FormLabel data="input">
-                <FormWrapper>
+                  <Error>Введите отчество</Error>
+                </Wrapper>
+              </Label>
+              <Label data="input">
+                <Wrapper>
                   <Cover>
                     <Input data="name" type="text" name="work" />
                   </Cover>
                   <Placeholder>Должность</Placeholder>
-                  <FormError>Введите должность</FormError>
-                </FormWrapper>
-              </FormLabel>
-              <FormLabel data="input">
-                <FormWrapper>
+                  <Error>Введите должность</Error>
+                </Wrapper>
+              </Label>
+              <Label data="input">
+                <Wrapper>
                   <Cover>
                     <InputTel />
                   </Cover>
                   <Placeholder>Телефон</Placeholder>
-                  <FormError>Введите телефон</FormError>
-                </FormWrapper>
-              </FormLabel>
-              <FormLabel data="input">
-                <FormWrapper>
+                  <Error>Введите телефон</Error>
+                </Wrapper>
+              </Label>
+              <Label data="input">
+                <Wrapper>
                   <Cover>
                     <Input data="email" type="text" name="email" />
                   </Cover>
                   <Placeholder>E-Mail</Placeholder>
-                  <FormError>Некорректный адрес</FormError>
-                </FormWrapper>
-              </FormLabel>
+                  <Error>Некорректный адрес</Error>
+                </Wrapper>
+              </Label>
               <Button className="w-full max-w-60" type="submit">
                 <Waved />
                 Сохранить изменения

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
+import classnames from 'classnames'
 import { Button, ButtonProps } from '@ui/Button'
 import { Icon } from '@ui/Icon'
-import classnames from 'classnames'
 import { Waved } from '@components/Waved'
 
 interface HeaderButtonProps extends ButtonProps {
@@ -13,6 +13,7 @@ const HeaderButtonComponent = (
     as: Tag = 'button',
     color = 'primary',
     className,
+    type,
     to,
     id,
     onClick = undefined,
@@ -29,6 +30,7 @@ const HeaderButtonComponent = (
       as={Tag}
       size="sm"
       variant={null}
+      type={type}
       to={to}
       ref={ref}
       onClick={onClick}

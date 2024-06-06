@@ -16,8 +16,8 @@ const BgComponent = (
         <Loader />
         <Picture
           className="image"
-          webp="img/pictures/authorization-bg.webp"
-          src="img/pictures/authorization-bg.jpg"
+          webp="/img/pictures/authorization-bg.webp"
+          src="/img/pictures/authorization-bg.jpg"
           loading="lazy"
         />
       </Pack>

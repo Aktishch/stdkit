@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { useDownloadImage } from '@hooks/useDownloadImage'
-import { FormError } from '@ui/Form'
+import { Error } from '@ui/Error'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
 import { Pack } from '@ui/Pack'
@@ -36,7 +36,7 @@ const DownloadImageComponent = (
       <div className="relative">
         <Button
           as="label"
-          className={`text-black text-14 sm:text-16 ${value ? 'pointer-events-none opacity-50' : ''}`}
+          className={`text-black dark:text-white text-14 sm:text-16 ${value ? 'pointer-events-none opacity-50' : ''}`}
           color="gray"
           variant="contur"
         >
@@ -50,7 +50,7 @@ const DownloadImageComponent = (
           />
           {value ? 'Загружено' : 'Загрузить новое'}
         </Button>
-        <FormError ref={error}>Только изображения!</FormError>
+        <Error ref={error}>Только изображения!</Error>
       </div>
       <Button
         className="w-[52px] min-w-[52px] h-[52px] rounded-2"
