@@ -1,8 +1,4 @@
-type Media = {
-  [index: string]: number
-}
-
-export const media: Media = {
+export const media = {
   xs: 459.98,
   sm: 575.98,
   md: 767.98,
