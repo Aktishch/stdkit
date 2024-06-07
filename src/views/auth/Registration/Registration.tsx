@@ -1,7 +1,11 @@
 import React from 'react'
 import { onInputName, onInputNumber } from '@utils/inputs'
 import { validation } from '@utils/validation'
-import { Form, FormLabel, FormWrapper, FormError, FormIcon } from '@ui/Form'
+import { Form } from '@ui/Form'
+import { Label } from '@ui/Label'
+import { Wrapper } from '@ui/Wrapper'
+import { Error } from '@ui/Error'
+import { InputIcon } from '@ui/InputIcon'
 import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -31,18 +35,18 @@ export const Registration = (): React.JSX.Element => {
         <Form className="gap-7 md:gap-10" action="/" onSubmit={submitHandler}>
           <Input type="hidden" value="Регистрация" name="theme" />
           <div className="flex flex-col gap-6">
-            <Chapter src="img/pictures/chicken.svg">Личная информация</Chapter>
-            <FormLabel data="input">
-              <FormWrapper>
+            <Chapter src="/img/pictures/chicken.svg">Личная информация</Chapter>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input data="" type="text" name="login" />
                 </Cover>
                 <Placeholder>Логин</Placeholder>
-                <FormError>Введите логин</FormError>
-              </FormWrapper>
-            </FormLabel>
-            <FormLabel data="input">
-              <FormWrapper>
+                <Error>Введите логин</Error>
+              </Wrapper>
+            </Label>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input
                     data="name"
@@ -52,11 +56,11 @@ export const Registration = (): React.JSX.Element => {
                   />
                 </Cover>
                 <Placeholder>Фамилия</Placeholder>
-                <FormError>Введите фамилию</FormError>
-              </FormWrapper>
-            </FormLabel>
-            <FormLabel data="input">
-              <FormWrapper>
+                <Error>Введите фамилию</Error>
+              </Wrapper>
+            </Label>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input
                     data="name"
@@ -66,11 +70,11 @@ export const Registration = (): React.JSX.Element => {
                   />
                 </Cover>
                 <Placeholder>Имя</Placeholder>
-                <FormError>Введите имя</FormError>
-              </FormWrapper>
-            </FormLabel>
-            <FormLabel data="input">
-              <FormWrapper>
+                <Error>Введите имя</Error>
+              </Wrapper>
+            </Label>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input
                     data="name"
@@ -80,11 +84,11 @@ export const Registration = (): React.JSX.Element => {
                   />
                 </Cover>
                 <Placeholder>Отчество</Placeholder>
-                <FormError>Введите отчество</FormError>
-              </FormWrapper>
-            </FormLabel>
-            <FormLabel data="input">
-              <FormWrapper>
+                <Error>Введите отчество</Error>
+              </Wrapper>
+            </Label>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input data="select" tag="select" name="activity">
                     <option value="empty" hidden>
@@ -97,46 +101,46 @@ export const Registration = (): React.JSX.Element => {
                   </Input>
                 </Cover>
                 <Placeholder>Вид деятельности</Placeholder>
-                <FormError>Укажите вид деятельности</FormError>
-                <FormIcon
+                <Error>Укажите вид деятельности</Error>
+                <InputIcon
                   className="text-black opacity-50 text-14"
                   id="arrow-right"
                   right={true}
-                ></FormIcon>
-              </FormWrapper>
-            </FormLabel>
-            <FormLabel data="input">
-              <FormWrapper>
+                ></InputIcon>
+              </Wrapper>
+            </Label>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <InputTel />
                 </Cover>
                 <Placeholder>Телефон</Placeholder>
-                <FormError>Введите телефон</FormError>
-              </FormWrapper>
-            </FormLabel>
+                <Error>Введите телефон</Error>
+              </Wrapper>
+            </Label>
           </div>
           <div className="flex flex-col gap-6">
-            <Chapter src="img/pictures/school.svg">Университет</Chapter>
-            <FormLabel data="input">
-              <FormWrapper>
+            <Chapter src="/img/pictures/school.svg">Университет</Chapter>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input data="" type="text" name="father-name" />
                 </Cover>
                 <Placeholder>Полное название ВУЗа</Placeholder>
-                <FormError>Укажите ВУЗ</FormError>
-              </FormWrapper>
-            </FormLabel>
-            <FormLabel data="input">
-              <FormWrapper>
+                <Error>Укажите ВУЗ</Error>
+              </Wrapper>
+            </Label>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input data="" type="text" name="father-name" />
                 </Cover>
                 <Placeholder>Факультет</Placeholder>
-                <FormError>Укажите факультет</FormError>
-              </FormWrapper>
-            </FormLabel>
-            <FormLabel data="input">
-              <FormWrapper>
+                <Error>Укажите факультет</Error>
+              </Wrapper>
+            </Label>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input
                     data=""
@@ -147,33 +151,33 @@ export const Registration = (): React.JSX.Element => {
                   />
                 </Cover>
                 <Placeholder>Курс</Placeholder>
-                <FormError>Укажите курс</FormError>
-              </FormWrapper>
-            </FormLabel>
-            <FormLabel data="input">
-              <FormWrapper>
+                <Error>Укажите курс</Error>
+              </Wrapper>
+            </Label>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input data="" type="text" name="father-name" />
                 </Cover>
                 <Placeholder>Группа</Placeholder>
-                <FormError>Укажите группу</FormError>
-              </FormWrapper>
-            </FormLabel>
+                <Error>Укажите группу</Error>
+              </Wrapper>
+            </Label>
           </div>
           <div className="flex flex-col gap-6">
-            <Chapter src="img/pictures/locked.svg">Пароль</Chapter>
-            <FormLabel data="input">
-              <FormWrapper>
+            <Chapter src="/img/pictures/locked.svg">Пароль</Chapter>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input data="password" type="password" name="password" />
                 </Cover>
                 <Placeholder>Пароль</Placeholder>
-                <FormError>Минимальная длинна пароля 8 символов</FormError>
+                <Error>Минимальная длинна пароля 8 символов</Error>
                 <Eye />
-              </FormWrapper>
-            </FormLabel>
-            <FormLabel data="input">
-              <FormWrapper>
+              </Wrapper>
+            </Label>
+            <Label data="input">
+              <Wrapper>
                 <Cover>
                   <Input
                     data="password"
@@ -182,10 +186,10 @@ export const Registration = (): React.JSX.Element => {
                   />
                 </Cover>
                 <Placeholder>Повторите пароль</Placeholder>
-                <FormError>Минимальная длинна пароля 8 символов</FormError>
+                <Error>Минимальная длинна пароля 8 символов</Error>
                 <Eye />
-              </FormWrapper>
-            </FormLabel>
+              </Wrapper>
+            </Label>
           </div>
           <Button type="submit">
             <Waved />

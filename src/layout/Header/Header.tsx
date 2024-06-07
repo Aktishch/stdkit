@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon } from '@ui/Icon'
+import { Form } from '@ui/Form'
 import { UserName } from '@ui/UserName'
 import { UserPost } from '@ui/UserPost'
 import {
@@ -11,8 +12,8 @@ import {
 } from '@components/Accordion'
 import { ThemeContext } from '@components/Theme'
 import { Waved } from '@components/Waved'
-import { HeaderLink } from '@layout/components/HeaderLink'
-import { HeaderButton } from '@layout/components/HeaderButton'
+import { HeaderLink } from '@layout/Header/HeaderLink'
+import { HeaderButton } from '@layout/Header/HeaderButton'
 
 interface HeaderProps {
   status: boolean
@@ -82,9 +83,11 @@ export const Header = ({ status }: HeaderProps): React.JSX.Element => {
                   </ThemeContext.Consumer>
                 </span>
               </HeaderButton>
-              <HeaderButton color="red" as={Link} to="/" id="arrow-back">
-                Выйти
-              </HeaderButton>
+              <Form action="/">
+                <HeaderButton color="red" type="submit" id="arrow-back">
+                  Выйти
+                </HeaderButton>
+              </Form>
             </nav>
           </div>
         </AccordionContent>

@@ -1,6 +1,9 @@
 import React from 'react'
 import { validation } from '@utils/validation'
-import { Form, FormLabel, FormWrapper, FormError } from '@ui/Form'
+import { Form } from '@ui/Form'
+import { Label } from '@ui/Label'
+import { Wrapper } from '@ui/Wrapper'
+import { Error } from '@ui/Error'
 import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -32,15 +35,15 @@ export const Code = (): React.JSX.Element => {
         </Text>
         <Form className="gap-6" action="/password" onSubmit={submitHandler}>
           <Input type="hidden" value="Код" name="theme" />
-          <FormLabel data="input">
-            <FormWrapper>
+          <Label data="input">
+            <Wrapper>
               <Cover>
                 <Input data="" type="text" name="code" />
               </Cover>
               <Placeholder>Код</Placeholder>
-              <FormError>Введите Код</FormError>
-            </FormWrapper>
-          </FormLabel>
+              <Error>Введите Код</Error>
+            </Wrapper>
+          </Label>
           <Button type="submit">
             <Waved />
             Восстановить

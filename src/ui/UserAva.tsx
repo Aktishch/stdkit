@@ -12,8 +12,8 @@ interface AvaProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
 const UserAvaComponent = (
   {
     className,
-    webp = 'img/pictures/user.webp',
-    src = 'img/pictures/user.jpg',
+    webp = '/img/pictures/user.webp',
+    src = '/img/pictures/user.jpg',
   }: AvaProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ): React.JSX.Element => {

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import classnames from 'classnames'
-import { FormIcon } from '@ui/Form'
+import { InputIcon } from '@ui/InputIcon'
 
 interface PasswordProps {
   className?: string
@@ -48,7 +48,7 @@ export const Eye = ({ className }: PasswordProps): React.JSX.Element => {
   }, [])
 
   return (
-    <FormIcon
+    <InputIcon
       className={classNames}
       id={id}
       right={true}

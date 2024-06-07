@@ -14,7 +14,7 @@ const IconComponent = (
 
   return (
     <svg className={classNames} ref={ref}>
-      <use xlinkHref={`img/icons.svg#${id}`} />
+      <use xlinkHref={`/img/icons.svg#${id}`} />
     </svg>
   )
 }
