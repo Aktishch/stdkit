@@ -7,6 +7,7 @@ import { Error } from '@ui/Error'
 import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
+import { InputWrapper } from '@components/InputCover'
 import { Placeholder } from '@components/Placeholder'
 import { Eye } from '@components/Eye'
 import { Waved } from '@components/Waved'
@@ -135,7 +136,8 @@ export const Login = (): React.JSX.Element => {
               Куратор
             </Toggle>
           </div>
-          <Label>
+          <InputWrapper placeholder="sdasdasdasdas"></InputWrapper>
+          {/* <Label>
             <Wrapper>
               <Cover>
                 <Input
@@ -165,7 +167,7 @@ export const Login = (): React.JSX.Element => {
               {error.password !== '' ? <Error>{error.password}</Error> : ''}
               <Eye />
             </Wrapper>
-          </Label>
+          </Label> */}
           <div className="flex">
             <Anchor to="/recovery">
               Забыл пароль? А голову свою не забыл?
