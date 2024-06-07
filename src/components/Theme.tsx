@@ -8,9 +8,7 @@ interface ThemeContextProps {
 
 export const ThemeContext = createContext<ThemeContextProps>({})
 
-export const Theme = ({
-  children,
-}: React.PropsWithChildren): React.JSX.Element => {
+export const Theme = ({ children }: React.PropsWithChildren) => {
   const { value, toggle } = useToggle({
     status:
       localStorage.getItem('theme') && localStorage.getItem('theme') === 'dark'

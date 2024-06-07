@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 import { useDownloadImage } from '@hooks/useDownloadImage'
 import { Error } from '@ui/Error'
 import { Input } from '@ui/Input'
@@ -15,7 +15,7 @@ const DownloadImageComponent = (
 ): React.JSX.Element => {
   const { inputFile, image, remove, error, value } = useDownloadImage()
 
-  const classNames: string = classnames(
+  const classNames: string = twMerge(
     'flex',
     'items-center',
     'justify-between',
@@ -27,16 +27,19 @@ const DownloadImageComponent = (
 
   return (
     <div className={classNames} ref={ref}>
-      <Pack className="bg-primary w-[52px] min-w-[52px] rounded-max" size="box">
+      <Pack
+        className="bg-primary w-[52px] min-w-[52px] rounded-full"
+        size="box"
+      >
         <div className="absolute inset-0 flex items-center justify-center">
-          <Icon className="text-white text-34" id="user" />
+          <Icon className="text-4xl text-white" id="user" />
         </div>
         <Picture className="image" src="" ref={image} />
       </Pack>
       <div className="relative">
         <Button
           as="label"
-          className={`text-black dark:text-white text-14 sm:text-16 ${value ? 'pointer-events-none opacity-50' : ''}`}
+          className={`text-black dark:text-white text-sm sm:text-base ${value ? 'pointer-events-none opacity-50' : ''}`}
           color="gray"
           variant="contur"
         >
@@ -53,14 +56,14 @@ const DownloadImageComponent = (
         <Error ref={error}>Только изображения!</Error>
       </div>
       <Button
-        className="w-[52px] min-w-[52px] h-[52px] rounded-2"
+        className="w-[52px] min-w-[52px] h-[52px] rounded-lg"
         color="grey"
         disabled={!value}
         size={null}
         ref={remove}
       >
         <Waved variant="dark" />
-        <Icon className="text-red text-24" id="trash" />
+        <Icon className="text-2xl text-red" id="trash" />
       </Button>
     </div>
   )

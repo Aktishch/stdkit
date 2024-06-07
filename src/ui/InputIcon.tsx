@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 import { Icon } from '@ui/Icon'
 
 interface InputIconProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
@@ -8,11 +8,14 @@ interface InputIconProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   pointer?: boolean
 }
 
-const InputIconComponent = (
-  { id, right = false, pointer = false, className }: InputIconProps,
-  ref: React.ForwardedRef<HTMLDivElement>
-): React.JSX.Element => {
-  const classNames: string = classnames(
+export const InputIcon = ({
+  id,
+  right = false,
+  pointer = false,
+  className,
+  onClick = undefined,
+}: InputIconProps) => {
+  const style: string = twMerge(
     'form-icon',
     right ? 'form-icon-right' : 'form-icon-left',
     pointer ? 'form-icon-pointer' : null,
@@ -20,14 +23,8 @@ const InputIconComponent = (
   )
 
   return (
-    <div className={classNames} ref={ref}>
+    <div className={style} onClick={onClick}>
       <Icon id={id} />
     </div>
   )
 }
-
-export const InputIcon = forwardRef(
-  InputIconComponent
-) as React.ForwardRefExoticComponent<
-  InputIconProps & React.RefAttributes<HTMLDivElement>
->

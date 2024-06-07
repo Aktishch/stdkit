@@ -6,7 +6,7 @@ export const PreloaderComponent = (
 ): React.JSX.Element => {
   return (
     <div
-      className="fixed inset-0 z-10 flex flex-col items-center justify-center bg-white duration-5"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center duration-500 bg-white"
       ref={ref}
     >
       <div className="preloader">

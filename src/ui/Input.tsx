@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 const inputSizes = {
   xs: 'input-xs',
@@ -10,11 +10,31 @@ const inputSizes = {
   xxl: 'input-xxl',
 }
 
-type Extension = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
+type Extension = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'size' | 'height' | 'onInput' | 'onKeyDown' | 'onPaste'
+>
 
 export interface InputProps extends Extension {
   tag?: string | null
   size?: keyof typeof inputSizes | null
+  height?: string | null
+  options?: { value: string; text: string }[] | undefined
+  onInput?:
+    | React.FormEventHandler<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    | undefined
+  onKeyDown?:
+    | React.FormEventHandler<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    | undefined
+  onPaste?:
+    | React.FormEventHandler<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    | undefined
 }
 
 export const Input = ({
@@ -24,21 +44,23 @@ export const Input = ({
   value,
   name,
   className,
+  height,
   maxLength,
   onInput = undefined,
   onKeyDown = undefined,
   onPaste = undefined,
-  children,
+  options,
 }: InputProps) => {
-  const classNames: string = classnames(
+  const style: string = twMerge(
     'input',
     size ? inputSizes[size] : null,
+    tag === 'textarea' && height ? height : null,
     className
   )
 
   return tag === 'input' ? (
     <input
-      className={type === 'hidden' ? '' : classNames}
+      className={type === 'hidden' ? '' : style}
       type={type}
       defaultValue={value}
       maxLength={maxLength}
@@ -50,14 +72,30 @@ export const Input = ({
     />
   ) : tag === 'textarea' ? (
     <textarea
-      className={classNames}
+      className={style}
       defaultValue={value}
       maxLength={maxLength}
       name={name}
+      onInput={onInput}
+      onKeyDown={onKeyDown}
+      onPaste={onPaste}
     />
   ) : (
-    <select className={classNames} name={name}>
-      {children}
+    <select
+      className={style}
+      defaultValue={value}
+      name={name}
+      onInput={onInput}
+      onKeyDown={onKeyDown}
+      onPaste={onPaste}
+    >
+      {options !== undefined
+        ? options.map((item, index) => (
+            <option value={item.value} hidden={index === 0} key={index}>
+              {item.text}
+            </option>
+          ))
+        : ''}
     </select>
   )
 }

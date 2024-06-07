@@ -1,5 +1,5 @@
-import React, { ElementType, forwardRef } from 'react'
-import classnames from 'classnames'
+import React, { ElementType } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 const buttonColors = {
   primary: 'btn-primary',
@@ -37,24 +37,21 @@ export interface ButtonProps extends Extension {
   to?: string | null
 }
 
-const ButtonComponent = (
-  {
-    as: Tag = 'button',
-    color = 'primary',
-    size = 'lg',
-    variant = 'fill',
-    className,
-    type = 'button',
-    href,
-    target = false,
-    to,
-    disabled = false,
-    onClick = undefined,
-    children,
-  }: ButtonProps,
-  ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
-): React.JSX.Element => {
-  const classNames: string = classnames(
+export const Button = ({
+  as: Tag = 'button',
+  color = 'primary',
+  size = 'lg',
+  variant = 'fill',
+  className,
+  type = 'button',
+  href,
+  target = false,
+  to,
+  disabled = false,
+  onClick = undefined,
+  children,
+}: ButtonProps) => {
+  const style: string = twMerge(
     'btn',
     color ? buttonColors[color] : null,
     size ? buttonSizes[size] : null,
@@ -64,7 +61,7 @@ const ButtonComponent = (
 
   return (
     <Tag
-      className={classNames}
+      className={style}
       type={Tag === 'button' ? type : null}
       href={href}
       target={target ? '_blank' : null}
@@ -72,15 +69,8 @@ const ButtonComponent = (
       disabled={Tag === 'button' ? disabled : null}
       draggable={false}
       onClick={onClick}
-      ref={ref}
     >
       {children}
     </Tag>
   )
 }
-
-export const Button = forwardRef(
-  ButtonComponent
-) as React.ForwardRefExoticComponent<
-  ButtonProps & React.RefAttributes<HTMLElement>
->

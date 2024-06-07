@@ -1,24 +1,17 @@
-import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 interface IconProps {
   id: string
   className?: string
 }
 
-const IconComponent = (
-  { id, className }: IconProps,
-  ref: React.ForwardedRef<SVGSVGElement>
-): React.JSX.Element => {
-  const classNames: string = classnames('icon', className)
+export const Icon = ({ id, className }: IconProps) => {
+  const style: string = twMerge('icon', className)
 
   return (
-    <svg className={classNames} ref={ref}>
+    <svg className={style}>
       <use xlinkHref={`/img/icons.svg#${id}`} />
     </svg>
   )
 }
-
-export const Icon = forwardRef(
-  IconComponent
-) as React.ForwardRefExoticComponent<IconProps & React.RefAttributes<null>>

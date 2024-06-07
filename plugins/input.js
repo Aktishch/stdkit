@@ -66,20 +66,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
 
   matchComponents(
     {
-      'input-cover': (radius) => {
-        return {
-          '--input-radius': radius,
-        }
-      },
-    },
-
-    {
-      values: theme('borderRadius'),
-    }
-  )
-
-  matchComponents(
-    {
       input: (size) => {
         return {
           '--input-size': size,

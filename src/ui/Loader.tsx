@@ -1,19 +1,17 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 import { Icon } from '@ui/Icon'
 
-const LoaderComponent = (
-  {},
-  ref: React.ForwardedRef<HTMLDivElement>
-): React.JSX.Element => {
+export const Loader = ({
+  className,
+}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+  const style: string = twMerge('loader', className)
+
   return (
-    <div className="loader" ref={ref}>
+    <div className={style}>
       <span className="loader-progress">
         <Icon className="loader-icon" id="loader" />
       </span>
     </div>
   )
 }
-
-export const Loader = forwardRef(
-  LoaderComponent
-) as React.ForwardRefExoticComponent<React.RefAttributes<HTMLDivElement>>

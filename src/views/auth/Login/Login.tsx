@@ -1,177 +1,147 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useToggle } from '@hooks/useToggle'
 import { Form } from '@ui/Form'
-import { Label } from '@ui/Label'
-import { Wrapper } from '@ui/Wrapper'
-import { Error } from '@ui/Error'
-import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { InputWrapper } from '@components/InputCover'
-import { Placeholder } from '@components/Placeholder'
-import { Eye } from '@components/Eye'
+import { Error } from '@ui/Error'
+import { InputDefault } from '@components/InputDefault'
+import { InputPassword } from '@components/InputPassword'
 import { Waved } from '@components/Waved'
-import { Section } from '@views/auth/components/Section'
-import { Bg } from '@views/auth/components/Bg'
-import { Content } from '@views/auth/components/Content'
-import { Logo } from '@views/auth/components/Logo'
-import { Anchor } from '@views/auth/components/Anchor'
-import { Toggle } from '@views/auth/components/Toggle'
+import { AuthSection } from '@views/auth/components/AuthSection'
+import { AuthBg } from '@views/auth/components/AuthBg'
+import { AuthContent } from '@views/auth/components/AuthContent'
+import { AuthLogo } from '@views/auth/components/AuthLogo'
+import { AuthLink } from '@views/auth/components/AuthLink'
+import { LoginToggle } from '@views/auth/Login/components/LoginToggle'
 
-export const Login = (): React.JSX.Element => {
+export const Login = () => {
   const { value, on, off } = useToggle({ status: false })
 
-  const [data, setData] = useState({
-    login: '',
-    password: '',
-  })
+  // const [data, setData] = useState({
+  //   login: '',
+  //   password: '',
+  // })
 
-  const [error, setError] = useState({
-    login: '',
-    password: '',
-  })
+  // const [error, setError] = useState({
+  //   login: '',
+  //   password: '',
+  // })
 
-  const [validate, setValidate] = useState({
-    login: false,
-    password: false,
-  })
+  // const [validate, setValidate] = useState({
+  //   login: false,
+  //   password: false,
+  // })
 
-  const setState = ({
-    name,
-    text,
-    status,
-  }: {
-    name: string
-    text: string
-    status: boolean
-  }): void => {
-    setError((prevState) => ({
-      ...prevState,
-      [name]: text,
-    }))
+  // const setState = ({
+  //   name,
+  //   text,
+  //   status,
+  // }: {
+  //   name: string
+  //   text: string
+  //   status: boolean
+  // }): void => {
+  //   setError((prevState) => ({
+  //     ...prevState,
+  //     [name]: text,
+  //   }))
 
-    setValidate((prevState) => ({
-      ...prevState,
-      [name]: status,
-    }))
-  }
+  //   setValidate((prevState) => ({
+  //     ...prevState,
+  //     [name]: status,
+  //   }))
+  // }
 
-  const inputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
-    const { name, value } = event.target as HTMLInputElement
+  // const inputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
+  //   const { name, value } = event.target as HTMLInputElement
 
-    setData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }))
+  //   setData((prevState) => ({
+  //     ...prevState,
+  //     [name]: value,
+  //   }))
 
-    switch (name) {
-      case 'login': {
-        switch (value.length === 0) {
-          case true: {
-            setState({ name: name, text: 'Введите логин', status: false })
-            break
-          }
+  //   switch (name) {
+  //     case 'login': {
+  //       switch (value.length === 0) {
+  //         case true: {
+  //           setState({ name: name, text: 'Введите логин', status: false })
+  //           break
+  //         }
 
-          case false: {
-            setState({ name: name, text: '', status: true })
-            break
-          }
-        }
+  //         case false: {
+  //           setState({ name: name, text: '', status: true })
+  //           break
+  //         }
+  //       }
 
-        break
-      }
+  //       break
+  //     }
 
-      case 'password': {
-        switch (value.length < 8) {
-          case true: {
-            setState({
-              name: name,
-              text: 'Минимальная длинна пароля 8 символов',
-              status: false,
-            })
-            break
-          }
+  //     case 'password': {
+  //       switch (value.length < 8) {
+  //         case true: {
+  //           setState({
+  //             name: name,
+  //             text: 'Минимальная длинна пароля 8 символов',
+  //             status: false,
+  //           })
+  //           break
+  //         }
 
-          case false: {
-            setState({ name: name, text: '', status: true })
-            break
-          }
-        }
+  //         case false: {
+  //           setState({ name: name, text: '', status: true })
+  //           break
+  //         }
+  //       }
 
-        break
-      }
-    }
-  }
+  //       break
+  //     }
+  //   }
+  // }
 
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    const validation: boolean = Object.values(validate).every(
-      (item) => item === true
-    )
+  // const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+  //   const validation: boolean = Object.values(validate).every(
+  //     (item) => item === true
+  //   )
 
-    if (!validation) event.preventDefault()
-  }
+  //   if (!validation) event.preventDefault()
+  // }
 
   return (
-    <Section>
-      <Bg />
-      <Content>
-        <Logo />
-        <Form className="gap-6" action="/lk-tutor" onSubmit={submitHandler}>
+    <AuthSection>
+      <AuthBg />
+      <AuthContent>
+        <AuthLogo />
+        <Form className="gap-6" action="/lk-tutor">
           <Input
             type="hidden"
             value={`${value ? 'Куратор' : 'Студент'}`}
             name="theme"
           />
-          <div className="flex items-center justify-between border border-gray border-solid rounded-2 h-[52px] overflow-hidden">
-            <Toggle
+          <div className="flex items-center justify-between border border-gray border-solid rounded-lg h-[52px] overflow-hidden">
+            <LoginToggle
               className={`${!value ? 'bg-primary text-white font-semibold pointer-events-none' : 'font-normal'}`}
               onClick={off}
             >
               Студент
-            </Toggle>
-            <Toggle
+            </LoginToggle>
+            <LoginToggle
               className={`${value ? 'bg-primary text-white font-semibold pointer-events-none' : 'font-normal'}`}
               onClick={on}
             >
               Куратор
-            </Toggle>
+            </LoginToggle>
           </div>
-          <InputWrapper placeholder="sdasdasdasdas"></InputWrapper>
-          {/* <Label>
-            <Wrapper>
-              <Cover>
-                <Input
-                  className={error.login !== '' ? 'input-error' : ''}
-                  type="text"
-                  value={data.login}
-                  name="login"
-                  onInput={inputHandler}
-                />
-              </Cover>
-              <Placeholder>Логин</Placeholder>
-              {error.login !== '' ? <Error>{error.login}</Error> : ''}
-            </Wrapper>
-          </Label>
-          <Label data="input">
-            <Wrapper>
-              <Cover>
-                <Input
-                  className={error.password !== '' ? 'input-error' : ''}
-                  type="password"
-                  value={data.password}
-                  name="password"
-                  onInput={inputHandler}
-                />
-              </Cover>
-              <Placeholder>Пароль</Placeholder>
-              {error.password !== '' ? <Error>{error.password}</Error> : ''}
-              <Eye />
-            </Wrapper>
-          </Label> */}
+          <InputDefault type="text" placeholder="Логин" name="login">
+            <Error>Введите логин</Error>
+          </InputDefault>
+          <InputPassword placeholder="Пароль" name="password">
+            <Error>Введите пароль</Error>
+          </InputPassword>
           <div className="flex">
-            <Anchor to="/recovery">
+            <AuthLink to="/recovery">
               Забыл пароль? А голову свою не забыл?
-            </Anchor>
+            </AuthLink>
           </div>
           <Button type="submit">
             <Waved />
@@ -180,15 +150,15 @@ export const Login = (): React.JSX.Element => {
         </Form>
         {value ? (
           <div className="flex items-center justify-center mt-8">
-            <span className="mr-2 font-normal text-14 sm:text-16 leading-1">
+            <span className="mr-2 text-sm font-normal sm:text-base">
               Нет аккаунта?
             </span>
-            <Anchor to="/registration">Зарегистрируйтесь</Anchor>
+            <AuthLink to="/registration">Зарегистрируйтесь</AuthLink>
           </div>
         ) : (
           ''
         )}
-      </Content>
-    </Section>
+      </AuthContent>
+    </AuthSection>
   )
 }

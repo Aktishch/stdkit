@@ -1,16 +1,16 @@
 import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 const TextComponent = (
   { className, children }: React.HtmlHTMLAttributes<HTMLParagraphElement>,
   ref: React.ForwardedRef<HTMLParagraphElement>
 ): React.JSX.Element => {
-  const classNames: string = classnames(
+  const classNames: string = twMerge(
     'font-normal',
-    'leading-4',
+    'leading-5',
     'text-center',
-    'text-14',
-    'sm:text-16',
+    'text-sm',
+    'sm:text-base',
     'opacity-60',
     'mb-7',
     'md:mb-10',

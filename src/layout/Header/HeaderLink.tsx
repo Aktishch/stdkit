@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 import { Button, ButtonProps } from '@ui/Button'
 import { Icon } from '@ui/Icon'
 import { Waved } from '@components/Waved'
@@ -13,7 +13,7 @@ const HeaderLinkComponent = (
   { className, to, id, children }: HeaderLinkProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
 ): React.JSX.Element => {
-  const classNames: string = classnames(
+  const classNames: string = twMerge(
     'w-10',
     'h-10',
     'font-normal',
@@ -21,8 +21,8 @@ const HeaderLinkComponent = (
     'opacity-60',
     'dark:opacity-100',
     'dark:hover:bg-primary',
-    'rounded-max',
-    'sm:rounded-2',
+    'rounded-full',
+    'sm:rounded-lg',
     'bg-grey',
     'dark:bg-primary',
     'dark:sm:bg-opacity-0',
@@ -46,7 +46,7 @@ const HeaderLinkComponent = (
       ref={ref}
     >
       <Waved variant="dark" />
-      <Icon className="text-20 sm:text-24" id={id} />
+      <Icon className="text-xl sm:text-2xl" id={id} />
       <span className="hidden ml-2 sm:block">{children}</span>
     </Button>
   )

@@ -1,14 +1,14 @@
 import React from 'react'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 export const Placeholder = ({
   className,
   children,
-}: React.HtmlHTMLAttributes<HTMLSpanElement>): React.JSX.Element => {
-  const classNames: string = classnames(
-    'absolute left-4 flex items-center leading-1 duration-2 pointer-events-none rounded-1 px-1',
+}: React.HtmlHTMLAttributes<HTMLSpanElement>) => {
+  const style: string = twMerge(
+    'absolute left-4 flex items-center duration-200 pointer-events-none rounded text-base px-1',
     className
   )
 
-  return <span className={classNames}>{children}</span>
+  return <span className={style}>{children}</span>
 }

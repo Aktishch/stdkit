@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useContext,
 } from 'react'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 import { useToggle } from '@hooks/useToggle'
 
 interface AccordionContextProps {
@@ -13,18 +13,9 @@ interface AccordionContextProps {
   accordionToggle?: () => void
 }
 
-interface AccordionProps extends React.PropsWithChildren {
+interface AccordionProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   active?: boolean
   scroll?: boolean
-  className?: string
-}
-
-interface AccordionToggleProps extends React.PropsWithChildren {
-  className?: string
-}
-
-interface AccordionContentProps extends React.PropsWithChildren {
-  className?: string
 }
 
 export const AccordionContext = createContext<AccordionContextProps>({})
@@ -34,9 +25,9 @@ export const Accordion = ({
   scroll = false,
   className,
   children,
-}: AccordionProps): React.JSX.Element => {
+}: AccordionProps) => {
   const accordion = useRef<HTMLDivElement>(null)
-  const classNames: string = classnames(className)
+  const style: string = twMerge(className)
   const { value, off, toggle } = useToggle({ status: active })
   const onScrollHandler = (): void => off()
 
@@ -68,7 +59,7 @@ export const Accordion = ({
     <AccordionContext.Provider
       value={{ accordionValue: value, accordionToggle: toggle }}
     >
-      <div className={classNames} ref={accordion}>
+      <div className={style} ref={accordion}>
         {children}
       </div>
     </AccordionContext.Provider>
@@ -78,12 +69,12 @@ export const Accordion = ({
 export const AccordionToggle = ({
   className,
   children,
-}: AccordionToggleProps): React.JSX.Element => {
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   const { accordionToggle } = useContext(AccordionContext)
-  const classNames: string = classnames('cursor-pointer', className)
+  const style: string = twMerge('cursor-pointer', className)
 
   return (
-    <button className={classNames} onClick={accordionToggle}>
+    <button className={style} onClick={accordionToggle}>
       {children}
     </button>
   )
@@ -92,7 +83,7 @@ export const AccordionToggle = ({
 export const AccordionContent = ({
   className,
   children,
-}: AccordionContentProps): React.JSX.Element => {
+}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
   const [height, setHeight] = useState('0')
   const [duration, setDuration] = useState('')
   const [hidden, setHidden] = useState('')
@@ -100,7 +91,7 @@ export const AccordionContent = ({
   const timeOut = useRef<NodeJS.Timeout>()
   const flag = useRef<boolean>(false)
   const { accordionValue } = useContext(AccordionContext)
-  const classNames: string = classnames(hidden, className)
+  const style: string = twMerge(hidden, className)
 
   useEffect((): void => {
     if (content.current === null) return
@@ -138,7 +129,7 @@ export const AccordionContent = ({
 
   return (
     <div
-      className={classNames}
+      className={style}
       ref={content}
       style={{ height: height, transitionDuration: duration }}
     >

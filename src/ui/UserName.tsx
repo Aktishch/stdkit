@@ -1,29 +1,14 @@
-import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-const UserNameComponent = (
-  { className, children }: React.HtmlHTMLAttributes<HTMLSpanElement>,
-  ref: React.ForwardedRef<HTMLSpanElement>
-): React.JSX.Element => {
-  const classNames: string = classnames(
-    'mb-1',
-    'font-normal',
-    'truncate',
-    'text-16',
-    'leading-1',
+export const UserName = ({
+  className,
+  children,
+}: React.HtmlHTMLAttributes<HTMLSpanElement>) => {
+  const style: string = twMerge(
+    'mb-1 font-normal truncate text-base leading-4',
     className
   )
 
-  return (
-    <span className={classNames} ref={ref}>
-      {children}
-    </span>
-  )
+  return <span className={style}>{children}</span>
 }
-
-export const UserName = forwardRef(
-  UserNameComponent
-) as React.ForwardRefExoticComponent<
-  React.HtmlHTMLAttributes<HTMLSpanElement> &
-    React.RefAttributes<HTMLSpanElement>
->
