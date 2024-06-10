@@ -11,8 +11,10 @@ const inputSizes = {
 }
 
 type Extension = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'size' | 'height' | 'onInput' | 'onKeyDown' | 'onPaste'
+  React.InputHTMLAttributes<
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  >,
+  'size' | 'height'
 >
 
 export interface InputProps extends Extension {
@@ -20,21 +22,6 @@ export interface InputProps extends Extension {
   size?: keyof typeof inputSizes | null
   height?: string | null
   options?: { value: string; text: string }[] | undefined
-  onInput?:
-    | React.FormEventHandler<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
-    | undefined
-  onKeyDown?:
-    | React.FormEventHandler<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
-    | undefined
-  onPaste?:
-    | React.FormEventHandler<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
-    | undefined
 }
 
 export const Input = ({
