@@ -6,6 +6,7 @@ import React, {
   useContext,
 } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Props } from '@utils/props'
 import { useToggle } from '@hooks/useToggle'
 
 interface AccordionContextProps {
@@ -13,7 +14,7 @@ interface AccordionContextProps {
   accordionToggle?: () => void
 }
 
-interface AccordionProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+interface AccordionProps extends Props {
   active?: boolean
   scroll?: boolean
 }

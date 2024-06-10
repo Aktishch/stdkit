@@ -1,5 +1,6 @@
 import React, { ElementType } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Waved } from '@components/Waved'
 
 const buttonColors = {
   primary: 'btn-primary',
@@ -35,6 +36,7 @@ export interface ButtonProps extends Extension {
   href?: string | null
   target?: boolean
   to?: string | null
+  waved?: 'light' | 'dark'
 }
 
 export const Button = ({
@@ -47,9 +49,9 @@ export const Button = ({
   href,
   target = false,
   to,
-  disabled = false,
-  onClick,
   children,
+  waved,
+  ...props
 }: ButtonProps) => {
   const style: string = twMerge(
     'btn',
@@ -66,10 +68,10 @@ export const Button = ({
       href={href}
       target={target ? '_blank' : null}
       to={to}
-      disabled={Tag === 'button' ? disabled : null}
       draggable={false}
-      onClick={onClick}
+      {...props}
     >
+      <Waved variant={waved} />
       {children}
     </Tag>
   )

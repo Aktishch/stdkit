@@ -1,6 +1,5 @@
 import { Button } from '@ui/Button'
 import { Icon } from '@ui/Icon'
-import { Waved } from '@components/Waved'
 
 export const Footer = () => {
   const currentYear = (): number => {
@@ -24,10 +23,10 @@ export const Footer = () => {
           variant={null}
           href="https://stdkit.ru/"
           target={true}
+          waved="dark"
         >
-          <Waved variant="dark" />
           <Icon
-            className="w-20 text-black h-7 min-w-20 dark:text-white"
+            className="w-20 text-black h-7 shrink-0 dark:text-white"
             id="logo"
           />
         </Button>

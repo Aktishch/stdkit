@@ -23,8 +23,8 @@ export const Pack = ({
   className,
   href,
   target = false,
-  onClick,
   children,
+  ...props
 }: PackProps) => {
   const style: string = twMerge(
     'pack',
@@ -37,7 +37,7 @@ export const Pack = ({
       className={style}
       href={href}
       target={target ? '_blank' : null}
-      onClick={onClick}
+      {...props}
     >
       {children}
     </Tag>

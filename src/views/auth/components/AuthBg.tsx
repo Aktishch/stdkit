@@ -1,12 +1,10 @@
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Props } from '@utils/props'
 import { Pack } from '@ui/Pack'
 import { Loader } from '@ui/Loader'
 import { Picture } from '@ui/Picture'
 
-export const AuthBg = ({
-  className,
-}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+export const AuthBg = ({ className }: Props) => {
   const style: string = twMerge('absolute inset-0 dark:hidden', className)
 
   return (

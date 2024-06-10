@@ -30,12 +30,9 @@ export const Header = ({ status }: HeaderProps) => {
         draggable="false"
         to="/lk-tutor"
       >
+        <Icon className="w-20 h-7 sm:h-8 sm:w-28 shrink-0" id="logo" />
         <Icon
-          className="w-20 h-7 sm:h-8 sm:w-28 sm:min-w-28 min-w-20"
-          id="logo"
-        />
-        <Icon
-          className="hidden w-24 h-3 ml-4 min-w-24 md:block opacity-60"
+          className="hidden w-24 h-3 ml-4 shrink-0 md:block opacity-60"
           id="practice"
         />
       </Link>
@@ -52,7 +49,7 @@ export const Header = ({ status }: HeaderProps) => {
         ''
       )}
       <Accordion className="relative" scroll={true}>
-        <AccordionToggle className="relative bg-white dark:bg-dark w-[76px] min-w-[76px] h-11 rounded-full shadow-md flex items-center justify-between py-2 pr-2 pl-3">
+        <AccordionToggle className="relative bg-white dark:bg-dark w-[76px] shrink-0 h-11 rounded-full shadow-md flex items-center justify-between py-2 pr-2 pl-3">
           <Waved variant="dark" />
           <AccordionContext.Consumer>
             {({ accordionValue }) => (
@@ -62,7 +59,7 @@ export const Header = ({ status }: HeaderProps) => {
               />
             )}
           </AccordionContext.Consumer>
-          <div className="flex items-center justify-center rounded-full w-7 min-w-7 h-7 bg-primary">
+          <div className="flex items-center justify-center rounded-full w-7 shrink-0 h-7 bg-primary">
             <Icon className="text-xl text-white" id="user" />
           </div>
         </AccordionToggle>

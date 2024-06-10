@@ -1,8 +1,8 @@
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Props } from '@utils/props'
 import { Picture } from '@ui/Picture'
 
-interface ChapterProps extends React.HtmlHTMLAttributes<HTMLElement> {
+interface ChapterProps extends Props {
   src: string
 }
 

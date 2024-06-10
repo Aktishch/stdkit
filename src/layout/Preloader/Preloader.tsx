@@ -1,9 +1,7 @@
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Props } from '@utils/props'
 
-export const Preloader = ({
-  className,
-}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+export const Preloader = ({ className }: Props) => {
   const style: string = twMerge(
     'fixed inset-0 z-50 flex flex-col items-center justify-center duration-500 bg-white',
     className

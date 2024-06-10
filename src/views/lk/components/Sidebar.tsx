@@ -1,10 +1,7 @@
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Props } from '@utils/props'
 
-export const LkSidebar = ({
-  className,
-  children,
-}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+export const Sidebar = ({ className, children }: Props) => {
   const style: string = twMerge('w-full', 'xs:max-w-[250px]', className)
 
   return (

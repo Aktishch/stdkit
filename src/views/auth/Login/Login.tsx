@@ -2,10 +2,8 @@ import { useToggle } from '@hooks/useToggle'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { Error } from '@ui/Error'
 import { InputDefault } from '@components/InputDefault'
 import { InputPassword } from '@components/InputPassword'
-import { Waved } from '@components/Waved'
 import { AuthSection } from '@views/auth/components/AuthSection'
 import { AuthBg } from '@views/auth/components/AuthBg'
 import { AuthContent } from '@views/auth/components/AuthContent'
@@ -131,21 +129,22 @@ export const Login = () => {
               Куратор
             </LoginToggle>
           </div>
-          <InputDefault placeholder="Логин" name="login">
-            <Error>Введите логин</Error>
-          </InputDefault>
-          <InputPassword placeholder="Пароль" name="password">
-            <Error>Минимальная длинна пароля 8 символов</Error>
-          </InputPassword>
+          <InputDefault
+            placeholder="Логин"
+            error="Введите логин"
+            name="login"
+          />
+          <InputPassword
+            placeholder="Пароль"
+            error="Минимальная длинна пароля 8 символов"
+            name="password"
+          />
           <div className="flex">
             <AuthLink to="/recovery">
               Забыл пароль? А голову свою не забыл?
             </AuthLink>
           </div>
-          <Button type="submit">
-            <Waved />
-            Вход
-          </Button>
+          <Button type="submit">Вход</Button>
         </Form>
         {value ? (
           <div className="flex items-center justify-center mt-8">

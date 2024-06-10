@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Props } from '@utils/props'
 import { Coordinates } from '@utils/coordinates'
 import { touchDevice } from '@utils/touch-device'
 
@@ -8,7 +9,7 @@ const wavedVariants = {
   dark: 'waved--dark',
 }
 
-interface WavedProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+interface WavedProps extends Props {
   variant?: keyof typeof wavedVariants
 }
 

@@ -10,21 +10,14 @@ export const Picture = ({
   src,
   className,
   draggable = false,
-  loading,
-  alt,
+  ...props
 }: PictureProps) => {
   const style: string = twMerge(className)
 
   return (
     <picture>
       {webp !== null ? <source srcSet={webp} type="image/webp" /> : null}
-      <img
-        className={style}
-        loading={loading}
-        draggable={draggable}
-        src={src}
-        alt={alt}
-      />
+      <img className={style} draggable={draggable} src={src} {...props} />
     </picture>
   )
 }
