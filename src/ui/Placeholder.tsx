@@ -1,12 +1,12 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export const UserName = ({
+export const Placeholder = ({
   className,
   children,
 }: React.HtmlHTMLAttributes<HTMLSpanElement>) => {
   const style: string = twMerge(
-    'mb-1 font-normal truncate text-base leading-4',
+    'absolute left-4 flex items-center duration-200 pointer-events-none rounded text-base px-1',
     className
   )
 

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 import { Button, ButtonProps } from '@ui/Button'
 import { Icon } from '@ui/Icon'
 import { Waved } from '@components/Waved'
@@ -22,7 +22,7 @@ const LkButtonComponent = (
   }: LkButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
 ): React.JSX.Element => {
-  const classNames: string = classnames(
+  const classNames: string = twMerge(
     'justify-start',
     'px-4',
     'font-normal',
@@ -43,7 +43,7 @@ const LkButtonComponent = (
     >
       <Waved variant="dark" />
       <Icon
-        className={`mr-4 ${exit ? 'text-red' : 'text-primary'} text-24`}
+        className={`mr-4 ${exit ? 'text-red' : 'text-primary'} text-2xl`}
         id={id}
       />
       {children}

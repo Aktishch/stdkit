@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 import { Coordinates } from '@utils/coordinates'
 import { touchDevice } from '@utils/touch-device'
 
@@ -8,17 +8,13 @@ const wavedVariants = {
   dark: 'waved--dark',
 }
 
-interface WavedProps extends React.DOMAttributes<HTMLDivElement> {
-  className?: string
+interface WavedProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   variant?: keyof typeof wavedVariants
 }
 
-export const Waved = ({
-  variant = 'light',
-  className,
-}: WavedProps): React.JSX.Element => {
+export const Waved = ({ variant = 'light', className }: WavedProps) => {
   const waved = useRef<HTMLDivElement>(null)
-  const classNames: string = classnames(
+  const style: string = twMerge(
     'waved',
     variant ? wavedVariants[variant] : null,
     className
@@ -75,5 +71,5 @@ export const Waved = ({
     }
   }, [])
 
-  return <div className={classNames} ref={waved} />
+  return <div className={style} ref={waved} />
 }

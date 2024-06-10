@@ -1,17 +1,14 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const TitleComponent = (
-  { className, children }: React.HtmlHTMLAttributes<HTMLHeadingElement>,
-  ref: React.ForwardedRef<HTMLHeadingElement>
-) => {
-  const classNames = twMerge('font-medium text-24 leading-2', className)
-
-  return (
-    <h1 className={classNames} ref={ref}>
-      {children}
-    </h1>
+export const Title = ({
+  className,
+  children,
+}: React.HtmlHTMLAttributes<HTMLHeadingElement>) => {
+  const classNames: string = twMerge(
+    'font-medium text-2xl leading-7',
+    className
   )
-}
 
-export const Title = forwardRef(TitleComponent)
+  return <h1 className={classNames}>{children}</h1>
+}

@@ -1,40 +1,74 @@
 import React from 'react'
-import { onInputName, onInputNumber } from '@utils/inputs'
-import { validation } from '@utils/validation'
 import { Form } from '@ui/Form'
-import { Label } from '@ui/Label'
-import { Wrapper } from '@ui/Wrapper'
-import { Error } from '@ui/Error'
-import { InputIcon } from '@ui/InputIcon'
-import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
+import { Error } from '@ui/Error'
+import { Chapter } from '@ui/Chapter'
+import { InputDefault } from '@components/InputDefault'
+import { InputText } from '@components/InputText'
 import { InputTel } from '@components/InputTel'
-import { Placeholder } from '@components/Placeholder'
-import { Eye } from '@components/Eye'
+import { InputPassword } from '@components/InputPassword'
+import { Select } from '@components/Select'
 import { Waved } from '@components/Waved'
-import { Section } from '@views/auth/components/Section'
-import { Bg } from '@views/auth/components/Bg'
-import { Content } from '@views/auth/components/Content'
-import { Logo } from '@views/auth/components/Logo'
-import { Chapter } from '@views/auth/components/Chapter'
-import { Anchor } from '@views/auth/components/Anchor'
+import { AuthSection } from '@views/auth/components/AuthSection'
+import { AuthBg } from '@views/auth/components/AuthBg'
+import { AuthContent } from '@views/auth/components/AuthContent'
+import { AuthLogo } from '@views/auth/components/AuthLogo'
+import { AuthLink } from '@views/auth/components/AuthLink'
 
 export const Registration = (): React.JSX.Element => {
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
-    const form = event.target as HTMLFormElement
-
-    if (!validation(form)) event.preventDefault()
-  }
+  const options = [
+    {
+      value: 'empty',
+      text: '',
+    },
+    {
+      value: '1',
+      text: '1',
+    },
+    {
+      value: '2',
+      text: '2',
+    },
+    {
+      value: '3',
+      text: '3',
+    },
+  ]
 
   return (
-    <Section>
-      <Bg />
-      <Content>
-        <Logo />
-        <Form className="gap-7 md:gap-10" action="/" onSubmit={submitHandler}>
+    <AuthSection>
+      <AuthBg />
+      <AuthContent>
+        <AuthLogo />
+        <Form className="gap-7 md:gap-10" action="/">
           <Input type="hidden" value="Регистрация" name="theme" />
           <div className="flex flex-col gap-6">
+            <Chapter src="/img/pictures/chicken.svg">Личная информация</Chapter>
+            <InputDefault type="text" placeholder="Логин" name="login">
+              <Error>Введите логин</Error>
+            </InputDefault>
+            <InputText placeholder="Фамилия" name="surname">
+              <Error>Введите фамилию</Error>
+            </InputText>
+            <InputText placeholder="Имя" name="name">
+              <Error>Введите имя</Error>
+            </InputText>
+            <InputText placeholder="Отчество" name="father-name">
+              <Error>Введите отчество</Error>
+            </InputText>
+            <Select
+              placeholder="Вид деятельности"
+              name="activity"
+              options={options}
+            >
+              <Error>Укажите вид деятельности</Error>
+            </Select>
+            <InputTel placeholder="Телефон" name="tel">
+              <Error>Введите телефон</Error>
+            </InputTel>
+          </div>
+          {/* <div className="flex flex-col gap-6">
             <Chapter src="/img/pictures/chicken.svg">Личная информация</Chapter>
             <Label data="input">
               <Wrapper>
@@ -103,7 +137,7 @@ export const Registration = (): React.JSX.Element => {
                 <Placeholder>Вид деятельности</Placeholder>
                 <Error>Укажите вид деятельности</Error>
                 <InputIcon
-                  className="text-black opacity-50 text-14"
+                  className="text-sm text-black opacity-50"
                   id="arrow-right"
                   right={true}
                 ></InputIcon>
@@ -190,19 +224,19 @@ export const Registration = (): React.JSX.Element => {
                 <Eye />
               </Wrapper>
             </Label>
-          </div>
+          </div> */}
           <Button type="submit">
             <Waved />
             Зарегистрироваться
           </Button>
         </Form>
         <div className="flex items-center justify-center mt-8">
-          <span className="mr-2 font-normal text-14 sm:text-16 leading-1">
+          <span className="mr-2 text-sm font-normal sm:text-base">
             Есть аккаунт?
           </span>
-          <Anchor to="/">Войти</Anchor>
+          <AuthLink to="/">Войти</AuthLink>
         </div>
-      </Content>
-    </Section>
+      </AuthContent>
+    </AuthSection>
   )
 }

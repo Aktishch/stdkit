@@ -24,13 +24,13 @@ window.addEventListener('DOMContentLoaded', ((): void => {
         <Route path="/" element={<LayoutAuthorization />}>
           <Route index element={<Login />} />
           <Route path="registration" element={<Registration />} />
-          <Route path="recovery" element={<Recovery />} />
+          {/* <Route path="recovery" element={<Recovery />} />
           <Route path="code" element={<Code />} />
-          <Route path="password" element={<Password />} />
+          <Route path="password" element={<Password />} /> */}
         </Route>
-        <Route path="/lk-tutor" element={<LayoutDefault status={true} />}>
+        {/* <Route path="/lk-tutor" element={<LayoutDefault status={true} />}>
           <Route index element={<TutorSettings />} />
-        </Route>
+        </Route> */}
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </BrowserRouter>

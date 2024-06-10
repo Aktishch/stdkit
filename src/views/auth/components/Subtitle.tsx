@@ -1,18 +1,18 @@
 import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 const SubtitleComponent = (
   { className, children }: React.HtmlHTMLAttributes<HTMLHeadingElement>,
   ref: React.ForwardedRef<HTMLHeadingElement>
 ): React.JSX.Element => {
-  const classNames: string = classnames(
+  const classNames: string = twMerge(
     'mb-2',
     'font-medium',
     'text-center',
     'sm:mb-4',
-    'text-20',
-    'sm:text-24',
-    'leading-2',
+    'text-xl',
+    'sm:text-2xl',
+    'leading-7',
     className
   )
 

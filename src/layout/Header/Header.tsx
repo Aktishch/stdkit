@@ -23,9 +23,9 @@ export const Header = ({ status }: HeaderProps): React.JSX.Element => {
   const { themeToggle } = useContext(ThemeContext)
 
   return (
-    <header className="container sticky top-0 left-0 right-0 flex items-center justify-between gap-3 py-2 bg-white border-b border-solid dark:bg-black sm:py-4 sm:gap-5 md:gap-10 lg:gap-24 md:py-6 border-grey z-3">
+    <header className="container sticky top-0 left-0 right-0 z-30 flex items-center justify-between gap-3 py-2 bg-white border-b border-solid dark:bg-black sm:py-4 sm:gap-5 md:gap-10 lg:gap-24 md:py-6 border-grey">
       <Link
-        className="flex items-center text-black rounded-1 dark:text-white"
+        className="flex items-center text-black rounded dark:text-white"
         draggable="false"
         to="/lk-tutor"
       >
@@ -56,17 +56,17 @@ export const Header = ({ status }: HeaderProps): React.JSX.Element => {
           <AccordionContext.Consumer>
             {({ accordionValue }) => (
               <Icon
-                className={`text-14 mr-2 opacity-60 ease-linear duration-3 ${accordionValue ? '-rotate-90' : ''}`}
+                className={`text-sm mr-2 opacity-60 ease-linear duration-300 ${accordionValue ? '-rotate-90' : ''}`}
                 id="arrow-left"
               />
             )}
           </AccordionContext.Consumer>
-          <div className="flex items-center justify-center w-7 min-w-7 h-7 rounded-max bg-primary">
-            <Icon className="text-white text-20" id="user" />
+          <div className="flex items-center justify-center rounded-full w-7 min-w-7 h-7 bg-primary">
+            <Icon className="text-xl text-white" id="user" />
           </div>
         </AccordionToggle>
         <AccordionContent className="absolute right-0 top-12 w-44">
-          <div className="px-2 py-6 overflow-hidden bg-white shadow dark:bg-dark rounded-4">
+          <div className="px-2 py-6 overflow-hidden bg-white shadow dark:bg-dark rounded-2xl">
             <div className="flex flex-col px-2 mb-4">
               <UserName>Щербаков Иван</UserName>
               <UserPost>Куратор, веб-дизайн</UserPost>

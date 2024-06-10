@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 import { Button, ButtonProps } from '@ui/Button'
 import { Icon } from '@ui/Icon'
 import { Waved } from '@components/Waved'
@@ -21,7 +21,7 @@ const HeaderButtonComponent = (
   }: HeaderButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
 ): React.JSX.Element => {
-  const classNames: string = classnames('justify-start', 'px-2', className)
+  const classNames: string = twMerge('justify-start', 'px-2', className)
 
   return (
     <Button
@@ -36,8 +36,8 @@ const HeaderButtonComponent = (
       onClick={onClick}
     >
       <Waved variant="dark" />
-      <Icon className="text-20" id={id} />
-      <span className="ml-1 font-normal text-black dark:text-white text-16">
+      <Icon className="text-xl" id={id} />
+      <span className="ml-1 text-base font-normal text-black dark:text-white">
         {children}
       </span>
     </Button>

@@ -10,11 +10,15 @@ export const Footer = (): React.JSX.Element => {
 
   return (
     <footer className="container flex items-center justify-between gap-3 py-2 mt-auto bg-white border-t border-solid sm:py-4 dark:bg-black border-grey">
-      <span className="font-normal text-16 leading-1">© {currentYear()}</span>
+      <span className="text-base font-normal leading-4">
+        © {currentYear()}
+      </span>
       <div className="flex items-center">
-        <span className="mr-3 font-normal text-16 leading-1">Разработка:</span>
+        <span className="mr-3 text-base font-normal leading-4">
+          Разработка:
+        </span>
         <Button
-          className="rounded-1"
+          className="rounded"
           as="a"
           color="gray"
           size={null}

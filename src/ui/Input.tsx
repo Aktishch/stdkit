@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 const inputSizes = {
   xs: 'input-xs',
@@ -10,70 +10,92 @@ const inputSizes = {
   xxl: 'input-xxl',
 }
 
-type Extension = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
+type Extension = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'size' | 'height' | 'onInput' | 'onKeyDown' | 'onPaste'
+>
 
 export interface InputProps extends Extension {
   tag?: string | null
   size?: keyof typeof inputSizes | null
-  data?: string | null
+  height?: string | null
+  options?: { value: string; text: string }[] | undefined
+  onInput?:
+    | React.FormEventHandler<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    | undefined
+  onKeyDown?:
+    | React.FormEventHandler<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    | undefined
+  onPaste?:
+    | React.FormEventHandler<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    | undefined
 }
 
-const InputComponent = (
-  {
-    tag = 'input',
-    size = 'lg',
-    type = 'text',
-    value,
-    placeholder,
-    name,
-    className,
-    maxLength,
-    data = null,
-    onInput = undefined,
-    onChange = undefined,
-    children,
-  }: InputProps,
-  ref: React.ForwardedRef<null>
-): React.JSX.Element => {
-  const classNames: string = classnames(
+export const Input = ({
+  tag = 'input',
+  size = 'lg',
+  type = 'text',
+  value,
+  name,
+  className,
+  height,
+  maxLength,
+  onInput = undefined,
+  onKeyDown = undefined,
+  onPaste = undefined,
+  options,
+}: InputProps) => {
+  const style: string = twMerge(
     'input',
     size ? inputSizes[size] : null,
+    tag === 'textarea' && height ? height : null,
     className
   )
 
   return tag === 'input' ? (
     <input
-      className={type === 'hidden' ? '' : classNames}
-      data-input={data}
+      className={type === 'hidden' ? '' : style}
       type={type}
       defaultValue={value}
-      placeholder={placeholder}
       maxLength={maxLength}
       autoComplete={type === 'password' ? 'new-password' : undefined}
       name={name}
-      ref={ref}
       onInput={onInput}
-      onChange={onChange}
+      onKeyDown={onKeyDown}
+      onPaste={onPaste}
     />
   ) : tag === 'textarea' ? (
     <textarea
-      className={classNames}
-      data-input={data}
+      className={style}
       defaultValue={value}
-      placeholder={placeholder}
       maxLength={maxLength}
       name={name}
-      ref={ref}
+      onInput={onInput}
+      onKeyDown={onKeyDown}
+      onPaste={onPaste}
     />
   ) : (
-    <select className={classNames} data-input={data} name={name} ref={ref}>
-      {children}
+    <select
+      className={style}
+      defaultValue={value}
+      name={name}
+      onInput={onInput}
+      onKeyDown={onKeyDown}
+      onPaste={onPaste}
+    >
+      {options !== undefined
+        ? options.map((item, index) => (
+            <option value={item.value} hidden={index === 0} key={index}>
+              {item.text}
+            </option>
+          ))
+        : ''}
     </select>
   )
 }
-
-export const Input = forwardRef(
-  InputComponent
-) as React.ForwardRefExoticComponent<
-  InputProps & React.RefAttributes<HTMLInputElement>
->

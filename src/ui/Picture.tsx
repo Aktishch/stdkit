@@ -1,40 +1,30 @@
-import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 interface PictureProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   webp?: string | null
 }
 
-const PictureComponent = (
-  {
-    webp = null,
-    src,
-    className,
-    draggable = false,
-    loading,
-    alt,
-  }: PictureProps,
-  ref: React.ForwardedRef<HTMLImageElement>
-): React.JSX.Element => {
-  const classNames: string = classnames(className)
+export const Picture = ({
+  webp = null,
+  src,
+  className,
+  draggable = false,
+  loading,
+  alt,
+}: PictureProps) => {
+  const style: string = twMerge(className)
 
   return (
     <picture>
       {webp !== null ? <source srcSet={webp} type="image/webp" /> : null}
       <img
-        className={classNames}
+        className={style}
         loading={loading}
         draggable={draggable}
         src={src}
         alt={alt}
-        ref={ref}
       />
     </picture>
   )
 }
-
-export const Picture = forwardRef(
-  PictureComponent
-) as React.ForwardRefExoticComponent<
-  PictureProps & React.RefAttributes<HTMLImageElement>
->

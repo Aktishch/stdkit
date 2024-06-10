@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react'
-import classnames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 const LkSidebarComponent = (
   { className, children }: React.HtmlHTMLAttributes<HTMLDivElement>,
   ref: React.ForwardedRef<HTMLDivElement>
 ): React.JSX.Element => {
-  const classNames: string = classnames('w-full', 'xs:max-w-[250px]', className)
+  const classNames: string = twMerge('w-full', 'xs:max-w-[250px]', className)
 
   return (
     <div className={classNames} ref={ref}>

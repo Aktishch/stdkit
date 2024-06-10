@@ -1,5 +1,5 @@
-import React, { ElementType, forwardRef } from 'react'
-import classnames from 'classnames'
+import React, { ElementType } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 const packSizes = {
   half: 'pack-half',
@@ -10,26 +10,23 @@ const packSizes = {
   sheet: 'pack-sheet',
 }
 
-interface PackProps extends React.ButtonHTMLAttributes<HTMLElement> {
+interface PackProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   as?: ElementType
   size: keyof typeof packSizes | null
   href?: string | null
   target?: boolean
 }
 
-const PackComponent = (
-  {
-    as: Tag = 'div',
-    size = 'box',
-    className,
-    href,
-    target = false,
-    onClick,
-    children,
-  }: PackProps,
-  ref: React.ForwardedRef<HTMLDivElement | HTMLAnchorElement>
-): React.JSX.Element => {
-  const classNames: string = classnames(
+export const Pack = ({
+  as: Tag = 'div',
+  size = 'box',
+  className,
+  href,
+  target = false,
+  onClick,
+  children,
+}: PackProps) => {
+  const style: string = twMerge(
     'pack',
     size ? packSizes[size] : null,
     className
@@ -37,19 +34,12 @@ const PackComponent = (
 
   return (
     <Tag
-      className={classNames}
+      className={style}
       href={href}
       target={target ? '_blank' : null}
       onClick={onClick}
-      ref={ref}
     >
       {children}
     </Tag>
   )
 }
-
-export const Pack = forwardRef(
-  PackComponent
-) as React.ForwardRefExoticComponent<
-  PackProps & React.RefAttributes<HTMLElement>
->
