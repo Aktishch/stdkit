@@ -1,4 +1,3 @@
-import React from 'react'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -7,6 +6,7 @@ import { Chapter } from '@ui/Chapter'
 import { InputDefault } from '@components/InputDefault'
 import { InputText } from '@components/InputText'
 import { InputTel } from '@components/InputTel'
+import { InputNumber } from '@components/InputNumber'
 import { InputPassword } from '@components/InputPassword'
 import { Select } from '@components/Select'
 import { Waved } from '@components/Waved'
@@ -16,7 +16,7 @@ import { AuthContent } from '@views/auth/components/AuthContent'
 import { AuthLogo } from '@views/auth/components/AuthLogo'
 import { AuthLink } from '@views/auth/components/AuthLink'
 
-export const Registration = (): React.JSX.Element => {
+export const Registration = () => {
   const options = [
     {
       value: 'empty',
@@ -45,7 +45,7 @@ export const Registration = (): React.JSX.Element => {
           <Input type="hidden" value="Регистрация" name="theme" />
           <div className="flex flex-col gap-6">
             <Chapter src="/img/pictures/chicken.svg">Личная информация</Chapter>
-            <InputDefault type="text" placeholder="Логин" name="login">
+            <InputDefault placeholder="Логин" name="login">
               <Error>Введите логин</Error>
             </InputDefault>
             <InputText placeholder="Фамилия" name="surname">
@@ -68,163 +68,33 @@ export const Registration = (): React.JSX.Element => {
               <Error>Введите телефон</Error>
             </InputTel>
           </div>
-          {/* <div className="flex flex-col gap-6">
-            <Chapter src="/img/pictures/chicken.svg">Личная информация</Chapter>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input data="" type="text" name="login" />
-                </Cover>
-                <Placeholder>Логин</Placeholder>
-                <Error>Введите логин</Error>
-              </Wrapper>
-            </Label>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input
-                    data="name"
-                    type="text"
-                    name="surname"
-                    onInput={onInputName}
-                  />
-                </Cover>
-                <Placeholder>Фамилия</Placeholder>
-                <Error>Введите фамилию</Error>
-              </Wrapper>
-            </Label>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input
-                    data="name"
-                    type="text"
-                    name="name"
-                    onInput={onInputName}
-                  />
-                </Cover>
-                <Placeholder>Имя</Placeholder>
-                <Error>Введите имя</Error>
-              </Wrapper>
-            </Label>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input
-                    data="name"
-                    type="text"
-                    name="father-name"
-                    onInput={onInputName}
-                  />
-                </Cover>
-                <Placeholder>Отчество</Placeholder>
-                <Error>Введите отчество</Error>
-              </Wrapper>
-            </Label>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input data="select" tag="select" name="activity">
-                    <option value="empty" hidden>
-                      Ваш вид деятельности
-                    </option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </Input>
-                </Cover>
-                <Placeholder>Вид деятельности</Placeholder>
-                <Error>Укажите вид деятельности</Error>
-                <InputIcon
-                  className="text-sm text-black opacity-50"
-                  id="arrow-right"
-                  right={true}
-                ></InputIcon>
-              </Wrapper>
-            </Label>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <InputTel />
-                </Cover>
-                <Placeholder>Телефон</Placeholder>
-                <Error>Введите телефон</Error>
-              </Wrapper>
-            </Label>
-          </div>
           <div className="flex flex-col gap-6">
             <Chapter src="/img/pictures/school.svg">Университет</Chapter>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input data="" type="text" name="father-name" />
-                </Cover>
-                <Placeholder>Полное название ВУЗа</Placeholder>
-                <Error>Укажите ВУЗ</Error>
-              </Wrapper>
-            </Label>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input data="" type="text" name="father-name" />
-                </Cover>
-                <Placeholder>Факультет</Placeholder>
-                <Error>Укажите факультет</Error>
-              </Wrapper>
-            </Label>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input
-                    data=""
-                    type="text"
-                    maxLength={1}
-                    name="father-name"
-                    onInput={onInputNumber}
-                  />
-                </Cover>
-                <Placeholder>Курс</Placeholder>
-                <Error>Укажите курс</Error>
-              </Wrapper>
-            </Label>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input data="" type="text" name="father-name" />
-                </Cover>
-                <Placeholder>Группа</Placeholder>
-                <Error>Укажите группу</Error>
-              </Wrapper>
-            </Label>
+            <InputDefault placeholder="Полное название ВУЗа" name="university">
+              <Error>Укажите ВУЗ</Error>
+            </InputDefault>
+            <InputDefault placeholder="Факультет" name="faculty">
+              <Error>Укажите факультет</Error>
+            </InputDefault>
+            <InputNumber placeholder="Курс" maxLength={1} name="course">
+              <Error>Укажите курс</Error>
+            </InputNumber>
+            <InputDefault placeholder="Группа" name="group">
+              <Error>Укажите группу</Error>
+            </InputDefault>
           </div>
           <div className="flex flex-col gap-6">
             <Chapter src="/img/pictures/locked.svg">Пароль</Chapter>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input data="password" type="password" name="password" />
-                </Cover>
-                <Placeholder>Пароль</Placeholder>
-                <Error>Минимальная длинна пароля 8 символов</Error>
-                <Eye />
-              </Wrapper>
-            </Label>
-            <Label data="input">
-              <Wrapper>
-                <Cover>
-                  <Input
-                    data="password"
-                    type="password"
-                    name="passwod-replay"
-                  />
-                </Cover>
-                <Placeholder>Повторите пароль</Placeholder>
-                <Error>Минимальная длинна пароля 8 символов</Error>
-                <Eye />
-              </Wrapper>
-            </Label>
-          </div> */}
+            <InputPassword placeholder="Пароль" name="password">
+              <Error>Минимальная длинна пароля 8 символов</Error>
+            </InputPassword>
+            <InputPassword
+              placeholder="Повторите пароль"
+              name="password-replay"
+            >
+              <Error>Минимальная длинна пароля 8 символов</Error>
+            </InputPassword>
+          </div>
           <Button type="submit">
             <Waved />
             Зарегистрироваться

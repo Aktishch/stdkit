@@ -13,7 +13,7 @@ export const InputIcon = ({
   right = false,
   pointer = false,
   className,
-  onClick = undefined,
+  onClick,
 }: InputIconProps) => {
   const style: string = twMerge(
     'form-icon',

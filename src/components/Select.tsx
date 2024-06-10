@@ -1,4 +1,3 @@
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { InputProps } from '@ui/Input'
 import { InputIcon } from '@ui/InputIcon'
@@ -10,9 +9,9 @@ export const Select = ({
   name,
   className,
   placeholder,
-  onInput = undefined,
-  onKeyDown = undefined,
-  onPaste = undefined,
+  onInput,
+  onKeyDown,
+  onPaste,
   options,
   children,
 }: InputProps) => {

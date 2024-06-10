@@ -7,19 +7,19 @@ export const InputDefault = ({
   tag = 'input',
   size = 'lg',
   type = 'text',
-  value,
+  value = '',
   name,
   className,
   height,
   maxLength,
   placeholder,
-  onInput = undefined,
-  onKeyDown = undefined,
-  onPaste = undefined,
+  onInput,
+  onKeyDown,
+  onPaste,
   options,
   children,
 }: InputProps) => {
-  const [empty, setEmpty] = useState('')
+  const [empty, setEmpty] = useState(value)
   const style: string = twMerge('form-label', className)
 
   const onInputHandler = (event: React.FormEvent<HTMLInputElement>): void => {

@@ -33,9 +33,9 @@ export const Input = ({
   className,
   height,
   maxLength,
-  onInput = undefined,
-  onKeyDown = undefined,
-  onPaste = undefined,
+  onInput,
+  onKeyDown,
+  onPaste,
   options,
 }: InputProps) => {
   const style: string = twMerge(

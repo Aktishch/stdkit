@@ -1,62 +1,36 @@
-import React from 'react'
-import { validation } from '@utils/validation'
 import { Form } from '@ui/Form'
-import { Label } from '@ui/Label'
-import { Wrapper } from '@ui/Wrapper'
 import { Error } from '@ui/Error'
-import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { Placeholder } from '@components/Placeholder'
-import { Eye } from '@components/Eye'
+import { InputPassword } from '@components/InputPassword'
 import { Waved } from '@components/Waved'
-import { Section } from '@views/auth/components/Section'
-import { Bg } from '@views/auth/components/Bg'
-import { Content } from '@views/auth/components/Content'
-import { Subtitle } from '@views/auth/components/Subtitle'
-import { Text } from '@views/auth/components/Text'
+import { AuthSection } from '@views/auth/components/AuthSection'
+import { AuthBg } from '@views/auth/components/AuthBg'
+import { AuthContent } from '@views/auth/components/AuthContent'
+import { AuthTitle } from '@views/auth/components/AuthTitle'
+import { AuthSubtitle } from '@views/auth/components/AuthSubtitle'
 
-export const Password = (): React.JSX.Element => {
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
-    const form = event.target as HTMLFormElement
-
-    if (!validation(form)) event.preventDefault()
-  }
-
+export const Password = () => {
   return (
-    <Section>
-      <Bg />
-      <Content>
-        <Subtitle>Восстановление пароля</Subtitle>
-        <Text>Придумайте новый пароль</Text>
-        <Form className="gap-6" action="/" onSubmit={submitHandler}>
+    <AuthSection>
+      <AuthBg />
+      <AuthContent>
+        <AuthTitle>Восстановление пароля</AuthTitle>
+        <AuthSubtitle>Придумайте новый пароль</AuthSubtitle>
+        <Form className="gap-6" action="/">
           <Input type="hidden" value="Новый пароль" name="theme" />
-          <Label data="input">
-            <Wrapper>
-              <Cover>
-                <Input data="password" type="password" name="password" />
-              </Cover>
-              <Placeholder>Пароль</Placeholder>
-              <Error>Минимальная длинна пароля 8 символов</Error>
-              <Eye />
-            </Wrapper>
-          </Label>
-          <Label data="input">
-            <Wrapper>
-              <Cover>
-                <Input data="password" type="password" name="passwod-replay" />
-              </Cover>
-              <Placeholder>Повторите пароль</Placeholder>
-              <Error>Минимальная длинна пароля 8 символов</Error>
-              <Eye />
-            </Wrapper>
-          </Label>
+          <InputPassword placeholder="Пароль" name="password">
+            <Error>Минимальная длинна пароля 8 символов</Error>
+          </InputPassword>
+          <InputPassword placeholder="Повторите пароль" name="password-replay">
+            <Error>Минимальная длинна пароля 8 символов</Error>
+          </InputPassword>
           <Button type="submit">
             <Waved />
             Восстановить
           </Button>
         </Form>
-      </Content>
-    </Section>
+      </AuthContent>
+    </AuthSection>
   )
 }

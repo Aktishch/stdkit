@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon } from '@ui/Icon'
 import { Form } from '@ui/Form'
+import { Input } from '@ui/Input'
 import { UserName } from '@ui/UserName'
 import { UserPost } from '@ui/UserPost'
 import {
@@ -12,14 +13,14 @@ import {
 } from '@components/Accordion'
 import { ThemeContext } from '@components/Theme'
 import { Waved } from '@components/Waved'
-import { HeaderLink } from '@layout/Header/HeaderLink'
-import { HeaderButton } from '@layout/Header/HeaderButton'
+import { HeaderLink } from '@layout/Header/components/HeaderLink'
+import { HeaderButton } from '@layout/Header/components/HeaderButton'
 
 interface HeaderProps {
   status: boolean
 }
 
-export const Header = ({ status }: HeaderProps): React.JSX.Element => {
+export const Header = ({ status }: HeaderProps) => {
   const { themeToggle } = useContext(ThemeContext)
 
   return (
@@ -84,6 +85,7 @@ export const Header = ({ status }: HeaderProps): React.JSX.Element => {
                 </span>
               </HeaderButton>
               <Form action="/">
+                <Input type="hidden" value="Выход" name="theme" />
                 <HeaderButton color="red" type="submit" id="arrow-back">
                   Выйти
                 </HeaderButton>

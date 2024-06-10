@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 export const Form = ({
   className,
   action = undefined,
-  onSubmit = undefined,
+  onSubmit,
   children,
 }: React.FormHTMLAttributes<HTMLFormElement>) => {
   const style: string = twMerge('form', className)
