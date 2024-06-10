@@ -48,7 +48,7 @@ export const Button = ({
   target = false,
   to,
   disabled = false,
-  onClick = undefined,
+  onClick,
   children,
 }: ButtonProps) => {
   const style: string = twMerge(

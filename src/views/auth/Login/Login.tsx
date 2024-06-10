@@ -1,4 +1,3 @@
-import React from 'react'
 import { useToggle } from '@hooks/useToggle'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
@@ -132,11 +131,11 @@ export const Login = () => {
               Куратор
             </LoginToggle>
           </div>
-          <InputDefault type="text" placeholder="Логин" name="login">
+          <InputDefault placeholder="Логин" name="login">
             <Error>Введите логин</Error>
           </InputDefault>
           <InputPassword placeholder="Пароль" name="password">
-            <Error>Введите пароль</Error>
+            <Error>Минимальная длинна пароля 8 символов</Error>
           </InputPassword>
           <div className="flex">
             <AuthLink to="/recovery">

@@ -1,58 +1,44 @@
-import React from 'react'
-import { validation } from '@utils/validation'
 import { Form } from '@ui/Form'
-import { Label } from '@ui/Label'
-import { Wrapper } from '@ui/Wrapper'
 import { Error } from '@ui/Error'
-import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { Placeholder } from '@components/Placeholder'
+import { InputDefault } from '@components/InputDefault'
 import { Waved } from '@components/Waved'
-import { Section } from '@views/auth/components/Section'
-import { Bg } from '@views/auth/components/Bg'
-import { Content } from '@views/auth/components/Content'
-import { Anchor } from '@views/auth/components/Anchor'
-import { Subtitle } from '@views/auth/components/Subtitle'
-import { Text } from '@views/auth/components/Text'
+import { AuthSection } from '@views/auth/components/AuthSection'
+import { AuthBg } from '@views/auth/components/AuthBg'
+import { AuthContent } from '@views/auth/components/AuthContent'
+import { AuthLink } from '@views/auth/components/AuthLink'
+import { AuthTitle } from '@views/auth/components/AuthTitle'
+import { AuthSubtitle } from '@views/auth/components/AuthSubtitle'
 
-export const Code = (): React.JSX.Element => {
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
-    const form = event.target as HTMLFormElement
-
-    if (!validation(form)) event.preventDefault()
-  }
-
+export const Code = () => {
   return (
-    <Section>
-      <Bg />
-      <Content>
-        <Subtitle>Восстановление пароля</Subtitle>
-        <Text>
+    <AuthSection>
+      <AuthBg />
+      <AuthContent>
+        <AuthTitle>Восстановление пароля</AuthTitle>
+        <AuthSubtitle>
           На ваш e-mail отправили код подтверждения,{' '}
-          <br className="hidden sm:block" /> введите его нижу, чтобы изменить
+          <br className="hidden sm:block" /> введите его ниже, чтобы изменить
           пароль
-        </Text>
-        <Form className="gap-6" action="/password" onSubmit={submitHandler}>
+        </AuthSubtitle>
+        <Form className="gap-6" action="/password">
           <Input type="hidden" value="Код" name="theme" />
-          <Label data="input">
-            <Wrapper>
-              <Cover>
-                <Input data="" type="text" name="code" />
-              </Cover>
-              <Placeholder>Код</Placeholder>
-              <Error>Введите Код</Error>
-            </Wrapper>
-          </Label>
+          <InputDefault type="email" placeholder="E-Mail" name="email">
+            <Error>Введите Код</Error>
+          </InputDefault>
           <Button type="submit">
             <Waved />
             Восстановить
           </Button>
         </Form>
-        <div className="flex items-center justify-center mt-8">
-          <Anchor as="button">Не получил код?</Anchor>
-        </div>
-      </Content>
-    </Section>
+        <Form className="items-center justify-center mt-8" action="/code">
+          <Input type="hidden" value="Получить код повторно" name="theme" />
+          <AuthLink as="button" type="submit">
+            Не получил код?
+          </AuthLink>
+        </Form>
+      </AuthContent>
+    </AuthSection>
   )
 }

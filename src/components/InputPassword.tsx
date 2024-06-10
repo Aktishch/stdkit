@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { InputProps } from '@ui/Input'
 import { InputIcon } from '@ui/InputIcon'
@@ -11,9 +11,9 @@ export const InputPassword = ({
   className,
   maxLength,
   placeholder,
-  onInput = undefined,
-  onKeyDown = undefined,
-  onPaste = undefined,
+  onInput,
+  onKeyDown,
+  onPaste,
   children,
 }: InputProps) => {
   const [password, setPassword] = useState('password')

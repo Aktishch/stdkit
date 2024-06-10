@@ -4,7 +4,7 @@ import { Waved } from '@components/Waved'
 
 export const LoginToggle = ({
   className,
-  onClick = undefined,
+  onClick,
   children,
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   const style: string = twMerge(

@@ -5,10 +5,7 @@ export const Title = ({
   className,
   children,
 }: React.HtmlHTMLAttributes<HTMLHeadingElement>) => {
-  const classNames: string = twMerge(
-    'font-medium text-2xl leading-7',
-    className
-  )
+  const style: string = twMerge('font-medium text-2xl leading-7', className)
 
-  return <h1 className={classNames}>{children}</h1>
+  return <h1 className={style}>{children}</h1>
 }

@@ -1,9 +1,8 @@
-import React from 'react'
 import { Button } from '@ui/Button'
 import { Icon } from '@ui/Icon'
 import { Waved } from '@components/Waved'
 
-export const Footer = (): React.JSX.Element => {
+export const Footer = () => {
   const currentYear = (): number => {
     return new Date().getFullYear()
   }

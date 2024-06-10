@@ -1,5 +1,5 @@
 import React, { createContext, useEffect } from 'react'
-import { useToggle } from '../hooks/useToggle'
+import { useToggle } from '@hooks/useToggle'
 
 interface ThemeContextProps {
   themeValue?: boolean

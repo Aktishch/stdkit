@@ -1,9 +1,8 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-interface IconProps {
+interface IconProps extends React.SVGAttributes<SVGSVGElement> {
   id: string
-  className?: string
 }
 
 export const Icon = ({ id, className }: IconProps) => {

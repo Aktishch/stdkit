@@ -1,52 +1,35 @@
-import React from 'react'
-import { validation } from '@utils/validation'
 import { Form } from '@ui/Form'
-import { Label } from '@ui/Label'
-import { Wrapper } from '@ui/Wrapper'
 import { Error } from '@ui/Error'
-import { Cover } from '@ui/Cover'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { Placeholder } from '@components/Placeholder'
+import { InputDefault } from '@components/InputDefault'
 import { Waved } from '@components/Waved'
-import { Section } from '@views/auth/components/Section'
-import { Bg } from '@views/auth/components/Bg'
-import { Content } from '@views/auth/components/Content'
-import { Subtitle } from '@views/auth/components/Subtitle'
-import { Text } from '@views/auth/components/Text'
+import { AuthSection } from '@views/auth/components/AuthSection'
+import { AuthBg } from '@views/auth/components/AuthBg'
+import { AuthContent } from '@views/auth/components/AuthContent'
+import { AuthTitle } from '@views/auth/components/AuthTitle'
+import { AuthSubtitle } from '@views/auth/components/AuthSubtitle'
 
-export const Recovery = (): React.JSX.Element => {
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
-    const form = event.target as HTMLFormElement
-
-    if (!validation(form)) event.preventDefault()
-  }
-
+export const Recovery = () => {
   return (
-    <Section>
-      <Bg />
-      <Content>
-        <Subtitle>Восстановление пароля</Subtitle>
-        <Text>
+    <AuthSection>
+      <AuthBg />
+      <AuthContent>
+        <AuthTitle>Восстановление пароля</AuthTitle>
+        <AuthSubtitle>
           Введите e-mail и мы вышлем <br /> код для смены пароля
-        </Text>
-        <Form className="gap-6" action="/code" onSubmit={submitHandler}>
+        </AuthSubtitle>
+        <Form className="gap-6" action="/code">
           <Input type="hidden" value="Восстановление пароля" name="theme" />
-          <Label data="input">
-            <Wrapper>
-              <Cover>
-                <Input data="email" type="text" name="email" />
-              </Cover>
-              <Placeholder>E-Mail</Placeholder>
-              <Error>Некорректный адрес</Error>
-            </Wrapper>
-          </Label>
+          <InputDefault type="email" placeholder="E-Mail" name="login">
+            <Error>Некорректный адрес</Error>
+          </InputDefault>
           <Button type="submit">
             <Waved />
             Восстановить
           </Button>
         </Form>
-      </Content>
-    </Section>
+      </AuthContent>
+    </AuthSection>
   )
 }

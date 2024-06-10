@@ -33,14 +33,16 @@ export const InputTel = ({
   className,
   maxLength,
   placeholder,
-  onInput = undefined,
-  onKeyDown = undefined,
-  onPaste = undefined,
+  onInput,
+  onKeyDown,
+  onPaste,
   children,
 }: InputProps) => {
   const style: string = twMerge(className)
 
-  const onInputHandler = (event: InputEvent): '' | undefined => {
+  const onInputHandler = (
+    event: React.CompositionEvent<HTMLInputElement>
+  ): '' | undefined => {
     if (onInput !== undefined) onInput(event)
 
     const input = event.target as HTMLInputElement
@@ -58,7 +60,9 @@ export const InputTel = ({
     input.value = formatterValue(value)
   }
 
-  const onKeyDownHandler = (event: KeyboardEvent): void => {
+  const onKeyDownHandler = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ): void => {
     if (onKeyDown !== undefined) onKeyDown(event)
 
     const input = event.target as HTMLInputElement
@@ -67,7 +71,9 @@ export const InputTel = ({
     if (event.code === 'Backspace' && value.length === 1) input.value = ''
   }
 
-  const onPasteHandler = (event: ClipboardEvent): void => {
+  const onPasteHandler = (
+    event: React.ClipboardEvent<HTMLInputElement>
+  ): void => {
     if (onPaste !== undefined) onPaste(event)
 
     const input = event.target as HTMLInputElement

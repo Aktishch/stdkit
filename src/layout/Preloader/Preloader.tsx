@@ -1,14 +1,16 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-export const PreloaderComponent = (
-  {},
-  ref: React.ForwardedRef<HTMLDivElement>
-): React.JSX.Element => {
+export const Preloader = ({
+  className,
+}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+  const style: string = twMerge(
+    'fixed inset-0 z-50 flex flex-col items-center justify-center duration-500 bg-white',
+    className
+  )
+
   return (
-    <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center duration-500 bg-white"
-      ref={ref}
-    >
+    <div className={style}>
       <div className="preloader">
         <div className="preloader-square" />
         <div className="preloader-square" />
@@ -18,7 +20,3 @@ export const PreloaderComponent = (
     </div>
   )
 }
-
-export const Preloader = forwardRef(
-  PreloaderComponent
-) as React.ForwardRefExoticComponent<React.RefAttributes<HTMLElement>>

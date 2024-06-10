@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge'
 import { InputProps } from '@ui/Input'
 import { InputDefault } from '@components/InputDefault'
 
-export const InputText = ({
+export const InputNumber = ({
   size = 'lg',
   value,
   name,
@@ -21,9 +21,8 @@ export const InputText = ({
     if (onInput !== undefined) onInput(event)
 
     const input = event.target as HTMLInputElement
-    const regExp = /[0-9.,!@#$%^&*()-=_+`~{}/?<>|'"]/
 
-    if (input.value.match(regExp)) input.value = input.value.replace(regExp, '')
+    input.value = input.value.replace(/^\.|[^\d.]|\.(?=.*\.)|^0+(?=\d)/g, '')
   }
 
   return (
