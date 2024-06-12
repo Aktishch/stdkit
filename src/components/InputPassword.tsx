@@ -1,21 +1,16 @@
 import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { InputProps } from '@ui/Input'
 import { InputIcon } from '@ui/InputIcon'
-import { InputDefault } from '@components/InputDefault'
+import { InputDefault, InputDefaultProps } from '@components/InputDefault'
 
 export const InputPassword = ({
   size = 'lg',
-  value,
-  name,
   className,
-  maxLength,
   placeholder,
-  onInput,
-  onKeyDown,
-  onPaste,
-  children,
-}: InputProps) => {
+  error,
+  maxLength,
+  ...props
+}: InputDefaultProps) => {
   const [password, setPassword] = useState('password')
   const [id, setId] = useState('eye-visible')
   const style: string = twMerge(className)
@@ -41,13 +36,11 @@ export const InputPassword = ({
       className={style}
       size={size}
       type={password}
-      value={value}
-      maxLength={maxLength}
-      name={name}
       placeholder={placeholder}
-      onInput={onInput}
-      onKeyDown={onKeyDown}
-      onPaste={onPaste}
+      error={error}
+      maxLength={maxLength}
+      autoComplete="new-password"
+      {...props}
     >
       <InputIcon
         className="pr-4 text-2xl text-black opacity-50"
@@ -56,7 +49,6 @@ export const InputPassword = ({
         pointer={true}
         onClick={onClickHandler}
       />
-      {children}
     </InputDefault>
   )
 }

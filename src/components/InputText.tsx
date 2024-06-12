@@ -1,29 +1,26 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
-import { InputProps } from '@ui/Input'
-import { InputDefault } from '@components/InputDefault'
+import { InputDefault, InputDefaultProps } from '@components/InputDefault'
 
 export const InputText = ({
   size = 'lg',
-  value,
-  name,
   className,
-  maxLength,
   placeholder,
+  error,
+  maxLength,
   onInput,
-  onKeyDown,
-  onPaste,
   children,
-}: InputProps) => {
+  ...props
+}: InputDefaultProps) => {
   const style: string = twMerge(className)
 
   const onInputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
-    if (onInput !== undefined) onInput(event)
-
     const input = event.target as HTMLInputElement
     const regExp = /[0-9.,!@#$%^&*()-=_+`~{}/?<>|'"]/
 
     if (input.value.match(regExp)) input.value = input.value.replace(regExp, '')
+
+    onInput?.(event)
   }
 
   return (
@@ -31,13 +28,11 @@ export const InputText = ({
       className={style}
       size={size}
       type="text"
-      value={value}
-      maxLength={maxLength}
-      name={name}
       placeholder={placeholder}
+      error={error}
+      maxLength={maxLength}
       onInput={onInputHandler}
-      onKeyDown={onKeyDown}
-      onPaste={onPaste}
+      {...props}
     >
       {children}
     </InputDefault>

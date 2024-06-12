@@ -1,10 +1,7 @@
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Props } from '@utils/props'
 
-export const AuthSection = ({
-  className,
-  children,
-}: React.HtmlHTMLAttributes<HTMLElement>) => {
+export const AuthSection = ({ className, children }: Props) => {
   const style: string = twMerge(
     'container relative flex items-center justify-center min-h-screen',
     className

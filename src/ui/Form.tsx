@@ -3,14 +3,13 @@ import { twMerge } from 'tailwind-merge'
 
 export const Form = ({
   className,
-  action = undefined,
-  onSubmit,
   children,
+  ...props
 }: React.FormHTMLAttributes<HTMLFormElement>) => {
   const style: string = twMerge('form', className)
 
   return (
-    <form className={style} action={action} onSubmit={onSubmit}>
+    <form className={style} {...props}>
       {children}
     </form>
   )

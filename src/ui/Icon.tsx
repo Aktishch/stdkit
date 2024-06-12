@@ -1,7 +1,7 @@
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Props } from '@utils/props'
 
-interface IconProps extends React.SVGAttributes<SVGSVGElement> {
+interface IconProps extends Props {
   id: string
 }
 

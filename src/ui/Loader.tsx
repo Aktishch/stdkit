@@ -1,10 +1,8 @@
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Props } from '@utils/props'
 import { Icon } from '@ui/Icon'
 
-export const Loader = ({
-  className,
-}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+export const Loader = ({ className }: Props) => {
   const style: string = twMerge('loader', className)
 
   return (

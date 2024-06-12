@@ -1,7 +1,6 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
-import { InputProps } from '@ui/Input'
-import { InputDefault } from '@components/InputDefault'
+import { InputDefault, InputDefaultProps } from '@components/InputDefault'
 
 const getValue = (input: HTMLInputElement): string => {
   return input.value.replace(/\D/g, '')
@@ -16,11 +15,8 @@ const formatterValue = (value: string): string => {
   formatted = firstVal + ' '
 
   if (value.length > 1) formatted += '(' + value.substring(1, 4)
-
   if (value.length >= 5) formatted += ') ' + value.substring(4, 7)
-
   if (value.length >= 8) formatted += '-' + value.substring(7, 9)
-
   if (value.length >= 10) formatted += '-' + value.substring(9, 11)
 
   return formatted
@@ -28,23 +24,20 @@ const formatterValue = (value: string): string => {
 
 export const InputTel = ({
   size = 'lg',
-  value,
-  name,
   className,
-  maxLength,
   placeholder,
+  error,
+  maxLength,
   onInput,
   onKeyDown,
   onPaste,
   children,
-}: InputProps) => {
+}: InputDefaultProps) => {
   const style: string = twMerge(className)
 
   const onInputHandler = (
     event: React.CompositionEvent<HTMLInputElement>
   ): '' | undefined => {
-    if (onInput !== undefined) onInput(event)
-
     const input = event.target as HTMLInputElement
     const selection: number | null = input.selectionStart
     const value: string = getValue(input)
@@ -61,24 +54,23 @@ export const InputTel = ({
     }
 
     input.value = formatterValue(value)
+    onInput?.(event)
   }
 
   const onKeyDownHandler = (
     event: React.KeyboardEvent<HTMLInputElement>
   ): void => {
-    if (onKeyDown !== undefined) onKeyDown(event)
-
     const input = event.target as HTMLInputElement
     const value: string = getValue(input)
 
     if (event.code === 'Backspace' && value.length === 1) input.value = ''
+
+    onKeyDown?.(event)
   }
 
   const onPasteHandler = (
     event: React.ClipboardEvent<HTMLInputElement>
   ): void => {
-    if (onPaste !== undefined) onPaste(event)
-
     const input = event.target as HTMLInputElement
     const value: string = getValue(input)
     const pasted: DataTransfer | null = event.clipboardData
@@ -86,10 +78,11 @@ export const InputTel = ({
     if (pasted) {
       if (/\D/g.test(pasted.getData('Text'))) {
         input.value = value
-
         return
       }
     }
+
+    onPaste?.(event)
   }
 
   return (
@@ -97,10 +90,9 @@ export const InputTel = ({
       className={style}
       size={size}
       type="tel"
-      value={value}
-      maxLength={maxLength}
-      name={name}
       placeholder={placeholder}
+      error={error}
+      maxLength={maxLength}
       onInput={onInputHandler}
       onKeyDown={onKeyDownHandler}
       onPaste={onPasteHandler}

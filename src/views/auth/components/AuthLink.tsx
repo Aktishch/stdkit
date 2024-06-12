@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 import { Button, ButtonProps } from '@ui/Button'
-import { Waved } from '@components/Waved'
 
 export const AuthLink = ({
   as: Tag = Link,
@@ -22,8 +21,8 @@ export const AuthLink = ({
       size={null}
       variant={null}
       to={to}
+      waved="dark"
     >
-      <Waved variant="dark" />
       {children}
     </Button>
   )
