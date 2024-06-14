@@ -1,19 +1,20 @@
-import React, { createContext, useEffect } from 'react'
+import React, { createContext, useContext, useEffect } from 'react'
 import { useToggle } from '@hooks/useToggle'
 
 interface ThemeContextProps {
-  themeValue?: boolean
-  themeToggle?: () => void
+  themeValue: boolean
+  themeToggle: () => void
 }
 
-export const ThemeContext = createContext<ThemeContextProps>({})
+export const ThemeContext = createContext<ThemeContextProps>(
+  {} as ThemeContextProps
+)
+
+export const useTheme = () => useContext(ThemeContext)
 
 export const Theme = ({ children }: React.PropsWithChildren) => {
   const { value, toggle } = useToggle({
-    status:
-      localStorage.getItem('theme') && localStorage.getItem('theme') === 'dark'
-        ? true
-        : false,
+    status: localStorage.getItem('theme') === 'dark' ? true : false,
   })
 
   const onKeyUpHandler = (event: KeyboardEvent): void => {
