@@ -11,6 +11,7 @@ import { InputText } from '@components/InputText'
 import { InputTel } from '@components/InputTel'
 import { Sidebar } from '@views/lk/components/Sidebar'
 import { SidebarButton } from '@views/lk/components/SidebarButton'
+import { SidebarExit } from '@views/lk/components/SidebarExit'
 import { AvatarUploader } from '@views/lk/components/AvatarUploader'
 
 export const TutorSettings = () => {
@@ -28,24 +29,13 @@ export const TutorSettings = () => {
             </div>
           </div>
           <nav className="flex flex-col">
-            <SidebarButton id="settings" to="/lk-tutor">
+            <SidebarButton id="settings" to="/lk-tutor/settings">
               Настройки профиля
             </SidebarButton>
-            <SidebarButton id="lock" to="/">
+            <SidebarButton id="lock" to="/lk-tutor/password">
               Изменить пароль
             </SidebarButton>
-            <Form className="mt-4" action="/">
-              <Input type="hidden" value="Выход" name="theme" />
-              <SidebarButton
-                as="button"
-                type="submit"
-                exit={true}
-                id="arrow-back"
-                to="/lk-tutor"
-              >
-                Выйти
-              </SidebarButton>
-            </Form>
+            <SidebarExit />
           </nav>
         </Sidebar>
         <div className="w-full lg:max-w-[420px]">

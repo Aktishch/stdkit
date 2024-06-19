@@ -6,7 +6,7 @@ export const AuthLink = ({
   as: Tag = Link,
   className,
   children,
-  to,
+  ...props
 }: ButtonProps) => {
   const style: string = twMerge(
     'font-semibold text-black border-b border-black border-opacity-50 border-dashed text-sm sm:text-base dark:text-white dark:border-white',
@@ -20,8 +20,8 @@ export const AuthLink = ({
       color="gray"
       size={null}
       variant={null}
-      to={to}
       waved="dark"
+      {...props}
     >
       {children}
     </Button>

@@ -11,7 +11,7 @@ import {
   AccordionToggle,
   AccordionContent,
 } from '@components/Accordion'
-import { ThemeContext } from '@components/Theme'
+import { useTheme } from '@components/Theme'
 import { Waved } from '@components/Waved'
 import { HeaderLink } from '@layout/Header/components/HeaderLink'
 import { HeaderButton } from '@layout/Header/components/HeaderButton'
@@ -21,7 +21,7 @@ interface HeaderProps {
 }
 
 export const Header = ({ status }: HeaderProps) => {
-  const { themeToggle } = useContext(ThemeContext)
+  const { themeToggle, themeValue } = useTheme()
 
   return (
     <header className="container sticky top-0 left-0 right-0 z-30 flex items-center justify-between gap-3 py-2 bg-white border-b border-solid dark:bg-black sm:py-4 sm:gap-5 md:gap-10 lg:gap-24 md:py-6 border-grey">
@@ -76,9 +76,7 @@ export const Header = ({ status }: HeaderProps) => {
               <HeaderButton id="pallete" onClick={themeToggle}>
                 Тема:{' '}
                 <span className="text-primary">
-                  <ThemeContext.Consumer>
-                    {({ themeValue }) => (themeValue ? 'Тёмная' : 'Светлая')}
-                  </ThemeContext.Consumer>
+                  {themeValue ? 'Тёмная' : 'Светлая'}
                 </span>
               </HeaderButton>
               <Form action="/">

@@ -2,7 +2,7 @@ import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
 
 export const Sidebar = ({ className, children }: Props) => {
-  const style: string = twMerge('w-full', 'xs:max-w-[250px]', className)
+  const style: string = twMerge('w-full xs:max-w-[250px]', className)
 
   return (
     <div className={style}>

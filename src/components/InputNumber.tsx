@@ -1,18 +1,11 @@
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
 import { InputDefault, InputDefaultProps } from '@components/InputDefault'
 
 export const InputNumber = ({
-  size = 'lg',
-  className,
-  placeholder,
-  error,
-  maxLength,
   onInput,
   children,
+  ...props
 }: InputDefaultProps) => {
-  const style: string = twMerge(className)
-
   const onInputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
     const input = event.target as HTMLInputElement
 
@@ -21,15 +14,7 @@ export const InputNumber = ({
   }
 
   return (
-    <InputDefault
-      className={style}
-      size={size}
-      type="text"
-      placeholder={placeholder}
-      error={error}
-      maxLength={maxLength}
-      onInput={onInputHandler}
-    >
+    <InputDefault onInput={onInputHandler} {...props}>
       {children}
     </InputDefault>
   )
