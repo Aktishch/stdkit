@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon } from '@ui/Icon'
 import { Form } from '@ui/Form'
@@ -11,7 +10,7 @@ import {
   AccordionToggle,
   AccordionContent,
 } from '@components/Accordion'
-import { useTheme } from '@components/Theme'
+import { useTheme } from '@providers/Theme'
 import { Waved } from '@components/Waved'
 import { HeaderLink } from '@layout/Header/components/HeaderLink'
 import { HeaderButton } from '@layout/Header/components/HeaderButton'

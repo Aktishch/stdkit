@@ -53,15 +53,15 @@ export const TutorPassword = () => {
             </div>
           </Form>
           <ul className="flex flex-col gap-3 text-red mt-7 sm:mt-10">
-            <li className="text-sm font-normal leading-4">
+            <li className="text-sm font-normal leading-5">
               Пароль должен быть не менее{' '}
               <span className="font-semibold">8 символов длиной</span>
             </li>
-            <li className="text-sm font-normal leading-4">
+            <li className="text-sm font-normal leading-5">
               Пароль должен содержать{' '}
               <span className="font-semibold">цифры (0-9)</span>
             </li>
-            <li className="text-sm font-normal leading-4">
+            <li className="text-sm font-normal leading-5">
               Пароль должен содержать{' '}
               <span className="font-semibold">
                 латинские символы нижнего регистра (a-z)
