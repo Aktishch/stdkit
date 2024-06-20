@@ -104,23 +104,17 @@ export const AccordionContent = ({
     setHeight(`${content.current?.scrollHeight}px`)
     setDuration(flag.current ? `${transition / 1000}s` : '0s')
 
-    switch (accordionValue) {
-      case true: {
-        timeOut.current = setTimeout((): void => {
-          setHeight('')
-          setHidden('')
-        }, transition)
-        break
-      }
-
-      case false: {
-        setHidden('overflow-hidden')
-        timeOut.current = setTimeout(
-          (): void => setHeight('0'),
-          flag.current ? 50 : 0
-        )
-        break
-      }
+    if (accordionValue) {
+      timeOut.current = setTimeout((): void => {
+        setHeight('')
+        setHidden('')
+      }, transition)
+    } else {
+      setHidden('overflow-hidden')
+      timeOut.current = setTimeout(
+        (): void => setHeight('0'),
+        flag.current ? 50 : 0
+      )
     }
 
     flag.current = true

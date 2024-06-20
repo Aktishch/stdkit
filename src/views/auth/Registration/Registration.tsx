@@ -1,3 +1,5 @@
+import { SectionScreen } from '@ui/SectionScreen'
+import { GradientBg } from '@ui/GradientBg'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -8,16 +10,14 @@ import { InputTel } from '@components/InputTel'
 import { InputNumber } from '@components/InputNumber'
 import { InputPassword } from '@components/InputPassword'
 import { Select } from '@components/Select'
-import { AuthSection } from '@views/auth/components/AuthSection'
-import { AuthBg } from '@views/auth/components/AuthBg'
 import { AuthContent } from '@views/auth/components/AuthContent'
 import { AuthLogo } from '@views/auth/components/AuthLogo'
 import { AuthLink } from '@views/auth/components/AuthLink'
 
 export const Registration = () => {
   return (
-    <AuthSection>
-      <AuthBg />
+    <SectionScreen>
+      <GradientBg />
       <AuthContent>
         <AuthLogo />
         <Form className="gap-7 md:gap-10" action="/">
@@ -102,6 +102,6 @@ export const Registration = () => {
           <AuthLink to="/">Войти</AuthLink>
         </div>
       </AuthContent>
-    </AuthSection>
+    </SectionScreen>
   )
 }

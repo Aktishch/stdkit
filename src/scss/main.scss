@@ -14,31 +14,13 @@
   @import "./ui-kit/load";
 }
 
-// // Фильтр
-// .filtering {
-//   &__category.filter-active {
-//     @apply text-white bg-second pointer-events-none;
+// Фильтрация студентов
+.students {
+  &__category.filtering-active {
+    &::after {
+      @apply visible opacity-100;
+    }
 
-//     @screen md {
-//       @apply font-bold text-primary bg-opacity-0;
-//     }
-//   }
-
-//   &__card.filter-show {
-//     animation: filter-show 0.3s ease both 1;
-//   }
-// }
-
-// @keyframes filter-show {
-//   0% {
-//     transform: translateY(50px);
-
-//     @apply opacity-0;
-//   }
-
-//   100% {
-//     transform: translateY(0);
-
-//     @apply opacity-100;
-//   }
-// }
+    @apply text-opacity-100 pointer-events-none;
+  }
+}

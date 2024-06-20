@@ -1,3 +1,4 @@
+import { SectionDefault } from '@ui/SectionDefault'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -12,13 +13,13 @@ import { SidebarExit } from '@views/lk/components/SidebarExit'
 
 export const TutorPassword = () => {
   return (
-    <section className="container flex-grow">
+    <SectionDefault>
       <div className="flex flex-col gap-10 md:flex-row md:gap-20">
         <Sidebar>
           <div className="flex items-center mb-6">
             <UserAva className="mr-4" />
-            <div className="flex flex-col">
-              <UserName>Щербаков Иван</UserName>
+            <div className="flex flex-col overflow-hidden">
+              <UserName>Константинов Константин</UserName>
               <UserPost>Куратор, веб-дизайн</UserPost>
             </div>
           </div>
@@ -70,6 +71,6 @@ export const TutorPassword = () => {
           </ul>
         </div>
       </div>
-    </section>
+    </SectionDefault>
   )
 }

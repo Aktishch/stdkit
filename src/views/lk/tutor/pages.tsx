@@ -11,3 +11,9 @@ export const TutorPassword = lazy(() =>
     default: module.TutorPassword,
   }))
 )
+
+export const TutorStudents = lazy(() =>
+  import('@views/lk/tutor/TutorStudents/TutorStudents').then((module) => ({
+    default: module.TutorStudents,
+  }))
+)

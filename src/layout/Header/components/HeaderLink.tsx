@@ -1,35 +1,34 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
-import { Button, ButtonProps } from '@ui/Button'
+import { Props } from '@utils/props'
 import { Icon } from '@ui/Icon'
+import { Waved } from '@components/Waved'
 
-interface HeaderLinkProps extends ButtonProps {
+interface HeaderLinkProps extends Props {
   id: string
+  to: string
 }
 
 export const HeaderLink = ({
   className,
   id,
+  to,
   children,
-  ...props
 }: HeaderLinkProps) => {
-  const style: string = twMerge(
-    'w-10 h-10 font-normal sm:p-2 opacity-60 dark:opacity-100 dark:hover:bg-primary rounded-full sm:rounded-lg bg-grey dark:bg-primary dark:sm:bg-opacity-0 sm:bg-opacity-0 hover:bg-grey sm:w-auto sm:h-auto shrink-0 dark:text-white',
-    className
-  )
-
   return (
-    <Button
-      className={style}
-      as={Link}
-      color="black"
-      size={null}
-      variant={null}
-      waved="dark"
-      {...props}
+    <NavLink
+      className={({ isActive }) =>
+        twMerge(
+          'btn btn-black size-10 font-normal sm:p-2 dark:hover:bg-primary dark:hover:opacity-100 rounded-full sm:rounded-lg bg-grey dark:bg-primary sm:bg-opacity-0 hover:bg-grey sm:size-auto shrink-0 dark:text-white',
+          isActive ? 'pointer-events-none ' : 'opacity-60 dark:sm:bg-opacity-0',
+          className
+        )
+      }
+      to={to}
     >
+      <Waved variant="dark" />
       <Icon className="text-xl sm:text-2xl" id={id} />
       <span className="hidden ml-2 sm:block">{children}</span>
-    </Button>
+    </NavLink>
   )
 }

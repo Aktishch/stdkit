@@ -4,7 +4,7 @@ import { Pack } from '@ui/Pack'
 import { Loader } from '@ui/Loader'
 import { Picture } from '@ui/Picture'
 
-export const AuthBg = ({ className }: Props) => {
+export const GradientBg = ({ className }: Props) => {
   const style: string = twMerge('absolute inset-0 dark:hidden', className)
 
   return (

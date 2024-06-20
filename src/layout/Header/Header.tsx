@@ -37,10 +37,10 @@ export const Header = ({ status }: HeaderProps) => {
       </Link>
       {status ? (
         <nav className="flex items-center gap-3 sm:gap-5 md:gap-8 md:mr-auto lg:gap-14">
-          <HeaderLink id="users" to="">
+          <HeaderLink id="users" to="/lk-tutor/students">
             Студенты
           </HeaderLink>
-          <HeaderLink id="notification" to="">
+          <HeaderLink id="notification" to="/lk-tutor/tasks">
             Задачи
           </HeaderLink>
         </nav>
@@ -65,7 +65,7 @@ export const Header = ({ status }: HeaderProps) => {
         <AccordionContent className="absolute right-0 top-12 w-44">
           <div className="px-2 py-6 overflow-hidden bg-white shadow dark:bg-dark rounded-2xl">
             <div className="flex flex-col px-2 mb-4">
-              <UserName>Щербаков Иван</UserName>
+              <UserName>Константинов Константин</UserName>
               <UserPost>Куратор, веб-дизайн</UserPost>
             </div>
             <nav className="flex flex-col">

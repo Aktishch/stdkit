@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SectionDefault } from '@ui/SectionDefault'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
@@ -18,13 +19,13 @@ export const TutorSettings = () => {
   const [image, setImage] = useState<string | File>()
 
   return (
-    <section className="container flex-grow">
+    <SectionDefault>
       <div className="flex flex-col gap-10 md:flex-row md:gap-20">
         <Sidebar>
           <div className="flex items-center mb-6">
             <UserAva className="mr-4" />
-            <div className="flex flex-col">
-              <UserName>Щербаков Иван</UserName>
+            <div className="flex flex-col overflow-hidden">
+              <UserName>Константинов Константин</UserName>
               <UserPost>Куратор, веб-дизайн</UserPost>
             </div>
           </div>
@@ -83,6 +84,6 @@ export const TutorSettings = () => {
           </Form>
         </div>
       </div>
-    </section>
+    </SectionDefault>
   )
 }

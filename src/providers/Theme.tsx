@@ -28,19 +28,8 @@ export const Theme = ({ children }: React.PropsWithChildren) => {
   useEffect((): void => {
     const html = document.documentElement as HTMLElement
 
-    switch (themeValue) {
-      case true: {
-        html.classList.add('dark')
-        localStorage.setItem('theme', 'dark')
-        break
-      }
-
-      case false: {
-        html.classList.remove('dark')
-        localStorage.setItem('theme', 'default')
-        break
-      }
-    }
+    html.classList.toggle('dark', themeValue)
+    localStorage.setItem('theme', themeValue ? 'dark' : 'default')
   }, [themeValue])
 
   return (

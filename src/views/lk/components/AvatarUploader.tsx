@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { getImagePreview } from '@utils/get-image-preview'
-import { Error } from '@ui/Error'
-import { Input } from '@ui/Input'
-import { Button } from '@ui/Button'
 import { Pack } from '@ui/Pack'
 import { Picture } from '@ui/Picture'
 import { Icon } from '@ui/Icon'
+import { Input } from '@ui/Input'
+import { Error } from '@ui/Error'
+import { Button } from '@ui/Button'
 
 interface AvatarUploaderProps {
   className?: string
@@ -80,7 +80,6 @@ export const AvatarUploader = ({
           waved="dark"
         >
           <Input
-            className="hidden"
             size={null}
             type="file"
             name="image"

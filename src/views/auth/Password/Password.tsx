@@ -1,17 +1,17 @@
+import { SectionScreen } from '@ui/SectionScreen'
+import { GradientBg } from '@ui/GradientBg'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
 import { InputPassword } from '@components/InputPassword'
-import { AuthSection } from '@views/auth/components/AuthSection'
-import { AuthBg } from '@views/auth/components/AuthBg'
 import { AuthContent } from '@views/auth/components/AuthContent'
 import { AuthTitle } from '@views/auth/components/AuthTitle'
 import { AuthSubtitle } from '@views/auth/components/AuthSubtitle'
 
 export const Password = () => {
   return (
-    <AuthSection>
-      <AuthBg />
+    <SectionScreen>
+      <GradientBg />
       <AuthContent>
         <AuthTitle>Восстановление пароля</AuthTitle>
         <AuthSubtitle>Придумайте новый пароль</AuthSubtitle>
@@ -30,6 +30,6 @@ export const Password = () => {
           <Button type="submit">Восстановить</Button>
         </Form>
       </AuthContent>
-    </AuthSection>
+    </SectionScreen>
   )
 }

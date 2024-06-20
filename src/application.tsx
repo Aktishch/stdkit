@@ -1,7 +1,8 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import { LayoutDefault } from '@layout/LayoutDefault'
 import { LayoutAuthorization } from '@layout/LayoutAuthorization'
+import { LayoutDefault } from '@layout/LayoutDefault'
+import { LayoutNotFound } from '@layout/LayoutNotFound'
 import {
   Login,
   Registration,
@@ -9,7 +10,11 @@ import {
   Code,
   Password,
 } from '@views/auth/pages'
-import { TutorSettings, TutorPassword } from '@views/lk/tutor/pages'
+import {
+  TutorSettings,
+  TutorPassword,
+  TutorStudents,
+} from '@views/lk/tutor/pages'
 import './scss/main.scss'
 
 window.addEventListener('DOMContentLoaded', ((): void => {
@@ -34,8 +39,9 @@ window.addEventListener('DOMContentLoaded', ((): void => {
           <Route index element={<Navigate to="settings" />} />
           <Route path="settings" element={<TutorSettings />} />
           <Route path="password" element={<TutorPassword />} />
+          <Route path="students" element={<TutorStudents />} />
         </Route>
-        <Route path="*" element={<div>404</div>} />
+        <Route path="*" element={<LayoutNotFound />} />
       </Routes>
     </BrowserRouter>
   )

@@ -1,11 +1,11 @@
 import { useToggle } from '@hooks/useToggle'
+import { SectionScreen } from '@ui/SectionScreen'
+import { GradientBg } from '@ui/GradientBg'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
 import { InputDefault } from '@components/InputDefault'
 import { InputPassword } from '@components/InputPassword'
-import { AuthSection } from '@views/auth/components/AuthSection'
-import { AuthBg } from '@views/auth/components/AuthBg'
 import { AuthContent } from '@views/auth/components/AuthContent'
 import { AuthLogo } from '@views/auth/components/AuthLogo'
 import { AuthLink } from '@views/auth/components/AuthLink'
@@ -15,8 +15,8 @@ export const Login = () => {
   const [loginValue, loginOn, loginOff] = useToggle()
 
   return (
-    <AuthSection>
-      <AuthBg />
+    <SectionScreen>
+      <GradientBg />
       <AuthContent>
         <AuthLogo />
         <Form className="gap-6" action="/lk-tutor/">
@@ -67,6 +67,6 @@ export const Login = () => {
           ''
         )}
       </AuthContent>
-    </AuthSection>
+    </SectionScreen>
   )
 }
