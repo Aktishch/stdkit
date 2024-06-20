@@ -1,12 +1,12 @@
 import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Theme } from '@components/Theme'
-import { Preloader } from '@layout/Preloader/Preloader'
+import { Theme } from '@providers/Theme'
+import { Loaded } from '@layout/Loaded/Loaded'
 
 export const LayoutAuthorization = () => {
   return (
     <Theme>
-      <Suspense fallback={<Preloader />}>
+      <Suspense fallback={<Loaded />}>
         <Outlet />
       </Suspense>
     </Theme>

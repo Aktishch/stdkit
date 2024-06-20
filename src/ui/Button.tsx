@@ -50,7 +50,7 @@ export const Button = ({
   target = false,
   to,
   children,
-  waved,
+  waved = 'light',
   ...props
 }: ButtonProps) => {
   const style: string = twMerge(

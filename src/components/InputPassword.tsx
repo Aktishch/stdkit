@@ -1,53 +1,22 @@
-import { useState } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { useToggle } from '@hooks/useToggle'
 import { InputIcon } from '@ui/InputIcon'
 import { InputDefault, InputDefaultProps } from '@components/InputDefault'
 
-export const InputPassword = ({
-  size = 'lg',
-  className,
-  placeholder,
-  error,
-  maxLength,
-  ...props
-}: InputDefaultProps) => {
-  const [password, setPassword] = useState('password')
-  const [id, setId] = useState('eye-visible')
-  const style: string = twMerge(className)
-
-  const onClickHandler = (): void => {
-    switch (password) {
-      case 'password': {
-        setPassword('text')
-        setId('eye-hidden')
-        break
-      }
-
-      case 'text': {
-        setPassword('password')
-        setId('eye-visible')
-        break
-      }
-    }
-  }
+export const InputPassword = ({ ...props }: InputDefaultProps) => {
+  const [passwordValue, , , passwordToggle] = useToggle(true)
 
   return (
     <InputDefault
-      className={style}
-      size={size}
-      type={password}
-      placeholder={placeholder}
-      error={error}
-      maxLength={maxLength}
+      type={passwordValue ? 'password' : 'text'}
       autoComplete="new-password"
       {...props}
     >
       <InputIcon
         className="pr-4 text-2xl text-black opacity-50"
-        id={id}
+        id={passwordValue ? 'eye-visible' : 'eye-hidden'}
         right={true}
         pointer={true}
-        onClick={onClickHandler}
+        onClick={passwordToggle}
       />
     </InputDefault>
   )

@@ -9,13 +9,10 @@ export interface InputDefaultProps extends InputProps {
 }
 
 export const InputDefault = ({
-  size = 'lg',
-  type = 'text',
   value = '',
   className,
   placeholder,
   error,
-  maxLength,
   onInput,
   onKeyDown,
   children,
@@ -41,17 +38,12 @@ export const InputDefault = ({
       <div className="form-wrapper">
         <div className="input-cover">
           <Input
-            className=""
-            size={size}
-            type={type}
-            maxLength={maxLength}
             defaultValue={value}
             onInput={onInputHandler}
             onKeyDown={onKeyDownHandler}
             {...props}
           />
-          {/* {tag === 'input' ? (
-          ) : tag === 'textarea' ? (
+          {/* { tag === 'textarea' ? (
             <Input
               tag="textarea"
               className=""
@@ -65,20 +57,7 @@ export const InputDefault = ({
               onPaste={onPaste}
               onChange={onChange}
             />
-          ) : (
-            <Input
-              tag="select"
-              className=""
-              size={size}
-              value={value}
-              name={name}
-              options={options}
-              onInput={onInputHandler}
-              onKeyDown={onKeyDownHandler}
-              onPaste={onPaste}
-              onChange={onChange}
-            />
-          )} */}
+          ) : ''} */}
         </div>
         {placeholder ? (
           <Placeholder

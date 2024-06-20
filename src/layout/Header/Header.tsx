@@ -10,7 +10,7 @@ import {
   AccordionToggle,
   AccordionContent,
 } from '@components/Accordion'
-import { useTheme } from '@components/Theme'
+import { useTheme } from '@providers/Theme'
 import { Waved } from '@components/Waved'
 import { HeaderLink } from '@layout/Header/components/HeaderLink'
 import { HeaderButton } from '@layout/Header/components/HeaderButton'

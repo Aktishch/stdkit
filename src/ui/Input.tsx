@@ -20,7 +20,6 @@ export const Input = ({
   size = 'lg',
   type = 'text',
   className,
-  maxLength,
   ...props
 }: InputProps) => {
   const style: string = twMerge(
@@ -33,7 +32,6 @@ export const Input = ({
     <input
       className={type === 'hidden' || type === 'file' ? 'hidden' : style}
       type={type}
-      maxLength={maxLength}
       {...props}
     />
   )

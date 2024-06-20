@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { LayoutDefault } from '@layout/LayoutDefault'
 import { LayoutAuthorization } from '@layout/LayoutAuthorization'
 import {
@@ -9,7 +9,7 @@ import {
   Code,
   Password,
 } from '@views/auth/pages'
-import { TutorSettings } from '@views/lk/tutor/pages'
+import { TutorSettings, TutorPassword } from '@views/lk/tutor/pages'
 import './scss/main.scss'
 
 window.addEventListener('DOMContentLoaded', ((): void => {
@@ -23,14 +23,17 @@ window.addEventListener('DOMContentLoaded', ((): void => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LayoutAuthorization />}>
-          <Route index element={<Login />} />
+          <Route index element={<Navigate to="login" />} />
+          <Route path="login" element={<Login />} />
           <Route path="registration" element={<Registration />} />
           <Route path="recovery" element={<Recovery />} />
           <Route path="code" element={<Code />} />
           <Route path="password" element={<Password />} />
         </Route>
-        <Route path="/lk-tutor" element={<LayoutDefault status={true} />}>
-          <Route index element={<TutorSettings />} />
+        <Route path="/lk-tutor/" element={<LayoutDefault status={true} />}>
+          <Route index element={<Navigate to="settings" />} />
+          <Route path="settings" element={<TutorSettings />} />
+          <Route path="password" element={<TutorPassword />} />
         </Route>
         <Route path="*" element={<div>404</div>} />
       </Routes>

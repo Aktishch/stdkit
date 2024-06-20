@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect } from 'react'
+import React, { createContext, useEffect, useContext } from 'react'
 import { useToggle } from '@hooks/useToggle'
 
 interface ThemeContextProps {
@@ -6,19 +6,16 @@ interface ThemeContextProps {
   themeToggle: () => void
 }
 
-export const ThemeContext = createContext<ThemeContextProps>(
-  {} as ThemeContextProps
-)
-
+const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps)
 export const useTheme = () => useContext(ThemeContext)
 
 export const Theme = ({ children }: React.PropsWithChildren) => {
-  const { value, toggle } = useToggle({
-    status: localStorage.getItem('theme') === 'dark' ? true : false,
-  })
+  const [themeValue, , , themeToggle] = useToggle(
+    localStorage.getItem('theme') === 'dark'
+  )
 
   const onKeyUpHandler = (event: KeyboardEvent): void => {
-    if (event.altKey && event.code === 'Digit5') toggle()
+    if (event.altKey && event.code === 'Digit5') themeToggle()
   }
 
   useEffect((): (() => void) | undefined => {
@@ -31,7 +28,7 @@ export const Theme = ({ children }: React.PropsWithChildren) => {
   useEffect((): void => {
     const html = document.documentElement as HTMLElement
 
-    switch (value) {
+    switch (themeValue) {
       case true: {
         html.classList.add('dark')
         localStorage.setItem('theme', 'dark')
@@ -44,10 +41,10 @@ export const Theme = ({ children }: React.PropsWithChildren) => {
         break
       }
     }
-  }, [value])
+  }, [themeValue])
 
   return (
-    <ThemeContext.Provider value={{ themeValue: value, themeToggle: toggle }}>
+    <ThemeContext.Provider value={{ themeValue, themeToggle }}>
       {children}
     </ThemeContext.Provider>
   )

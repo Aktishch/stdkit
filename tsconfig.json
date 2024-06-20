@@ -42,6 +42,12 @@
       "@layout": [
         "src/layout"
       ],
+      "@providers/*": [
+        "src/providers/*"
+      ],
+      "@providers": [
+        "src/providers"
+      ],
       "@ui/*": [
         "src/ui/*"
       ],

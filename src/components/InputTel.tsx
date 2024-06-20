@@ -1,5 +1,4 @@
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
 import { InputDefault, InputDefaultProps } from '@components/InputDefault'
 
 const getValue = (input: HTMLInputElement): string => {
@@ -23,18 +22,12 @@ const formatterValue = (value: string): string => {
 }
 
 export const InputTel = ({
-  size = 'lg',
-  className,
-  placeholder,
-  error,
-  maxLength,
   onInput,
   onKeyDown,
   onPaste,
   children,
+  ...props
 }: InputDefaultProps) => {
-  const style: string = twMerge(className)
-
   const onInputHandler = (
     event: React.CompositionEvent<HTMLInputElement>
   ): '' | undefined => {
@@ -87,15 +80,11 @@ export const InputTel = ({
 
   return (
     <InputDefault
-      className={style}
-      size={size}
       type="tel"
-      placeholder={placeholder}
-      error={error}
-      maxLength={maxLength}
       onInput={onInputHandler}
       onKeyDown={onKeyDownHandler}
       onPaste={onPasteHandler}
+      {...props}
     >
       {children}
     </InputDefault>

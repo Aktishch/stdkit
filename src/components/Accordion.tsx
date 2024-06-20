@@ -29,15 +29,15 @@ export const Accordion = ({
 }: AccordionProps) => {
   const accordion = useRef<HTMLDivElement>(null)
   const style: string = twMerge(className)
-  const { value, off, toggle } = useToggle({ status: active })
-  const onScrollHandler = (): void => off()
+  const [accordionValue, , accordionOff, accordionToggle] = useToggle(active)
+  const onScrollHandler = (): void => accordionOff()
 
   const onClickHandler = (event: Event): void => {
     if (
       (accordion.current === null ||
         accordion.current?.contains(event.target as Node)) === false
     )
-      off()
+      accordionOff()
   }
 
   useEffect((): (() => void) | undefined => {
@@ -57,9 +57,7 @@ export const Accordion = ({
   }, [])
 
   return (
-    <AccordionContext.Provider
-      value={{ accordionValue: value, accordionToggle: toggle }}
-    >
+    <AccordionContext.Provider value={{ accordionValue, accordionToggle }}>
       <div className={style} ref={accordion}>
         {children}
       </div>
