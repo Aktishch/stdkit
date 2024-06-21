@@ -1,25 +1,25 @@
 import { SectionScreen } from '@ui/SectionScreen'
-import { GradientBg } from '@ui/GradientBg'
+import { Gradient } from '@ui/Gradient'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
 import { InputDefault } from '@components/InputDefault'
-import { AuthContent } from '@views/auth/components/AuthContent'
-import { AuthLink } from '@views/auth/components/AuthLink'
-import { AuthTitle } from '@views/auth/components/AuthTitle'
-import { AuthSubtitle } from '@views/auth/components/AuthSubtitle'
+import { Content } from '@views/auth/components/Content'
+import { BorderButton } from '@views/auth/components/BorderButton'
+import { Title } from '@views/auth/components/Title'
+import { Subtitle } from '@views/auth/components/Subtitle'
 
 export const Code = () => {
   return (
     <SectionScreen>
-      <GradientBg />
-      <AuthContent>
-        <AuthTitle>Восстановление пароля</AuthTitle>
-        <AuthSubtitle>
+      <Gradient />
+      <Content>
+        <Title>Восстановление пароля</Title>
+        <Subtitle>
           На ваш e-mail отправили код подтверждения,{' '}
           <br className="hidden sm:block" /> введите его ниже, чтобы изменить
           пароль
-        </AuthSubtitle>
+        </Subtitle>
         <Form className="gap-6" action="/password">
           <Input type="hidden" value="Код" name="theme" />
           <InputDefault
@@ -32,11 +32,11 @@ export const Code = () => {
         </Form>
         <Form className="items-center justify-center mt-8" action="/code">
           <Input type="hidden" value="Получить код повторно" name="theme" />
-          <AuthLink as="button" type="submit">
+          <BorderButton as="button" type="submit">
             Не получил код?
-          </AuthLink>
+          </BorderButton>
         </Form>
-      </AuthContent>
+      </Content>
     </SectionScreen>
   )
 }

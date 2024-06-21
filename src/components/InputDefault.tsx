@@ -43,21 +43,6 @@ export const InputDefault = ({
             onKeyDown={onKeyDownHandler}
             {...props}
           />
-          {/* { tag === 'textarea' ? (
-            <Input
-              tag="textarea"
-              className=""
-              height={height}
-              size={size}
-              value={value}
-              maxLength={maxLength}
-              name={name}
-              onInput={onInputHandler}
-              onKeyDown={onKeyDownHandler}
-              onPaste={onPaste}
-              onChange={onChange}
-            />
-          ) : ''} */}
         </div>
         {placeholder ? (
           <Placeholder

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Theme } from '@providers/Theme'
 import { Loaded } from '@layout/Loaded/Loaded'
 import { SectionScreen } from '@ui/SectionScreen'
-import { GradientBg } from '@ui/GradientBg'
+import { Gradient } from '@ui/Gradient'
 import { Button } from '@ui/Button'
 
 export const LayoutNotFound = () => {
@@ -11,7 +11,7 @@ export const LayoutNotFound = () => {
     <Theme>
       <Suspense fallback={<Loaded />}>
         <SectionScreen>
-          <GradientBg />
+          <Gradient />
           <div className="relative flex flex-col items-center justify-center text-center">
             <h1 className="font-bold text-primary text-9xl md:text-[14rem]">
               404

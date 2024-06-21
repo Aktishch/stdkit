@@ -6,21 +6,9 @@
   @import "./ui-kit/fonts";
   @import "./ui-kit/basic";
   @import "./ui-kit/scrollbar";
-  // @import "./ui-kit/custom";
   @import "./ui-kit/waved";
 }
 
 @layer components {
   @import "./ui-kit/load";
-}
-
-// Фильтрация студентов
-.students {
-  &__category.filtering-active {
-    &::after {
-      @apply visible opacity-100;
-    }
-
-    @apply text-opacity-100 pointer-events-none;
-  }
 }

@@ -24,6 +24,7 @@ export const SidebarButton = ({
           className
         )
       }
+      draggable={false}
       to={to}
     >
       <Waved variant="dark" />

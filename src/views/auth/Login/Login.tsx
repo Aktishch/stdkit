@@ -1,24 +1,24 @@
 import { useToggle } from '@hooks/useToggle'
 import { SectionScreen } from '@ui/SectionScreen'
-import { GradientBg } from '@ui/GradientBg'
+import { Gradient } from '@ui/Gradient'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
 import { InputDefault } from '@components/InputDefault'
 import { InputPassword } from '@components/InputPassword'
-import { AuthContent } from '@views/auth/components/AuthContent'
-import { AuthLogo } from '@views/auth/components/AuthLogo'
-import { AuthLink } from '@views/auth/components/AuthLink'
-import { LoginToggle } from '@views/auth/Login/components/LoginToggle'
+import { Content } from '@views/auth/components/Content'
+import { Logo } from '@views/auth/components/Logo'
+import { BorderButton } from '@views/auth/components/BorderButton'
+import { Toggle } from '@views/auth/Login/components/Toggle'
 
 export const Login = () => {
   const [loginValue, loginOn, loginOff] = useToggle()
 
   return (
     <SectionScreen>
-      <GradientBg />
-      <AuthContent>
-        <AuthLogo />
+      <Gradient />
+      <Content>
+        <Logo />
         <Form className="gap-6" action="/lk-tutor/">
           <Input
             type="hidden"
@@ -26,18 +26,18 @@ export const Login = () => {
             name="theme"
           />
           <div className="flex items-center justify-between border border-gray border-solid rounded-lg h-[52px] overflow-hidden">
-            <LoginToggle
+            <Toggle
               className={`${!loginValue ? 'bg-primary text-white font-semibold pointer-events-none' : 'font-normal'}`}
               onClick={loginOff}
             >
               Студент
-            </LoginToggle>
-            <LoginToggle
+            </Toggle>
+            <Toggle
               className={`${loginValue ? 'bg-primary text-white font-semibold pointer-events-none' : 'font-normal'}`}
               onClick={loginOn}
             >
               Куратор
-            </LoginToggle>
+            </Toggle>
           </div>
           <InputDefault
             placeholder="Логин"
@@ -50,9 +50,9 @@ export const Login = () => {
             name="password"
           />
           <div className="flex">
-            <AuthLink to="/recovery">
+            <BorderButton to="/recovery">
               Забыл пароль? А голову свою не забыл?
-            </AuthLink>
+            </BorderButton>
           </div>
           <Button type="submit">Вход</Button>
         </Form>
@@ -61,12 +61,12 @@ export const Login = () => {
             <span className="mr-2 text-sm font-normal sm:text-base">
               Нет аккаунта?
             </span>
-            <AuthLink to="/registration">Зарегистрируйтесь</AuthLink>
+            <BorderButton to="/registration">Зарегистрируйтесь</BorderButton>
           </div>
         ) : (
           ''
         )}
-      </AuthContent>
+      </Content>
     </SectionScreen>
   )
 }

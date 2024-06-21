@@ -98,5 +98,25 @@
       <path opacity="0.5" d="M3.89869 15.5256C4.35035 16.5 5.90023 16.5 9 16.5C12.0998 16.5 13.6497 16.5 14.1013 15.5256C14.1401 15.4419 14.1729 15.3549 14.1993 15.2654C14.5061 14.225 13.4101 13.0192 11.2183 10.6074L9.75 9H8.25L6.78173 10.6074C4.58986 13.0192 3.49392 14.225 3.80074 15.2654C3.82711 15.3549 3.85986 15.4419 3.89869 15.5256Z" fill="currentColor" />
     </symbol>
 
+    <symbol id="search" width="100%" height="100%" viewBox="0 0 24 24">
+      <circle cx="11.5" cy="11.5" r="9.5" fill="transparent" stroke="currentColor" stroke-width="1.5" />
+      <path d="M18.5 18.5L22 22" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    </symbol>
+
+    <symbol id="filter" width="100%" height="100%" viewBox="0 0 24 24">
+      <path d="M9.5 14C11.1569 14 12.5 15.3431 12.5 17C12.5 18.6568 11.1569 20 9.5 20C7.84315 20 6.5 18.6568 6.5 17C6.5 15.3431 7.84315 14 9.5 14Z" fill="transparent" stroke="currentColor" stroke-width="1.5" />
+      <path d="M14.5 3.99998C12.8431 3.99998 11.5 5.34312 11.5 6.99998C11.5 8.65683 12.8431 9.99998 14.5 9.99998C16.1569 9.99998 17.5 8.65683 17.5 6.99998C17.5 5.34312 16.1569 3.99998 14.5 3.99998Z" fill="transparent" stroke="currentColor" stroke-width="1.5" />
+      <path d="M15 16.9585L22 16.9585" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      <path d="M9 6.9585L2 6.9585" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      <path d="M2 16.9585L4 16.9585" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      <path d="M22 6.9585L20 6.9585" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    </symbol>
+
+    <symbol id="burger" width="100%" height="100%" viewBox="0 0 24 24">
+      <path d="M20 7L4 7" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      <path d="M20 12L4 12" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      <path d="M20 17L4 17" fill="transparent" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    </symbol>
+
   </defs>
 </svg>
