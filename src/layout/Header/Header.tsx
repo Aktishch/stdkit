@@ -9,11 +9,11 @@ import {
   Accordion,
   AccordionToggle,
   AccordionContent,
-} from '@components/Accordion'
+} from '@providers/Accordion'
 import { useTheme } from '@providers/Theme'
 import { Waved } from '@components/Waved'
-import { HeaderLink } from '@layout/Header/components/HeaderLink'
-import { HeaderButton } from '@layout/Header/components/HeaderButton'
+import { NavButton } from '@layout/Header/components/NavButton'
+import { AccordionButton } from '@layout/Header/components/AccordionButton'
 
 interface HeaderProps {
   status: boolean
@@ -37,12 +37,12 @@ export const Header = ({ status }: HeaderProps) => {
       </Link>
       {status ? (
         <nav className="flex items-center gap-3 sm:gap-5 md:gap-8 md:mr-auto lg:gap-14">
-          <HeaderLink id="users" to="">
+          <NavButton id="users" to="/lk-tutor/students">
             Студенты
-          </HeaderLink>
-          <HeaderLink id="notification" to="">
+          </NavButton>
+          <NavButton id="notification" to="/lk-tutor/tasks">
             Задачи
-          </HeaderLink>
+          </NavButton>
         </nav>
       ) : (
         ''
@@ -65,24 +65,24 @@ export const Header = ({ status }: HeaderProps) => {
         <AccordionContent className="absolute right-0 top-12 w-44">
           <div className="px-2 py-6 overflow-hidden bg-white shadow dark:bg-dark rounded-2xl">
             <div className="flex flex-col px-2 mb-4">
-              <UserName>Щербаков Иван</UserName>
+              <UserName>Константинов Константин</UserName>
               <UserPost>Куратор, веб-дизайн</UserPost>
             </div>
             <nav className="flex flex-col">
-              <HeaderButton as={Link} to="/lk-tutor" id="settings">
+              <AccordionButton as={Link} to="/lk-tutor" id="settings">
                 Настройки
-              </HeaderButton>
-              <HeaderButton id="pallete" onClick={themeToggle}>
+              </AccordionButton>
+              <AccordionButton id="pallete" onClick={themeToggle}>
                 Тема:{' '}
                 <span className="text-primary">
                   {themeValue ? 'Тёмная' : 'Светлая'}
                 </span>
-              </HeaderButton>
+              </AccordionButton>
               <Form action="/">
                 <Input type="hidden" value="Выход" name="theme" />
-                <HeaderButton color="red" type="submit" id="arrow-back">
+                <AccordionButton color="red" type="submit" id="arrow-back">
                   Выйти
-                </HeaderButton>
+                </AccordionButton>
               </Form>
             </nav>
           </div>

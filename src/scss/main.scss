@@ -6,39 +6,9 @@
   @import "./ui-kit/fonts";
   @import "./ui-kit/basic";
   @import "./ui-kit/scrollbar";
-  // @import "./ui-kit/custom";
   @import "./ui-kit/waved";
 }
 
 @layer components {
   @import "./ui-kit/load";
 }
-
-// // Фильтр
-// .filtering {
-//   &__category.filter-active {
-//     @apply text-white bg-second pointer-events-none;
-
-//     @screen md {
-//       @apply font-bold text-primary bg-opacity-0;
-//     }
-//   }
-
-//   &__card.filter-show {
-//     animation: filter-show 0.3s ease both 1;
-//   }
-// }
-
-// @keyframes filter-show {
-//   0% {
-//     transform: translateY(50px);
-
-//     @apply opacity-0;
-//   }
-
-//   100% {
-//     transform: translateY(0);
-
-//     @apply opacity-100;
-//   }
-// }

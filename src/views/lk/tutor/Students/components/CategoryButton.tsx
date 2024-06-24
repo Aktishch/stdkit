@@ -1,24 +1,20 @@
-import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 import { Button, ButtonProps } from '@ui/Button'
 
-export const AuthLink = ({
-  as: Tag = Link,
+export const CategoryButton = ({
   className,
   children,
   ...props
 }: ButtonProps) => {
   const style: string = twMerge(
-    'font-semibold text-black border-b border-black border-opacity-50 border-dashed text-sm sm:text-base dark:text-white dark:border-white',
+    'px-1 text-black dark:text-white text-opacity-70 active:transform-none dark:text-opacity-70 after:content-auto after:absolute after:left-0 after:right-0 after:bottom-0 after:w-full after:h-px after:bg-primary dark:after:bg-white after:invisible after:opacity-0 after:duration-200',
     className
   )
 
   return (
     <Button
       className={style}
-      as={Tag}
-      color="gray"
-      size={null}
+      color="grey"
       variant={null}
       waved="dark"
       {...props}

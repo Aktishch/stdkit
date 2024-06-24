@@ -2,7 +2,7 @@ import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
 import { Icon } from '@ui/Icon'
 
-export const AuthLogo = ({ className }: Props) => {
+export const Logo = ({ className }: Props) => {
   const style: string = twMerge(
     'flex flex-col items-center justify-center mb-12 md:mt-6 lg:mb-24',
     className

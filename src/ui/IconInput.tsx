@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { ElementType } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Icon } from '@ui/Icon'
 
-interface InputIconProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+interface IconInputProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+  as?: ElementType
   id: string
   right?: boolean
   pointer?: boolean
+  type?: string
 }
 
-export const InputIcon = ({
+export const IconInput = ({
+  as: Tag = 'div',
   id,
   right = false,
   pointer = false,
+  type = 'button',
   className,
   ...props
-}: InputIconProps) => {
+}: IconInputProps) => {
   const style: string = twMerge(
     'form-icon',
     right ? 'form-icon-right' : 'form-icon-left',
@@ -23,8 +27,8 @@ export const InputIcon = ({
   )
 
   return (
-    <div className={style} {...props}>
+    <Tag className={style} type={Tag === 'button' ? type : null} {...props}>
       <Icon id={id} />
-    </div>
+    </Tag>
   )
 }

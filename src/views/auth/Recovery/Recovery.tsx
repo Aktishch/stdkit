@@ -1,22 +1,22 @@
+import { SectionScreen } from '@ui/SectionScreen'
+import { Gradient } from '@ui/Gradient'
 import { Form } from '@ui/Form'
 import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
 import { InputDefault } from '@components/InputDefault'
-import { AuthSection } from '@views/auth/components/AuthSection'
-import { AuthBg } from '@views/auth/components/AuthBg'
-import { AuthContent } from '@views/auth/components/AuthContent'
-import { AuthTitle } from '@views/auth/components/AuthTitle'
-import { AuthSubtitle } from '@views/auth/components/AuthSubtitle'
+import { Content } from '@views/auth/components/Content'
+import { Title } from '@views/auth/components/Title'
+import { Subtitle } from '@views/auth/components/Subtitle'
 
 export const Recovery = () => {
   return (
-    <AuthSection>
-      <AuthBg />
-      <AuthContent>
-        <AuthTitle>Восстановление пароля</AuthTitle>
-        <AuthSubtitle>
+    <SectionScreen>
+      <Gradient />
+      <Content>
+        <Title>Восстановление пароля</Title>
+        <Subtitle>
           Введите e-mail и мы вышлем <br /> код для смены пароля
-        </AuthSubtitle>
+        </Subtitle>
         <Form className="gap-6" action="/code">
           <Input type="hidden" value="Восстановление пароля" name="theme" />
           <InputDefault
@@ -27,7 +27,7 @@ export const Recovery = () => {
           />
           <Button type="submit">Восстановить</Button>
         </Form>
-      </AuthContent>
-    </AuthSection>
+      </Content>
+    </SectionScreen>
   )
 }

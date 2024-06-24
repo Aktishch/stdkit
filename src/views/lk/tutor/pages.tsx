@@ -1,13 +1,25 @@
 import { lazy } from 'react'
 
 export const TutorSettings = lazy(() =>
-  import('@views/lk/tutor/TutorSettings/TutorSettings').then((module) => ({
-    default: module.TutorSettings,
+  import('@views/lk/tutor/Settings/Settings').then((module) => ({
+    default: module.Settings,
   }))
 )
 
 export const TutorPassword = lazy(() =>
-  import('@views/lk/tutor/TutorPassword/TutorPassword').then((module) => ({
-    default: module.TutorPassword,
+  import('@views/lk/tutor/Password/Password').then((module) => ({
+    default: module.Password,
+  }))
+)
+
+export const TutorStudents = lazy(() =>
+  import('@views/lk/tutor/Students/Students').then((module) => ({
+    default: module.Students,
+  }))
+)
+
+export const TutorTasks = lazy(() =>
+  import('@views/lk/tutor/Tasks/Tasks').then((module) => ({
+    default: module.Tasks,
   }))
 )

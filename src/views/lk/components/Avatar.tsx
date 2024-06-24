@@ -4,16 +4,16 @@ import { Pack } from '@ui/Pack'
 import { Loader } from '@ui/Loader'
 import { Picture } from '@ui/Picture'
 
-interface AvaProps extends Props {
+export interface AvatarProps extends Props {
   webp?: string
   src?: string
 }
 
-export const UserAva = ({
+export const Avatar = ({
   className,
   webp = '/img/pictures/user.webp',
   src = '/img/pictures/user.jpg',
-}: AvaProps) => {
+}: AvatarProps) => {
   const style: string = twMerge(
     'flex items-center justify-center w-10 shrink-0 rounded-full bg-gray',
     className

@@ -2,16 +2,16 @@ import { twMerge } from 'tailwind-merge'
 import { Button, ButtonProps } from '@ui/Button'
 import { Icon } from '@ui/Icon'
 
-interface HeaderButtonProps extends ButtonProps {
+interface AccordionButtonProps extends ButtonProps {
   id: string
 }
 
-export const HeaderButton = ({
+export const AccordionButton = ({
   className,
   id,
   children,
   ...props
-}: HeaderButtonProps) => {
+}: AccordionButtonProps) => {
   const style: string = twMerge('justify-start px-2', className)
 
   return (

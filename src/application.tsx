@@ -1,15 +1,21 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import { LayoutDefault } from '@layout/LayoutDefault'
 import { LayoutAuthorization } from '@layout/LayoutAuthorization'
+import { LayoutDefault } from '@layout/LayoutDefault'
+import { LayoutNotFound } from '@layout/LayoutNotFound'
 import {
-  Login,
-  Registration,
-  Recovery,
-  Code,
-  Password,
+  AuthLogin,
+  AuthRegistration,
+  AuthRecovery,
+  AuthCode,
+  AuthPassword,
 } from '@views/auth/pages'
-import { TutorSettings, TutorPassword } from '@views/lk/tutor/pages'
+import {
+  TutorSettings,
+  TutorPassword,
+  TutorStudents,
+  TutorTasks,
+} from '@views/lk/tutor/pages'
 import './scss/main.scss'
 
 window.addEventListener('DOMContentLoaded', ((): void => {
@@ -24,18 +30,20 @@ window.addEventListener('DOMContentLoaded', ((): void => {
       <Routes>
         <Route path="/" element={<LayoutAuthorization />}>
           <Route index element={<Navigate to="login" />} />
-          <Route path="login" element={<Login />} />
-          <Route path="registration" element={<Registration />} />
-          <Route path="recovery" element={<Recovery />} />
-          <Route path="code" element={<Code />} />
-          <Route path="password" element={<Password />} />
+          <Route path="login" element={<AuthLogin />} />
+          <Route path="registration" element={<AuthRegistration />} />
+          <Route path="recovery" element={<AuthRecovery />} />
+          <Route path="code" element={<AuthCode />} />
+          <Route path="password" element={<AuthPassword />} />
         </Route>
         <Route path="/lk-tutor/" element={<LayoutDefault status={true} />}>
           <Route index element={<Navigate to="settings" />} />
           <Route path="settings" element={<TutorSettings />} />
           <Route path="password" element={<TutorPassword />} />
+          <Route path="students" element={<TutorStudents />} />
+          <Route path="tasks" element={<TutorTasks />} />
         </Route>
-        <Route path="*" element={<div>404</div>} />
+        <Route path="*" element={<LayoutNotFound />} />
       </Routes>
     </BrowserRouter>
   )

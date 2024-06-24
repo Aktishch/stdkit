@@ -1,5 +1,5 @@
 import { useToggle } from '@hooks/useToggle'
-import { InputIcon } from '@ui/InputIcon'
+import { IconInput } from '@ui/IconInput'
 import { InputDefault, InputDefaultProps } from '@components/InputDefault'
 
 export const InputPassword = ({ ...props }: InputDefaultProps) => {
@@ -11,8 +11,9 @@ export const InputPassword = ({ ...props }: InputDefaultProps) => {
       autoComplete="new-password"
       {...props}
     >
-      <InputIcon
+      <IconInput
         className="pr-4 text-2xl text-black opacity-50"
+        as="button"
         id={passwordValue ? 'eye-visible' : 'eye-hidden'}
         right={true}
         pointer={true}
