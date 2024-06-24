@@ -18,7 +18,18 @@ module.exports = {
       xl: 1365.98 + 'px',
       xxl: 2559.98 + 'px',
     },
+    constants: {
+      xs: '28px',
+      sm: '34px',
+      md: '46px',
+      lg: '52px',
+      xl: '60px',
+      xxl: '66px',
+    },
     colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      inherit: 'inherit',
       primary: {
         DEFAULT: '#7352CF',
       },
@@ -54,17 +65,12 @@ module.exports = {
     fontFamily: {
       base: 'var(--font-base)',
     },
-    constants: {
-      xs: '28px',
-      sm: '34px',
-      md: '46px',
-      lg: '52px',
-      xl: '60px',
-      xxl: '66px',
-    },
     extend: {
       content: {
         auto: '""',
+      },
+      borderRadius: {
+        inherit: 'inherit',
       },
     },
   },

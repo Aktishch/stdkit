@@ -6,22 +6,18 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       display: 'flex',
       width: '100%',
       '--input-radius': '8px',
-
       '& .input': {
         flexGrow: 1,
       },
-
       '& .input:first-child': {
         borderTopLeftRadius: 'var(--input-radius)',
         borderBottomLeftRadius: 'var(--input-radius)',
       },
-
       '& .input:last-child': {
         borderTopRightRadius: 'var(--input-radius)',
         borderBottomRightRadius: 'var(--input-radius)',
       },
     },
-
     '.input': {
       '--input-text': theme('colors.black.DEFAULT'),
       display: 'block',
@@ -33,25 +29,20 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       border: `1px solid ${theme('colors.gray.DEFAULT')}`,
       transition: '0.2s ease',
       userSelect: 'initial',
-
       '&:not(&-error):focus': {
         borderColor: theme('colors.primary.DEFAULT'),
       },
-
       '&:disabled': {
         pointerEvents: 'none',
         opacity: 0.5,
       },
-
       '&-fade': {
         '--input-text': theme('colors.white.DEFAULT'),
         backgroundColor: 'transparent',
       },
-
       '&-error': {
         borderColor: theme('colors.red.DEFAULT'),
       },
-
       '&:-webkit-autofill': {
         color: 'var(--input-text) !important',
         borderColor: theme('colors.gray.DEFAULT'),
@@ -72,7 +63,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         }
       },
     },
-
     {
       values: theme('constants'),
     }

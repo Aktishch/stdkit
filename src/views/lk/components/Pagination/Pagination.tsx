@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
 import { Icon } from '@ui/Icon'
-import { PaginationButton } from '@views/lk/components/PaginationButton'
+import { PaginationButton } from '@views/lk/components/Pagination/PaginationButton'
 
 export const Pagination = ({ className }: Props) => {
   const style: string = twMerge(

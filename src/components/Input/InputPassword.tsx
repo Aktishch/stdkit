@@ -1,6 +1,6 @@
 import { useToggle } from '@hooks/useToggle'
-import { IconInput } from '@ui/IconInput'
-import { InputDefault, InputDefaultProps } from '@components/InputDefault'
+import { FormIcon } from '@ui/Form/FormIcon'
+import { InputDefault, InputDefaultProps } from '@components/Input/InputDefault'
 
 export const InputPassword = ({ ...props }: InputDefaultProps) => {
   const [passwordValue, , , passwordToggle] = useToggle(true)
@@ -11,7 +11,7 @@ export const InputPassword = ({ ...props }: InputDefaultProps) => {
       autoComplete="new-password"
       {...props}
     >
-      <IconInput
+      <FormIcon
         className="pr-4 text-2xl text-black opacity-50"
         as="button"
         id={passwordValue ? 'eye-visible' : 'eye-hidden'}

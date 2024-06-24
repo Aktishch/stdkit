@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Placeholder } from '@ui/Placeholder'
-import { Error } from '@ui/Error'
-import { IconInput } from '@ui/IconInput'
+import { Placeholder } from '@ui/Form/Placeholder'
+import { Error } from '@ui/Form/Error'
+import { FormIcon } from '@ui/Form/FormIcon'
 
 const selectSizes = {
   xs: 'input-xs',
@@ -74,7 +74,7 @@ export const Select = ({
           ''
         )}
         <Error>{error}</Error>
-        <IconInput
+        <FormIcon
           className="text-sm text-black opacity-50"
           id="arrow-right"
           right={true}

@@ -1,8 +1,8 @@
 import { twMerge } from 'tailwind-merge'
 import { Button, ButtonProps } from '@ui/Button'
-import { Form } from '@ui/Form'
-import { Input } from '@ui/Input'
 import { Icon } from '@ui/Icon'
+import { Form } from '@ui/Form/Form'
+import { Input } from '@ui/Form/Input'
 
 export const SidebarExit = ({ className, ...props }: ButtonProps) => {
   const style: string = twMerge(

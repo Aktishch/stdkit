@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputDefault, InputDefaultProps } from '@components/InputDefault'
+import { InputDefault, InputDefaultProps } from '@components/Input/InputDefault'
 
 const getValue = (input: HTMLInputElement): string => {
   return input.value.replace(/\D/g, '')

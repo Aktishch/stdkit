@@ -1,8 +1,8 @@
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
 import { Pack } from '@ui/Pack'
-import { Loader } from '@ui/Loader'
 import { Picture } from '@ui/Picture'
+import { Loader } from '@ui/Load/Loader'
 
 export interface AvatarProps extends Props {
   webp?: string

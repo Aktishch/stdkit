@@ -10,14 +10,11 @@ module.exports = plugin(
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-
         '&-scale-down': {
           objectFit: 'scale-down',
         },
-
         '&-rise': {
           transition: 'transform 0.3s linear',
-
           '@media (hover)': {
             '&:hover': {
               transform: 'scale(1.1)',
@@ -25,7 +22,6 @@ module.exports = plugin(
           },
         },
       },
-
       '.icon': {
         display: 'block',
         minWidth: '1em',
@@ -40,7 +36,6 @@ module.exports = plugin(
           return { objectPosition: position }
         },
       },
-
       {
         values: theme('imagePosition'),
       }

@@ -1,11 +1,11 @@
 import { useToggle } from '@hooks/useToggle'
-import { SectionScreen } from '@ui/SectionScreen'
+import { Screen } from '@ui/Screen'
 import { Gradient } from '@ui/Gradient'
-import { Form } from '@ui/Form'
-import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { InputDefault } from '@components/InputDefault'
-import { InputPassword } from '@components/InputPassword'
+import { Form } from '@ui/Form/Form'
+import { Input } from '@ui/Form/Input'
+import { InputDefault } from '@components/Input/InputDefault'
+import { InputPassword } from '@components/Input/InputPassword'
 import { Content } from '@views/auth/components/Content'
 import { Logo } from '@views/auth/components/Logo'
 import { BorderButton } from '@views/auth/components/BorderButton'
@@ -15,7 +15,7 @@ export const Login = () => {
   const [loginValue, loginOn, loginOff] = useToggle()
 
   return (
-    <SectionScreen>
+    <Screen>
       <Gradient />
       <Content>
         <Logo />
@@ -57,16 +57,16 @@ export const Login = () => {
           <Button type="submit">Вход</Button>
         </Form>
         {loginValue ? (
+          ''
+        ) : (
           <div className="flex items-center justify-center mt-8">
             <span className="mr-2 text-sm font-normal sm:text-base">
               Нет аккаунта?
             </span>
             <BorderButton to="/registration">Зарегистрируйтесь</BorderButton>
           </div>
-        ) : (
-          ''
         )}
       </Content>
-    </SectionScreen>
+    </Screen>
   )
 }

@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge'
-import { Avatar, AvatarProps } from '@views/lk/components/Avatar'
+import { Avatar, AvatarProps } from '@views/lk/components/Avatar/Avatar'
 import { Picture } from '@ui/Picture'
 
 export interface StudentAvatarProps extends AvatarProps {

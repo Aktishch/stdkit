@@ -4,9 +4,9 @@ import { getImagePreview } from '@utils/get-image-preview'
 import { Pack } from '@ui/Pack'
 import { Picture } from '@ui/Picture'
 import { Icon } from '@ui/Icon'
-import { Input } from '@ui/Input'
-import { Error } from '@ui/Error'
 import { Button } from '@ui/Button'
+import { Input } from '@ui/Form/Input'
+import { Error } from '@ui/Form/Error'
 
 interface AvatarUploaderProps {
   className?: string
@@ -90,10 +90,9 @@ export const AvatarUploader = ({
         {error !== undefined ? <Error>{error}</Error> : ''}
       </div>
       <Button
-        className="w-[52px] shrink-0 h-[52px] rounded-lg"
+        className="w-[52px] shrink-0 px-0"
         color="grey"
         disabled={!value}
-        size={null}
         onClick={onRemove}
         waved="dark"
       >

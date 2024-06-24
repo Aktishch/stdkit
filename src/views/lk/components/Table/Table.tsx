@@ -18,7 +18,7 @@ export const Table = ({ className, minWidth = 'xl', children }: TableProps) => {
   return (
     <div className={style}>
       <div
-        className={`flex flex-col text-base font-normal leading-4 ${tableMinWidth[minWidth]}`}
+        className={`flex flex-col text-base font-normal leading-tight ${tableMinWidth[minWidth]}`}
       >
         {children}
       </div>

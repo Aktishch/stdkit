@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Input, InputProps } from '@ui/Input'
-import { Placeholder } from '@ui/Placeholder'
-import { Error } from '@ui/Error'
+import { Input, InputProps } from '@ui/Form/Input'
+import { Placeholder } from '@ui/Form/Placeholder'
+import { Error } from '@ui/Form/Error'
 
 export interface InputDefaultProps extends InputProps {
   error?: string

@@ -1,24 +1,24 @@
 import { useState } from 'react'
-import { SectionDefault } from '@ui/SectionDefault'
-import { Form } from '@ui/Form'
-import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { InputDefault } from '@components/InputDefault'
-import { InputText } from '@components/InputText'
-import { InputTel } from '@components/InputTel'
-import { Content } from '@views/lk/components/Content'
-import { ContentPrimary } from '@views/lk/components/ContentPrimary'
-import { Sidebar } from '@views/lk/components/Sidebar'
-import { SidebarButton } from '@views/lk/components/SidebarButton'
-import { SidebarExit } from '@views/lk/components/SidebarExit'
+import { Form } from '@ui/Form/Form'
+import { Input } from '@ui/Form/Input'
+import { InputDefault } from '@components/Input/InputDefault'
+import { InputText } from '@components/Input/InputText'
+import { InputTel } from '@components/Input/InputTel'
+import { Section } from '@views/lk/components/Section'
 import { Title } from '@views/lk/components/Title'
-import { AvatarUploader } from '@views/lk/components/AvatarUploader'
+import { Content } from '@views/lk/components/Content/Content'
+import { ContentPrimary } from '@views/lk/components/Content/ContentPrimary'
+import { Sidebar } from '@views/lk/components/Sidebar/Sidebar'
+import { SidebarButton } from '@views/lk/components/Sidebar/SidebarButton'
+import { SidebarExit } from '@views/lk/components/Sidebar/SidebarExit'
+import { AvatarUploader } from '@views/lk/components/Avatar/AvatarUploader'
 
 export const Settings = () => {
   const [image, setImage] = useState<string | File>()
 
   return (
-    <SectionDefault>
+    <Section>
       <Content>
         <Sidebar
           webp="/img/pictures/user.webp"
@@ -79,6 +79,6 @@ export const Settings = () => {
           </Form>
         </ContentPrimary>
       </Content>
-    </SectionDefault>
+    </Section>
   )
 }

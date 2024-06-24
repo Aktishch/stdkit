@@ -7,7 +7,7 @@ interface DatesProps extends Props {
 
 export const Dates = ({ className, status, children }: DatesProps) => {
   const style: string = twMerge(
-    'flex items-center justify-center p-2 text-base font-normal leading-4 rounded-full h-9 text-tenter text-black',
+    'flex items-center justify-center p-2 text-base font-normal leading-none rounded-full h-9 text-tenter text-black',
     status ? 'bg-green-light' : 'bg-grey text-opacity-50',
     className
   )

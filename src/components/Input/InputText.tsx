@@ -1,15 +1,17 @@
 import React from 'react'
-import { InputDefault, InputDefaultProps } from '@components/InputDefault'
+import { InputDefault, InputDefaultProps } from '@components/Input/InputDefault'
 
-export const InputNumber = ({
+export const InputText = ({
   onInput,
   children,
   ...props
 }: InputDefaultProps) => {
   const onInputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
     const input = event.target as HTMLInputElement
+    const regExp = /[0-9.,!@#$%^&*()-=_+`~{}/?<>|'"]/
 
-    input.value = input.value.replace(/^\.|[^\d.]|\.(?=.*\.)|^0+(?=\d)/g, '')
+    if (input.value.match(regExp)) input.value = input.value.replace(regExp, '')
+
     onInput?.(event)
   }
 

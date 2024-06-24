@@ -1,18 +1,18 @@
-import { SectionDefault } from '@ui/SectionDefault'
-import { Form } from '@ui/Form'
-import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { InputPassword } from '@components/InputPassword'
-import { Content } from '@views/lk/components/Content'
-import { ContentPrimary } from '@views/lk/components/ContentPrimary'
-import { Sidebar } from '@views/lk/components/Sidebar'
-import { SidebarButton } from '@views/lk/components/SidebarButton'
-import { SidebarExit } from '@views/lk/components/SidebarExit'
+import { Form } from '@ui/Form/Form'
+import { Input } from '@ui/Form/Input'
+import { InputPassword } from '@components/Input/InputPassword'
+import { Section } from '@views/lk/components/Section'
 import { Title } from '@views/lk/components/Title'
+import { Content } from '@views/lk/components/Content/Content'
+import { ContentPrimary } from '@views/lk/components/Content/ContentPrimary'
+import { Sidebar } from '@views/lk/components/Sidebar/Sidebar'
+import { SidebarButton } from '@views/lk/components/Sidebar/SidebarButton'
+import { SidebarExit } from '@views/lk/components/Sidebar/SidebarExit'
 
 export const Password = () => {
   return (
-    <SectionDefault>
+    <Section>
       <Content>
         <Sidebar
           webp="/img/pictures/user.webp"
@@ -49,15 +49,15 @@ export const Password = () => {
             </div>
           </Form>
           <ul className="flex flex-col gap-1 mt-6 sm:gap-3 text-red sm:mt-10">
-            <li className="text-xs font-normal leading-5 sm:text-sm">
+            <li className="text-xs font-normal leading-normal sm:text-sm">
               Пароль должен быть не менее{' '}
               <span className="font-semibold">8 символов длиной</span>
             </li>
-            <li className="text-xs font-normal leading-5 sm:text-sm">
+            <li className="text-xs font-normal leading-normal sm:text-sm">
               Пароль должен содержать{' '}
               <span className="font-semibold">цифры (0-9)</span>
             </li>
-            <li className="text-xs font-normal leading-5 sm:text-sm">
+            <li className="text-xs font-normal leading-normal sm:text-sm">
               Пароль должен содержать{' '}
               <span className="font-semibold">
                 латинские символы нижнего регистра (a-z)
@@ -66,6 +66,6 @@ export const Password = () => {
           </ul>
         </ContentPrimary>
       </Content>
-    </SectionDefault>
+    </Section>
   )
 }

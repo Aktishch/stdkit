@@ -6,9 +6,11 @@ export const Footer = () => {
 
   return (
     <footer className="container flex items-center justify-between gap-3 py-2 mt-auto bg-white border-t border-solid sm:py-4 dark:bg-black border-grey">
-      <span className="text-base font-normal leading-4">© {currentYear}</span>
+      <span className="text-base font-normal leading-none">
+        © {currentYear}
+      </span>
       <div className="flex items-center">
-        <span className="mr-3 text-base font-normal leading-4">
+        <span className="mr-3 text-base font-normal leading-none">
           Разработка:
         </span>
         <Button
