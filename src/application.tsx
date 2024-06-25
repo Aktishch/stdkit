@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { LayoutAuthorization } from '@layout/LayoutAuthorization'
 import { LayoutDefault } from '@layout/LayoutDefault'
 import { LayoutNotFound } from '@layout/LayoutNotFound'
+import { LayoutTutor } from '@views/lk/tutor/layout/LayoutTutor'
+import { LayoutStudentDetail } from '@views/lk/tutor/layout/LayoutStudentDetail'
 import {
   AuthLogin,
   AuthRegistration,
@@ -13,8 +15,9 @@ import {
 import {
   TutorSettings,
   TutorPassword,
-  TutorStudents,
   TutorTasks,
+  TutorStudents,
+  StudentDetail,
 } from '@views/lk/tutor/pages'
 import './scss/main.scss'
 
@@ -37,11 +40,16 @@ window.addEventListener('DOMContentLoaded', ((): void => {
           <Route path="password" element={<AuthPassword />} />
         </Route>
         <Route path="/lk-tutor/" element={<LayoutDefault status={true} />}>
-          <Route index element={<Navigate to="settings" />} />
-          <Route path="settings" element={<TutorSettings />} />
-          <Route path="password" element={<TutorPassword />} />
-          <Route path="students" element={<TutorStudents />} />
+          <Route element={<LayoutTutor />}>
+            <Route index element={<Navigate to="settings" />} />
+            <Route path="settings" element={<TutorSettings />} />
+            <Route path="password" element={<TutorPassword />} />
+          </Route>
           <Route path="tasks" element={<TutorTasks />} />
+          <Route path="students" element={<TutorStudents />} />
+          <Route path="students/:studentId" element={<LayoutStudentDetail />}>
+            <Route path="detail" element={<StudentDetail />} />
+          </Route>
         </Route>
         <Route path="*" element={<LayoutNotFound />} />
       </Routes>

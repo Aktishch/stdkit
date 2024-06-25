@@ -12,14 +12,20 @@ export const TutorPassword = lazy(() =>
   }))
 )
 
-export const TutorStudents = lazy(() =>
-  import('@views/lk/tutor/Students/Students').then((module) => ({
-    default: module.Students,
-  }))
-)
-
 export const TutorTasks = lazy(() =>
   import('@views/lk/tutor/Tasks/Tasks').then((module) => ({
     default: module.Tasks,
+  }))
+)
+
+export const TutorStudents = lazy(() =>
+  import('@views/lk/tutor/Students/List/List').then((module) => ({
+    default: module.List,
+  }))
+)
+
+export const StudentDetail = lazy(() =>
+  import('@views/lk/tutor/Students/Detail/Detail').then((module) => ({
+    default: module.Detail,
   }))
 )
