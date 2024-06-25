@@ -5,10 +5,12 @@ import { ContentPrimary } from '@views/lk/components/Content/ContentPrimary'
 import { Sidebar } from '@views/lk/components/Sidebar/Sidebar'
 import { SidebarLink } from '@views/lk/components/Sidebar/SidebarLink'
 import { SidebarRemove } from '@views/lk/components/Sidebar/SidebarRemove'
+import { BreadCrumbs } from '@views/lk/tutor/Students/components/BreadCrumbs'
 
 export const LayoutStudentDetail = () => {
   return (
     <Section>
+      <BreadCrumbs>Константин Константинов</BreadCrumbs>
       <Content>
         <Sidebar
           webp="/img/pictures/user.webp"
@@ -30,7 +32,7 @@ export const LayoutStudentDetail = () => {
           </SidebarLink>
           <SidebarRemove />
         </Sidebar>
-        <ContentPrimary>
+        <ContentPrimary className="lg:overflow-hidden lg:pb-1">
           <Outlet />
         </ContentPrimary>
       </Content>

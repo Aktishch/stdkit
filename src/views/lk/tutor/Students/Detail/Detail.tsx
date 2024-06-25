@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { Button } from '@ui/Button'
-import { Pack } from '@ui/Pack'
-import { Picture } from '@ui/Picture'
 import { Input } from '@ui/Form/Input'
 import { Form } from '@ui/Form/Form'
 import { InputDefault } from '@components/Input/InputDefault'
@@ -17,13 +15,59 @@ import { DatesItems } from '@views/lk/components/Dates/DatesItems'
 import { DatesInput } from '@views/lk/components/Dates/DatesInput'
 import { DatesTextarea } from '@views/lk/components/Dates/DatesTextarea'
 import { AvatarUploader } from '@views/lk/components/Avatar/AvatarUploader'
+import { Toggle } from '@views/lk/tutor/Students/Detail/components/Toggle'
+import { Chronology } from '@views/lk/tutor/Students/Detail/components/Chronology'
+
+const data = [
+  {
+    dateStart: '21 май 2023',
+    dateEnd: '28 май 2023',
+    tutor: {
+      webp: '/img/pictures/user.webp',
+      src: '/img/pictures/user.jpg',
+      name: 'Щербаков Иван',
+    },
+    student: {
+      status: true,
+      src: '/img/pictures/chicken.svg',
+      text: 'Красавчик',
+    },
+    tasks: {
+      quantity: 21,
+      overdue: 1,
+    },
+    thanks: 5,
+    comment: 'Почему же, почему же, дождик капает по лужам',
+  },
+  {
+    dateStart: '21 май 2023',
+    dateEnd: '28 май 2023',
+    tutor: {
+      webp: '/img/pictures/user.webp',
+      src: '/img/pictures/user.jpg',
+      name: 'Щербаков Иван',
+    },
+    student: {
+      status: false,
+      src: '/img/pictures/chicken.svg',
+      text: 'Ну такое',
+    },
+    tasks: {
+      quantity: 21,
+      overdue: 1,
+    },
+    thanks: 5,
+    comment: 'Почему же, почему же, дождик капает по лужам',
+  },
+]
 
 export const Detail = () => {
+  const [toggleValue, setToggleValue] = useState<string>('Цыпа')
   const [image, setImage] = useState<string | File>()
 
   return (
     <>
-      <ContentElement>
+      <ContentElement className="order-2 md:order-1">
         <DatesForm className="mb-7 sm:mb-10" action="">
           <Input type="hidden" value="Прохождение практики" name="theme" />
           <Title>Дата прохождения</Title>
@@ -32,7 +76,7 @@ export const Detail = () => {
             <DatesInput defaultValue="2013-01-08" name="data-end" />
           </DatesItems>
           <Title>От куратора</Title>
-          <DatesTextarea />
+          <DatesTextarea name="comment" />
           <DatesItems>
             <Button type="submit">Сохранить</Button>
             <Button color="grey" variant="fade" type="reset">
@@ -43,10 +87,48 @@ export const Detail = () => {
         <Title className="mb-6 sm:mb-9">Характеристика студента</Title>
         <Form className="gap-6 sm:gap-9" action="">
           <Input type="hidden" value="Личные данные" name="theme" />
+          <Input type="hidden" value={toggleValue} name="Evaluation" />
           <div className="grid grid-cols-4 gap-2">
-            <div className="relative flex flex-col items-center justify-center h-32 p-4 text-black rounded-lg cursor-pointer bg-grey text-opacity-60">
-              <span className="text-sm font-normal leading-none">Цыпа</span>
-            </div>
+            <Toggle
+              currentValue="Цыпа"
+              value={toggleValue}
+              src="/img/pictures/chicken.svg"
+              onClick={(): void => {
+                setToggleValue('Цыпа')
+              }}
+            >
+              Цыпа
+            </Toggle>
+            <Toggle
+              currentValue="Красавчик"
+              value={toggleValue}
+              src="/img/pictures/chicken.svg"
+              onClick={(): void => {
+                setToggleValue('Красавчик')
+              }}
+            >
+              Красавчик
+            </Toggle>
+            <Toggle
+              currentValue="Плохо"
+              value={toggleValue}
+              src="/img/pictures/chicken.svg"
+              onClick={(): void => {
+                setToggleValue('Плохо')
+              }}
+            >
+              Плохо
+            </Toggle>
+            <Toggle
+              currentValue="Ну такое"
+              value={toggleValue}
+              src="/img/pictures/chicken.svg"
+              onClick={(): void => {
+                setToggleValue('Ну такое')
+              }}
+            >
+              Ну такое
+            </Toggle>
           </div>
           <Title>Личные данные</Title>
           <AvatarUploader
@@ -129,58 +211,12 @@ export const Detail = () => {
           </Button>
         </Form>
       </ContentElement>
-      <ContentElement>
-        <div className="flex flex-col gap-6 px-8 py-10 bg-grey rounded-3xl">
+      <ContentElement className="order-1 md:order-2">
+        <div className="flex flex-col gap-3 px-4 py-6 md:gap-6 md:px-8 md:py-10 bg-grey dark:bg-dark rounded-3xl">
           <Title>Хронология</Title>
-          <div className="flex flex-col gap-5 px-4 pt-5 pb-8 bg-white rounded-2xl">
-            <div className="flex items-center justify-center gap-2 pb-5 border-b border-solid border-grey">
-              <span className="text-base font-semibold leading-none">
-                21 май 2023 - 28 май 2023
-              </span>
-              <span className="text-base font-normal leading-none text-red">
-                Завершена
-              </span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center">
-                <Pack
-                  className="w-6 mr-2 rounded-full shrink-0 bg-gray"
-                  size="box"
-                >
-                  <Picture
-                    className="image"
-                    webp="/img/pictures/user.webp"
-                    src="/img/pictures/user.jpg"
-                    loading="eager"
-                  />
-                </Pack>
-                <span className="text-base font-normal leading-none opacity-60">
-                  Щербаков Иван
-                </span>
-              </div>
-              <span className="text-base font-normal leading-none opacity-60">
-                Куратор
-              </span>
-            </div>
-            <div className="flex items-center rounded-lg bg-green-light h-[52px] px-4">
-              <Picture
-                className="mr-2 text-base icon"
-                src="/img/pictures/chicken.svg"
-                loading="eager"
-              />
-              <span className="text-base font-normal leading-none">
-                Красавчик
-              </span>
-            </div>
-            <ul className="flex flex-col gap-5 pb-5 border-solid border-grey">
-              <li className="flex items-center justify-between gap-2">
-                <span className="text-base font-normal leading-none">
-                  Количество задач
-                </span>
-                <span className="text-base font-semibold leading-none">21</span>
-              </li>
-            </ul>
-          </div>
+          {data.map((item, index) => (
+            <Chronology item={item} key={index} />
+          ))}
         </div>
       </ContentElement>
     </>

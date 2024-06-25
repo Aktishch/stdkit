@@ -3,7 +3,7 @@ import { Props } from '@utils/props'
 
 export const ContentPrimary = ({ className, children }: Props) => {
   const style: string = twMerge(
-    'flex justify-between gap-7 sm:gap-10 md:gap-16 w-full xl:max-w-[910px]',
+    'flex flex-col xl:flex-row xl:justify-between gap-7 sm:gap-10 md:gap-16 w-full xl:max-w-[910px]',
     className
   )
 

@@ -29,3 +29,9 @@ export const StudentDetail = lazy(() =>
     default: module.Detail,
   }))
 )
+
+export const StudentDetailTasks = lazy(() =>
+  import('@views/lk/tutor/Students/Tasks/Tasks').then((module) => ({
+    default: module.Tasks,
+  }))
+)
