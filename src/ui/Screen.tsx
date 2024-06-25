@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
 
-export const SectionScreen = ({ className, children }: Props) => {
+export const Screen = ({ className, children }: Props) => {
   const style: string = twMerge(
     'container relative flex items-center justify-center min-h-screen',
     className

@@ -1,14 +1,14 @@
-import { SectionScreen } from '@ui/SectionScreen'
+import { Screen } from '@ui/Screen'
 import { Gradient } from '@ui/Gradient'
-import { Form } from '@ui/Form'
-import { Input } from '@ui/Input'
+import { Form } from '@ui/Form/Form'
+import { Input } from '@ui/Form/Input'
 import { Button } from '@ui/Button'
 import { Chapter } from '@ui/Chapter'
-import { InputDefault } from '@components/InputDefault'
-import { InputText } from '@components/InputText'
-import { InputTel } from '@components/InputTel'
-import { InputNumber } from '@components/InputNumber'
-import { InputPassword } from '@components/InputPassword'
+import { InputDefault } from '@components/Input/InputDefault'
+import { InputText } from '@components/Input/InputText'
+import { InputTel } from '@components/Input/InputTel'
+import { InputNumber } from '@components/Input/InputNumber'
+import { InputPassword } from '@components/Input/InputPassword'
 import { Select } from '@components/Select'
 import { Content } from '@views/auth/components/Content'
 import { Logo } from '@views/auth/components/Logo'
@@ -16,7 +16,7 @@ import { BorderButton } from '@views/auth/components/BorderButton'
 
 export const Registration = () => {
   return (
-    <SectionScreen>
+    <Screen>
       <Gradient />
       <Content>
         <Logo />
@@ -102,6 +102,6 @@ export const Registration = () => {
           <BorderButton to="/">Войти</BorderButton>
         </div>
       </Content>
-    </SectionScreen>
+    </Screen>
   )
 }

@@ -1,8 +1,8 @@
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
 import { Pack } from '@ui/Pack'
-import { Loader } from '@ui/Loader'
 import { Picture } from '@ui/Picture'
+import { Loader } from '@ui/Load/Loader'
 
 export const Gradient = ({ className }: Props) => {
   const style: string = twMerge('absolute inset-0 dark:hidden', className)

@@ -3,7 +3,7 @@ import { Props } from '@utils/props'
 
 export const Title = ({ className, children }: Props) => {
   const style: string = twMerge(
-    'mb-2 font-medium text-center sm:mb-4 text-xl sm:text-2xl leading-7',
+    'mb-2 font-medium text-center sm:mb-4 text-xl sm:text-2xl leading-normal',
     className
   )
 

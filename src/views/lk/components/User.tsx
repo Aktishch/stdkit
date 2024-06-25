@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge'
-import { AvatarProps } from '@views/lk/components/Avatar'
+import { AvatarProps } from '@views/lk/components/Avatar/Avatar'
 import { Pack } from '@ui/Pack'
 import { Picture } from '@ui/Picture'
 
@@ -11,7 +11,9 @@ export const User = ({ className, webp, src, children }: AvatarProps) => {
       <Pack className="w-5 mr-2 rounded-full bg-gray shrink-0" size="box">
         <Picture className="image" webp={webp} src={src} loading="eager" />
       </Pack>
-      <span className="text-sm font-normal leading-4 truncate">{children}</span>
+      <span className="text-sm font-normal leading-none truncate">
+        {children}
+      </span>
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
-import { Input } from '@ui/Input'
+import { Input } from '@ui/Form/Input'
 import { Icon } from '@ui/Icon'
-import { IconInput } from '@ui/IconInput'
+import { FormIcon } from '@ui/Form/FormIcon'
 import { Button } from '@ui/Button'
 
 export const Search = ({ className }: Props) => {
@@ -22,7 +22,7 @@ export const Search = ({ className }: Props) => {
               placeholder="Найти студента..."
             />
           </div>
-          <IconInput
+          <FormIcon
             className="pl-4 text-2xl text-primary"
             as="button"
             type="submit"

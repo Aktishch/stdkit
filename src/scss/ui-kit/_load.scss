@@ -30,7 +30,7 @@
       animation-delay: 0.5s;
     }
 
-    @apply bg-[currentcolor] opacity-40 w-7 h-7;
+    @apply bg-current opacity-40 w-7 h-7;
   }
 }
 
@@ -67,12 +67,12 @@
 
   0%,
   100% {
-    @apply opacity-100;
+    opacity: 1;
   }
 
   25%,
   50%,
   75% {
-    @apply opacity-40;
+    opacity: 0.4;
   }
 }

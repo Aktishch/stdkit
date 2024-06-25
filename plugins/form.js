@@ -5,18 +5,15 @@ module.exports = plugin(({ addComponents, theme }) => {
     '.form': {
       display: 'flex',
       flexDirection: 'column',
-
       '&-label': {
         display: 'flex',
         flexDirection: 'column',
       },
-
       '&-wrapper': {
         display: 'block',
         position: 'relative',
         width: '100%',
       },
-
       '&-icon': {
         display: 'flex',
         alignItems: 'center',
@@ -27,21 +24,17 @@ module.exports = plugin(({ addComponents, theme }) => {
         width: '40px',
         height: '100%',
         pointerEvents: 'none',
-
         '&-pointer': {
           pointerEvents: 'auto',
           cursor: 'pointer',
         },
-
         '&-left': {
           left: 0,
         },
-
         '&-right': {
           right: 0,
         },
       },
-
       '&-error': {
         fontSize: theme('fontSize.xs'),
         color: theme('colors.red.DEFAULT'),

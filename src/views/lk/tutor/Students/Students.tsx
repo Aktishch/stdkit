@@ -1,19 +1,72 @@
-import { SectionDefault } from '@ui/SectionDefault'
+import { Section } from '@views/lk/components/Section'
 import { Title } from '@views/lk/components/Title'
-import { Table } from '@views/lk/components/Table'
-import { TableHead } from '@views/lk/components/TableHead'
-import { Pagination } from '@views/lk/components/Pagination'
+import { Table } from '@views/lk/components/Table/Table'
+import { TableHead } from '@views/lk/components/Table/TableHead'
+import { Pagination } from '@views/lk/components/Pagination/Pagination'
 import { Head } from '@views/lk/tutor/components/Head'
 import { AddButton } from '@views/lk/tutor/components/AddButton'
 import { Search } from '@views/lk/tutor/components/Search'
 import { CategoryButton } from '@views/lk/tutor/Students/components/CategoryButton'
-import { StudentDetail } from '@views/lk/tutor/Students/components/StudentDetail'
+import { StudentDetail } from '@views/lk/tutor/Students/components/Student/StudentDetail'
 
-import { data } from '@views/lk/tutor/Students/data'
+const data = [
+  {
+    to: '',
+    webp: '/img/pictures/user.webp',
+    src: '/img/pictures/user.jpg',
+    icon: '/img/pictures/chicken.svg',
+    userName: 'Константинов Константин',
+    sphere: 'Веб-дизайн',
+    university: 'КГИК',
+    status: true,
+    tasks: 2,
+    completedTasks: 2,
+    dates: 'До 29.08.23',
+  },
+  {
+    to: '',
+    webp: '/img/pictures/user.webp',
+    src: '/img/pictures/user.jpg',
+    icon: '/img/pictures/chicken.svg',
+    userName: 'Константинов Константин',
+    sphere: 'Front End',
+    university: 'КубГАУ',
+    status: true,
+    tasks: 22,
+    completedTasks: 2,
+    dates: 'До 29.08.23',
+  },
+  {
+    to: '',
+    webp: '/img/pictures/user.webp',
+    src: '/img/pictures/user.jpg',
+    icon: '/img/pictures/chicken.svg',
+    userName: 'Константинов Константин',
+    sphere: 'Back End',
+    university: 'КГИК',
+    status: false,
+    tasks: 12,
+    completedTasks: 2,
+    dates: 'До 29.08.23',
+  },
+  {
+    to: '',
+    webp: '/img/pictures/user.webp',
+    src: '/img/pictures/user.jpg',
+    icon: '/img/pictures/chicken.svg',
+    userName: 'Константинов Константин',
+    sphere: 'Контент',
+    university: 'КубГАУ',
+    status: false,
+    tasks: 21,
+    completedTasks: 2,
+    dates: 'До 29.08.23',
+  },
+]
 
 export const Students = () => {
   return (
-    <SectionDefault>
+    <Section>
       <Head>
         <Title>Студенты</Title>
         <AddButton>Добавить студента</AddButton>
@@ -38,10 +91,10 @@ export const Students = () => {
           <span className="text-center w-44">Практика</span>
         </TableHead>
         {data.map((item, index) => (
-          <StudentDetail className="" item={item} key={index} />
+          <StudentDetail item={item} key={index} />
         ))}
       </Table>
       <Pagination />
-    </SectionDefault>
+    </Section>
   )
 }

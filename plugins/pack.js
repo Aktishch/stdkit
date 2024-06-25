@@ -7,7 +7,6 @@ module.exports = plugin(
         display: 'block',
         position: 'relative',
         overflow: 'hidden',
-
         '&::before': {
           content: '""',
           display: 'block',
@@ -22,7 +21,6 @@ module.exports = plugin(
           return { '--pack-size': `${size}%` }
         },
       },
-
       {
         values: theme('packSizes'),
       }

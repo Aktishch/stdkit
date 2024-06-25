@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
-import { UserName } from '@ui/UserName'
-import { UserPost } from '@ui/UserPost'
-import { Avatar, AvatarProps } from '@views/lk/components/Avatar'
+import { UserName } from '@ui/User/UserName'
+import { UserPost } from '@ui/User/UserPost'
+import { Avatar, AvatarProps } from '@views/lk/components/Avatar/Avatar'
 
 interface SidebarProps extends AvatarProps {
   userName: string

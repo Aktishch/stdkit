@@ -7,7 +7,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '*': {
         pointerEvents: 'none',
       },
-
       '--btn-color': theme('colors.black.DEFAULT'),
       '--btn-accent': theme('colors.white.DEFAULT'),
       color: 'var(--btn-color)',
@@ -21,7 +20,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       userSelect: 'none',
       transition: '0.2s ease',
       cursor: 'pointer',
-
       '&:active': {
         boxShadow: `inset 0 4px 4px ${formatColor({
           mode: 'rgba',
@@ -30,47 +28,38 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         })}`,
         transform: 'translateY(4px)',
       },
-
       '&:disabled': {
         pointerEvents: 'none',
         opacity: 0.5,
       },
-
       '&:focus-visible': {
         boxShadow: '0 0 0 4px var(--btn-focus)',
         backgroundColor: 'var(--btn-fade)',
       },
-
       '@media (hover)': {
         '&:hover': {
           backgroundColor: 'var(--btn-fade)',
         },
       },
-
       '&-fill': {
         color: 'var(--btn-accent)',
         backgroundColor: 'var(--btn-color)',
-
         '&:focus-visible': {
           backgroundColor: 'var(--btn-hovered)',
         },
-
         '@media (hover)': {
           '&:hover': {
             backgroundColor: 'var(--btn-hovered)',
           },
         },
       },
-
       '&-fade': {
         color: 'var(--btn-color)',
         backgroundColor: 'var(--btn-fade)',
-
         '&:focus-visible': {
           color: 'var(--btn-accent)',
           backgroundColor: 'var(--btn-color)',
         },
-
         '@media (hover)': {
           '&:hover': {
             color: 'var(--btn-accent)',
@@ -78,17 +67,14 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
           },
         },
       },
-
       '&-light': {
         color: 'var(--btn-color)',
         backgroundColor: 'var(--btn-accent)',
         border: '1px solid transparent',
-
         '&:focus-visible': {
           backgroundColor: 'var(--btn-accent)',
           borderColor: 'var(--btn-color)',
         },
-
         '@media (hover)': {
           '&:hover': {
             backgroundColor: 'var(--btn-accent)',
@@ -96,7 +82,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
           },
         },
       },
-
       '&-contur': {
         border: '1px solid var(--btn-color)',
       },
@@ -106,6 +91,8 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
   matchComponents(
     {
       btn: (color) => {
+        if (!color.DEFAULT) return null
+
         const parsed = parseColor(color.DEFAULT)
 
         if (!parsed.color) return null
@@ -134,7 +121,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         }
       },
     },
-
     {
       values: theme('colors'),
     }
@@ -150,7 +136,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         }
       },
     },
-
     {
       values: theme('constants'),
     }

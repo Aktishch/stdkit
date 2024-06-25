@@ -1,9 +1,9 @@
-import { SectionScreen } from '@ui/SectionScreen'
+import { Screen } from '@ui/Screen'
 import { Gradient } from '@ui/Gradient'
-import { Form } from '@ui/Form'
-import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { InputDefault } from '@components/InputDefault'
+import { Form } from '@ui/Form/Form'
+import { Input } from '@ui/Form/Input'
+import { InputDefault } from '@components/Input/InputDefault'
 import { Content } from '@views/auth/components/Content'
 import { BorderButton } from '@views/auth/components/BorderButton'
 import { Title } from '@views/auth/components/Title'
@@ -11,7 +11,7 @@ import { Subtitle } from '@views/auth/components/Subtitle'
 
 export const Code = () => {
   return (
-    <SectionScreen>
+    <Screen>
       <Gradient />
       <Content>
         <Title>Восстановление пароля</Title>
@@ -37,6 +37,6 @@ export const Code = () => {
           </BorderButton>
         </Form>
       </Content>
-    </SectionScreen>
+    </Screen>
   )
 }

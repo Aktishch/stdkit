@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Icon } from '@ui/Icon'
-import { Form } from '@ui/Form'
-import { Input } from '@ui/Input'
-import { UserName } from '@ui/UserName'
-import { UserPost } from '@ui/UserPost'
+import { Form } from '@ui/Form/Form'
+import { Input } from '@ui/Form/Input'
+import { UserName } from '@ui/User/UserName'
+import { UserPost } from '@ui/User/UserPost'
 import {
   AccordionContext,
   Accordion,
@@ -15,11 +15,7 @@ import { Waved } from '@components/Waved'
 import { NavButton } from '@layout/Header/components/NavButton'
 import { AccordionButton } from '@layout/Header/components/AccordionButton'
 
-interface HeaderProps {
-  status: boolean
-}
-
-export const Header = ({ status }: HeaderProps) => {
+export const Header = ({ status }: { status: boolean }) => {
   const { themeToggle, themeValue } = useTheme()
 
   return (

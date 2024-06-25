@@ -1,16 +1,16 @@
-import { SectionScreen } from '@ui/SectionScreen'
+import { Screen } from '@ui/Screen'
 import { Gradient } from '@ui/Gradient'
-import { Form } from '@ui/Form'
-import { Input } from '@ui/Input'
 import { Button } from '@ui/Button'
-import { InputPassword } from '@components/InputPassword'
+import { Form } from '@ui/Form/Form'
+import { Input } from '@ui/Form/Input'
+import { InputPassword } from '@components/Input/InputPassword'
 import { Content } from '@views/auth/components/Content'
 import { Title } from '@views/auth/components/Title'
 import { Subtitle } from '@views/auth/components/Subtitle'
 
 export const Password = () => {
   return (
-    <SectionScreen>
+    <Screen>
       <Gradient />
       <Content>
         <Title>Восстановление пароля</Title>
@@ -30,6 +30,6 @@ export const Password = () => {
           <Button type="submit">Восстановить</Button>
         </Form>
       </Content>
-    </SectionScreen>
+    </Screen>
   )
 }

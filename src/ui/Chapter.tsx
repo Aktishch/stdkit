@@ -11,7 +11,7 @@ export const Chapter = ({ className, children, src }: ChapterProps) => {
 
   return (
     <div className={style}>
-      <h3 className="mr-2 text-lg font-semibold leading-5 sm:text-xl">
+      <h3 className="mr-2 text-lg font-semibold leading-normal sm:text-xl">
         {children}
       </h3>
       <Picture className="text-xl icon" src={src} />
