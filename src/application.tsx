@@ -33,7 +33,8 @@ window.addEventListener('DOMContentLoaded', ((): void => {
       <Routes>
         <Route path="/" element={<LayoutAuthorization />}>
           <Route index element={<Navigate to="login" />} />
-          <Route path="login" element={<AuthLogin />} />
+          <Route path="login" element={<Navigate to="/login/student" />} />
+          <Route path="login/:mode" element={<AuthLogin />} />
           <Route path="registration" element={<AuthRegistration />} />
           <Route path="recovery" element={<AuthRecovery />} />
           <Route path="code" element={<AuthCode />} />
