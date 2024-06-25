@@ -35,7 +35,10 @@ export const InputTel = ({
     const selection: number | null = input.selectionStart
     const value: string = getValue(input)
 
-    if (!value) return (input.value = '')
+    if (!value) {
+      input.value = ''
+      return
+    }
 
     if (input.value.length !== selection) {
       if (event.data) input.value = formatterValue(value)
