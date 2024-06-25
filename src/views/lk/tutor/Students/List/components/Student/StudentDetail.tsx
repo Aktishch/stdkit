@@ -41,7 +41,12 @@ export const StudentDetail = ({ className, item }: StudentDetailProps) => {
   const style: string = twMerge('relative', className)
 
   return (
-    <TableElement className={style} as={Link} draggable={false} to={to}>
+    <TableElement
+      className={style}
+      as={Link}
+      draggable={false}
+      to={`/lk-tutor/students/datail${to}`}
+    >
       <Waved variant="dark" />
       <StudentAvatar className="w-10" webp={webp} src={src} icon={icon} />
       <UserName className="w-52">{userName}</UserName>
