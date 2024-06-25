@@ -4,17 +4,17 @@ import { Props } from '@utils/props'
 import { Icon } from '@ui/Icon'
 import { Waved } from '@components/Waved'
 
-interface SidebarButtonProps extends Props {
+interface SidebarLinkProps extends Props {
   id: string
   to: string
 }
 
-export const SidebarButton = ({
+export const SidebarLink = ({
   className,
   to,
   id,
   children,
-}: SidebarButtonProps) => {
+}: SidebarLinkProps) => {
   return (
     <NavLink
       className={({ isActive }) =>

@@ -4,9 +4,9 @@ import { Props } from '@utils/props'
 import { UserName } from '@ui/User/UserName'
 import { Waved } from '@components/Waved'
 import { TableElement } from '@views/lk/components/Table/TableElement'
-import { CompletedTasks } from '@views/lk/tutor/Students/components/CompletedTasks'
-import { Dates } from '@views/lk/tutor/Students/components/Dates'
-import { StudentAvatar } from '@views/lk/tutor/Students/components/Student/StudentAvatar'
+import { CompletedTasks } from '@views/lk/tutor/Students/List/components/CompletedTasks'
+import { Dates } from '@views/lk/tutor/Students/List/components/Dates'
+import { StudentAvatar } from '@views/lk/tutor/Students/List/components/Student/StudentAvatar'
 
 interface StudentDetailProps extends Props {
   item: {

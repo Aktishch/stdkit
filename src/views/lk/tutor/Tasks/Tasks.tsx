@@ -8,7 +8,7 @@ import { AddButton } from '@views/lk/tutor/components/AddButton'
 import { Search } from '@views/lk/tutor/components/Search'
 import { TaskDetail } from '@views/lk/tutor/Tasks/components/TaskDetail'
 
-const data = [
+const data: Task[] = [
   {
     status: 'closed',
     taskName:

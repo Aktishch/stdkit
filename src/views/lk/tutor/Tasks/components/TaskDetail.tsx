@@ -7,23 +7,7 @@ import { TaskStatus } from '@views/lk/components/Task/TaskStatus'
 import { TaskName } from '@views/lk/components/Task/TaskName'
 
 interface TaskDetailProps extends Props {
-  item: {
-    status: string
-    taskName: string
-    sphere: string
-    dateStart: string
-    dateEnd: string
-    director: {
-      webp: string
-      src: string
-      name: string
-    }
-    responsible: {
-      webp: string
-      src: string
-      name: string
-    }
-  }
+  item: Task
   index: number
 }
 

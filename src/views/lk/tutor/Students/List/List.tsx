@@ -6,8 +6,8 @@ import { Pagination } from '@views/lk/components/Pagination/Pagination'
 import { Head } from '@views/lk/tutor/components/Head'
 import { AddButton } from '@views/lk/tutor/components/AddButton'
 import { Search } from '@views/lk/tutor/components/Search'
-import { CategoryButton } from '@views/lk/tutor/Students/components/CategoryButton'
-import { StudentDetail } from '@views/lk/tutor/Students/components/Student/StudentDetail'
+import { CategoryButton } from '@views/lk/tutor/Students/List/components/CategoryButton'
+import { StudentDetail } from '@views/lk/tutor/Students/List/components/Student/StudentDetail'
 
 const data = [
   {
@@ -64,7 +64,7 @@ const data = [
   },
 ]
 
-export const Students = () => {
+export const List = () => {
   return (
     <Section>
       <Head>
