@@ -22,8 +22,6 @@ export const Login = () => {
   const { register, handleSubmit, formState } = useForm<LoginPayload>()
   const { login } = useAuth()
 
-  console.log(formState.errors)
-
   const submitHandler: SubmitHandler<LoginPayload> = async (data) => {
     loadingStart()
     setErrors(undefined)

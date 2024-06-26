@@ -5,8 +5,9 @@ import { Loaded } from '@layout/Loaded/Loaded'
 import { useAuth } from '@/service/auth/AuthContext'
 
 export const LayoutAuthorization = () => {
-  const { token } = useAuth()
-  if (token) return <Navigate to="/lk-tutor/" />
+  const { isLoggedIn, isLoading } = useAuth()
+  if (isLoading) return <Loaded />
+  if (isLoggedIn) return <Navigate to="/lk-tutor/" />
 
   return (
     <Theme>
