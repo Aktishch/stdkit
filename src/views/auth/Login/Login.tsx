@@ -9,12 +9,11 @@ import { BorderButton } from '@views/auth/components/BorderButton'
 import { Toggle } from '@views/auth/Login/components/Toggle'
 import { useParams } from 'react-router-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import axios from 'axios'
-
 import { toast } from '@/ui/Toast'
-import { useAuth } from '@/providers/Auth'
 import { useToggle } from '@/hooks/useToggle'
 import { useState } from 'react'
+import { useAuth } from '@/service/auth/AuthContext'
+import axios from 'axios'
 
 export const Login = () => {
   const { mode } = useParams()
