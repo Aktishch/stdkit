@@ -18,7 +18,7 @@ export const LayoutStudentDetail = () => {
           userName="Константинов Константин"
           userPost="Куратор, веб-дизайн"
         >
-          <SidebarLink id="settings" to="/lk-tutor/students/datail">
+          <SidebarLink id="settings" to="/lk-tutor/students/detail">
             Данные студента
           </SidebarLink>
           <SidebarLink id="clipboard" to="/lk-tutor/students/tasks">

@@ -79,7 +79,7 @@ export const Detail = () => {
           <DatesTextarea name="comment" />
           <DatesItems>
             <Button type="submit">Сохранить</Button>
-            <Button color="grey" variant="fade" type="reset">
+            <Button color="grey" variant="fade" type="reset" waved="dark">
               Отмена
             </Button>
           </DatesItems>

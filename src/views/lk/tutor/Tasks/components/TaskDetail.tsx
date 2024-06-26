@@ -35,9 +35,11 @@ export const TaskDetail = ({ className, item, index }: TaskDetailProps) => {
       <User className="w-36" webp={director.webp} src={director.src}>
         {director.name}
       </User>
-      <User className="w-36" webp={responsible.webp} src={responsible.src}>
-        {responsible.name}
-      </User>
+      {responsible !== undefined ? (
+        <User className="w-36" webp={responsible.webp} src={responsible.src}>
+          {responsible.name}
+        </User>
+      ) : null}
     </TableElement>
   )
 }
