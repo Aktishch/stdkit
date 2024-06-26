@@ -19,6 +19,7 @@ import {
   TutorStudents,
   StudentDetail,
   StudentDetailTasks,
+  StudentDetailPortfolio,
 } from '@views/lk/tutor/pages'
 import { ToastContainer } from './ui/Toast'
 import { createPortal } from 'react-dom'
@@ -62,6 +63,10 @@ window.addEventListener('DOMContentLoaded', ((): void => {
                 >
                   <Route path="detail" element={<StudentDetail />} />
                   <Route path="tasks" element={<StudentDetailTasks />} />
+                  <Route
+                    path="portfolio"
+                    element={<StudentDetailPortfolio />}
+                  />
                 </Route>
               </Route>
             </Route>

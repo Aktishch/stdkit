@@ -1,4 +1,5 @@
 import React, {
+  ElementType,
   createContext,
   useState,
   useRef,
@@ -17,6 +18,11 @@ interface AccordionContextProps {
 interface AccordionProps extends Props {
   active?: boolean
   scroll?: boolean
+}
+
+interface AccordionToggleProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  as?: ElementType
 }
 
 export const AccordionContext = createContext<AccordionContextProps>({})
@@ -66,16 +72,17 @@ export const Accordion = ({
 }
 
 export const AccordionToggle = ({
+  as: Tag = 'button',
   className,
   children,
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+}: AccordionToggleProps) => {
   const { accordionToggle } = useContext(AccordionContext)
   const style: string = twMerge('cursor-pointer', className)
 
   return (
-    <button className={style} onClick={accordionToggle}>
+    <Tag className={style} onClick={accordionToggle}>
       {children}
-    </button>
+    </Tag>
   )
 }
 

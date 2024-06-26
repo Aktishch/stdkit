@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
-import { BurgerButton } from '@views/lk/components/BurgerButton'
 import { User } from '@views/lk/components/User'
+import { ButtonBurger } from '@views/lk/components/Button/ButtonBurger'
 import { Table } from '@views/lk/components/Table/Table'
 import { TableHead } from '@views/lk/components/Table/TableHead'
 import { TableElement } from '@views/lk/components/Table/TableElement'
@@ -28,7 +28,7 @@ export const TaskTable = ({ className, data }: TaskTableProps) => {
       </TableHead>
       {data.map((item, index) => (
         <TableElement key={index}>
-          <BurgerButton className="w-6" />
+          <ButtonBurger className="w-6" />
           <TaskStatus className="w-28" variant={item.status} />
           <span className="w-5 text-center opacity-50">{++index}</span>
           <TaskName className="w-72">{item.taskName}</TaskName>
