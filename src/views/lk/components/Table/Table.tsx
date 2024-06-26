@@ -2,6 +2,7 @@ import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
 
 const tableMinWidth = {
+  lg: 'min-w-[910px]',
   xl: 'min-w-[1230px]',
 }
 

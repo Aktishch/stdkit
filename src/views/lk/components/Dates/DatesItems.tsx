@@ -1,9 +1,9 @@
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
 
-export const ContentPrimary = ({ className, children }: Props) => {
+export const DatesItems = ({ className, children }: Props) => {
   const style: string = twMerge(
-    'flex flex-col xl:flex-row xl:justify-between gap-7 sm:gap-10 md:gap-16 w-full xl:max-w-[910px]',
+    'grid grid-cols-1 gap-3 sm:grid-cols-2',
     className
   )
 

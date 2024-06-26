@@ -3,7 +3,7 @@ type TaskVariant = 'progress' | 'closed' | 'completed' | 'overdue'
 type Task = {
   status: TaskVariant
   taskName: string
-  sphere: string
+  sphere?: string
   dateStart: string
   dateEnd: string
   director: {
@@ -11,7 +11,7 @@ type Task = {
     src: string
     name: string
   }
-  responsible: {
+  responsible?: {
     webp: string
     src: string
     name: string

@@ -18,6 +18,7 @@ import {
   TutorTasks,
   TutorStudents,
   StudentDetail,
+  StudentDetailTasks,
 } from '@views/lk/tutor/pages'
 import { ToastContainer } from './ui/Toast'
 import { createPortal } from 'react-dom'
@@ -60,6 +61,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
                   element={<LayoutStudentDetail />}
                 >
                   <Route path="detail" element={<StudentDetail />} />
+                  <Route path="tasks" element={<StudentDetailTasks />} />
                 </Route>
               </Route>
             </Route>
