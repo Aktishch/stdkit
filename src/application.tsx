@@ -21,7 +21,11 @@ import {
   StudentDetailTasks,
   StudentDetailPortfolio,
 } from '@views/lk/tutor/pages'
+import { ToastContainer } from './ui/Toast'
+import { createPortal } from 'react-dom'
 import './scss/main.scss'
+import { AuthProvider } from './providers/Auth'
+import { PrivateRoute } from './layout/PrivateRoute'
 
 window.addEventListener('DOMContentLoaded', ((): void => {
   const root = document.getElementById('root') as HTMLElement
@@ -31,33 +35,46 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   const createRoot = ReactDOM.createRoot(root)
 
   createRoot.render(
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LayoutAuthorization />}>
-          <Route index element={<Navigate to="login" />} />
-          <Route path="login" element={<Navigate to="/login/student" />} />
-          <Route path="login/:mode" element={<AuthLogin />} />
-          <Route path="registration" element={<AuthRegistration />} />
-          <Route path="recovery" element={<AuthRecovery />} />
-          <Route path="code" element={<AuthCode />} />
-          <Route path="password" element={<AuthPassword />} />
-        </Route>
-        <Route path="/lk-tutor/" element={<LayoutDefault status={true} />}>
-          <Route element={<LayoutTutor />}>
-            <Route index element={<Navigate to="settings" />} />
-            <Route path="settings" element={<TutorSettings />} />
-            <Route path="password" element={<TutorPassword />} />
-          </Route>
-          <Route path="tasks" element={<TutorTasks />} />
-          <Route path="students" element={<TutorStudents />} />
-          <Route path="students/:studentId" element={<LayoutStudentDetail />}>
-            <Route path="detail" element={<StudentDetail />} />
-            <Route path="tasks" element={<StudentDetailTasks />} />
-            <Route path="portfolio" element={<StudentDetailPortfolio />} />
-          </Route>
-        </Route>
-        <Route path="*" element={<LayoutNotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<LayoutAuthorization />}>
+              <Route index element={<Navigate to="login" />} />
+              <Route path="login" element={<Navigate to="/login/student" />} />
+              <Route path="login/:mode" element={<AuthLogin />} />
+              <Route path="registration" element={<AuthRegistration />} />
+              <Route path="recovery" element={<AuthRecovery />} />
+              <Route path="code" element={<AuthCode />} />
+              <Route path="password" element={<AuthPassword />} />
+            </Route>
+            <Route path="/lk-tutor/" element={<LayoutDefault />}>
+              <Route element={<PrivateRoute />}>
+                <Route index element={<Navigate to="settings" />} />
+                <Route element={<LayoutTutor />}>
+                  <Route path="settings" element={<TutorSettings />} />
+                  <Route path="password" element={<TutorPassword />} />
+                </Route>
+                <Route path="tasks" element={<TutorTasks />} />
+                <Route path="students" element={<TutorStudents />} />
+                <Route
+                  path="students/:studentId"
+                  element={<LayoutStudentDetail />}
+                >
+                  <Route path="detail" element={<StudentDetail />} />
+                  <Route path="tasks" element={<StudentDetailTasks />} />
+                  <Route
+                    path="portfolio"
+                    element={<StudentDetailPortfolio />}
+                  />
+                </Route>
+              </Route>
+            </Route>
+            <Route path="*" element={<LayoutNotFound />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+      {createPortal(<ToastContainer />, document.body)}
+    </>
   )
 }) as EventListener)
