@@ -13,12 +13,11 @@ export const Toggle = ({
   children,
 }: ToggleProps) => {
   const { mode: modeParam } = useParams()
+  const isActive = modeParam === mode
 
   const style: string = twMerge(
-    'flex-grow relative flex items-center justify-center w-full h-full cursor-pointer text-center text-base duration-200 hover:bg-grey dark:hover:bg-primary dark:hover:bg-opacity-20',
-    modeParam === mode
-      ? 'bg-primary text-white font-semibold pointer-events-none'
-      : 'font-normal',
+    'grow relative flex items-center justify-center h-full cursor-pointer font-normal text-center duration-200 hover:bg-grey dark:hover:bg-primary/20',
+    isActive && 'bg-primary text-white font-semibold pointer-events-none',
     className
   )
 
