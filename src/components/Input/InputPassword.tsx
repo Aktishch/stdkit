@@ -1,8 +1,12 @@
 import { useToggle } from '@hooks/useToggle'
 import { FormIcon } from '@ui/Form/FormIcon'
 import { InputDefault, InputDefaultProps } from '@components/Input/InputDefault'
+import React from 'react'
 
-export const InputPassword = ({ ...props }: InputDefaultProps) => {
+const InputPasswordComponent = (
+  { ...props }: InputDefaultProps,
+  ref: InputRef
+) => {
   const [passwordValue, , , passwordToggle] = useToggle(true)
 
   return (
@@ -10,6 +14,7 @@ export const InputPassword = ({ ...props }: InputDefaultProps) => {
       type={passwordValue ? 'password' : 'text'}
       autoComplete="new-password"
       {...props}
+      ref={ref}
     >
       <FormIcon
         className="pr-4 text-2xl text-black opacity-50"
@@ -22,3 +27,7 @@ export const InputPassword = ({ ...props }: InputDefaultProps) => {
     </InputDefault>
   )
 }
+
+type InputRef = React.ForwardedRef<HTMLInputElement>
+
+export const InputPassword = React.forwardRef(InputPasswordComponent)

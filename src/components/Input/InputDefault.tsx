@@ -8,16 +8,19 @@ export interface InputDefaultProps extends InputProps {
   error?: string
 }
 
-export const InputDefault = ({
-  value = '',
-  className,
-  placeholder,
-  error,
-  onInput,
-  onKeyDown,
-  children,
-  ...props
-}: InputDefaultProps) => {
+const InputDefaultComponent = (
+  {
+    value = '',
+    className,
+    placeholder,
+    error,
+    onInput,
+    onKeyDown,
+    children,
+    ...props
+  }: InputDefaultProps,
+  ref: InputRef
+) => {
   const [empty, setEmpty] = useState(value)
   const style: string = twMerge('form-label', className)
 
@@ -42,6 +45,7 @@ export const InputDefault = ({
             onInput={onInputHandler}
             onKeyDown={onKeyDownHandler}
             {...props}
+            ref={ref}
           />
         </div>
         {placeholder ? (
@@ -63,3 +67,7 @@ export const InputDefault = ({
     </label>
   )
 }
+
+type InputRef = React.ForwardedRef<HTMLInputElement>
+
+export const InputDefault = React.forwardRef(InputDefaultComponent)

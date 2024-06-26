@@ -21,13 +21,10 @@ const formatterValue = (value: string): string => {
   return formatted
 }
 
-export const InputTel = ({
-  onInput,
-  onKeyDown,
-  onPaste,
-  children,
-  ...props
-}: InputDefaultProps) => {
+const InputTelComponent = (
+  { onInput, onKeyDown, onPaste, children, ...props }: InputDefaultProps,
+  ref: InputRef
+) => {
   const onInputHandler = (
     event: React.CompositionEvent<HTMLInputElement>
   ): '' | undefined => {
@@ -85,8 +82,13 @@ export const InputTel = ({
       onKeyDown={onKeyDownHandler}
       onPaste={onPasteHandler}
       {...props}
+      ref={ref}
     >
       {children}
     </InputDefault>
   )
 }
+
+type InputRef = React.ForwardedRef<HTMLInputElement>
+
+export const InputTel = React.forwardRef(InputTelComponent)
