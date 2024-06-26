@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
-import { BurgerButton } from '@views/lk/components/BurgerButton'
 import { User } from '@views/lk/components/User'
+import { ButtonBurger } from '@views/lk/components/Button/ButtonBurger'
 import { TableElement } from '@views/lk/components/Table/TableElement'
 import { TaskStatus } from '@views/lk/components/Task/TaskStatus'
 import { TaskName } from '@views/lk/components/Task/TaskName'
@@ -25,7 +25,7 @@ export const TaskDetail = ({ className, item, index }: TaskDetailProps) => {
 
   return (
     <TableElement className={style}>
-      <BurgerButton className="w-6" />
+      <ButtonBurger className="w-6" />
       <TaskStatus className="w-28" variant={status} />
       <span className="w-5 text-center opacity-50">{++index}</span>
       <TaskName className="w-80">{taskName}</TaskName>

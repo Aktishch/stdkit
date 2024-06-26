@@ -36,6 +36,7 @@ export interface ButtonProps extends Extension {
   href?: string | null
   target?: boolean
   to?: string | null
+  download?: boolean
   waved?: 'light' | 'dark'
 }
 
@@ -48,6 +49,7 @@ export const Button = ({
   type = 'button',
   href,
   target = false,
+  download = false,
   to,
   children,
   waved = 'light',
@@ -66,6 +68,7 @@ export const Button = ({
       className={style}
       type={Tag === 'button' ? type : null}
       href={href}
+      download={download}
       target={target ? '_blank' : null}
       to={to}
       draggable={false}

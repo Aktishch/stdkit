@@ -19,6 +19,7 @@ import {
   TutorStudents,
   StudentDetail,
   StudentDetailTasks,
+  StudentDetailPortfolio,
 } from '@views/lk/tutor/pages'
 import './scss/main.scss'
 
@@ -52,6 +53,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
           <Route path="students/:studentId" element={<LayoutStudentDetail />}>
             <Route path="detail" element={<StudentDetail />} />
             <Route path="tasks" element={<StudentDetailTasks />} />
+            <Route path="portfolio" element={<StudentDetailPortfolio />} />
           </Route>
         </Route>
         <Route path="*" element={<LayoutNotFound />} />

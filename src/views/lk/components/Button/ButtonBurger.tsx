@@ -2,7 +2,7 @@ import { twMerge } from 'tailwind-merge'
 import { Button, ButtonProps } from '@ui/Button'
 import { Icon } from '@ui/Icon'
 
-export const BurgerButton = ({ className, ...props }: ButtonProps) => {
+export const ButtonBurger = ({ className, ...props }: ButtonProps) => {
   const style: string = twMerge('rounded', className)
 
   return (

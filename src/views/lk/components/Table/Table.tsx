@@ -2,6 +2,7 @@ import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils/props'
 
 const tableMinWidth = {
+  none: null,
   lg: 'min-w-[910px]',
   xl: 'min-w-[1230px]',
 }
@@ -12,7 +13,8 @@ interface TableProps extends Props {
 
 export const Table = ({ className, minWidth = 'xl', children }: TableProps) => {
   const style: string = twMerge(
-    'px-4 sm:px-0 -mx-4 sm:mx-0 overflow-auto',
+    tableMinWidth[minWidth] !== null ? 'overflow-auto' : null,
+    'px-4 sm:px-0 -mx-4 sm:mx-0',
     className
   )
 
