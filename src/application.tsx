@@ -27,6 +27,7 @@ import './scss/main.scss'
 import { PrivateRoute } from './layout/PrivateRoute'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider } from './service/auth/AuthContext'
+import { Theme } from './providers/Theme'
 
 const queryClient = new QueryClient()
 
@@ -39,49 +40,51 @@ window.addEventListener('DOMContentLoaded', ((): void => {
 
   createRoot.render(
     <>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <AuthProvider>
-            <Routes>
-              <Route path="/" element={<LayoutAuthorization />}>
-                <Route index element={<Navigate to="login" />} />
-                <Route
-                  path="login"
-                  element={<Navigate to="/login/student" />}
-                />
-                <Route path="login/:mode" element={<AuthLogin />} />
-                <Route path="registration" element={<AuthRegistration />} />
-                <Route path="recovery" element={<AuthRecovery />} />
-                <Route path="code" element={<AuthCode />} />
-                <Route path="password" element={<AuthPassword />} />
-              </Route>
-              <Route path="/lk-tutor/" element={<LayoutDefault />}>
-                <Route element={<PrivateRoute />}>
-                  <Route index element={<Navigate to="settings" />} />
-                  <Route element={<LayoutTutor />}>
-                    <Route path="settings" element={<TutorSettings />} />
-                    <Route path="password" element={<TutorPassword />} />
-                  </Route>
-                  <Route path="tasks" element={<TutorTasks />} />
-                  <Route path="students" element={<TutorStudents />} />
+      <Theme>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <AuthProvider>
+              <Routes>
+                <Route path="/" element={<LayoutAuthorization />}>
+                  <Route index element={<Navigate to="login" />} />
                   <Route
-                    path="students/:studentId"
-                    element={<LayoutStudentDetail />}
-                  >
-                    <Route path="detail" element={<StudentDetail />} />
-                    <Route path="tasks" element={<StudentDetailTasks />} />
+                    path="login"
+                    element={<Navigate to="/login/student" />}
+                  />
+                  <Route path="login/:mode" element={<AuthLogin />} />
+                  <Route path="registration" element={<AuthRegistration />} />
+                  <Route path="recovery" element={<AuthRecovery />} />
+                  <Route path="code" element={<AuthCode />} />
+                  <Route path="password" element={<AuthPassword />} />
+                </Route>
+                <Route path="/lk-tutor/" element={<LayoutDefault />}>
+                  <Route element={<PrivateRoute />}>
+                    <Route index element={<Navigate to="settings" />} />
+                    <Route element={<LayoutTutor />}>
+                      <Route path="settings" element={<TutorSettings />} />
+                      <Route path="password" element={<TutorPassword />} />
+                    </Route>
+                    <Route path="tasks" element={<TutorTasks />} />
+                    <Route path="students" element={<TutorStudents />} />
                     <Route
-                      path="portfolio"
-                      element={<StudentDetailPortfolio />}
-                    />
+                      path="students/:studentId"
+                      element={<LayoutStudentDetail />}
+                    >
+                      <Route path="detail" element={<StudentDetail />} />
+                      <Route path="tasks" element={<StudentDetailTasks />} />
+                      <Route
+                        path="portfolio"
+                        element={<StudentDetailPortfolio />}
+                      />
+                    </Route>
                   </Route>
                 </Route>
-              </Route>
-              <Route path="*" element={<LayoutNotFound />} />
-            </Routes>
-          </AuthProvider>
-        </BrowserRouter>
-      </QueryClientProvider>
+                <Route path="*" element={<LayoutNotFound />} />
+              </Routes>
+            </AuthProvider>
+          </BrowserRouter>
+        </QueryClientProvider>
+      </Theme>
       {createPortal(<ToastContainer />, document.body)}
     </>
   )

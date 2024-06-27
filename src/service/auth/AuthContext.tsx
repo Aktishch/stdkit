@@ -13,13 +13,20 @@ export const useAuth = () => useContext(AuthContext)
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
   const [token, setToken] = useState(Cookies.get(COOKIE_TOKEN_NAME) || '')
   const navigate = useNavigate()
-  const { data: userData } = useQuery({
+  const { data: userData, isLoading } = useQuery({
     queryKey: ['todos', token],
     queryFn: getCurrentUser,
     enabled: !!token,
+    retry: false,
+    throwOnError() {
+      logout()
+      return false
+    },
   })
 
-  const login = async (formData: LoginPayload) => {
+  const isLoggedIn = !!token && !!userData?.item
+
+  async function login(formData: LoginPayload) {
     const response = await axios.post<LoginResponse>(
       apiUrl('/mentor/login'),
       formData
@@ -35,7 +42,7 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
     return response
   }
 
-  const logout = () => {
+  function logout() {
     setToken('')
     Cookies.remove(COOKIE_TOKEN_NAME)
     navigate('/login')
@@ -43,7 +50,7 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, user: userData?.item, login, logout }}
+      value={{ isLoggedIn, isLoading, user: userData?.item, login, logout }}
     >
       {children}
     </AuthContext.Provider>
@@ -51,7 +58,8 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
 }
 
 type AuthContextValue = {
-  token: string
+  isLoggedIn: boolean
+  isLoading: boolean
   user?: User
   login: (formData: LoginPayload) => Promise<AxiosResponse<LoginResponse, any>>
   logout: () => void
