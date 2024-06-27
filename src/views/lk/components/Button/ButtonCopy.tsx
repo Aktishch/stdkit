@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useToggle } from '@hooks/useToggle'
 import { ButtonProps } from '@ui/Button'
@@ -6,13 +7,16 @@ import { ButtonGrey } from '@views/lk/components/Button/ButtonGrey'
 export const ButtonCopy = ({ className, value, onClick }: ButtonProps) => {
   const [copyValue, copyOn, copyOff] = useToggle()
   const style: string = twMerge('relative w-[52px] shrink-0', className)
+  const timeOut = useRef<NodeJS.Timeout>()
 
   const onClickHandler = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
+    if (timeOut.current) clearTimeout(timeOut.current)
+
     navigator.clipboard.writeText(String(value))
     copyOn()
-    setTimeout((): void => copyOff(), 1000)
+    timeOut.current = setTimeout((): void => copyOff(), 1000)
     onClick?.(event)
   }
 
