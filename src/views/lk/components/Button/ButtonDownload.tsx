@@ -6,6 +6,12 @@ export const ButtonDownload = ({ className, href }: ButtonProps) => {
   const style: string = twMerge(className)
 
   return (
-    <ButtonGrey className={style} as="a" id="download" href={href} download />
+    <ButtonGrey
+      className={style}
+      as="a"
+      id="download"
+      href={href}
+      download={true}
+    />
   )
 }
