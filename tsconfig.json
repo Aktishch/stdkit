@@ -48,12 +48,6 @@
       "@providers": [
         "src/providers"
       ],
-      "@ui/*": [
-        "src/ui/*"
-      ],
-      "@ui": [
-        "src/ui"
-      ],
       "@utils/*": [
         "src/utils/*"
       ],

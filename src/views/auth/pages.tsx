@@ -23,9 +23,3 @@ export const AuthCode = lazy(() =>
     default: module.Code,
   }))
 )
-
-export const AuthPassword = lazy(() =>
-  import('@views/auth/Password/Password').then((module) => ({
-    default: module.Password,
-  }))
-)

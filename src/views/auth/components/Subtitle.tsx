@@ -1,9 +1,9 @@
 import { twMerge } from 'tailwind-merge'
-import { Props } from '@utils/props'
+import { Props } from '@utils'
 
 export const Subtitle = ({ className, children }: Props) => {
   const style: string = twMerge(
-    'font-normal leading-normal text-center text-sm sm:text-base opacity-60 mb-7 md:mb-10',
+    'font-normal text-center text-sm/normal sm:text-base/normal opacity-60 mb-7 md:mb-10',
     className
   )
 

@@ -1,8 +1,5 @@
-import { InputDefault } from '@components'
-import { BorderButton } from '@views/auth/components/BorderButton'
-import { Title } from '@views/auth/components/Title'
-import { Subtitle } from '@views/auth/components/Subtitle'
-import { Button, Form, Input } from '@/ui'
+import { InputTitle, InputError } from '@components'
+import { Title, Subtitle } from '@views/auth/components'
 
 export const Code = () => {
   return (
@@ -10,25 +7,26 @@ export const Code = () => {
       <Title>Восстановление пароля</Title>
       <Subtitle>
         На ваш e-mail отправили код подтверждения,{' '}
-        <br className="hidden sm:block" /> введите его ниже, чтобы изменить
-        пароль
+        <br className="hidden sm:block" />
+        введите его нижу, чтобы изменить пароль
       </Subtitle>
-      <Form className="gap-6" action="/password">
-        <Input type="hidden" value="Код" name="theme" />
-        <InputDefault
-          type="text"
-          placeholder="Код"
-          error="Введите код"
-          name="code"
-        />
-        <Button type="submit">Восстановить</Button>
-      </Form>
-      <Form className="items-center justify-center mt-8" action="/code">
-        <Input type="hidden" value="Получить код повторно" name="theme" />
-        <BorderButton as="button" type="submit">
-          Не получил код?
-        </BorderButton>
-      </Form>
+      <form className="flex flex-col gap-6" action="">
+        <input type="hidden" value="Восстановление пароля" name="auth" />
+        <label>
+          <InputTitle>Код</InputTitle>
+          <div className="relative">
+            <input
+              className="input input-primary input-lg"
+              type="email"
+              name="login"
+            />
+            <InputError>Введите код</InputError>
+          </div>
+        </label>
+        <button className="btn btn-primary btn-lg btn-fill" type="submit">
+          Восстановить
+        </button>
+      </form>
     </>
   )
 }

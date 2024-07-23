@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useContext } from 'react'
-import { useToggle } from '@hooks/useToggle'
+import { useToggle } from '@hooks'
 
 interface ThemeContextProps {
   themeValue: boolean
@@ -7,6 +7,7 @@ interface ThemeContextProps {
 }
 
 const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps)
+
 export const useTheme = () => useContext(ThemeContext)
 
 export const Theme = ({ children }: React.PropsWithChildren) => {

@@ -1,46 +1,58 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import { LayoutAuthorization } from '@layout/LayoutAuthorization'
-import { LayoutDefault } from '@layout/LayoutDefault'
-import { LayoutNotFound } from '@layout/LayoutNotFound'
-import { LayoutTutor } from '@views/lk/tutor/layout/LayoutTutor'
-import { LayoutStudentDetail } from '@views/lk/tutor/layout/LayoutStudentDetail'
+import { Theme } from '@providers'
+import { AuthLayout } from '@layout'
+// import { LayoutAuthorization } from '@layout/LayoutAuthorization'
+// import { LayoutDefault } from '@layout/LayoutDefault'
+// import { LayoutNotFound } from '@layout/LayoutNotFound'
+// import { LayoutTutor } from '@views/lk/tutor/layout/LayoutTutor'
+// import { LayoutStudentDetail } from '@views/lk/tutor/layout/LayoutStudentDetail'
 import {
   AuthLogin,
   AuthRegistration,
   AuthRecovery,
   AuthCode,
-  AuthPassword,
+  // AuthPassword,
 } from '@views/auth/pages'
-import {
-  TutorSettings,
-  TutorPassword,
-  TutorTasks,
-  TutorStudents,
-  StudentDetail,
-  StudentDetailTasks,
-  StudentDetailPortfolio,
-} from '@views/lk/tutor/pages'
-import { ToastContainer } from './ui/Toast'
-import { createPortal } from 'react-dom'
+// import {
+//   TutorSettings,
+//   TutorPassword,
+//   TutorTasks,
+//   TutorStudents,
+//   StudentDetail,
+//   StudentDetailTasks,
+//   StudentDetailPortfolio,
+// } from '@views/lk/tutor/pages'
+// import { ToastContainer } from './ui/Toast'
+// import { createPortal } from 'react-dom'
 import './scss/main.scss'
-import { PrivateRoute } from './layout/PrivateRoute'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { AuthProvider } from './service/auth/AuthContext'
-import { Theme } from './providers/Theme'
+// import { PrivateRoute } from './layout/PrivateRoute'
+// import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+// import { AuthProvider } from './service/auth/AuthContext'
+// import { Theme } from './providers/Theme'
 
-const queryClient = new QueryClient()
+// const queryClient = new QueryClient()
 
 window.addEventListener('DOMContentLoaded', ((): void => {
   const root = document.getElementById('root') as HTMLElement
 
   if (!root) return
 
-  const createRoot = ReactDOM.createRoot(root)
+  const createRoot: ReactDOM.Root = ReactDOM.createRoot(root)
 
   createRoot.render(
-    <>
-      <Theme>
+    <Theme>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AuthLayout />}>
+            <Route index element={<Navigate to="login" />} />
+            <Route path="login" element={<AuthLogin />} />
+            <Route path="registration" element={<AuthRegistration />} />
+            <Route path="recovery" element={<AuthRecovery />} />
+            <Route path="code" element={<AuthCode />} />
+          </Route>
+        </Routes>
+        {/* <Theme>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <AuthProvider>
@@ -85,7 +97,8 @@ window.addEventListener('DOMContentLoaded', ((): void => {
           </BrowserRouter>
         </QueryClientProvider>
       </Theme>
-      {createPortal(<ToastContainer />, document.body)}
-    </>
+      {createPortal(<ToastContainer />, document.body)} */}
+      </BrowserRouter>
+    </Theme>
   )
 }) as EventListener)

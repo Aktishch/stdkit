@@ -1,96 +1,105 @@
-import { Logo } from '@views/auth/components/Logo'
-import { BorderButton } from '@views/auth/components/BorderButton'
-import { Button, Chapter, Form, Input } from '@/ui'
 import {
-  InputDefault,
+  InputTitle,
+  InputError,
+  InputPassword,
   InputText,
   InputTel,
-  InputNumber,
-  InputPassword,
-  Select,
-} from '@/components'
+} from '@components'
+import { LinkUnderline } from '@views/auth/components'
 
 export const Registration = () => {
   return (
-    <>
-      <Logo />
-      <Form className="gap-7 md:gap-10" action="/">
-        <Input type="hidden" value="Регистрация" name="theme" />
-        <div className="flex flex-col gap-6">
-          <Chapter src="/img/pictures/chicken.svg">Личная информация</Chapter>
-          <InputDefault
-            placeholder="Логин"
-            error="Введите логин"
+    <form className="flex flex-col gap-6" action="/">
+      <input type="hidden" value="Регистрация" name="auth" />
+      <label>
+        <InputTitle>Логин</InputTitle>
+        <div className="relative">
+          <input
+            className="input input-primary input-lg"
+            type="text"
             name="login"
           />
+          <InputError>Введите логин</InputError>
+        </div>
+      </label>
+      <label>
+        <InputTitle>Фамилия</InputTitle>
+        <div className="relative">
+          <InputText className="input input-primary input-lg" name="surname" />
+          <InputError>Введите фамилию</InputError>
+        </div>
+      </label>
+      <label>
+        <InputTitle>Имя</InputTitle>
+        <div className="relative">
+          <InputText className="input input-primary input-lg" name="name" />
+          <InputError>Введите имя</InputError>
+        </div>
+      </label>
+      <label>
+        <InputTitle>Отчество</InputTitle>
+        <div className="relative">
           <InputText
-            placeholder="Фамилия"
-            error="Введите фамилию"
-            name="surname"
-          />
-          <InputText placeholder="Имя" error="Введите имя" name="name" />
-          <InputText
-            placeholder="Отчество"
-            error="Введите отчество"
+            className="input input-primary input-lg"
             name="father-name"
           />
-          <Select
-            placeholder="Вид деятельности"
-            error="Укажите вид деятельности"
-            name="activity"
-          >
-            <option value="empty" hidden></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </Select>
-          <InputTel placeholder="Телефон" error="Введите телефон" name="tel" />
+          <InputError>Введите отчество</InputError>
         </div>
-        <div className="flex flex-col gap-6">
-          <Chapter src="/img/pictures/school.svg">Университет</Chapter>
-          <InputDefault
-            placeholder="Полное название ВУЗа"
-            error="Укажите ВУЗ"
-            name="university"
-          />
-          <InputDefault
-            placeholder="Факультет"
-            error="Укажите факультет"
-            name="faculty"
-          />
-          <InputNumber
-            placeholder="Курс"
-            error="Укажите курс"
-            maxLength={1}
-            name="course"
-          />
-          <InputDefault
-            placeholder="Группа"
-            error="Укажите группу"
-            name="group"
-          />
+      </label>
+      <label>
+        <InputTitle>Должность</InputTitle>
+        <div className="relative">
+          <InputText className="input input-primary input-lg" name="work" />
+          <InputError>Введите должность</InputError>
         </div>
-        <div className="flex flex-col gap-6">
-          <Chapter src="/img/pictures/locked.svg">Пароль</Chapter>
+      </label>
+      <label>
+        <InputTitle>Телефон</InputTitle>
+        <div className="relative">
+          <InputTel className="input input-primary input-lg" name="tel" />
+          <InputError>Введите телефон</InputError>
+        </div>
+      </label>
+      <label>
+        <InputTitle>E-Mail</InputTitle>
+        <div className="relative">
+          <input
+            className="input input-primary input-lg"
+            type="email"
+            name="login"
+          />
+          <InputError>Введите e-mail</InputError>
+        </div>
+      </label>
+      <label>
+        <InputTitle>Пароль</InputTitle>
+        <div className="relative">
           <InputPassword
-            placeholder="Пароль"
-            error="Минимальная длинна пароля 8 символов"
+            className="input input-primary input-lg"
             name="password"
           />
-          <InputPassword
-            placeholder="Повторите пароль"
-            error="Минимальная длинна пароля 8 символов"
-            name="password-replay"
-          />
+          <InputError>Введите пароль</InputError>
         </div>
-        <Button type="submit">Зарегистрироваться</Button>
-      </Form>
-      <div className="flex items-center justify-center mt-8">
+      </label>
+      <label>
+        <InputTitle>Повторите пароль</InputTitle>
+        <div className="relative">
+          <InputPassword
+            className="input input-primary input-lg"
+            name="password"
+          />
+          <InputError>Повторите пароль</InputError>
+        </div>
+      </label>
+      <button className="btn btn-primary btn-lg btn-fill" type="submit">
+        Зарегистрироваться
+      </button>
+      <div className="flex items-center justify-center">
         <span className="mr-2 text-sm font-normal sm:text-base">
           Есть аккаунт?
         </span>
-        <BorderButton to="/">Войти</BorderButton>
+        <LinkUnderline to="/">Войти</LinkUnderline>
       </div>
-    </>
+    </form>
   )
 }
