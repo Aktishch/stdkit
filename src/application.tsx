@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { Theme } from '@providers'
-import { AuthLayout } from '@layout'
+import { AuthLayout, LkLayout } from '@layout'
 // import { LayoutAuthorization } from '@layout/LayoutAuthorization'
 // import { LayoutDefault } from '@layout/LayoutDefault'
 // import { LayoutNotFound } from '@layout/LayoutNotFound'
@@ -12,17 +12,9 @@ import {
   AuthRegistration,
   AuthRecovery,
   AuthCode,
-  // AuthPassword,
+  AuthPassword,
 } from '@views/auth/pages'
-// import {
-//   TutorSettings,
-//   TutorPassword,
-//   TutorTasks,
-//   TutorStudents,
-//   StudentDetail,
-//   StudentDetailTasks,
-//   StudentDetailPortfolio,
-// } from '@views/lk/tutor/pages'
+import { LkSettings, LkPassword } from '@views/lk/pages'
 // import { ToastContainer } from './ui/Toast'
 // import { createPortal } from 'react-dom'
 import './scss/main.scss'
@@ -50,6 +42,12 @@ window.addEventListener('DOMContentLoaded', ((): void => {
             <Route path="registration" element={<AuthRegistration />} />
             <Route path="recovery" element={<AuthRecovery />} />
             <Route path="code" element={<AuthCode />} />
+            <Route path="password" element={<AuthPassword />} />
+          </Route>
+          <Route path="/lk/" element={<LkLayout />}>
+            <Route index element={<Navigate to="settings" />} />
+            <Route path="settings" element={<LkSettings />} />
+            <Route path="password" element={<LkPassword />} />
           </Route>
         </Routes>
         {/* <Theme>

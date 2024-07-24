@@ -29,8 +29,8 @@
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
-    "@types/react-dom": "^18.3.0",
     "@tsconfig/recommended": "^1.0.7",
+    "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.17.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@headlessui/react": "^2.1.2",
     "@types/react": "^18.2.33",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

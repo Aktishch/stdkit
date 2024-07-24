@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useContext } from 'react'
 import { useToggle } from '@hooks'
 
-interface ThemeContextProps {
+export interface ThemeContextProps {
   themeValue: boolean
   themeToggle: () => void
 }

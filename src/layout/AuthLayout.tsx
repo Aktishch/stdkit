@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Icon } from '@components'
-import { Loaded } from '@layout/components'
+import { Loaded } from '@layout'
 
 export const AuthLayout = () => {
   return (

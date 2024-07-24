@@ -1,17 +1,26 @@
+import { useState } from 'react'
 import {
   InputTitle,
   InputError,
-  InputPassword,
   InputText,
   InputTel,
+  AvatarUploader,
 } from '@components'
-import { ButtonUnderline } from '@views/auth/components'
+import { Title } from '@views/lk/components'
 
-export const Registration = () => {
+export const Settings = () => {
+  const [image, setImage] = useState<string | File>()
+
   return (
     <>
-      <form className="flex flex-col gap-6" action="/">
-        <input type="hidden" value="Регистрация" name="theme" />
+      <Title className="mb-6 sm:mb-10">Личные данные</Title>
+      <form className="flex flex-col gap-6" action="">
+        <input type="hidden" value="Личные данные" name="theme" />
+        <AvatarUploader
+          value={image}
+          onChange={setImage}
+          onClick={(): void => setImage(undefined)}
+        />
         <label>
           <InputTitle>Логин</InputTitle>
           <div className="relative">
@@ -75,36 +84,13 @@ export const Registration = () => {
             <InputError>Введите e-mail</InputError>
           </div>
         </label>
-        <label>
-          <InputTitle>Пароль</InputTitle>
-          <div className="relative">
-            <InputPassword
-              className="input input-primary input-lg"
-              name="password"
-            />
-            <InputError>Введите пароль</InputError>
-          </div>
-        </label>
-        <label>
-          <InputTitle>Повторите пароль</InputTitle>
-          <div className="relative">
-            <InputPassword
-              className="input input-primary input-lg"
-              name="new-password"
-            />
-            <InputError>Повторите пароль</InputError>
-          </div>
-        </label>
-        <button className="btn btn-primary btn-lg btn-fill" type="submit">
-          Зарегистрироваться
+        <button
+          className="w-full btn btn-primary btn-lg btn-fill sm:max-w-60"
+          type="submit"
+        >
+          Сохранить изменения
         </button>
       </form>
-      <div className="flex items-center justify-center mt-6">
-        <span className="mr-2 text-sm font-normal sm:text-base">
-          Есть аккаунт?
-        </span>
-        <ButtonUnderline to="/">Войти</ButtonUnderline>
-      </div>
     </>
   )
 }

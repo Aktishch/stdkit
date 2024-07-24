@@ -19,12 +19,12 @@ module.exports = {
       xxl: '2499.98px',
     },
     constants: {
-      xs: 36,
-      sm: 42,
-      md: 48,
+      xs: 28,
+      sm: 34,
+      md: 46,
       lg: 52,
-      xl: 58,
-      xxl: 64,
+      xl: 60,
+      xxl: 66,
     },
     colors: {
       transparent: 'transparent',

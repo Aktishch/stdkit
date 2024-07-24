@@ -10,14 +10,14 @@ export const Recovery = () => {
         код для смены пароля
       </Subtitle>
       <form className="flex flex-col gap-6" action="/code">
-        <input type="hidden" value="Восстановление пароля" name="auth" />
+        <input type="hidden" value="Восстановление пароля" name="theme" />
         <label>
           <InputTitle>E-Mail</InputTitle>
           <div className="relative">
             <input
               className="input input-primary input-lg"
               type="email"
-              name="login"
+              name="email"
             />
             <InputError>Введите e-mail</InputError>
           </div>
