@@ -1,21 +1,28 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useTheme } from '@/providers'
-import { Menu, MenuButton, MenuItems, Icon, Picture } from '@components'
+import {
+  Menu,
+  MenuButton,
+  MenuItems,
+  MenuItem,
+  Icon,
+  Picture,
+} from '@components'
 import { ButtonNav } from '@layout/Header/components'
 
 export const Header = () => {
   const { themeToggle, themeValue } = useTheme()
 
   return (
-    <header className="container sticky top-0 left-0 right-0 z-30 flex items-center justify-between gap-3 py-2 bg-white border-b border-solid dark:bg-black sm:py-4 sm:gap-5 md:gap-10 lg:gap-24 md:py-6 border-grey">
+    <header className="container sticky top-0 left-0 right-0 z-30 flex items-center justify-between gap-3 py-2 bg-white border-b border-solid dark:bg-black sm:py-4 sm:gap-5 md:gap-10 lg:gap-24 md:py-6 border-grey print:hidden">
       <Link draggable="false" to="/lk">
         <Icon className="w-20 h-7 sm:h-8 sm:w-28" id="logo" />
       </Link>
       <nav className="flex items-center gap-2 md:mr-auto sm:gap-5 lg:gap-10">
-        <ButtonNav id="users" to="/lk/ddd">
+        <ButtonNav id="users" to="/company/staff">
           Сотрудники
         </ButtonNav>
-        <ButtonNav id="notification" to="/lk/ddd">
+        <ButtonNav id="notification" to="/company/duty">
           Дежурство
         </ButtonNav>
         <ButtonNav id="hourglass" to="/lk/ddd">
@@ -30,7 +37,7 @@ export const Header = () => {
           {({ active }) => (
             <>
               <Icon
-                className={`text-sm mr-2 opacity-60 ease-linear transition-transform  ${active ? '-rotate-90' : ''}`}
+                className={`text-sm mr-2 opacity-60 ease-linear transition-transform  ${active ? '-rotate-90' : null}`}
                 id="arrow-left"
               />
               <div className="relative overflow-hidden rounded-full size-7 shrink-0 bg-grey">
@@ -57,16 +64,17 @@ export const Header = () => {
             </span>
           </div>
           <div className="flex flex-col">
-            <NavLink
+            <MenuItem
               className="justify-start px-2 btn btn-primary btn-sm"
+              as={NavLink}
               draggable={false}
-              to=""
+              to="/lk"
             >
               <Icon className="text-xl" id="settings" />
               <span className="ml-1 text-sm font-normal text-black dark:text-white">
-                Настройки
+                Личные данные
               </span>
-            </NavLink>
+            </MenuItem>
             <button
               className="justify-start px-2 btn btn-primary btn-sm"
               onClick={themeToggle}
@@ -79,6 +87,16 @@ export const Header = () => {
                 </span>
               </span>
             </button>
+            <a
+              className="justify-start px-2 btn btn-red btn-sm"
+              draggable={false}
+              href="/"
+            >
+              <Icon className="text-xl" id="arrow-back" />
+              <span className="ml-1 text-sm font-normal text-black dark:text-white">
+                Выйти
+              </span>
+            </a>
           </div>
         </MenuItems>
       </Menu>

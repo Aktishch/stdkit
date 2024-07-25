@@ -4,7 +4,7 @@ export const Footer = () => {
   const currentYear: number = new Date().getFullYear()
 
   return (
-    <footer className="container flex items-center justify-between gap-3 py-2 mt-auto bg-white border-t border-solid sm:py-4 dark:bg-black border-grey">
+    <footer className="container flex items-center justify-between gap-3 py-2 mt-auto bg-white border-t border-solid sm:py-4 dark:bg-black border-grey print:hidden">
       <span className="text-base font-normal leading-none">
         © {currentYear}
       </span>

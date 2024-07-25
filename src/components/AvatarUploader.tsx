@@ -65,7 +65,7 @@ export const AvatarUploader = ({
       </div>
       <div className="relative">
         <label
-          className={`text-black dark:text-white text-sm sm:text-base btn btn-gray btn-contur btn-lg ${value ? 'pointer-events-none opacity-50' : ''}`}
+          className={`text-black dark:text-white text-sm sm:text-base btn btn-gray btn-contur btn-lg ${value ? 'pointer-events-none opacity-50' : null}`}
         >
           <input
             className="hidden"

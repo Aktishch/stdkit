@@ -1,5 +1,4 @@
-import { InputTitle, InputError, InputPassword } from '@components'
-import { Title } from '@views/lk/components'
+import { Title, InputTitle, InputError, InputPassword } from '@components'
 
 export const Password = () => {
   return (

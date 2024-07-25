@@ -1,13 +1,19 @@
 import { lazy } from 'react'
 
-export const LkSettings = lazy(() =>
-  import('@views/lk/Settings/Settings').then((module) => ({
-    default: module.Settings,
+export const CompanyStaff = lazy(() =>
+  import('@views/company/Staff/Staff').then((module) => ({
+    default: module.Staff,
   }))
 )
 
-export const LkPassword = lazy(() =>
-  import('@views/lk/Password/Password').then((module) => ({
-    default: module.Password,
+export const CompanyEmployee = lazy(() =>
+  import('@views/company/Employee/Employee').then((module) => ({
+    default: module.Employee,
+  }))
+)
+
+export const CompanyDuty = lazy(() =>
+  import('@views/company/Duty/Duty').then((module) => ({
+    default: module.Duty,
   }))
 )

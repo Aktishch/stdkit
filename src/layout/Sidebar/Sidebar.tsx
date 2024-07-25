@@ -1,22 +1,15 @@
-import { Icon, Loader, Picture } from '@components'
+import { Icon, Avatar } from '@components'
 import { ButtonNav } from '@layout/Sidebar/components'
 
 export const Sidebar = () => {
   return (
     <div className="w-full xs:max-w-64">
       <div className="flex items-center mb-4 sm:mb-6">
-        <div className="w-full mr-4 rounded-full pack pack-xl max-w-10 bg-grey shrink-0">
-          <Loader />
-          <div className="absolute inset-0 flex items-center justify-center bg-primary">
-            <Icon className="text-2xl text-white" id="user" />
-          </div>
-          <Picture
-            className="image"
-            webp="/img/pictures/user.webp"
-            src="/img/pictures/user.jpg"
-            loading="lazy"
-          />
-        </div>
+        <Avatar
+          className="mr-4"
+          webp="/img/pictures/user.webp"
+          src="/img/pictures/user.jpg"
+        />
         <div className="flex flex-col overflow-hidden">
           <span className="font-normal truncate text-base/none">
             Актищев Александр
@@ -36,7 +29,7 @@ export const Sidebar = () => {
         <a
           className="justify-start px-4 mt-4 font-normal text-red btn btn-lg btn-red"
           draggable={false}
-          href=""
+          href="/"
         >
           <Icon className="mr-4 text-2xl" id="arrow-back" />
           Выйти

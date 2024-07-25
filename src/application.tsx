@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { Theme } from '@providers'
-import { AuthLayout, LkLayout } from '@layout'
+import { AuthLayout, LkLayout, CompanyLayout, NotFoundLayout } from '@layout'
 // import { LayoutAuthorization } from '@layout/LayoutAuthorization'
 // import { LayoutDefault } from '@layout/LayoutDefault'
 // import { LayoutNotFound } from '@layout/LayoutNotFound'
@@ -15,6 +15,11 @@ import {
   AuthPassword,
 } from '@views/auth/pages'
 import { LkSettings, LkPassword } from '@views/lk/pages'
+import {
+  CompanyStaff,
+  CompanyEmployee,
+  CompanyDuty,
+} from '@views/company/pages'
 // import { ToastContainer } from './ui/Toast'
 // import { createPortal } from 'react-dom'
 import './scss/main.scss'
@@ -49,6 +54,13 @@ window.addEventListener('DOMContentLoaded', ((): void => {
             <Route path="settings" element={<LkSettings />} />
             <Route path="password" element={<LkPassword />} />
           </Route>
+          <Route path="/company/" element={<CompanyLayout />}>
+            <Route index element={<Navigate to="staff" />} />
+            <Route path="staff" element={<CompanyStaff />} />
+            <Route path="employee" element={<CompanyEmployee />} />
+            <Route path="duty" element={<CompanyDuty />} />
+          </Route>
+          <Route path="*" element={<NotFoundLayout />} />
         </Routes>
         {/* <Theme>
         <QueryClientProvider client={queryClient}>

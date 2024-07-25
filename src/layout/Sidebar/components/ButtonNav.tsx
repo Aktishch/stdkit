@@ -14,7 +14,7 @@ export const ButtonNav = ({ className, to, id, children }: ButtonNavProps) => {
       className={({ isActive }) =>
         twMerge(
           'btn btn-gray btn-lg justify-start px-4 font-normal text-black dark:text-white',
-          isActive ? 'btn-fade font-semibold pointer-events-none' : '',
+          isActive ? 'btn-fade font-semibold pointer-events-none' : null,
           className
         )
       }

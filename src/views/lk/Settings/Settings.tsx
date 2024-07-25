@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import {
+  Title,
   InputTitle,
   InputError,
   InputText,
   InputTel,
   AvatarUploader,
 } from '@components'
-import { Title } from '@views/lk/components'
 
 export const Settings = () => {
-  const [image, setImage] = useState<string | File>()
+  const [image, setImage] = useState<string | File | undefined>()
 
   return (
     <>
