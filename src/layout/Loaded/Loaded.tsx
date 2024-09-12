@@ -4,7 +4,7 @@ import { Preloader } from '@components'
 
 export const Loaded = ({ className }: Props) => {
   const style: string = twMerge(
-    'inset-0 fixed z-50 flex items-center justify-center bg-white',
+    'inset-0 fixed z-50 flex items-center justify-center bg-white dark:bg-dark',
     className
   )
 

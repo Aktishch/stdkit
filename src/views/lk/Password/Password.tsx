@@ -1,4 +1,4 @@
-import { Title, InputTitle, InputError, InputPassword } from '@components'
+import { Title, LabelName, InputPassword } from '@components'
 
 export const Password = () => {
   return (
@@ -7,23 +7,23 @@ export const Password = () => {
       <form className="flex flex-col gap-6" action="">
         <input type="hidden" value="Изменить пароль" name="theme" />
         <label>
-          <InputTitle>Пароль</InputTitle>
+          <LabelName>Пароль</LabelName>
           <div className="relative">
             <InputPassword
-              className="input input-primary input-lg"
+              className="input input-primary input-lg dark:input-fade"
               name="password"
             />
-            <InputError>Введите пароль</InputError>
+            <span className="error">Введите пароль</span>
           </div>
         </label>
         <label>
-          <InputTitle>Повторите пароль</InputTitle>
+          <LabelName>Повторите пароль</LabelName>
           <div className="relative">
             <InputPassword
-              className="input input-primary input-lg"
+              className="input input-primary input-lg dark:input-fade"
               name="new-password"
             />
-            <InputError>Повторите пароль</InputError>
+            <span className="error">Повторите пароль</span>
           </div>
         </label>
         <button
@@ -33,14 +33,14 @@ export const Password = () => {
           Сохранить изменения
         </button>
       </form>
-      <ul className="flex flex-col gap-2 mt-6 sm:gap-3 text-red sm:mt-10">
-        <li className="font-normal text-xs/tight sm:text-sm/tight">
+      <ul className="flex flex-col gap-2 mt-6 font-normal sm:gap-3 text-red sm:mt-10 text-xs/tight sm:text-sm/tight">
+        <li>
           Пароль должен быть не менее <b>8 символов длиной</b>
         </li>
-        <li className="font-normal text-xs/tight sm:text-sm/tight">
+        <li>
           Пароль должен содержать <b>цифры (0-9)</b>
         </li>
-        <li className="font-normal text-xs/tight sm:text-sm/tight">
+        <li>
           Пароль должен содержать{' '}
           <b>латинские символы нижнего регистра (a-z)</b>
         </li>

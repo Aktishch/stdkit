@@ -1,4 +1,4 @@
-import { InputTitle, InputError, InputPassword } from '@components'
+import { LabelName, InputPassword } from '@components'
 import { ButtonUnderline } from '@views/auth/components'
 
 export const Login = () => {
@@ -7,24 +7,24 @@ export const Login = () => {
       <form className="flex flex-col gap-6" action="/lk">
         <input type="hidden" value="Авторизация" name="theme" />
         <label>
-          <InputTitle>Логин</InputTitle>
+          <LabelName>Логин</LabelName>
           <div className="relative">
             <input
-              className="input input-primary input-lg"
+              className="input input-primary input-lg dark:input-fade"
               type="text"
               name="login"
             />
-            <InputError>Введите логин</InputError>
+            <span className="error">Введите логин</span>
           </div>
         </label>
         <label>
-          <InputTitle>Пароль</InputTitle>
+          <LabelName>Пароль</LabelName>
           <div className="relative">
             <InputPassword
-              className="input input-primary input-lg"
+              className="input input-primary input-lg dark:input-fade"
               name="password"
             />
-            <InputError>Введите пароль</InputError>
+            <span className="error">Введите пароль</span>
           </div>
         </label>
         <div className="flex items-center justify-center">

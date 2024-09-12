@@ -3,8 +3,7 @@ import { useToggle } from '@hooks'
 import {
   Title,
   Icon,
-  InputTitle,
-  InputError,
+  LabelName,
   InputPassword,
   InputText,
   InputTel,
@@ -42,102 +41,102 @@ export const Employee = () => {
             onClick={(): void => setImage(undefined)}
           />
           <label>
-            <InputTitle>Логин</InputTitle>
+            <LabelName>Логин</LabelName>
             <div className="relative">
               <input
-                className="input input-primary input-lg"
+                className="input input-primary input-lg dark:input-fade"
                 type="text"
                 defaultValue="Login"
                 disabled={editingValue}
                 name="login"
               />
-              <InputError>Введите логин</InputError>
+              <span className="error">Введите логин</span>
             </div>
           </label>
           <label>
-            <InputTitle>Фамилия</InputTitle>
+            <LabelName>Фамилия</LabelName>
             <div className="relative">
               <InputText
-                className="input input-primary input-lg"
+                className="input input-primary input-lg dark:input-fade"
                 defaultValue="Актищев"
                 disabled={editingValue}
                 name="surname"
               />
-              <InputError>Введите фамилию</InputError>
+              <span className="error">Введите фамилию</span>
             </div>
           </label>
           <label>
-            <InputTitle>Имя</InputTitle>
+            <LabelName>Имя</LabelName>
             <div className="relative">
               <InputText
-                className="input input-primary input-lg"
+                className="input input-primary input-lg dark:input-fade"
                 defaultValue="Александр"
                 disabled={editingValue}
                 name="name"
               />
-              <InputError>Введите имя</InputError>
+              <span className="error">Введите имя</span>
             </div>
           </label>
           <label>
-            <InputTitle>Отчество</InputTitle>
+            <LabelName>Отчество</LabelName>
             <div className="relative">
               <InputText
-                className="input input-primary input-lg"
+                className="input input-primary input-lg dark:input-fade"
                 defaultValue="Михайлович"
                 disabled={editingValue}
                 name="father-name"
               />
-              <InputError>Введите отчество</InputError>
+              <span className="error">Введите отчество</span>
             </div>
           </label>
           <label>
-            <InputTitle>Должность</InputTitle>
+            <LabelName>Должность</LabelName>
             <div className="relative">
               <InputText
-                className="input input-primary input-lg"
+                className="input input-primary input-lg dark:input-fade"
                 defaultValue="Front end"
                 disabled={editingValue}
                 name="work"
               />
-              <InputError>Введите должность</InputError>
+              <span className="error">Введите должность</span>
             </div>
           </label>
           <label>
-            <InputTitle>Телефон</InputTitle>
+            <LabelName>Телефон</LabelName>
             <div className="relative">
               <InputTel
-                className="input input-primary input-lg"
+                className="input input-primary input-lg dark:input-fade"
                 defaultValue="+7 (988) 385-02-38"
                 disabled={editingValue}
                 name="tel"
               />
-              <InputError>Введите телефон</InputError>
+              <span className="error">Введите телефон</span>
             </div>
           </label>
           <label>
-            <InputTitle>E-Mail</InputTitle>
+            <LabelName>E-Mail</LabelName>
             <div className="relative">
               <input
-                className="input input-primary input-lg"
+                className="input input-primary input-lg dark:input-fade"
                 type="email"
                 defaultValue="a.aktishev@stdkit.ru"
                 disabled={editingValue}
                 name="email"
               />
-              <InputError>Введите e-mail</InputError>
+              <span className="error">Введите e-mail</span>
             </div>
           </label>
           {editingValue ? null : (
             <>
               <label>
-                <InputTitle>Пароль</InputTitle>
+                <LabelName>Пароль</LabelName>
                 <div className="relative">
                   <InputPassword
-                    className="input input-primary input-lg"
+                    className="input input-primary input-lg dark:input-fade"
                     defaultValue="12345678"
                     name="password"
                   />
-                  <InputError>Введите пароль</InputError>
+                  <span className="error">Введите пароль</span>
                 </div>
               </label>
               <button className="btn btn-primary btn-lg btn-fill" type="submit">
@@ -147,7 +146,7 @@ export const Employee = () => {
           )}
         </form>
         {editingValue ? null : (
-          <div className="grid gap-6 grid-cols- sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <form className="flex-grow" action="">
               <input type="hidden" value="Архивировать" name="theme" />
               <button

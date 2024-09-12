@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useTheme } from '@/providers'
 import {
@@ -6,12 +7,23 @@ import {
   MenuItems,
   MenuItem,
   Icon,
-  Picture,
+  Avatar,
 } from '@components'
-import { ButtonNav } from '@layout/Header/components'
+import { ButtonNav, ButtonPallete } from '@layout/Header/components'
 
 export const Header = () => {
+  const [color, setColor] = useState(localStorage.getItem('color') || 'default')
   const { themeToggle, themeValue } = useTheme()
+
+  useEffect((): void => {
+    const html = document.documentElement as HTMLElement
+
+    html.style.setProperty(
+      '--color-primary',
+      color === 'default' ? '' : `var(--color-${color})`
+    )
+    localStorage.setItem('color', color)
+  }, [color])
 
   return (
     <header className="container sticky top-0 left-0 right-0 z-30 flex items-center justify-between gap-3 py-2 bg-white border-b border-solid dark:bg-black sm:py-4 sm:gap-5 md:gap-10 lg:gap-24 md:py-6 border-grey print:hidden">
@@ -37,20 +49,10 @@ export const Header = () => {
           {({ active }) => (
             <>
               <Icon
-                className={`text-sm mr-2 opacity-60 ease-linear transition-transform  ${active ? '-rotate-90' : null}`}
+                className={`text-sm mr-2 opacity-60 ease-linear transition-transform ${active ? '-rotate-90' : null}`}
                 id="arrow-left"
               />
-              <div className="relative overflow-hidden rounded-full size-7 shrink-0 bg-grey">
-                <div className="absolute inset-0 flex items-center justify-center bg-primary">
-                  <Icon className="text-xl text-white" id="user" />
-                </div>
-                <Picture
-                  className="image"
-                  webp="/img/pictures/user.webp"
-                  src="/img/pictures/user.jpg"
-                  loading="lazy"
-                />
-              </div>
+              <Avatar className="text-xl size-7" src="/img/pictures/user.jpg" />
             </>
           )}
         </MenuButton>
@@ -62,6 +64,25 @@ export const Header = () => {
             <span className="mt-1 font-normal truncate opacity-50 text-xs/none">
               Front-end разработчик
             </span>
+          </div>
+          <div className="flex items-center justify-between gap-1 px-2 mb-2">
+            <ButtonPallete onClick={(): void => setColor('default')} />
+            <ButtonPallete
+              className="bg-purple"
+              onClick={(): void => setColor('purple')}
+            />
+            <ButtonPallete
+              className="bg-yellow"
+              onClick={(): void => setColor('yellow')}
+            />
+            <ButtonPallete
+              className="bg-blue"
+              onClick={(): void => setColor('blue')}
+            />
+            <ButtonPallete
+              className="bg-orange"
+              onClick={(): void => setColor('orange')}
+            />
           </div>
           <div className="flex flex-col">
             <MenuItem

@@ -1,15 +1,17 @@
-// Инициализация тайлвинд
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// Базовые стили
 @layer base {
   @import "./ui-kit/fonts";
   @import "./ui-kit/basic";
 }
 
-// Компоненты
 @layer components {
+  @import "./ui-kit/container";
+  @import "./ui-kit/icon";
   @import "./ui-kit/load";
+  @import "./ui-kit/image";
+  @import "./ui-kit/card";
+  @import "./ui-kit/error";
 }

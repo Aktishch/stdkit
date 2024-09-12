@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Props, getImagePreview } from '@utils'
-import { Icon, Picture, InputError } from '@components'
+import { Icon, Avatar } from '@components'
 
 export interface AvatarUploaderProps extends Props {
   value?: string | File
@@ -54,15 +54,7 @@ export const AvatarUploader = ({
 
   return (
     <div className={style}>
-      <div className="bg-primary w-[52px] shrink-0 rounded-full pack pack-xl">
-        {src !== undefined ? (
-          <Picture className="image" src={src} />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Icon className="text-4xl text-white" id="user" />
-          </div>
-        )}
-      </div>
+      <Avatar className="size-[52px] text-4xl" src={src} />
       <div className="relative">
         <label
           className={`text-black dark:text-white text-sm sm:text-base btn btn-gray btn-contur btn-lg ${value ? 'pointer-events-none opacity-50' : null}`}
@@ -75,10 +67,10 @@ export const AvatarUploader = ({
           />
           {value ? 'Загружено' : 'Загрузить новое'}
         </label>
-        {error !== undefined ? <InputError>{error}</InputError> : null}
+        {error !== undefined ? <span className="error">{error}</span> : null}
       </div>
       <button
-        className="w-[52px] shrink-0 px-0 btn btn-lg btn-grey btn-fill"
+        className="size-[52px] shrink-0 btn rounded-md btn-grey btn-fill"
         disabled={!value}
         onClick={onClick}
       >

@@ -1,5 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 
+const createColor = (variable) => {
+  return ({ opacityValue }) => {
+    return `rgba(var(--color-${variable}), ${opacityValue !== undefined ? opacityValue : 1})`
+  }
+}
+
 module.exports = {
   content: ['./index.html', './src/**/*.ts', './src/**/*.tsx'],
   darkMode: 'class',
@@ -31,28 +37,40 @@ module.exports = {
       current: 'currentColor',
       inherit: 'inherit',
       primary: {
-        DEFAULT: '#7352CF',
+        DEFAULT: createColor('primary'),
       },
       black: {
-        DEFAULT: '#1F1F1F',
+        DEFAULT: createColor('black'),
       },
       white: {
-        DEFAULT: '#FFFFFF',
+        DEFAULT: createColor('white'),
       },
       gray: {
-        DEFAULT: '#CDCDCD',
+        DEFAULT: createColor('gray'),
       },
       grey: {
-        DEFAULT: '#EDEFF1',
+        DEFAULT: createColor('grey'),
       },
       red: {
-        DEFAULT: '#ED2F4B',
+        DEFAULT: createColor('red'),
       },
       green: {
-        DEFAULT: '#D8EDD7',
+        DEFAULT: createColor('green'),
       },
       dark: {
-        DEFAULT: '#26283B',
+        DEFAULT: createColor('dark'),
+      },
+      purple: {
+        DEFAULT: createColor('purple'),
+      },
+      yellow: {
+        DEFAULT: createColor('yellow'),
+      },
+      blue: {
+        DEFAULT: createColor('blue'),
+      },
+      orange: {
+        DEFAULT: createColor('orange'),
       },
     },
     fontFamily: {
@@ -102,14 +120,8 @@ module.exports = {
     },
   },
   plugins: [
-    require('./plugins/container'),
-    // require('./plugins/dialog'),
-    require('./plugins/card'),
     require('./plugins/pack'),
-    require('./plugins/picture'),
     require('./plugins/input'),
     require('./plugins/button'),
-    // require('./plugins/switch'),
-    // require('./plugins/animation'),
   ],
 }

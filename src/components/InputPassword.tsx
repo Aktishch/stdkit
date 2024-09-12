@@ -8,7 +8,7 @@ export const InputPassword = ({
   ...props
 }: React.InputHTMLAttributes<HTMLInputElement>) => {
   const [passwordValue, , , passwordToggle] = useToggle(true)
-  const style: string = twMerge(className)
+  const style: string = twMerge('pr-12', className)
 
   return (
     <>
@@ -19,12 +19,12 @@ export const InputPassword = ({
         {...props}
       />
       <button
-        className="input-icon input-icon-right input-icon-pointer"
+        className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full cursor-pointer"
         type="button"
         onClick={passwordToggle}
       >
         <Icon
-          className="text-2xl text-black/50"
+          className="text-2xl opacity-50"
           id={passwordValue ? 'eye-visible' : 'eye-hidden'}
         />
       </button>

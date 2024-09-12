@@ -4,7 +4,6 @@ import { Avatar } from '@components'
 
 export interface ChartProps extends Props {
   item: {
-    webp?: string | null
     src?: string | undefined
     name: string
     work: string
@@ -14,21 +13,21 @@ export interface ChartProps extends Props {
 
 export const Chart = ({ className, item }: ChartProps) => {
   const style: string = twMerge(
-    'flex items-center justify-between gap-3 py-2 border-b border-solid lg:gap-6 border-grey',
+    'flex items-center justify-between gap-3 py-2 text-sm lg:text-base font-normal border-b border-solid lg:gap-6 border-grey',
     className
   )
-  const { webp, src, name, work, period } = item
+  const { src, name, work, period } = item
 
   return (
     <div className={style}>
-      <Avatar className="w-10" webp={webp} src={src} />
-      <span className="font-normal truncate w-72 text-base/tight shrink-0">
-        {name}
-      </span>
-      <span className="w-24 font-normal text-base/tight shrink-0">{work}</span>
-      <span className="font-normal w-72 text-base/tight shrink-0">
-        {period}
-      </span>
+      <Avatar
+        className="text-base lg:text-2xl size-7 lg:size-10"
+        src={src}
+        load={true}
+      />
+      <span className="truncate w-44 lg:w-72 shrink-0">{name}</span>
+      <span className="w-20 lg:w-24 shrink-0">{work}</span>
+      <span className="w-44 lg:w-72 shrink-0">{period}</span>
     </div>
   )
 }

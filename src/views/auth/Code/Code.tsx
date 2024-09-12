@@ -1,4 +1,4 @@
-import { InputNumber, InputTitle, InputError } from '@components'
+import { LabelName, InputNumber } from '@components'
 import { Title, Subtitle, ButtonUnderline } from '@views/auth/components'
 
 export const Code = () => {
@@ -13,10 +13,13 @@ export const Code = () => {
       <form className="flex flex-col gap-6" action="/password">
         <input type="hidden" value="Код подтверждения" name="theme" />
         <label>
-          <InputTitle>Код</InputTitle>
+          <LabelName>Код</LabelName>
           <div className="relative">
-            <InputNumber className="input input-primary input-lg" name="code" />
-            <InputError>Введите код</InputError>
+            <InputNumber
+              className="input input-primary input-lg dark:input-fade"
+              name="code"
+            />
+            <span className="error">Введите код</span>
           </div>
         </label>
         <button className="btn btn-primary btn-lg btn-fill" type="submit">

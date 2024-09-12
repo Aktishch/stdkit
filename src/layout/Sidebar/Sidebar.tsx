@@ -6,9 +6,9 @@ export const Sidebar = () => {
     <div className="w-full xs:max-w-64">
       <div className="flex items-center mb-4 sm:mb-6">
         <Avatar
-          className="mr-4"
-          webp="/img/pictures/user.webp"
+          className="mr-4 text-2xl size-10"
           src="/img/pictures/user.jpg"
+          load={true}
         />
         <div className="flex flex-col overflow-hidden">
           <span className="font-normal truncate text-base/none">

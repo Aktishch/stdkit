@@ -1,10 +1,31 @@
+@use "sass:color";
+
+@function rgb($hex) {
+  @return color.red($hex),
+  color.green($hex),
+  color.blue($hex);
+}
+
+$colors: ("primary": #7352CF,
+  "black": #1F1F1F,
+  "white": #FFF,
+  "gray": #CDCDCD,
+  "grey": #EDEFF1,
+  "red": #ED2F4B,
+  "green": #D8EDD7,
+  "dark": #26283B,
+  "purple": #af1a4c,
+  "yellow": #d7a751,
+  "blue": #1289A7,
+  "orange": #d35400);
+
 :root {
-  --tw-font-base : "Inter", Helvetica, sans-serif;
-  --tw-content-xs: calc(theme(screens.xs) - 32.98px);
-  --tw-content-sm: calc(theme(screens.sm) - 35.98px);
-  --tw-content-md: calc(theme(screens.md) - 47.98px);
-  --tw-content-lg: calc(theme(screens.lg) - 51.98px);
-  --tw-content-xl: calc(theme(screens.xl) - 135.98px);
+  --tw-font-base: "Inter", Helvetica, sans-serif;
+
+  @each $key,
+  $value in $colors {
+    --color-#{$key}: #{rgb($value)};
+  }
 }
 
 * {
@@ -66,16 +87,16 @@ img {
   }
 }
 
-dialog {
-  @apply static border-none size-auto;
-}
-
 address {
   @apply not-italic;
 }
 
 q {
   quotes: "\201c""\201E";
+}
+
+label {
+  @apply block;
 }
 
 a,
