@@ -1,4 +1,5 @@
 import { Title } from '@components'
+import { Table, TableHead, TableCol } from '@views/company/components'
 import { Chart } from '@views/company/Duty/components'
 
 const data = [
@@ -32,19 +33,17 @@ export const Duty = () => {
   return (
     <>
       <Title className="mb-6 sm:mb-10">Дежурство</Title>
-      <div className="px-4 -mx-4 overflow-auto">
-        <div className="flex flex-col min-w-[540px]">
-          <div className="flex items-center justify-between gap-3 py-3 text-sm font-normal text-black rounded-lg lg:py-5 lg:gap-6 bg-grey lg:text-base">
-            <span className="w-7 lg:w-10"></span>
-            <span className="w-44 lg:w-72 shrink-0">Сотрудник</span>
-            <span className="w-20 lg:w-24 shrink-0">Должность</span>
-            <span className="w-44 lg:w-72 shrink-0">Период дежурства</span>
-          </div>
-          {data.map((item, index) => (
-            <Chart item={item} key={index} />
-          ))}
-        </div>
-      </div>
+      <Table minWidth="min-w-[540px]">
+        <TableHead>
+          <TableCol className="w-7 lg:w-10" />
+          <TableCol className="w-44 lg:w-72">Сотрудник</TableCol>
+          <TableCol className="w-20 lg:w-24">Должность</TableCol>
+          <TableCol className="w-44 lg:w-72">Период дежурства</TableCol>
+        </TableHead>
+        {data.map((item, index) => (
+          <Chart item={item} key={index} />
+        ))}
+      </Table>
       <button
         className="w-full btn btn-primary btn-lg btn-fill max-w-48 mt-7 print:hidden"
         onClick={(): void => window.print()}

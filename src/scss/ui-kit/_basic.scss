@@ -6,25 +6,28 @@
   color.blue($hex);
 }
 
-$colors: ("primary": #7352CF,
-  "black": #1F1F1F,
-  "white": #FFF,
-  "gray": #CDCDCD,
-  "grey": #EDEFF1,
-  "red": #ED2F4B,
-  "green": #D8EDD7,
-  "dark": #26283B,
-  "purple": #af1a4c,
-  "yellow": #d7a751,
-  "blue": #1289A7,
-  "orange": #d35400);
-
 :root {
   --tw-font-base: "Inter", Helvetica, sans-serif;
 
   @each $key,
-  $value in $colors {
+  $value in ("primary": #7352CF,
+    "black": #1F1F1F,
+    "white": #FFF,
+    "gray": #CDCDCD,
+    "grey": #EDEFF1,
+    "red": #ED2F4B,
+    "green": #D8EDD7,
+    "dark": #26283B) {
     --color-#{$key}: #{rgb($value)};
+  }
+
+  @each $key,
+  $value in ("default": #7352CF,
+    "purple": #af1a4c,
+    "yellow": #d7a751,
+    "blue": #1289A7,
+    "orange": #d35400) {
+    --primary-#{$key}: #{rgb($value)};
   }
 }
 

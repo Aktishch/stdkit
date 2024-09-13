@@ -19,6 +19,7 @@ import {
   CompanyStaff,
   CompanyEmployee,
   CompanyDuty,
+  CompanyTime,
 } from '@views/company/pages'
 // import { ToastContainer } from './ui/Toast'
 // import { createPortal } from 'react-dom'
@@ -59,6 +60,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
             <Route path="staff" element={<CompanyStaff />} />
             <Route path="employee" element={<CompanyEmployee />} />
             <Route path="duty" element={<CompanyDuty />} />
+            <Route path="time" element={<CompanyTime />} />
           </Route>
           <Route path="*" element={<NotFoundLayout />} />
         </Routes>

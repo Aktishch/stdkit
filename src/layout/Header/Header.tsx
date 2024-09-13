@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useTheme } from '@/providers'
 import {
@@ -9,21 +8,10 @@ import {
   Icon,
   Avatar,
 } from '@components'
-import { ButtonNav, ButtonPallete } from '@layout/Header/components'
+import { ButtonNav, ButtonColor } from '@layout/Header/components'
 
 export const Header = () => {
-  const [color, setColor] = useState(localStorage.getItem('color') || 'default')
-  const { themeToggle, themeValue } = useTheme()
-
-  useEffect((): void => {
-    const html = document.documentElement as HTMLElement
-
-    html.style.setProperty(
-      '--color-primary',
-      color === 'default' ? '' : `var(--color-${color})`
-    )
-    localStorage.setItem('color', color)
-  }, [color])
+  const { themeToggle, themeValue, color, changeColor } = useTheme()
 
   return (
     <header className="container sticky top-0 left-0 right-0 z-30 flex items-center justify-between gap-3 py-2 bg-white border-b border-solid dark:bg-black sm:py-4 sm:gap-5 md:gap-10 lg:gap-24 md:py-6 border-grey print:hidden">
@@ -37,8 +25,8 @@ export const Header = () => {
         <ButtonNav id="notification" to="/company/duty">
           Дежурство
         </ButtonNav>
-        <ButtonNav id="hourglass" to="/lk/ddd">
-          Опоздания
+        <ButtonNav id="hourglass" to="/company/time">
+          Рабочее время
         </ButtonNav>
       </nav>
       <Menu>
@@ -66,22 +54,30 @@ export const Header = () => {
             </span>
           </div>
           <div className="flex items-center justify-between gap-1 px-2 mb-2">
-            <ButtonPallete onClick={(): void => setColor('default')} />
-            <ButtonPallete
-              className="bg-purple"
-              onClick={(): void => setColor('purple')}
+            <ButtonColor
+              className="color-default"
+              disabled={color === 'default'}
+              onClick={(): void => changeColor('default')}
             />
-            <ButtonPallete
-              className="bg-yellow"
-              onClick={(): void => setColor('yellow')}
+            <ButtonColor
+              className="color-purple"
+              disabled={color === 'purple'}
+              onClick={(): void => changeColor('purple')}
             />
-            <ButtonPallete
-              className="bg-blue"
-              onClick={(): void => setColor('blue')}
+            <ButtonColor
+              className="color-yellow"
+              disabled={color === 'yellow'}
+              onClick={(): void => changeColor('yellow')}
             />
-            <ButtonPallete
-              className="bg-orange"
-              onClick={(): void => setColor('orange')}
+            <ButtonColor
+              className="color-blue"
+              disabled={color === 'blue'}
+              onClick={(): void => changeColor('blue')}
+            />
+            <ButtonColor
+              className="color-orange"
+              disabled={color === 'orange'}
+              onClick={(): void => changeColor('orange')}
             />
           </div>
           <div className="flex flex-col">

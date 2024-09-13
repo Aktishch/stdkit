@@ -14,7 +14,7 @@ export const ButtonNav = ({ className, id, to, children }: ButtonNavProps) => {
       className={({ isActive }) =>
         twMerge(
           'btn btn-black size-10 font-normal md:p-2 dark:hover:bg-primary dark:hover:opacity-100 rounded-full md:rounded-lg bg-grey dark:bg-primary md:bg-opacity-0 hover:bg-grey md:size-auto shrink-0 dark:text-white',
-          isActive ? 'pointer-events-none ' : 'opacity-60 dark:sm:bg-opacity-0',
+          isActive ? 'pointer-events-none ' : 'opacity-60 dark:md:bg-opacity-0',
           className
         )
       }

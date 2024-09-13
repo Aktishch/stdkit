@@ -1,12 +1,12 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export const ButtonPallete = ({
+export const ButtonColor = ({
   className,
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   const style: string = twMerge(
-    'border border-solid rounded-full size-5 shrink-0 border-grey',
+    'btn btn-primary btn-fill border border-solid rounded-full size-5 shrink-0 border-grey',
     className
   )
 

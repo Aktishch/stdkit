@@ -17,3 +17,9 @@ export const CompanyDuty = lazy(() =>
     default: module.Duty,
   }))
 )
+
+export const CompanyTime = lazy(() =>
+  import('@views/company/Time/Time').then((module) => ({
+    default: module.Time,
+  }))
+)

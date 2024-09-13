@@ -60,18 +60,6 @@ module.exports = {
       dark: {
         DEFAULT: createColor('dark'),
       },
-      purple: {
-        DEFAULT: createColor('purple'),
-      },
-      yellow: {
-        DEFAULT: createColor('yellow'),
-      },
-      blue: {
-        DEFAULT: createColor('blue'),
-      },
-      orange: {
-        DEFAULT: createColor('orange'),
-      },
     },
     fontFamily: {
       base: 'var(--tw-font-base)',

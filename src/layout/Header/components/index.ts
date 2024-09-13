@@ -1,2 +1,2 @@
 export * from './ButtonNav'
-export * from './ButtonPallete'
+export * from './ButtonColor'

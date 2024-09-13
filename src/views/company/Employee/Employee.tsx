@@ -31,11 +31,12 @@ export const Employee = () => {
           {editingValue ? 'Редактировать' : 'Запретить'}
         </button>
       </div>
-      <div className="flex flex-col gap-6 lg:mx-auto lg:max-w-md">
+      <div
+        className={`flex flex-col gap-6 lg:mx-auto lg:max-w-md ${editingValue ? 'pointer-events-none' : null}`}
+      >
         <form className="flex flex-col w-full gap-6" action="">
           <input type="hidden" value="Редактировать" name="theme" />
           <AvatarUploader
-            className={editingValue ? 'pointer-events-none opacity-50' : null}
             value={image}
             onChange={setImage}
             onClick={(): void => setImage(undefined)}
@@ -47,7 +48,7 @@ export const Employee = () => {
                 className="input input-primary input-lg dark:input-fade"
                 type="text"
                 defaultValue="Login"
-                disabled={editingValue}
+                readOnly={editingValue}
                 name="login"
               />
               <span className="error">Введите логин</span>
@@ -59,7 +60,7 @@ export const Employee = () => {
               <InputText
                 className="input input-primary input-lg dark:input-fade"
                 defaultValue="Актищев"
-                disabled={editingValue}
+                readOnly={editingValue}
                 name="surname"
               />
               <span className="error">Введите фамилию</span>
@@ -71,7 +72,7 @@ export const Employee = () => {
               <InputText
                 className="input input-primary input-lg dark:input-fade"
                 defaultValue="Александр"
-                disabled={editingValue}
+                readOnly={editingValue}
                 name="name"
               />
               <span className="error">Введите имя</span>
@@ -83,7 +84,7 @@ export const Employee = () => {
               <InputText
                 className="input input-primary input-lg dark:input-fade"
                 defaultValue="Михайлович"
-                disabled={editingValue}
+                readOnly={editingValue}
                 name="father-name"
               />
               <span className="error">Введите отчество</span>
@@ -95,7 +96,7 @@ export const Employee = () => {
               <InputText
                 className="input input-primary input-lg dark:input-fade"
                 defaultValue="Front end"
-                disabled={editingValue}
+                readOnly={editingValue}
                 name="work"
               />
               <span className="error">Введите должность</span>
@@ -107,7 +108,7 @@ export const Employee = () => {
               <InputTel
                 className="input input-primary input-lg dark:input-fade"
                 defaultValue="+7 (988) 385-02-38"
-                disabled={editingValue}
+                readOnly={editingValue}
                 name="tel"
               />
               <span className="error">Введите телефон</span>
@@ -120,10 +121,23 @@ export const Employee = () => {
                 className="input input-primary input-lg dark:input-fade"
                 type="email"
                 defaultValue="a.aktishev@stdkit.ru"
-                disabled={editingValue}
+                readOnly={editingValue}
                 name="email"
               />
               <span className="error">Введите e-mail</span>
+            </div>
+          </label>
+          <label>
+            <LabelName>Дата трудоустройства</LabelName>
+            <div className="relative">
+              <input
+                className="input input-primary input-lg dark:input-fade"
+                type="date"
+                defaultValue="2021-09-01"
+                readOnly={editingValue}
+                name="date"
+              />
+              <span className="error">Введите дату</span>
             </div>
           </label>
           {editingValue ? null : (
@@ -134,6 +148,7 @@ export const Employee = () => {
                   <InputPassword
                     className="input input-primary input-lg dark:input-fade"
                     defaultValue="12345678"
+                    readOnly={editingValue}
                     name="password"
                   />
                   <span className="error">Введите пароль</span>
