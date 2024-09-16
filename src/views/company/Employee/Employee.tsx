@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { useToggle } from '@hooks'
 import {
   Title,
-  Icon,
   LabelName,
   InputPassword,
   InputText,
   InputTel,
   AvatarUploader,
 } from '@components'
+import { ButtonTop } from '@views/company/components'
 
 export const Employee = () => {
   const [image, setImage] = useState<string | File | undefined>(
@@ -20,16 +20,9 @@ export const Employee = () => {
     <>
       <div className="flex flex-col gap-4 mb-6 xs:flex-row xs:items-center xs:justify-between sm:mb-10">
         <Title>О сотруднике</Title>
-        <button
-          className="btn btn-primary btn-lg btn-fade group"
-          onClick={editingToggle}
-        >
-          <Icon
-            className="mr-2 text-2xl duration-200 text-primary group-hover:text-white"
-            id="pen"
-          />
-          {editingValue ? 'Редактировать' : 'Запретить'}
-        </button>
+        <ButtonTop id="pen" onClick={editingToggle}>
+          {editingValue ? 'Редактировать' : 'Отмена'}
+        </ButtonTop>
       </div>
       <div
         className={`flex flex-col gap-6 lg:mx-auto lg:max-w-md ${editingValue ? 'pointer-events-none' : null}`}
@@ -153,6 +146,14 @@ export const Employee = () => {
                   />
                   <span className="error">Введите пароль</span>
                 </div>
+              </label>
+              <label className="flex items-center cursor-pointer w-max">
+                <input
+                  className="mr-2 switch switch-checkbox"
+                  type="checkbox"
+                  name="remotely"
+                />
+                <span className="text-base font-normal">Удаленная работа</span>
               </label>
               <button className="btn btn-primary btn-lg btn-fill" type="submit">
                 Сохранить изменения

@@ -1,5 +1,10 @@
 import { Title, Icon } from '@components'
-import { Table, TableHead, TableCol } from '@views/company/components'
+import {
+  ButtonTop,
+  Table,
+  TableHead,
+  TableCol,
+} from '@views/company/components'
 import { ButtonFiltering, Employee } from '@views/company/Staff/components'
 
 const data = [
@@ -42,10 +47,7 @@ export const Staff = () => {
     <>
       <div className="flex flex-col gap-4 mb-6 xs:flex-row xs:items-center xs:justify-between sm:mb-10">
         <Title>Сотрудники</Title>
-        <button className="btn btn-primary btn-lg btn-fade">
-          <Icon className="mr-2 text-2xl" id="plus" />
-          Добавить сотрудника
-        </button>
+        <ButtonTop id="users">Добавить</ButtonTop>
       </div>
       <form action="">
         <div className="flex items-center justify-between gap-2 mb-6 border-b border-solid sm:justify-start sm:gap-10 border-grey">

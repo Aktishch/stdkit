@@ -1,4 +1,7 @@
 export * from './Menu'
+export * from './MenuButton'
+export * from './MenuItems'
+export * from './MenuItem'
 export * from './Title'
 export * from './Icon'
 export * from './Image'
