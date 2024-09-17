@@ -4,6 +4,7 @@ import {
   Table,
   TableHead,
   TableCol,
+  Pagination,
 } from '@views/company/components'
 import { Chart } from '@views/company/Duty/components'
 
@@ -70,11 +71,14 @@ export const Duty = () => {
           ))}
         </Table>
         <button
-          className="w-full mt-10 btn btn-primary btn-lg btn-fill sm:max-w-60"
+          className="w-full mt-10 btn btn-primary btn-lg btn-fill sm:max-w-60 print:hidden"
           type="submit"
         >
           Сохранить изменения
         </button>
+      </form>
+      <form className="mt-10 print:hidden" action="">
+        <Pagination />
       </form>
     </>
   )

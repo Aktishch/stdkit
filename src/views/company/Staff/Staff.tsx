@@ -4,6 +4,7 @@ import {
   Table,
   TableHead,
   TableCol,
+  Pagination,
 } from '@views/company/components'
 import { ButtonFiltering, Employee } from '@views/company/Staff/components'
 
@@ -60,7 +61,7 @@ export const Staff = () => {
         <div className="flex items-center justify-between gap-2 mb-6">
           <div className="relative flex-grow">
             <input
-              className="pl-12 input input-primary input-lg dark:input-fade"
+              className="pl-12 input input-search input-primary input-lg dark:input-fade"
               type="search"
               placeholder="Найти сотрудника..."
               name="search"
@@ -88,6 +89,7 @@ export const Staff = () => {
             <Employee item={item} key={index} />
           ))}
         </Table>
+        <Pagination className="mt-10" />
       </form>
     </>
   )

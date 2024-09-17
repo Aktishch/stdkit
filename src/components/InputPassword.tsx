@@ -3,10 +3,10 @@ import { twMerge } from 'tailwind-merge'
 import { useToggle } from '@hooks'
 import { Icon } from '@components'
 
-export const InputPassword = ({
-  className,
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement>) => {
+const InputPasswordComponent = (
+  { className, ...props }: React.InputHTMLAttributes<HTMLInputElement>,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
   const [passwordValue, , , passwordToggle] = useToggle(true)
   const style: string = twMerge('pr-12', className)
 
@@ -16,6 +16,7 @@ export const InputPassword = ({
         className={style}
         type={passwordValue ? 'password' : 'text'}
         autoComplete="new-password"
+        ref={ref}
         {...props}
       />
       <button
@@ -31,3 +32,5 @@ export const InputPassword = ({
     </>
   )
 }
+
+export const InputPassword = React.forwardRef(InputPasswordComponent)

@@ -5,6 +5,7 @@ import {
   Table,
   TableHead,
   TableCol,
+  Pagination,
 } from '@views/company/components'
 import { Month } from '@views/company/Time/components'
 
@@ -218,6 +219,9 @@ export const Time = () => {
               Сохранить изменения
             </button>
           )}
+        </form>
+        <form action="">
+          <Pagination />
         </form>
       </div>
     </>
