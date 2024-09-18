@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const getValue = (input: HTMLInputElement): string => {
@@ -21,14 +21,17 @@ const formatterValue = (value: string): string => {
   return formatted
 }
 
-export const InputTel = ({
-  className,
-  onInput,
-  onKeyDown,
-  onPaste,
-  children,
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement>) => {
+const InputTelComponent = (
+  {
+    className,
+    onInput,
+    onKeyDown,
+    onPaste,
+    children,
+    ...props
+  }: React.InputHTMLAttributes<HTMLInputElement>,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
   const style: string = twMerge(className)
 
   const onInputHandler = (
@@ -85,6 +88,8 @@ export const InputTel = ({
     <input
       className={style}
       type="tel"
+      placeholder="+7 (___) ___-__-__"
+      ref={ref}
       {...props}
       onInput={onInputHandler}
       onKeyDown={onKeyDownHandler}
@@ -92,3 +97,5 @@ export const InputTel = ({
     />
   )
 }
+
+export const InputTel = forwardRef(InputTelComponent)

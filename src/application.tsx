@@ -23,6 +23,7 @@ import {
 } from '@views/company/pages'
 // import { ToastContainer } from './ui/Toast'
 // import { createPortal } from 'react-dom'
+import 'react-calendar/dist/Calendar.css'
 import './scss/main.scss'
 // import { PrivateRoute } from './layout/PrivateRoute'
 // import { QueryClient, QueryClientProvider } from '@tanstack/react-query'

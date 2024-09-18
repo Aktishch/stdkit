@@ -9,8 +9,8 @@ export interface ButtonUnderlineProps
 }
 
 export const ButtonUnderline = ({
-  as: Tag = Link,
   className,
+  as: Tag = Link,
   to = null,
   children,
   ...props

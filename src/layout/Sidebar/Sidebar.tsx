@@ -22,7 +22,7 @@ export const Sidebar = () => {
         </div>
         <nav className="flex flex-col">
           <ButtonNav id="settings" to="/lk/settings">
-            Личные данные
+            Настройки
           </ButtonNav>
           <ButtonNav id="lock" to="/lk/password">
             Изменить пароль

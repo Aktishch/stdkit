@@ -1,7 +1,26 @@
-import { LabelName, InputNumber } from '@components'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useToggle } from '@hooks'
+import { LabelName, InputNumber, ButtonSubmit } from '@components'
 import { Title, Subtitle, ButtonUnderline } from '@views/auth/components'
 
+type Code = {
+  form: string
+  code: string
+}
+
 export const Code = () => {
+  const { register, handleSubmit, formState } = useForm<Code>()
+  const [loadingValue, loadingOn, loadingOff] = useToggle()
+
+  const submitHandler: SubmitHandler<Code> = async (data: Code) => {
+    loadingOn()
+    console.log(data)
+
+    setTimeout(() => {
+      loadingOff()
+    }, 3000)
+  }
+
   return (
     <>
       <Title>Восстановление пароля</Title>
@@ -10,21 +29,38 @@ export const Code = () => {
         <br className="hidden sm:block" />
         введите его нижу, чтобы изменить пароль
       </Subtitle>
-      <form className="flex flex-col gap-6" action="/password">
-        <input type="hidden" value="Код подтверждения" name="theme" />
+      <form
+        className="flex flex-col gap-6"
+        onSubmit={handleSubmit(submitHandler)}
+      >
+        <input type="hidden" value="Код подтверждения" {...register('form')} />
         <label>
           <LabelName>Код</LabelName>
           <div className="relative">
             <InputNumber
-              className="input input-primary input-lg dark:input-fade"
-              name="code"
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.code?.message ? 'input-error' : null}`}
+              maxLength={4}
+              {...register('code', {
+                required: 'Введите код',
+                minLength: {
+                  value: 4,
+                  message: 'Минимальная длинна кода 4 символа',
+                },
+              })}
             />
-            <span className="error">Введите код</span>
+            {formState.errors.code?.message ? (
+              <span className="error">
+                {String(formState.errors.code?.message)}
+              </span>
+            ) : null}
           </div>
         </label>
-        <button className="btn btn-primary btn-lg btn-fill" type="submit">
+        <ButtonSubmit
+          className="btn btn-primary btn-lg btn-fill"
+          load={loadingValue}
+        >
           Восстановить
-        </button>
+        </ButtonSubmit>
       </form>
       <div className="flex items-center justify-center mt-6">
         <span className="mr-2 text-sm font-normal sm:text-base">

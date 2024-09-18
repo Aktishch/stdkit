@@ -5,7 +5,7 @@ export interface IconProps extends Props {
   id: string
 }
 
-export const Icon = ({ id, className }: IconProps) => {
+export const Icon = ({ className, id }: IconProps) => {
   const style: string = twMerge('icon', className)
 
   return (

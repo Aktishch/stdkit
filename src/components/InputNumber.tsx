@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export const InputNumber = ({
-  onInput,
-  className,
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement>) => {
+const InputNumberComponent = (
+  { className, onInput, ...props }: React.InputHTMLAttributes<HTMLInputElement>,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
   const style: string = twMerge(className)
 
   const onInputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
@@ -18,6 +17,15 @@ export const InputNumber = ({
   }
 
   return (
-    <input className={style} type="text" {...props} onInput={onInputHandler} />
+    <input
+      className={style}
+      type="text"
+      placeholder="123456789"
+      ref={ref}
+      {...props}
+      onInput={onInputHandler}
+    />
   )
 }
+
+export const InputNumber = forwardRef(InputNumberComponent)

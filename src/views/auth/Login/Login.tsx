@@ -4,6 +4,7 @@ import { LabelName, InputPassword, ButtonSubmit } from '@components'
 import { ButtonUnderline } from '@views/auth/components'
 
 type Authorization = {
+  form: string
   login: string
   password: string
 }
@@ -16,6 +17,7 @@ export const Login = () => {
     data: Authorization
   ) => {
     loadingOn()
+    console.log(data)
 
     setTimeout(() => {
       loadingOff()
@@ -28,13 +30,14 @@ export const Login = () => {
         className="flex flex-col gap-6"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <input type="hidden" value="Авторизация" name="theme" />
+        <input type="hidden" value="Авторизация" {...register('form')} />
         <label>
           <LabelName>Логин</LabelName>
           <div className="relative">
             <input
-              className="input input-primary input-lg dark:input-fade"
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : null}`}
               type="text"
+              placeholder="Login"
               {...register('login', { required: 'Введите логин' })}
             />
             {formState.errors.login?.message ? (
@@ -48,7 +51,7 @@ export const Login = () => {
           <LabelName>Пароль</LabelName>
           <div className="relative">
             <InputPassword
-              className="input input-primary input-lg dark:input-fade"
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : null}`}
               {...register('password', {
                 required: 'Введите пароль',
                 minLength: {

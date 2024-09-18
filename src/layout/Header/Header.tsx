@@ -89,7 +89,7 @@ export const Header = () => {
             >
               <Icon className="text-xl" id="settings" />
               <span className="ml-1 text-sm font-normal text-black dark:text-white">
-                Личные данные
+                Настройки
               </span>
             </MenuItem>
             <button

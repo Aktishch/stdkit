@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useToggle } from '@hooks'
 import {
   Icon,
@@ -7,16 +8,45 @@ import {
   LabelName,
   InputPassword,
   InputText,
+  InputCalendar,
   InputTel,
   AvatarUploader,
+  ButtonSubmit,
 } from '@components'
 import { ButtonTop } from '@views/company/components'
+
+type Employee = {
+  form: string
+  office: boolean
+  image: string | File | undefined
+  login: string
+  surname: string
+  name: string
+  patronymic: string
+  work: string
+  tel: string
+  email: string
+  password: string
+  repeat: string
+}
 
 export const Employee = () => {
   const [image, setImage] = useState<string | File | undefined>(
     '/img/pictures/user.jpg'
   )
+  const { register, handleSubmit, formState } = useForm<Employee>()
+  const [loadingValue, loadingOn, loadingOff] = useToggle()
   const [editingValue, , , editingToggle] = useToggle(true)
+
+  const submitHandler: SubmitHandler<Employee> = async (data: Employee) => {
+    loadingOn()
+    data.image = image
+    console.log(data)
+
+    setTimeout(() => {
+      loadingOff()
+    }, 3000)
+  }
 
   return (
     <>
@@ -84,102 +114,175 @@ export const Employee = () => {
           <div
             className={`flex flex-col gap-6 ${editingValue ? 'pointer-events-none' : null}`}
           >
-            <form className="flex flex-col w-full gap-6" action="">
-              <input type="hidden" value="Редактировать" name="theme" />
+            <form
+              className="flex flex-col w-full gap-6"
+              onSubmit={handleSubmit(submitHandler)}
+            >
+              <input
+                type="hidden"
+                value="Редактировать"
+                {...register('form')}
+              />
               <AvatarUploader
                 value={image}
                 onChange={setImage}
                 onClick={(): void => setImage(undefined)}
               />
+              <label className="flex items-center cursor-pointer w-max">
+                <input
+                  className="mr-2 switch switch-checkbox"
+                  type="checkbox"
+                  {...register('office')}
+                />
+                <span className="text-base font-normal">Офисный сотрудник</span>
+              </label>
               <label>
                 <LabelName>Логин</LabelName>
                 <div className="relative">
                   <input
-                    className="input input-primary input-lg dark:input-fade"
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : null}`}
                     type="text"
+                    placeholder="Login"
                     defaultValue="Login"
-                    readOnly={editingValue}
-                    name="login"
+                    {...register('login', { required: 'Введите логин' })}
                   />
-                  <span className="error">Введите логин</span>
+                  {formState.errors.login?.message ? (
+                    <span className="error">
+                      {String(formState.errors.login?.message)}
+                    </span>
+                  ) : null}
                 </div>
               </label>
               <label>
                 <LabelName>Фамилия</LabelName>
                 <div className="relative">
                   <InputText
-                    className="input input-primary input-lg dark:input-fade"
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.surname?.message ? 'input-error' : null}`}
+                    placeholder="Иванов"
                     defaultValue="Актищев"
-                    readOnly={editingValue}
-                    name="surname"
+                    {...register('surname', { required: 'Введите фамилию' })}
                   />
-                  <span className="error">Введите фамилию</span>
+                  {formState.errors.surname?.message ? (
+                    <span className="error">
+                      {String(formState.errors.surname?.message)}
+                    </span>
+                  ) : null}
                 </div>
               </label>
               <label>
                 <LabelName>Имя</LabelName>
                 <div className="relative">
                   <InputText
-                    className="input input-primary input-lg dark:input-fade"
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.name?.message ? 'input-error' : null}`}
+                    placeholder="Иван"
                     defaultValue="Александр"
-                    readOnly={editingValue}
-                    name="name"
+                    {...register('name', { required: 'Введите имя' })}
                   />
-                  <span className="error">Введите имя</span>
+                  {formState.errors.name?.message ? (
+                    <span className="error">
+                      {String(formState.errors.name?.message)}
+                    </span>
+                  ) : null}
                 </div>
               </label>
               <label>
                 <LabelName>Отчество</LabelName>
                 <div className="relative">
                   <InputText
-                    className="input input-primary input-lg dark:input-fade"
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.patronymic?.message ? 'input-error' : null}`}
+                    placeholder="Иванович"
                     defaultValue="Михайлович"
-                    readOnly={editingValue}
-                    name="father-name"
+                    {...register('patronymic', {
+                      required: 'Введите отчество',
+                    })}
                   />
-                  <span className="error">Введите отчество</span>
+                  {formState.errors.patronymic?.message ? (
+                    <span className="error">
+                      {String(formState.errors.patronymic?.message)}
+                    </span>
+                  ) : null}
                 </div>
               </label>
               <label>
                 <LabelName>Должность</LabelName>
                 <div className="relative">
-                  <InputText
-                    className="input input-primary input-lg dark:input-fade"
-                    defaultValue="Front end"
-                    readOnly={editingValue}
-                    name="work"
-                  />
-                  <span className="error">Введите должность</span>
+                  <select
+                    className={`pr-12 input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
+                    defaultValue="front-end"
+                    {...register('work', { required: 'Введите должность' })}
+                  >
+                    <option value="director">Директор</option>
+                    <option value="project">Project</option>
+                    <option value="front-end">Front-End</option>
+                    <option value="back-end">Back-End</option>
+                    <option value="designer">Designer</option>
+                    <option value="seo">SEO-аналитик</option>
+                    <option value="marketing">Маркетолог</option>
+                    <option value="accountant">Бухгалтер</option>
+                  </select>
+                  <span className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full pointer-events-none">
+                    <Icon className="text-base opacity-50" id="arrow-right" />
+                  </span>
+                  {formState.errors.work?.message ? (
+                    <span className="error">
+                      {String(formState.errors.work?.message)}
+                    </span>
+                  ) : null}
                 </div>
               </label>
               <label>
                 <LabelName>Телефон</LabelName>
                 <div className="relative">
                   <InputTel
-                    className="input input-primary input-lg dark:input-fade"
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.tel?.message ? 'input-error' : null}`}
                     defaultValue="+7 (988) 385-02-38"
-                    readOnly={editingValue}
-                    name="tel"
+                    {...register('tel', {
+                      required: 'Введите номер телефона',
+                      minLength: {
+                        value: 18,
+                        message: 'Некорректный номер телефона',
+                      },
+                    })}
                   />
-                  <span className="error">Введите телефон</span>
+                  {formState.errors.tel?.message ? (
+                    <span className="error">
+                      {String(formState.errors.tel?.message)}
+                    </span>
+                  ) : null}
                 </div>
               </label>
               <label>
                 <LabelName>E-Mail</LabelName>
                 <div className="relative">
                   <input
-                    className="input input-primary input-lg dark:input-fade"
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : null}`}
                     type="email"
-                    defaultValue="a.aktishev@stdkit.ru"
-                    readOnly={editingValue}
-                    name="email"
+                    placeholder="email@.com"
+                    defaultValue="aktishch@gmail.com"
+                    {...register('email', {
+                      required: 'Введите e-mail',
+                      pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: 'Некорректный e-mail',
+                      },
+                    })}
                   />
-                  <span className="error">Введите e-mail</span>
+                  {formState.errors.email?.message ? (
+                    <span className="error">
+                      {String(formState.errors.email?.message)}
+                    </span>
+                  ) : null}
                 </div>
               </label>
               <label>
                 <LabelName>Дата трудоустройства</LabelName>
                 <div className="relative">
+                  <InputCalendar
+                    className="input input-calendar input-primary input-lg dark:input-fade"
+                    // date={null}
+                  />
+                </div>
+                {/* <div className="relative">
                   <input
                     className="pr-10 input input-calendar input-primary input-lg dark:input-fade"
                     type="date"
@@ -191,7 +294,7 @@ export const Employee = () => {
                     <Icon className="text-2xl opacity-50" id="calendar" />
                   </span>
                   <span className="error">Введите дату</span>
-                </div>
+                </div> */}
               </label>
               {editingValue ? null : (
                 <>
@@ -199,30 +302,29 @@ export const Employee = () => {
                     <LabelName>Пароль</LabelName>
                     <div className="relative">
                       <InputPassword
-                        className="input input-primary input-lg dark:input-fade"
-                        defaultValue="12345678"
-                        readOnly={editingValue}
-                        name="password"
+                        className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : null}`}
+                        defaultValue="qwerty123456"
+                        {...register('password', {
+                          required: 'Введите пароль',
+                          minLength: {
+                            value: 8,
+                            message: 'Минимальная длинна пароля 8 символов',
+                          },
+                        })}
                       />
-                      <span className="error">Введите пароль</span>
+                      {formState.errors.password?.message ? (
+                        <span className="error">
+                          {String(formState.errors.password?.message)}
+                        </span>
+                      ) : null}
                     </div>
                   </label>
-                  <label className="flex items-center cursor-pointer w-max">
-                    <input
-                      className="mr-2 switch switch-checkbox"
-                      type="checkbox"
-                      name="remotely"
-                    />
-                    <span className="text-base font-normal">
-                      Удаленная работа
-                    </span>
-                  </label>
-                  <button
-                    className="btn btn-primary btn-lg btn-fill"
-                    type="submit"
+                  <ButtonSubmit
+                    className="w-full btn btn-primary btn-lg btn-fill sm:max-w-60"
+                    load={loadingValue}
                   >
                     Сохранить изменения
-                  </button>
+                  </ButtonSubmit>
                 </>
               )}
             </form>

@@ -9,7 +9,7 @@ export const Footer = () => {
       <div className="flex items-center">
         <span className="mr-3 font-normal text-base/none">Разработка:</span>
         <a draggable={false} href="https://stdkit.ru/" target="_blank">
-          <Icon className="w-20 text-black h-7 dark:text-white" id="logo" />
+          <Icon className="w-20 h-7" id="logo" />
         </a>
       </div>
     </footer>

@@ -3,8 +3,8 @@ import { twMerge } from 'tailwind-merge'
 import { InputNumber } from '@components'
 
 export const InputHours = ({
-  onInput,
   className,
+  onInput,
   ...props
 }: React.InputHTMLAttributes<HTMLInputElement>) => {
   const style: string = twMerge(

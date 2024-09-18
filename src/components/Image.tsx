@@ -2,8 +2,8 @@ import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export const Image = ({
-  src,
   className,
+  src,
   ...props
 }: React.ImgHTMLAttributes<HTMLImageElement>) => {
   const style: string = twMerge(className)

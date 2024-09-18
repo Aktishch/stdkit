@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useToggle } from '@hooks'
 import { Icon } from '@components'
@@ -15,6 +15,7 @@ const InputPasswordComponent = (
       <input
         className={style}
         type={passwordValue ? 'password' : 'text'}
+        placeholder="********"
         autoComplete="new-password"
         ref={ref}
         {...props}
@@ -33,4 +34,4 @@ const InputPasswordComponent = (
   )
 }
 
-export const InputPassword = React.forwardRef(InputPasswordComponent)
+export const InputPassword = forwardRef(InputPasswordComponent)
