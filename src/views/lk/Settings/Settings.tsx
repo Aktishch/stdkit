@@ -169,7 +169,7 @@ export const Settings = () => {
           <div className="relative">
             <input
               className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : null}`}
-              type="email"
+              type="text"
               placeholder="email@.com"
               defaultValue="aktishch@gmail.com"
               {...register('email', {

@@ -159,7 +159,7 @@ export const Registration = () => {
           <div className="relative">
             <input
               className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : null}`}
-              type="email"
+              type="text"
               placeholder="email@.com"
               {...register('email', {
                 required: 'Введите e-mail',

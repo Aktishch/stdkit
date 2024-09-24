@@ -17,8 +17,8 @@ import { ButtonTop } from '@views/company/components'
 
 type Employee = {
   form: string
-  office: boolean
   image: string | File | undefined
+  office: boolean
   login: string
   surname: string
   name: string
@@ -26,15 +26,15 @@ type Employee = {
   work: string
   tel: string
   email: string
+  date: string
   password: string
-  repeat: string
 }
 
 export const Employee = () => {
   const [image, setImage] = useState<string | File | undefined>(
     '/img/pictures/user.jpg'
   )
-  const { register, handleSubmit, formState } = useForm<Employee>()
+  const { register, handleSubmit, formState, setValue } = useForm<Employee>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const [editingValue, , , editingToggle] = useToggle(true)
 
@@ -107,6 +107,19 @@ export const Employee = () => {
                   <b className="text-base/none min-w-max">2</b>
                 </li>
               </ul>
+              {editingValue ? null : (
+                <div className="flex flex-col gap-3 mt-4">
+                  <button
+                    className="btn btn-primary btn-md btn-fade"
+                    type="button"
+                  >
+                    Архивировать
+                  </button>
+                  <button className="btn btn-red btn-md btn-fade" type="button">
+                    Удалить
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -256,7 +269,7 @@ export const Employee = () => {
                 <div className="relative">
                   <input
                     className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : null}`}
-                    type="email"
+                    type="text"
                     placeholder="email@.com"
                     defaultValue="aktishch@gmail.com"
                     {...register('email', {
@@ -278,23 +291,19 @@ export const Employee = () => {
                 <LabelName>Дата трудоустройства</LabelName>
                 <div className="relative">
                   <InputCalendar
-                    className="input input-calendar input-primary input-lg dark:input-fade"
-                    // date={null}
+                    className={`input input-calendar input-primary input-lg dark:input-fade ${formState.errors.date?.message ? 'input-error' : null}`}
+                    date={new Date()}
+                    setValue={setValue}
+                    {...register('date', {
+                      required: 'Укажите дату',
+                    })}
                   />
+                  {formState.errors.date?.message ? (
+                    <span className="error">
+                      {String(formState.errors.date?.message)}
+                    </span>
+                  ) : null}
                 </div>
-                {/* <div className="relative">
-                  <input
-                    className="pr-10 input input-calendar input-primary input-lg dark:input-fade"
-                    type="date"
-                    defaultValue="2021-09-01"
-                    readOnly={editingValue}
-                    name="date"
-                  />
-                  <span className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full pointer-events-none">
-                    <Icon className="text-2xl opacity-50" id="calendar" />
-                  </span>
-                  <span className="error">Введите дату</span>
-                </div> */}
               </label>
               {editingValue ? null : (
                 <>
@@ -328,28 +337,6 @@ export const Employee = () => {
                 </>
               )}
             </form>
-            {editingValue ? null : (
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                <form className="flex-grow" action="">
-                  <input type="hidden" value="Архивировать" name="theme" />
-                  <button
-                    className="w-full btn btn-primary btn-lg btn-fade"
-                    type="submit"
-                  >
-                    Архивировать
-                  </button>
-                </form>
-                <form className="flex-grow" action="">
-                  <input type="hidden" value="Удалить" name="theme" />
-                  <button
-                    className="w-full btn btn-red btn-lg btn-fade"
-                    type="submit"
-                  >
-                    Удалить
-                  </button>
-                </form>
-              </div>
-            )}
           </div>
         </div>
       </div>

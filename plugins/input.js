@@ -34,19 +34,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '&&-error': {
         '--tw-input-color': theme('colors.red.DEFAULT'),
       },
-      '&-calendar::-webkit-calendar-picker-indicator': {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        opacity: 0,
-        width: 'var(--tw-input-size)',
-        height: 'var(--tw-input-size)',
-        cursor: 'pointer',
-      },
-      '&-search::-webkit-search-cancel-button': {
-        display: 'none',
-      },
       '&:-webkit-autofill': {
         color: 'var(--tw-input-text) !important',
         borderColor: 'var(--tw-input-color)',

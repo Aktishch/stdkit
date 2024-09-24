@@ -19,9 +19,9 @@ export const InputHours = ({
   return (
     <InputNumber
       className={style}
-      {...props}
       maxLength={1}
       onInput={onInputHandler}
+      {...props}
     />
   )
 }

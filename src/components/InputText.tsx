@@ -20,9 +20,9 @@ const InputTextComponent = (
     <input
       className={style}
       type="text"
-      ref={ref}
-      {...props}
       onInput={onInputHandler}
+      {...props}
+      ref={ref}
     />
   )
 }

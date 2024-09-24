@@ -21,9 +21,9 @@ const InputNumberComponent = (
       className={style}
       type="text"
       placeholder="123456789"
-      ref={ref}
-      {...props}
       onInput={onInputHandler}
+      {...props}
+      ref={ref}
     />
   )
 }

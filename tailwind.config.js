@@ -111,5 +111,6 @@ module.exports = {
     require('./plugins/pack'),
     require('./plugins/input'),
     require('./plugins/button'),
+    require('./plugins/pointer-coarse'),
   ],
 }

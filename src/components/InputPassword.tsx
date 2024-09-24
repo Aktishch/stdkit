@@ -17,8 +17,8 @@ const InputPasswordComponent = (
         type={passwordValue ? 'password' : 'text'}
         placeholder="********"
         autoComplete="new-password"
-        ref={ref}
         {...props}
+        ref={ref}
       />
       <button
         className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full cursor-pointer"

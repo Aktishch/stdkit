@@ -89,11 +89,11 @@ const InputTelComponent = (
       className={style}
       type="tel"
       placeholder="+7 (___) ___-__-__"
-      ref={ref}
-      {...props}
       onInput={onInputHandler}
       onKeyDown={onKeyDownHandler}
       onPaste={onPasteHandler}
+      {...props}
+      ref={ref}
     />
   )
 }

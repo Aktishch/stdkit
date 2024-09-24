@@ -47,7 +47,7 @@ export const Duty = () => {
       <div className="flex flex-col gap-4 mb-6 xs:flex-row xs:items-center xs:justify-between sm:mb-10">
         <Title>Дежурство</Title>
         <ButtonTop
-          className="print:hidden"
+          className="print:hidden pointer-coarse:hidden"
           id="notification"
           onClick={(): void => window.print()}
         >
