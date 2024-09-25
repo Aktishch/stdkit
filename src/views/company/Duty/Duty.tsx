@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { Title } from '@components'
+import { DialogRating } from '@dialogs'
 import {
   ButtonTop,
   Table,
@@ -14,7 +16,7 @@ const data = [
     name: 'Актищев Александр',
     work: 'Front End',
     period: '22.07.2024 - 28.07.2024',
-    estimation: 4,
+    rating: 4,
     active: false,
   },
   {
@@ -22,7 +24,7 @@ const data = [
     name: 'Сергей Юферов',
     work: 'Front End',
     period: '22.07.2024 - 28.07.2024',
-    estimation: 0,
+    rating: 0,
     active: false,
   },
   {
@@ -42,6 +44,11 @@ const data = [
 ]
 
 export const Duty = () => {
+  const [parameters, setParameters] = useState({})
+  const [openDialogRating, setOpenDialogRating] = useState(false)
+
+  console.log(parameters)
+
   return (
     <>
       <div className="flex flex-col gap-4 mb-6 xs:flex-row xs:items-center xs:justify-between sm:mb-10">
@@ -67,19 +74,19 @@ export const Duty = () => {
             </TableCol>
           </TableHead>
           {data.map((item, index) => (
-            <Chart item={item} key={index} />
+            <Chart
+              item={item}
+              onClick={(): void => {
+                setOpenDialogRating(true)
+                setParameters(item)
+              }}
+              key={index}
+            />
           ))}
         </Table>
-        <button
-          className="w-full mt-10 btn btn-primary btn-lg btn-fill sm:max-w-60 print:hidden"
-          type="submit"
-        >
-          Сохранить изменения
-        </button>
+        <Pagination className="mt-10 print:hidden" />
       </form>
-      <form className="mt-10 print:hidden" action="">
-        <Pagination />
-      </form>
+      <DialogRating open={openDialogRating} onClose={setOpenDialogRating} />
     </>
   )
 }

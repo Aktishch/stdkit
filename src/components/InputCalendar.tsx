@@ -1,6 +1,5 @@
 import React, { useState, useEffect, forwardRef } from 'react'
 import Calendar from 'react-calendar'
-import { UseFormSetValue } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 import { useToggle } from '@hooks'
 import { Icon } from '@components'
@@ -11,20 +10,7 @@ type Dates = DatePiece | [DatePiece, DatePiece]
 export interface InputCalendarProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   date?: Dates
-  setValue?: UseFormSetValue<{
-    form: string
-    image: string | File | undefined
-    office: boolean
-    login: string
-    surname: string
-    name: string
-    patronymic: string
-    work: string
-    tel: string
-    email: string
-    date: string
-    password: string
-  }>
+  setValue?: any
 }
 
 const dateFormat = (dates: Dates): string => {

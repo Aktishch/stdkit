@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { Title, Icon } from '@components'
+import { DialogStaff } from '@dialogs'
 import {
   ButtonTop,
   Table,
@@ -44,11 +46,15 @@ const data = [
 ]
 
 export const Staff = () => {
+  const [openDialogStaff, setOpenDialogStaff] = useState(false)
+
   return (
     <>
       <div className="flex flex-col gap-4 mb-6 xs:flex-row xs:items-center xs:justify-between sm:mb-10">
         <Title>Сотрудники</Title>
-        <ButtonTop id="users">Добавить</ButtonTop>
+        <ButtonTop id="users" onClick={() => setOpenDialogStaff(true)}>
+          Добавить
+        </ButtonTop>
       </div>
       <form action="">
         <div className="flex items-center justify-between gap-2 mb-6 border-b border-solid sm:justify-start sm:gap-10 border-grey">
@@ -91,6 +97,7 @@ export const Staff = () => {
         </Table>
         <Pagination className="mt-10" />
       </form>
+      <DialogStaff open={openDialogStaff} onClose={setOpenDialogStaff} />
     </>
   )
 }

@@ -30,6 +30,12 @@
       "@components": [
         "src/components"
       ],
+      "@dialogs/*": [
+        "src/dialogs/*"
+      ],
+      "@dialogs": [
+        "src/dialogs"
+      ],
       "@hooks/*": [
         "src/hooks/*"
       ],

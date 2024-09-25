@@ -7,6 +7,7 @@ import {
   InputText,
   InputTel,
   ButtonSubmit,
+  Work,
 } from '@components'
 import { ButtonUnderline } from '@views/auth/components'
 
@@ -115,14 +116,7 @@ export const Registration = () => {
               {...register('work', { required: 'Введите должность' })}
             >
               <option hidden />
-              <option value="director">Директор</option>
-              <option value="project">Project</option>
-              <option value="front-end">Front-End</option>
-              <option value="back-end">Back-End</option>
-              <option value="designer">Designer</option>
-              <option value="seo">SEO-аналитик</option>
-              <option value="marketing">Маркетолог</option>
-              <option value="accountant">Бухгалтер</option>
+              <Work />
             </select>
             <span className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full pointer-events-none">
               <Icon className="text-base opacity-50" id="arrow-right" />

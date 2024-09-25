@@ -8,17 +8,20 @@ import {
   LabelName,
   InputPassword,
   InputText,
-  InputCalendar,
   InputTel,
+  InputCalendar,
   AvatarUploader,
   ButtonSubmit,
+  Work,
 } from '@components'
+import { DialogDismissal, DialogRemove } from '@dialogs'
 import { ButtonTop } from '@views/company/components'
 
 type Employee = {
   form: string
   image: string | File | undefined
   office: boolean
+  date: string
   login: string
   surname: string
   name: string
@@ -26,7 +29,6 @@ type Employee = {
   work: string
   tel: string
   email: string
-  date: string
   password: string
 }
 
@@ -34,6 +36,8 @@ export const Employee = () => {
   const [image, setImage] = useState<string | File | undefined>(
     '/img/pictures/user.jpg'
   )
+  const [openDialogDismissal, setOpenDialogDismissal] = useState(false)
+  const [openDialogRemove, setOpenDialogRemove] = useState(false)
   const { register, handleSubmit, formState, setValue } = useForm<Employee>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const [editingValue, , , editingToggle] = useToggle(true)
@@ -108,15 +112,18 @@ export const Employee = () => {
                 </li>
               </ul>
               {editingValue ? null : (
-                <div className="flex flex-col gap-3 mt-4">
+                <div className="grid grid-cols-2 gap-3 mt-4">
                   <button
-                    className="btn btn-primary btn-md btn-fade"
-                    type="button"
+                    className="btn btn-md btn-fade btn-gray"
+                    onClick={() => setOpenDialogDismissal(true)}
                   >
-                    Архивировать
+                    <Icon className="text-2xl" id="user" />
                   </button>
-                  <button className="btn btn-red btn-md btn-fade" type="button">
-                    Удалить
+                  <button
+                    className="btn btn-md btn-fade btn-red"
+                    onClick={() => setOpenDialogRemove(true)}
+                  >
+                    <Icon className="text-2xl" id="trash" />
                   </button>
                 </div>
               )}
@@ -148,6 +155,24 @@ export const Employee = () => {
                   {...register('office')}
                 />
                 <span className="text-base font-normal">Офисный сотрудник</span>
+              </label>
+              <label>
+                <LabelName>Дата трудоустройства</LabelName>
+                <div className="relative">
+                  <InputCalendar
+                    className={`input input-calendar input-primary input-lg dark:input-fade ${formState.errors.date?.message ? 'input-error' : null}`}
+                    date={new Date()}
+                    setValue={setValue}
+                    {...register('date', {
+                      required: 'Укажите дату',
+                    })}
+                  />
+                  {formState.errors.date?.message ? (
+                    <span className="error">
+                      {String(formState.errors.date?.message)}
+                    </span>
+                  ) : null}
+                </div>
               </label>
               <label>
                 <LabelName>Логин</LabelName>
@@ -224,14 +249,7 @@ export const Employee = () => {
                     defaultValue="front-end"
                     {...register('work', { required: 'Введите должность' })}
                   >
-                    <option value="director">Директор</option>
-                    <option value="project">Project</option>
-                    <option value="front-end">Front-End</option>
-                    <option value="back-end">Back-End</option>
-                    <option value="designer">Designer</option>
-                    <option value="seo">SEO-аналитик</option>
-                    <option value="marketing">Маркетолог</option>
-                    <option value="accountant">Бухгалтер</option>
+                    <Work />
                   </select>
                   <span className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full pointer-events-none">
                     <Icon className="text-base opacity-50" id="arrow-right" />
@@ -287,24 +305,6 @@ export const Employee = () => {
                   ) : null}
                 </div>
               </label>
-              <label>
-                <LabelName>Дата трудоустройства</LabelName>
-                <div className="relative">
-                  <InputCalendar
-                    className={`input input-calendar input-primary input-lg dark:input-fade ${formState.errors.date?.message ? 'input-error' : null}`}
-                    date={new Date()}
-                    setValue={setValue}
-                    {...register('date', {
-                      required: 'Укажите дату',
-                    })}
-                  />
-                  {formState.errors.date?.message ? (
-                    <span className="error">
-                      {String(formState.errors.date?.message)}
-                    </span>
-                  ) : null}
-                </div>
-              </label>
               {editingValue ? null : (
                 <>
                   <label>
@@ -340,6 +340,16 @@ export const Employee = () => {
           </div>
         </div>
       </div>
+      <DialogDismissal
+        open={openDialogDismissal}
+        onClose={setOpenDialogDismissal}
+        employee="Актищев Александр"
+      />
+      <DialogRemove
+        open={openDialogRemove}
+        onClose={setOpenDialogRemove}
+        employee="Актищев Александр"
+      />
     </>
   )
 }

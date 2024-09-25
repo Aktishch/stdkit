@@ -15,7 +15,7 @@ export const ButtonRating = ({
   onClick,
 }: ButtonRatingProps) => {
   const style: string = twMerge(
-    'text-base lg:text-lg duration-200 cursor-pointer text-primary peer peer-hover:text-opacity-100 hover:text-opacity-100',
+    'text-4xl duration-200 cursor-pointer text-primary peer peer-hover:text-opacity-100 hover:text-opacity-100',
     value <= rating ? null : 'text-opacity-50',
     className
   )
