@@ -1,18 +1,14 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import { LabelName, ButtonSubmit } from '@components'
 import { Title, Subtitle } from '@views/auth/components'
 
-type Recovery = {
-  form: string
-  email: string
-}
-
 export const Recovery = () => {
-  const { register, handleSubmit, formState } = useForm<Recovery>()
+  const { register, handleSubmit, formState } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
 
-  const submitHandler: SubmitHandler<Recovery> = async (data: Recovery) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
     console.log(data)
 

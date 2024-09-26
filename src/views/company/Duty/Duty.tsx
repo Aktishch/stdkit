@@ -14,7 +14,7 @@ const data = [
   {
     src: '/img/pictures/user.jpg',
     name: 'Актищев Александр',
-    work: 'Front End',
+    work: 'Front-End',
     period: '22.07.2024 - 28.07.2024',
     rating: 4,
     active: false,
@@ -22,7 +22,7 @@ const data = [
   {
     src: '/img/pictures/user.jpg',
     name: 'Сергей Юферов',
-    work: 'Front End',
+    work: 'Front-End',
     period: '22.07.2024 - 28.07.2024',
     rating: 0,
     active: false,

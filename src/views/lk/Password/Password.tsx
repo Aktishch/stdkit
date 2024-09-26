@@ -1,23 +1,23 @@
+import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import { Title, LabelName, InputPassword, ButtonSubmit } from '@components'
-
-type Password = {
-  form: string
-  password: string
-  repeat: string
-}
+import { DialogResult } from '@dialogs'
 
 export const Password = () => {
-  const { register, handleSubmit, formState } = useForm<Password>()
+  const [openDialogResult, setOpenDialogResult] = useState(false)
+  const { register, handleSubmit, formState, reset } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
 
-  const submitHandler: SubmitHandler<Password> = async (data: Password) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
     console.log(data)
 
     setTimeout(() => {
       loadingOff()
+      setOpenDialogResult(true)
+      reset()
     }, 3000)
   }
 
@@ -88,6 +88,11 @@ export const Password = () => {
           <b>латинские символы нижнего регистра (a-z)</b>
         </li>
       </ul>
+      <DialogResult
+        open={openDialogResult}
+        onClose={setOpenDialogResult}
+        result={false}
+      />
     </>
   )
 }

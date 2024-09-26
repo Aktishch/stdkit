@@ -1,36 +1,24 @@
+import { useState, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import {
-  Icon,
   LabelName,
   InputPassword,
   InputText,
   InputTel,
+  Select,
+  SelectButton,
   ButtonSubmit,
-  Work,
 } from '@components'
 import { ButtonUnderline } from '@views/auth/components'
 
-type Registration = {
-  form: string
-  login: string
-  surname: string
-  name: string
-  patronymic: string
-  work: string
-  tel: string
-  email: string
-  password: string
-  repeat: string
-}
-
 export const Registration = () => {
-  const { register, handleSubmit, formState } = useForm<Registration>()
+  const [work, setWork] = useState('')
+  const { register, handleSubmit, formState, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
 
-  const submitHandler: SubmitHandler<Registration> = async (
-    data: Registration
-  ) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
     console.log(data)
 
@@ -38,6 +26,8 @@ export const Registration = () => {
       loadingOff()
     }, 3000)
   }
+
+  useEffect((): void => setValue('work', work), [work])
 
   return (
     <>
@@ -107,27 +97,72 @@ export const Registration = () => {
             ) : null}
           </div>
         </label>
-        <label>
+        <div>
           <LabelName>Должность</LabelName>
           <div className="relative">
-            <select
-              className={`pr-12 input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
-              defaultValue=""
+            <Select
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
+              placeholder="Выберите должность"
+              value={work}
               {...register('work', { required: 'Введите должность' })}
             >
-              <option hidden />
-              <Work />
-            </select>
-            <span className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full pointer-events-none">
-              <Icon className="text-base opacity-50" id="arrow-right" />
-            </span>
+              <SelectButton
+                title="Директор"
+                value={work}
+                onClick={(): void => setWork('Директор')}
+              >
+                Директор
+              </SelectButton>
+              <SelectButton
+                title="Project"
+                value={work}
+                onClick={(): void => setWork('Project')}
+              >
+                Project
+              </SelectButton>
+              <SelectButton
+                title="Front-End"
+                value={work}
+                onClick={(): void => setWork('Front-End')}
+              >
+                Front-End
+              </SelectButton>
+              <SelectButton
+                title="Back-end"
+                value={work}
+                onClick={(): void => setWork('Back-end')}
+              >
+                Back-end
+              </SelectButton>
+              <SelectButton
+                title="Designer"
+                value={work}
+                onClick={(): void => setWork('Designer')}
+              >
+                Designer
+              </SelectButton>
+              <SelectButton
+                title="SEO"
+                value={work}
+                onClick={(): void => setWork('SEO')}
+              >
+                SEO
+              </SelectButton>
+              <SelectButton
+                title="Content"
+                value={work}
+                onClick={(): void => setWork('Content')}
+              >
+                Content
+              </SelectButton>
+            </Select>
             {formState.errors.work?.message ? (
               <span className="error">
                 {String(formState.errors.work?.message)}
               </span>
             ) : null}
           </div>
-        </label>
+        </div>
         <label>
           <LabelName>Телефон</LabelName>
           <div className="relative">

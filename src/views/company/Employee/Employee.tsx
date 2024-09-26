@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import {
   Icon,
@@ -10,39 +11,26 @@ import {
   InputText,
   InputTel,
   InputCalendar,
+  Select,
+  SelectButton,
   AvatarUploader,
   ButtonSubmit,
-  Work,
 } from '@components'
 import { DialogDismissal, DialogRemove } from '@dialogs'
 import { ButtonTop } from '@views/company/components'
-
-type Employee = {
-  form: string
-  image: string | File | undefined
-  office: boolean
-  date: string
-  login: string
-  surname: string
-  name: string
-  patronymic: string
-  work: string
-  tel: string
-  email: string
-  password: string
-}
 
 export const Employee = () => {
   const [image, setImage] = useState<string | File | undefined>(
     '/img/pictures/user.jpg'
   )
+  const [work, setWork] = useState('Front-End')
   const [openDialogDismissal, setOpenDialogDismissal] = useState(false)
   const [openDialogRemove, setOpenDialogRemove] = useState(false)
-  const { register, handleSubmit, formState, setValue } = useForm<Employee>()
+  const { register, handleSubmit, formState, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const [editingValue, , , editingToggle] = useToggle(true)
 
-  const submitHandler: SubmitHandler<Employee> = async (data: Employee) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
     data.image = image
     console.log(data)
@@ -51,6 +39,8 @@ export const Employee = () => {
       loadingOff()
     }, 3000)
   }
+
+  useEffect((): void => setValue('work', work), [work])
 
   return (
     <>
@@ -156,7 +146,7 @@ export const Employee = () => {
                 />
                 <span className="text-base font-normal">Офисный сотрудник</span>
               </label>
-              <label>
+              <div>
                 <LabelName>Дата трудоустройства</LabelName>
                 <div className="relative">
                   <InputCalendar
@@ -173,7 +163,7 @@ export const Employee = () => {
                     </span>
                   ) : null}
                 </div>
-              </label>
+              </div>
               <label>
                 <LabelName>Логин</LabelName>
                 <div className="relative">
@@ -241,26 +231,72 @@ export const Employee = () => {
                   ) : null}
                 </div>
               </label>
-              <label>
+              <div>
                 <LabelName>Должность</LabelName>
                 <div className="relative">
-                  <select
-                    className={`pr-12 input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
-                    defaultValue="front-end"
+                  <Select
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
+                    placeholder="Выберите должность"
+                    value={work}
                     {...register('work', { required: 'Введите должность' })}
                   >
-                    <Work />
-                  </select>
-                  <span className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full pointer-events-none">
-                    <Icon className="text-base opacity-50" id="arrow-right" />
-                  </span>
+                    <SelectButton
+                      title="Директор"
+                      value={work}
+                      onClick={(): void => setWork('Директор')}
+                    >
+                      Директор
+                    </SelectButton>
+                    <SelectButton
+                      title="Project"
+                      value={work}
+                      onClick={(): void => setWork('Project')}
+                    >
+                      Project
+                    </SelectButton>
+                    <SelectButton
+                      title="Front-End"
+                      value={work}
+                      onClick={(): void => setWork('Front-End')}
+                    >
+                      Front-End
+                    </SelectButton>
+                    <SelectButton
+                      title="Back-end"
+                      value={work}
+                      onClick={(): void => setWork('Back-end')}
+                    >
+                      Back-end
+                    </SelectButton>
+                    <SelectButton
+                      title="Designer"
+                      value={work}
+                      onClick={(): void => setWork('Designer')}
+                    >
+                      Designer
+                    </SelectButton>
+                    <SelectButton
+                      title="SEO"
+                      value={work}
+                      onClick={(): void => setWork('SEO')}
+                    >
+                      SEO
+                    </SelectButton>
+                    <SelectButton
+                      title="Content"
+                      value={work}
+                      onClick={(): void => setWork('Content')}
+                    >
+                      Content
+                    </SelectButton>
+                  </Select>
                   {formState.errors.work?.message ? (
                     <span className="error">
                       {String(formState.errors.work?.message)}
                     </span>
                   ) : null}
                 </div>
-              </label>
+              </div>
               <label>
                 <LabelName>Телефон</LabelName>
                 <div className="relative">

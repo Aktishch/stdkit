@@ -9,13 +9,14 @@ import {
   Pagination,
 } from '@views/company/components'
 import { ButtonFiltering, Employee } from '@views/company/Staff/components'
+import { DialogResult } from '@dialogs'
 
 const data = [
   {
     to: '',
     src: '/img/pictures/user.jpg',
     name: 'Актищев Александр',
-    work: 'Front End',
+    work: 'Front-End',
     status: true,
     date: 'До 29.08.23',
   },
@@ -23,7 +24,7 @@ const data = [
     to: '',
     src: '/img/pictures/user.jpg',
     name: 'Щербаков Иван',
-    work: 'Design',
+    work: 'Designer',
     status: true,
     date: 'До 29.08.23',
   },
@@ -39,7 +40,7 @@ const data = [
     to: '',
     src: undefined,
     name: 'Шаповалов Никита',
-    work: 'Back End',
+    work: 'Back-end',
     status: true,
     date: 'До 29.08.23',
   },
@@ -47,6 +48,7 @@ const data = [
 
 export const Staff = () => {
   const [openDialogStaff, setOpenDialogStaff] = useState(false)
+  const [openDialogResult, setOpenDialogResult] = useState(false)
 
   return (
     <>
@@ -97,7 +99,16 @@ export const Staff = () => {
         </Table>
         <Pagination className="mt-10" />
       </form>
-      <DialogStaff open={openDialogStaff} onClose={setOpenDialogStaff} />
+      <DialogStaff
+        open={openDialogStaff}
+        onClose={setOpenDialogStaff}
+        openResult={(): void => setOpenDialogResult(true)}
+      />
+      <DialogResult
+        open={openDialogResult}
+        onClose={setOpenDialogResult}
+        result={true}
+      />
     </>
   )
 }

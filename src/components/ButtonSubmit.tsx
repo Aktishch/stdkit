@@ -4,7 +4,7 @@ import { Loader } from '@components'
 
 export interface ButtonSubmitProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  load: boolean
+  load?: boolean
 }
 
 export const ButtonSubmit = ({

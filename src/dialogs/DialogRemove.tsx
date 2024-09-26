@@ -1,14 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
+import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import { Dialog, DialogProps, Icon, ButtonSubmit } from '@components'
 
-type DialogRemove = {
-  form: string
-  employee: string
-}
-
-interface DialogRemoveProps extends DialogProps {
+export interface DialogRemoveProps extends DialogProps {
   employee: string
 }
 
@@ -18,13 +14,11 @@ export const DialogRemove = ({
   onClose,
   employee,
 }: DialogRemoveProps) => {
-  const { register, handleSubmit } = useForm<DialogRemove>()
+  const { register, handleSubmit } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
-  const style: string = twMerge('max-w-80 card dark:bg-dark', className)
+  const style: string = twMerge('max-w-96 card dark:bg-dark', className)
 
-  const submitHandler: SubmitHandler<DialogRemove> = async (
-    data: DialogRemove
-  ) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
     console.log(data)
 
@@ -40,10 +34,10 @@ export const DialogRemove = ({
           <Icon className="text-6xl text-red" id="trash"></Icon>
         </div>
         <h2 className="mb-2 font-medium text-lg/normal">
-          Вы точно хотите удалить сотрудника?
+          Вы точно хотите удалить этого сотрудника?
         </h2>
         <p className="mb-6 font-normal text-sm/normal opacity-60">
-          (Вся информация о сотруднике будет удалена)
+          (Вся информация о сотруднике <br /> будет удалена из базы)
         </p>
         <form
           className="grid w-full grid-cols-2 gap-4"

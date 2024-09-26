@@ -1,49 +1,51 @@
+import { useState, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
+import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import {
   Dialog,
   DialogProps,
   Title,
-  Icon,
   LabelName,
   InputPassword,
   InputText,
   InputTel,
   InputCalendar,
+  Select,
+  SelectButton,
   ButtonSubmit,
-  Work,
 } from '@components'
 
-type DialogStaff = {
-  form: string
-  date: string
-  login: string
-  surname: string
-  name: string
-  patronymic: string
-  work: string
-  tel: string
-  email: string
-  password: string
-  repeat: string
+export interface DialogStaffProps extends DialogProps {
+  openResult?: () => void
 }
 
-export const DialogStaff = ({ className, open, onClose }: DialogProps) => {
-  const { register, handleSubmit, formState, setValue } = useForm<DialogStaff>()
+export const DialogStaff = ({
+  className,
+  open,
+  onClose,
+  openResult,
+}: DialogStaffProps) => {
+  const [work, setWork] = useState('')
+  const { register, handleSubmit, formState, setValue, reset } =
+    useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const style: string = twMerge('max-w-md card dark:bg-dark', className)
 
-  const submitHandler: SubmitHandler<DialogStaff> = async (
-    data: DialogStaff
-  ) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
     console.log(data)
 
     setTimeout(() => {
       loadingOff()
+      reset()
+      onClose(false)
+      openResult?.()
     }, 3000)
   }
+
+  useEffect((): void => setValue('work', work), [work])
 
   return (
     <Dialog className={style} open={open} onClose={onClose}>
@@ -60,7 +62,7 @@ export const DialogStaff = ({ className, open, onClose }: DialogProps) => {
             value="Добавить сотрудника"
             {...register('form')}
           />
-          <label>
+          <div>
             <LabelName>Дата трудоустройства</LabelName>
             <div className="relative">
               <InputCalendar
@@ -76,7 +78,7 @@ export const DialogStaff = ({ className, open, onClose }: DialogProps) => {
                 </span>
               ) : null}
             </div>
-          </label>
+          </div>
           <label>
             <LabelName>Логин</LabelName>
             <div className="relative">
@@ -138,27 +140,72 @@ export const DialogStaff = ({ className, open, onClose }: DialogProps) => {
               ) : null}
             </div>
           </label>
-          <label>
+          <div>
             <LabelName>Должность</LabelName>
             <div className="relative">
-              <select
-                className={`pr-12 input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
-                defaultValue=""
+              <Select
+                className={`input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
+                placeholder="Выберите должность"
+                value={work}
                 {...register('work', { required: 'Введите должность' })}
               >
-                <option hidden />
-                <Work />
-              </select>
-              <span className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full pointer-events-none">
-                <Icon className="text-base opacity-50" id="arrow-right" />
-              </span>
+                <SelectButton
+                  title="Директор"
+                  value={work}
+                  onClick={(): void => setWork('Директор')}
+                >
+                  Директор
+                </SelectButton>
+                <SelectButton
+                  title="Project"
+                  value={work}
+                  onClick={(): void => setWork('Project')}
+                >
+                  Project
+                </SelectButton>
+                <SelectButton
+                  title="Front-End"
+                  value={work}
+                  onClick={(): void => setWork('Front-End')}
+                >
+                  Front-End
+                </SelectButton>
+                <SelectButton
+                  title="Back-end"
+                  value={work}
+                  onClick={(): void => setWork('Back-end')}
+                >
+                  Back-end
+                </SelectButton>
+                <SelectButton
+                  title="Designer"
+                  value={work}
+                  onClick={(): void => setWork('Designer')}
+                >
+                  Designer
+                </SelectButton>
+                <SelectButton
+                  title="SEO"
+                  value={work}
+                  onClick={(): void => setWork('SEO')}
+                >
+                  SEO
+                </SelectButton>
+                <SelectButton
+                  title="Content"
+                  value={work}
+                  onClick={(): void => setWork('Content')}
+                >
+                  Content
+                </SelectButton>
+              </Select>
               {formState.errors.work?.message ? (
                 <span className="error">
                   {String(formState.errors.work?.message)}
                 </span>
               ) : null}
             </div>
-          </label>
+          </div>
           <label>
             <LabelName>Телефон</LabelName>
             <div className="relative">

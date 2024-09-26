@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils'
 
 export const MenuItems = ({ className, children }: Props) => {
-  const style: string = twMerge(className)
+  const style: string = twMerge('focus-visible:outline-0', className)
 
   return (
     <Transition

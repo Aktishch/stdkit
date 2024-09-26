@@ -1,15 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
+import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import { Dialog, DialogProps, Icon, ButtonSubmit } from '@components'
 
-type DialogDismissal = {
-  form: string
-  employee: string
-  date: string
-}
-
-interface DialogDismissalProps extends DialogProps {
+export interface DialogDismissalProps extends DialogProps {
   employee: string
 }
 
@@ -19,13 +14,11 @@ export const DialogDismissal = ({
   onClose,
   employee,
 }: DialogDismissalProps) => {
-  const { register, handleSubmit } = useForm<DialogDismissal>()
+  const { register, handleSubmit } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
-  const style: string = twMerge('max-w-80 card dark:bg-dark', className)
+  const style: string = twMerge('max-w-96 card dark:bg-dark', className)
 
-  const submitHandler: SubmitHandler<DialogDismissal> = async (
-    data: DialogDismissal
-  ) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
     console.log(data)
 
@@ -41,10 +34,10 @@ export const DialogDismissal = ({
           <Icon className="text-6xl text-gray" id="user"></Icon>
         </div>
         <h2 className="mb-2 font-medium text-lg/normal">
-          Вы точно хотите уволить сотрудника?
+          Вы точно хотите уволить этого сотрудника?
         </h2>
         <p className="mb-6 font-normal text-sm/normal opacity-60">
-          (Вся информация о сотруднике останется в базе данных)
+          (Вся информация о сотруднике <br /> останется в базе данных)
         </p>
         <form
           className="grid w-full grid-cols-2 gap-4"

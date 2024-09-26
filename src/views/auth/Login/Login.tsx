@@ -1,21 +1,14 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import { LabelName, InputPassword, ButtonSubmit } from '@components'
 import { ButtonUnderline } from '@views/auth/components'
 
-type Authorization = {
-  form: string
-  login: string
-  password: string
-}
-
 export const Login = () => {
-  const { register, handleSubmit, formState } = useForm<Authorization>()
+  const { register, handleSubmit, formState } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
 
-  const submitHandler: SubmitHandler<Authorization> = async (
-    data: Authorization
-  ) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
     console.log(data)
 

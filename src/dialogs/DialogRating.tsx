@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
+import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import {
   Dialog,
@@ -10,12 +11,7 @@ import {
   ButtonRating,
 } from '@components'
 
-type DialogRating = {
-  form: string
-  rating: number
-}
-
-interface DialogRemoveProps extends DialogProps {
+export interface DialogRatingProps extends DialogProps {
   // employee: string
 }
 
@@ -23,15 +19,13 @@ export const DialogRating = ({
   className,
   open,
   onClose,
-}: DialogRemoveProps) => {
+}: DialogRatingProps) => {
   const [rating, setRating] = useState(0)
-  const { register, handleSubmit, setValue } = useForm<DialogRating>()
+  const { register, handleSubmit, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const style: string = twMerge('max-w-80 card dark:bg-dark', className)
 
-  const submitHandler: SubmitHandler<DialogRating> = async (
-    data: DialogRating
-  ) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
     console.log(data)
 

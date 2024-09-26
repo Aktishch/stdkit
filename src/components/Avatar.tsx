@@ -20,7 +20,7 @@ export const Avatar = ({
   return (
     <div className={style}>
       {load ? <Loader /> : null}
-      {src === undefined ? (
+      {src === undefined || src === '' ? (
         <div className="absolute inset-0 flex items-center justify-center bg-primary">
           <Icon className="text-white" id="user" />
         </div>
