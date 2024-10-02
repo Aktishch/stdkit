@@ -68,7 +68,7 @@ export const Duty = () => {
             <TableCol className="w-7 lg:w-10" />
             <TableCol className="w-44 lg:w-72">Сотрудник</TableCol>
             <TableCol className="w-20 lg:w-24">Должность</TableCol>
-            <TableCol className="w-44 lg:w-72">Период дежурства</TableCol>
+            <TableCol className="w-44 lg:w-48">Период дежурства</TableCol>
             <TableCol className="w-32 text-center print:hidden">
               Оценка
             </TableCol>

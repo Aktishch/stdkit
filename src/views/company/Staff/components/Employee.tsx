@@ -33,7 +33,7 @@ export const Employee = ({ className, item }: EmployeeProps) => {
           {status ? 'Работает' : 'Уволен'}
         </TableCol>
         <TableCol
-          className={`flex items-center justify-center text-center rounded-full w-36 lg:w-44 h-9 text-black text-xs lg:text-base ${status ? 'bg-green' : 'bg-grey'}`}
+          className={`flex items-center justify-center text-center rounded-full w-40 lg:w-52 h-9 text-black text-xs lg:text-base ${status ? 'bg-green' : 'bg-grey'}`}
         >
           {date}
         </TableCol>

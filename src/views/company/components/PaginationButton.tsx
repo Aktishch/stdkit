@@ -7,7 +7,7 @@ export const PaginationButton = ({
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   const style: string = twMerge(
-    'rounded-lg btn btn-primary size-8 sm:size-11 font-normal',
+    'rounded-lg btn btn-primary shrink-0 size-8 sm:size-11 font-normal',
     className
   )
 

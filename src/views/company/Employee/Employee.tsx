@@ -64,8 +64,8 @@ export const Employee = () => {
                   <span className="font-normal truncate text-base/none">
                     Актищев Александр
                   </span>
-                  <span className="mt-1 font-normal truncate opacity-50 text-sm/none">
-                    Front-end разработчик
+                  <span className="mt-2 font-normal opacity-50 text-sm/none">
+                    Front-end
                   </span>
                 </div>
               </div>
@@ -138,14 +138,25 @@ export const Employee = () => {
                 onChange={setImage}
                 onClick={(): void => setImage(undefined)}
               />
-              <label className="flex items-center cursor-pointer w-max">
-                <input
-                  className="mr-2 switch switch-checkbox"
-                  type="checkbox"
-                  {...register('office')}
-                />
-                <span className="text-base font-normal">Офисный сотрудник</span>
-              </label>
+              <div className="flex flex-wrap items-center justify-between gap-5">
+                <label className="flex items-center cursor-pointer">
+                  <input
+                    className="mr-2 switch switch-checkbox"
+                    type="checkbox"
+                    defaultChecked={true}
+                    {...register('duty')}
+                  />
+                  <span className="text-base font-normal">Дежурство</span>
+                </label>
+                <label className="flex items-center cursor-pointer">
+                  <input
+                    className="mr-2 switch switch-checkbox"
+                    type="checkbox"
+                    {...register('admin')}
+                  />
+                  <span className="text-base font-normal">Администратор</span>
+                </label>
+              </div>
               <div>
                 <LabelName>Дата трудоустройства</LabelName>
                 <div className="relative">

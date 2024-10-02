@@ -20,7 +20,7 @@ export const Chart = ({ className, item, onClick }: ChartProps) => {
   const { src, name, work, period, rating, active } = item
   const style: string = twMerge(
     'group cursor-pointer',
-    active || rating === undefined ? 'pointer-events-none' : null,
+    active || rating === undefined || rating > 0 ? 'pointer-events-none' : null,
     className
   )
 
@@ -36,7 +36,7 @@ export const Chart = ({ className, item, onClick }: ChartProps) => {
         />
         <TableCol className="truncate w-44 lg:w-72">{name}</TableCol>
         <TableCol className="w-20 lg:w-24">{work}</TableCol>
-        <TableCol className="w-44 lg:w-72">{period}</TableCol>
+        <TableCol className="w-44 lg:w-48">{period}</TableCol>
         <TableCol className="w-32 text-center print:hidden">
           {active ? (
             'Дежурный'

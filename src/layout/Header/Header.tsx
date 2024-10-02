@@ -49,8 +49,8 @@ export const Header = () => {
             <span className="font-normal truncate text-sm/none">
               Актищев Александр
             </span>
-            <span className="mt-1 font-normal truncate opacity-50 text-xs/none">
-              Front-end разработчик
+            <span className="mt-2 font-normal opacity-50 text-xs/none">
+              Front-end
             </span>
           </div>
           <div className="flex items-center justify-between gap-1 px-2 mb-2">

@@ -40,7 +40,7 @@ const data = [
     ],
   },
   {
-    name: 'Сергей Юферов',
+    name: 'Скрипник Дмитрий',
     dates: [
       {
         value: 0,
@@ -69,7 +69,7 @@ const data = [
     ],
   },
   {
-    name: 'Александр Ярошук',
+    name: 'Афанасенко Снежана',
     dates: [
       {
         value: 0,
@@ -98,7 +98,7 @@ const data = [
     ],
   },
   {
-    name: 'Анастасия Скачкова',
+    name: 'Ильин Александр',
     dates: [
       {
         value: 0,
@@ -143,7 +143,9 @@ export const Time = () => {
           {editingValue ? 'Заполнить' : 'Отмена'}
         </ButtonTop>
       </div>
-      <div className="flex flex-col gap-10">
+      <div
+        className={`flex flex-col gap-10 ${editingValue ? 'pointer-events-none' : null}`}
+      >
         <form className="flex flex-col gap-6" action="">
           <input type="hidden" value="Сверхурочные" name="theme" />
           <div className="flex items-center justify-between gap-5">
@@ -168,7 +170,6 @@ export const Time = () => {
                 monthLength={monthLength}
                 item={item}
                 number={index}
-                status={editingValue}
                 key={index}
               />
             ))}
@@ -206,7 +207,6 @@ export const Time = () => {
                 monthLength={monthLength}
                 item={item}
                 number={index}
-                status={editingValue}
                 key={index}
               />
             ))}

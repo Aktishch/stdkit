@@ -18,7 +18,7 @@ const data = [
     name: 'Актищев Александр',
     work: 'Front-End',
     status: true,
-    date: 'До 29.08.23',
+    date: '29.08.2023',
   },
   {
     to: '',
@@ -26,7 +26,7 @@ const data = [
     name: 'Щербаков Иван',
     work: 'Designer',
     status: true,
-    date: 'До 29.08.23',
+    date: '29.08.2023',
   },
   {
     to: '',
@@ -34,7 +34,7 @@ const data = [
     name: 'Ивлеев Евгений',
     work: 'Project',
     status: false,
-    date: '29.08.23 - 29.08.23',
+    date: '29.08.2023-29.08.2023',
   },
   {
     to: '',
@@ -42,7 +42,7 @@ const data = [
     name: 'Шаповалов Никита',
     work: 'Back-end',
     status: true,
-    date: 'До 29.08.23',
+    date: '29.08.2023',
   },
 ]
 
@@ -85,13 +85,15 @@ export const Staff = () => {
             <Icon className="text-2xl" id="filter" />
           </button>
         </div>
-        <Table minWidth="min-w-[540px]">
+        <Table minWidth="min-w-[576px]">
           <TableHead>
             <TableCol className="w-7 lg:w-10" />
             <TableCol className="w-44 lg:w-72">Сотрудник</TableCol>
             <TableCol className="w-20 lg:w-24">Должность</TableCol>
             <TableCol className="w-16 lg:w-24">Статус</TableCol>
-            <TableCol className="w-36 lg:w-44">Трудоустройство</TableCol>
+            <TableCol className="w-40 text-center lg:w-52">
+              Трудоустройство
+            </TableCol>
           </TableHead>
           {data.map((item, index) => (
             <Employee item={item} key={index} />

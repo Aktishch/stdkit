@@ -15,8 +15,8 @@ export const Sidebar = () => {
             <span className="font-normal truncate text-base/none">
               Актищев Александр
             </span>
-            <span className="mt-1 font-normal truncate opacity-50 text-sm/none">
-              Front-end разработчик
+            <span className="mt-2 font-normal opacity-50 text-sm/none">
+              Front-end
             </span>
           </div>
         </div>

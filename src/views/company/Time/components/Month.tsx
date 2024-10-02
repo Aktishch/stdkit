@@ -13,16 +13,9 @@ export interface MonthProps extends Props {
     }[]
   }
   number: number
-  status: boolean
 }
 
-export const Month = ({
-  className,
-  monthLength,
-  item,
-  number,
-  status,
-}: MonthProps) => {
+export const Month = ({ className, monthLength, item, number }: MonthProps) => {
   const style: string = twMerge('px-4', className)
   const { name, dates } = item
 
@@ -35,7 +28,6 @@ export const Month = ({
           <InputHours
             defaultValue={dates[index] ? dates[index].value : 0}
             disabled={dates[index] ? dates[index].weekend : true}
-            readOnly={status}
             name={`day-${index + 1}`}
             key={index}
           />
