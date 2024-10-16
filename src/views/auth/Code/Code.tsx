@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
-import { LabelName, InputNumber, ButtonSubmit } from '@components'
+import { LabelName, Error, InputNumber, ButtonSubmit } from '@components'
 import { Title, Subtitle, ButtonUnderline } from '@views/auth/components'
 
 export const Code = () => {
@@ -34,7 +34,7 @@ export const Code = () => {
           <LabelName>Код</LabelName>
           <div className="relative">
             <InputNumber
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.code?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.code?.message ? 'input-error' : ''}`}
               maxLength={4}
               {...register('code', {
                 required: 'Введите код',
@@ -45,9 +45,7 @@ export const Code = () => {
               })}
             />
             {formState.errors.code?.message ? (
-              <span className="error">
-                {String(formState.errors.code?.message)}
-              </span>
+              <Error>{String(formState.errors.code?.message)}</Error>
             ) : null}
           </div>
         </label>

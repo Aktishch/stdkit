@@ -4,6 +4,7 @@ import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
 import {
   LabelName,
+  Error,
   InputPassword,
   InputText,
   InputTel,
@@ -40,15 +41,13 @@ export const Registration = () => {
           <LabelName>Логин</LabelName>
           <div className="relative">
             <input
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : ''}`}
               type="text"
               placeholder="Login"
               {...register('login', { required: 'Введите логин' })}
             />
             {formState.errors.login?.message ? (
-              <span className="error">
-                {String(formState.errors.login?.message)}
-              </span>
+              <Error>{String(formState.errors.login?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -56,14 +55,12 @@ export const Registration = () => {
           <LabelName>Фамилия</LabelName>
           <div className="relative">
             <InputText
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.surname?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.surname?.message ? 'input-error' : ''}`}
               placeholder="Иванов"
               {...register('surname', { required: 'Введите фамилию' })}
             />
             {formState.errors.surname?.message ? (
-              <span className="error">
-                {String(formState.errors.surname?.message)}
-              </span>
+              <Error>{String(formState.errors.surname?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -71,14 +68,12 @@ export const Registration = () => {
           <LabelName>Имя</LabelName>
           <div className="relative">
             <InputText
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.name?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.name?.message ? 'input-error' : ''}`}
               placeholder="Иван"
               {...register('name', { required: 'Введите имя' })}
             />
             {formState.errors.name?.message ? (
-              <span className="error">
-                {String(formState.errors.name?.message)}
-              </span>
+              <Error>{String(formState.errors.name?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -86,14 +81,12 @@ export const Registration = () => {
           <LabelName>Отчество</LabelName>
           <div className="relative">
             <InputText
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.patronymic?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.patronymic?.message ? 'input-error' : ''}`}
               placeholder="Иванович"
               {...register('patronymic', { required: 'Введите отчество' })}
             />
             {formState.errors.patronymic?.message ? (
-              <span className="error">
-                {String(formState.errors.patronymic?.message)}
-              </span>
+              <Error>{String(formState.errors.patronymic?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -101,7 +94,7 @@ export const Registration = () => {
           <LabelName>Должность</LabelName>
           <div className="relative">
             <Select
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : ''}`}
               placeholder="Выберите должность"
               value={work}
               {...register('work', { required: 'Введите должность' })}
@@ -157,9 +150,7 @@ export const Registration = () => {
               </SelectButton>
             </Select>
             {formState.errors.work?.message ? (
-              <span className="error">
-                {String(formState.errors.work?.message)}
-              </span>
+              <Error>{String(formState.errors.work?.message)}</Error>
             ) : null}
           </div>
         </div>
@@ -167,7 +158,7 @@ export const Registration = () => {
           <LabelName>Телефон</LabelName>
           <div className="relative">
             <InputTel
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.tel?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.tel?.message ? 'input-error' : ''}`}
               {...register('tel', {
                 required: 'Введите номер телефона',
                 minLength: {
@@ -177,9 +168,7 @@ export const Registration = () => {
               })}
             />
             {formState.errors.tel?.message ? (
-              <span className="error">
-                {String(formState.errors.tel?.message)}
-              </span>
+              <Error>{String(formState.errors.tel?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -187,7 +176,7 @@ export const Registration = () => {
           <LabelName>E-Mail</LabelName>
           <div className="relative">
             <input
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : ''}`}
               type="text"
               placeholder="email@.com"
               {...register('email', {
@@ -199,9 +188,7 @@ export const Registration = () => {
               })}
             />
             {formState.errors.email?.message ? (
-              <span className="error">
-                {String(formState.errors.email?.message)}
-              </span>
+              <Error>{String(formState.errors.email?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -209,7 +196,7 @@ export const Registration = () => {
           <LabelName>Пароль</LabelName>
           <div className="relative">
             <InputPassword
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : ''}`}
               {...register('password', {
                 required: 'Введите пароль',
                 minLength: {
@@ -219,9 +206,7 @@ export const Registration = () => {
               })}
             />
             {formState.errors.password?.message ? (
-              <span className="error">
-                {String(formState.errors.password?.message)}
-              </span>
+              <Error>{String(formState.errors.password?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -229,7 +214,7 @@ export const Registration = () => {
           <LabelName>Повторите пароль</LabelName>
           <div className="relative">
             <InputPassword
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.repeat?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.repeat?.message ? 'input-error' : ''}`}
               {...register('repeat', {
                 required: 'Повторите пароль',
                 minLength: {
@@ -239,9 +224,7 @@ export const Registration = () => {
               })}
             />
             {formState.errors.repeat?.message ? (
-              <span className="error">
-                {String(formState.errors.repeat?.message)}
-              </span>
+              <Error>{String(formState.errors.repeat?.message)}</Error>
             ) : null}
           </div>
         </label>

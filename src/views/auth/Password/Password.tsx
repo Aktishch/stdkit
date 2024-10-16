@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
-import { LabelName, InputPassword, ButtonSubmit } from '@components'
+import { LabelName, Error, InputPassword, ButtonSubmit } from '@components'
 import { Title, Subtitle } from '@views/auth/components'
 
 export const Password = () => {
@@ -30,7 +30,7 @@ export const Password = () => {
           <LabelName>Пароль</LabelName>
           <div className="relative">
             <InputPassword
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : ''}`}
               {...register('password', {
                 required: 'Введите пароль',
                 minLength: {
@@ -40,9 +40,7 @@ export const Password = () => {
               })}
             />
             {formState.errors.password?.message ? (
-              <span className="error">
-                {String(formState.errors.password?.message)}
-              </span>
+              <Error>{String(formState.errors.password?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -50,7 +48,7 @@ export const Password = () => {
           <LabelName>Повторите пароль</LabelName>
           <div className="relative">
             <InputPassword
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.repeat?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.repeat?.message ? 'input-error' : ''}`}
               {...register('repeat', {
                 required: 'Повторите пароль',
                 minLength: {
@@ -60,9 +58,7 @@ export const Password = () => {
               })}
             />
             {formState.errors.repeat?.message ? (
-              <span className="error">
-                {String(formState.errors.repeat?.message)}
-              </span>
+              <Error>{String(formState.errors.repeat?.message)}</Error>
             ) : null}
           </div>
         </label>

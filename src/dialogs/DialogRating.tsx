@@ -12,17 +12,22 @@ import {
 } from '@components'
 
 export interface DialogRatingProps extends DialogProps {
-  // employee: string
+  item: {
+    name: string
+    period: string
+  }
 }
 
 export const DialogRating = ({
   className,
   open,
   onClose,
+  item,
 }: DialogRatingProps) => {
   const [rating, setRating] = useState(0)
   const { register, handleSubmit, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
+  const { name, period } = item
   const style: string = twMerge('max-w-80 card dark:bg-dark', className)
 
   const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
@@ -52,6 +57,8 @@ export const DialogRating = ({
           onSubmit={handleSubmit(submitHandler)}
         >
           <input type="hidden" value="Рейтинг" {...register('form')} />
+          <input type="hidden" value={name} {...register('name')} />
+          <input type="hidden" value={period} {...register('period')} />
           <input type="hidden" value={rating} {...register('rating')} />
           <div className="flex flex-row-reverse items-center justify-center gap-4">
             <ButtonRating

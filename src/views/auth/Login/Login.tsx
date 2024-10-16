@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
-import { LabelName, InputPassword, ButtonSubmit } from '@components'
+import { LabelName, Error, InputPassword, ButtonSubmit } from '@components'
 import { ButtonUnderline } from '@views/auth/components'
 
 export const Login = () => {
@@ -28,15 +28,13 @@ export const Login = () => {
           <LabelName>Логин</LabelName>
           <div className="relative">
             <input
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : ''}`}
               type="text"
               placeholder="Login"
               {...register('login', { required: 'Введите логин' })}
             />
             {formState.errors.login?.message ? (
-              <span className="error">
-                {String(formState.errors.login?.message)}
-              </span>
+              <Error>{String(formState.errors.login?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -44,7 +42,7 @@ export const Login = () => {
           <LabelName>Пароль</LabelName>
           <div className="relative">
             <InputPassword
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : ''}`}
               {...register('password', {
                 required: 'Введите пароль',
                 minLength: {
@@ -54,9 +52,7 @@ export const Login = () => {
               })}
             />
             {formState.errors.password?.message ? (
-              <span className="error">
-                {String(formState.errors.password?.message)}
-              </span>
+              <Error>{String(formState.errors.password?.message)}</Error>
             ) : null}
           </div>
         </label>

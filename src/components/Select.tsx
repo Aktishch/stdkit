@@ -20,7 +20,7 @@ const SelectComponent = (
             <input className={style} type="text" {...props} ref={ref} />
             <span className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full pointer-events-none">
               <Icon
-                className={`text-base opacity-50 ease-linear transition-transform ${active ? '-rotate-90' : null}`}
+                className={`text-base opacity-50 ease-linear transition-transform ${active ? '-rotate-90' : ''}`}
                 id="arrow-right"
               />
             </span>

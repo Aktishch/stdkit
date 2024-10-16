@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Props, getImagePreview } from '@utils'
-import { Icon, Avatar } from '@components'
+import { Icon, Error, Avatar } from '@components'
 
 export interface AvatarUploaderProps extends Props {
   value?: string | File
@@ -57,7 +57,7 @@ export const AvatarUploader = ({
       <Avatar className="size-[52px] text-4xl" src={src} />
       <div className="relative">
         <label
-          className={`text-black dark:text-white text-sm sm:text-base btn btn-gray btn-contur btn-lg ${value ? 'pointer-events-none opacity-50' : null}`}
+          className={`text-black dark:text-white text-sm sm:text-base btn btn-gray btn-contur btn-lg ${value ? 'pointer-events-none opacity-50' : ''}`}
         >
           <input
             className="hidden"
@@ -67,7 +67,7 @@ export const AvatarUploader = ({
           />
           {value ? 'Загружено' : 'Загрузить новое'}
         </label>
-        {error !== undefined ? <span className="error">{error}</span> : null}
+        {error !== undefined ? <Error>{error}</Error> : null}
       </div>
       <button
         className="size-[52px] shrink-0 btn rounded-md btn-grey btn-fill"

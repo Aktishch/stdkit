@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { DataForm } from '@utils'
 import { useToggle } from '@hooks'
-import { LabelName, ButtonSubmit } from '@components'
+import { LabelName, Error, ButtonSubmit } from '@components'
 import { Title, Subtitle } from '@views/auth/components'
 
 export const Recovery = () => {
@@ -37,7 +37,7 @@ export const Recovery = () => {
           <LabelName>E-Mail</LabelName>
           <div className="relative">
             <input
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : ''}`}
               type="text"
               placeholder="email@.com"
               {...register('email', {
@@ -49,9 +49,7 @@ export const Recovery = () => {
               })}
             />
             {formState.errors.email?.message ? (
-              <span className="error">
-                {String(formState.errors.email?.message)}
-              </span>
+              <Error>{String(formState.errors.email?.message)}</Error>
             ) : null}
           </div>
         </label>

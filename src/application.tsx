@@ -2,11 +2,6 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { Theme } from '@providers'
 import { AuthLayout, LkLayout, CompanyLayout, NotFoundLayout } from '@layout'
-// import { LayoutAuthorization } from '@layout/LayoutAuthorization'
-// import { LayoutDefault } from '@layout/LayoutDefault'
-// import { LayoutNotFound } from '@layout/LayoutNotFound'
-// import { LayoutTutor } from '@views/lk/tutor/layout/LayoutTutor'
-// import { LayoutStudentDetail } from '@views/lk/tutor/layout/LayoutStudentDetail'
 import {
   AuthLogin,
   AuthRegistration,
@@ -20,6 +15,7 @@ import {
   CompanyEmployee,
   CompanyDuty,
   CompanyTime,
+  CompanyEvents,
 } from '@views/company/pages'
 // import { ToastContainer } from './ui/Toast'
 // import { createPortal } from 'react-dom'
@@ -62,6 +58,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
             <Route path="employee" element={<CompanyEmployee />} />
             <Route path="duty" element={<CompanyDuty />} />
             <Route path="time" element={<CompanyTime />} />
+            <Route path="events" element={<CompanyEvents />} />
           </Route>
           <Route path="*" element={<NotFoundLayout />} />
         </Routes>

@@ -5,6 +5,7 @@ import { useToggle } from '@hooks'
 import {
   Title,
   LabelName,
+  Error,
   InputText,
   InputTel,
   Select,
@@ -51,16 +52,14 @@ export const Settings = () => {
           <LabelName>Логин</LabelName>
           <div className="relative">
             <input
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : ''}`}
               type="text"
               placeholder="Login"
               defaultValue="Login"
               {...register('login', { required: 'Введите логин' })}
             />
             {formState.errors.login?.message ? (
-              <span className="error">
-                {String(formState.errors.login?.message)}
-              </span>
+              <Error>{String(formState.errors.login?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -68,15 +67,13 @@ export const Settings = () => {
           <LabelName>Фамилия</LabelName>
           <div className="relative">
             <InputText
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.surname?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.surname?.message ? 'input-error' : ''}`}
               placeholder="Иванов"
               defaultValue="Актищев"
               {...register('surname', { required: 'Введите фамилию' })}
             />
             {formState.errors.surname?.message ? (
-              <span className="error">
-                {String(formState.errors.surname?.message)}
-              </span>
+              <Error>{String(formState.errors.surname?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -84,15 +81,13 @@ export const Settings = () => {
           <LabelName>Имя</LabelName>
           <div className="relative">
             <InputText
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.name?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.name?.message ? 'input-error' : ''}`}
               placeholder="Иван"
               defaultValue="Александр"
               {...register('name', { required: 'Введите имя' })}
             />
             {formState.errors.name?.message ? (
-              <span className="error">
-                {String(formState.errors.name?.message)}
-              </span>
+              <Error>{String(formState.errors.name?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -100,15 +95,13 @@ export const Settings = () => {
           <LabelName>Отчество</LabelName>
           <div className="relative">
             <InputText
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.patronymic?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.patronymic?.message ? 'input-error' : ''}`}
               placeholder="Иванович"
               defaultValue="Михайлович"
               {...register('patronymic', { required: 'Введите отчество' })}
             />
             {formState.errors.patronymic?.message ? (
-              <span className="error">
-                {String(formState.errors.patronymic?.message)}
-              </span>
+              <Error>{String(formState.errors.patronymic?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -116,7 +109,7 @@ export const Settings = () => {
           <LabelName>Должность</LabelName>
           <div className="relative">
             <Select
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : ''}`}
               placeholder="Выберите должность"
               value={work}
               {...register('work', { required: 'Введите должность' })}
@@ -172,9 +165,7 @@ export const Settings = () => {
               </SelectButton>
             </Select>
             {formState.errors.work?.message ? (
-              <span className="error">
-                {String(formState.errors.work?.message)}
-              </span>
+              <Error>{String(formState.errors.work?.message)}</Error>
             ) : null}
           </div>
         </div>
@@ -182,7 +173,7 @@ export const Settings = () => {
           <LabelName>Телефон</LabelName>
           <div className="relative">
             <InputTel
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.tel?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.tel?.message ? 'input-error' : ''}`}
               defaultValue="+7 (988) 385-02-38"
               {...register('tel', {
                 required: 'Введите номер телефона',
@@ -193,9 +184,7 @@ export const Settings = () => {
               })}
             />
             {formState.errors.tel?.message ? (
-              <span className="error">
-                {String(formState.errors.tel?.message)}
-              </span>
+              <Error>{String(formState.errors.tel?.message)}</Error>
             ) : null}
           </div>
         </label>
@@ -203,7 +192,7 @@ export const Settings = () => {
           <LabelName>E-Mail</LabelName>
           <div className="relative">
             <input
-              className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : null}`}
+              className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : ''}`}
               type="text"
               placeholder="email@.com"
               defaultValue="aktishch@gmail.com"
@@ -216,9 +205,7 @@ export const Settings = () => {
               })}
             />
             {formState.errors.email?.message ? (
-              <span className="error">
-                {String(formState.errors.email?.message)}
-              </span>
+              <Error>{String(formState.errors.email?.message)}</Error>
             ) : null}
           </div>
         </label>

@@ -29,7 +29,7 @@ export const Employee = ({ className, item }: EmployeeProps) => {
         />
         <TableCol className="truncate w-44 lg:w-72">{name}</TableCol>
         <TableCol className="w-20 lg:w-24">{work}</TableCol>
-        <TableCol className={`w-16 lg:w-24 ${status ? null : 'opacity-60'}`}>
+        <TableCol className={`w-16 lg:w-24 ${status ? '' : 'opacity-60'}`}>
           {status ? 'Работает' : 'Уволен'}
         </TableCol>
         <TableCol

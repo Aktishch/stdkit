@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Title } from '@components'
-import { DialogRating } from '@dialogs'
+import { Icon, Title } from '@components'
+import { DialogDuty, DialogRating } from '@dialogs'
 import {
-  ButtonTop,
+  Head,
+  HeadButton,
   Table,
   TableHead,
   TableCol,
@@ -18,6 +19,7 @@ const data = [
     period: '22.07.2024 - 28.07.2024',
     rating: 4,
     active: false,
+    checked: false,
   },
   {
     src: '/img/pictures/user.jpg',
@@ -26,40 +28,55 @@ const data = [
     period: '22.07.2024 - 28.07.2024',
     rating: 0,
     active: false,
+    checked: true,
   },
   {
     src: '/img/pictures/user.jpg',
     name: 'Александр Ярошук',
     work: 'Project',
     period: '22.07.2024 - 28.07.2024',
+    rating: 0,
     active: true,
+    checked: false,
   },
   {
     src: '/img/pictures/user.jpg',
     name: 'Анастасия Скачкова',
     work: 'Project',
     period: '22.07.2024 - 28.07.2024',
+    rating: 0,
     active: false,
+    checked: false,
   },
 ]
 
 export const Duty = () => {
-  const [parameters, setParameters] = useState({})
+  const [parameters, setParameters] = useState(
+    {} as { name: string; period: string }
+  )
+  const [openDialogDuty, setOpenDialogDuty] = useState(false)
   const [openDialogRating, setOpenDialogRating] = useState(false)
-
-  console.log(parameters)
 
   return (
     <>
-      <div className="flex flex-col gap-4 mb-6 xs:flex-row xs:items-center xs:justify-between sm:mb-10">
+      <Head>
         <Title>Дежурство</Title>
-        <ButtonTop
+        <HeadButton
           className="print:hidden pointer-coarse:hidden"
           id="notification"
           onClick={(): void => window.print()}
         >
           Печать
-        </ButtonTop>
+        </HeadButton>
+      </Head>
+      <div className="flex mb-6 print:hidden">
+        <button
+          className="btn btn-primary btn-fill btn-md"
+          onClick={() => setOpenDialogDuty(true)}
+        >
+          <Icon className="mr-2 text-xl text-primary color-yellow" id="star" />
+          Требования
+        </button>
       </div>
       <form action="">
         <input type="hidden" value="Дежурство" name="theme" />
@@ -78,7 +95,10 @@ export const Duty = () => {
               item={item}
               onClick={(): void => {
                 setOpenDialogRating(true)
-                setParameters(item)
+                setParameters({
+                  name: item.name,
+                  period: item.period,
+                })
               }}
               key={index}
             />
@@ -86,7 +106,12 @@ export const Duty = () => {
         </Table>
         <Pagination className="mt-10 print:hidden" />
       </form>
-      <DialogRating open={openDialogRating} onClose={setOpenDialogRating} />
+      <DialogDuty open={openDialogDuty} onClose={setOpenDialogDuty} />
+      <DialogRating
+        open={openDialogRating}
+        onClose={setOpenDialogRating}
+        item={parameters}
+      />
     </>
   )
 }

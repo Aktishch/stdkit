@@ -1,11 +1,5 @@
 .card {
-  @apply flex flex-col relative bg-white rounded-3xl overflow-hidden shadow-md duration-200;
-
-  &-active {
-    &:active {
-      @apply translate-y-1;
-    }
-  }
+  @apply flex flex-col relative bg-white rounded-3xl overflow-hidden shadow-md h-full duration-200;
 
   &-content {
     @apply flex flex-col flex-grow;

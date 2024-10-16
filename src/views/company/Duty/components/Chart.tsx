@@ -9,25 +9,26 @@ export interface ChartProps extends Props {
     name: string
     work: string
     period: string
-    rating?: number
+    rating: number
     active: boolean
+    checked: boolean
   }
   onClick?: () => void
 }
 
 export const Chart = ({ className, item, onClick }: ChartProps) => {
   const ratingLength: number[] = [...Array(5).keys()]
-  const { src, name, work, period, rating, active } = item
+  const { src, name, work, period, rating, active, checked } = item
   const style: string = twMerge(
     'group cursor-pointer',
-    active || rating === undefined || rating > 0 ? 'pointer-events-none' : null,
+    active || !checked ? 'pointer-events-none' : null,
     className
   )
 
   return (
     <div className={style} onClick={onClick}>
       <TableRow
-        className={`duration-200 group-hover:bg-grey/50 ${active ? 'bg-grey/50 print:bg-transparent' : null}`}
+        className={`duration-200 group-hover:bg-grey/50 ${active ? 'bg-grey/50 print:bg-transparent' : ''}`}
       >
         <Avatar
           className="text-base lg:text-2xl size-7 lg:size-10"
@@ -44,7 +45,7 @@ export const Chart = ({ className, item, onClick }: ChartProps) => {
             <div className="flex items-center justify-center w-full gap-2">
               {ratingLength.map((_, index) => (
                 <Icon
-                  className={`text-base lg:text-lg text-primary ${rating && rating >= index + 1 ? null : 'text-opacity-50'}`}
+                  className={`text-base lg:text-lg text-primary ${rating >= index + 1 ? '' : 'text-opacity-50'}`}
                   id="star"
                   key={index}
                 />

@@ -23,3 +23,9 @@ export const CompanyTime = lazy(() =>
     default: module.Time,
   }))
 )
+
+export const CompanyEvents = lazy(() =>
+  import('@views/company/Events/Events').then((module) => ({
+    default: module.Events,
+  }))
+)

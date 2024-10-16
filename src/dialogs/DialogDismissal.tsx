@@ -7,6 +7,7 @@ import {
   DialogProps,
   Icon,
   LabelName,
+  Error,
   InputCalendar,
   ButtonSubmit,
 } from '@components'
@@ -59,16 +60,14 @@ export const DialogDismissal = ({
             <LabelName>Дата увольнения</LabelName>
             <div className="relative">
               <InputCalendar
-                className={`input input-calendar input-primary input-lg dark:input-fade ${formState.errors.date?.message ? 'input-error' : null}`}
+                className={`input input-calendar input-primary input-lg dark:input-fade ${formState.errors.date?.message ? 'input-error' : ''}`}
                 setValue={setValue}
                 {...register('date', {
                   required: 'Укажите дату',
                 })}
               />
               {formState.errors.date?.message ? (
-                <span className="error">
-                  {String(formState.errors.date?.message)}
-                </span>
+                <Error>{String(formState.errors.date?.message)}</Error>
               ) : null}
             </div>
           </div>

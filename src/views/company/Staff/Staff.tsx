@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { Title, Icon } from '@components'
 import { DialogStaff } from '@dialogs'
 import {
-  ButtonTop,
+  Head,
+  HeadButton,
   Table,
   TableHead,
   TableCol,
@@ -52,12 +53,12 @@ export const Staff = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-4 mb-6 xs:flex-row xs:items-center xs:justify-between sm:mb-10">
+      <Head>
         <Title>Сотрудники</Title>
-        <ButtonTop id="users" onClick={() => setOpenDialogStaff(true)}>
+        <HeadButton id="users" onClick={() => setOpenDialogStaff(true)}>
           Добавить
-        </ButtonTop>
-      </div>
+        </HeadButton>
+      </Head>
       <form action="">
         <div className="flex items-center justify-between gap-2 mb-6 border-b border-solid sm:justify-start sm:gap-10 border-grey">
           <ButtonFiltering className="opacity-100 pointer-events-none after:opacity-100 after:visible">
@@ -70,11 +71,11 @@ export const Staff = () => {
           <div className="relative flex-grow">
             <input
               className="pl-12 input input-primary input-lg dark:input-fade"
-              type="search"
+              type="text"
               placeholder="Найти сотрудника..."
               name="search"
             />
-            <div className="absolute top-0 bottom-0 left-0 flex items-center justify-center w-12 h-full cursor-pointer">
+            <div className="absolute top-0 bottom-0 left-0 flex items-center justify-center w-12 h-full pointer-events-none">
               <Icon className="text-xl text-primary" id="search" />
             </div>
           </div>

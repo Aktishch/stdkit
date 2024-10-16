@@ -2,17 +2,17 @@ import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Icon } from '@components'
 
-export interface ButtonTopProps
+export interface HeadButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   id: string
 }
 
-export const ButtonTop = ({
+export const HeadButton = ({
   className,
   id,
   children,
   ...props
-}: ButtonTopProps) => {
+}: HeadButtonProps) => {
   const style: string = twMerge(
     'w-full btn btn-primary btn-lg btn-fade xs:max-w-52',
     className

@@ -7,6 +7,7 @@ import {
   Title,
   Avatar,
   LabelName,
+  Error,
   InputPassword,
   InputText,
   InputTel,
@@ -17,7 +18,7 @@ import {
   ButtonSubmit,
 } from '@components'
 import { DialogDismissal, DialogRemove } from '@dialogs'
-import { ButtonTop } from '@views/company/components'
+import { Head, HeadButton } from '@views/company/components'
 
 export const Employee = () => {
   const [image, setImage] = useState<string | File | undefined>(
@@ -44,85 +45,87 @@ export const Employee = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-4 mb-6 xs:flex-row xs:items-center xs:justify-between sm:mb-10">
+      <Head>
         <Title>О сотруднике</Title>
-        <ButtonTop id="pen" onClick={editingToggle}>
+        <HeadButton id="pen" onClick={editingToggle}>
           {editingValue ? 'Редактировать' : 'Отмена'}
-        </ButtonTop>
-      </div>
+        </HeadButton>
+      </Head>
       <div className="flex flex-col gap-6 sm:gap-10 md:flex-row lg:gap-20">
         <div className="w-full xs:max-w-64">
-          <div className="px-4 py-6 card md:sticky md:top-28 md:left-0 md:right-0 dark:bg-dark">
-            <div className="card-content">
-              <div className="flex items-center mb-4 sm:mb-6">
-                <Avatar
-                  className="mr-4 text-2xl size-10"
-                  src="/img/pictures/user.jpg"
-                  load={true}
-                />
-                <div className="flex flex-col overflow-hidden">
-                  <span className="font-normal truncate text-base/none">
-                    Актищев Александр
-                  </span>
-                  <span className="mt-2 font-normal opacity-50 text-sm/none">
-                    Front-end
-                  </span>
+          <div className="md:sticky md:top-28 md:left-0 md:right-0">
+            <div className="px-4 py-6 card dark:bg-dark">
+              <div className="card-content">
+                <div className="flex items-center mb-4 sm:mb-6">
+                  <Avatar
+                    className="mr-4 text-2xl size-10"
+                    src="/img/pictures/user.jpg"
+                    load={true}
+                  />
+                  <div className="flex flex-col overflow-hidden">
+                    <span className="font-normal truncate text-base/none">
+                      Актищев Александр
+                    </span>
+                    <span className="mt-2 font-normal opacity-50 text-sm/none">
+                      Front-end
+                    </span>
+                  </div>
                 </div>
+                <ul className="flex flex-col gap-4">
+                  <li className="flex items-center justify-between gap-4">
+                    <Icon
+                      className="text-xl text-primary color-yellow"
+                      id="star"
+                    />
+                    <span className="mr-auto font-normal opacity-60 text-sm/none">
+                      рейтинг дежурства:
+                    </span>
+                    <b className="text-base/none min-w-max">4.5</b>
+                  </li>
+                  <li className="flex items-center justify-between gap-4">
+                    <Icon
+                      className="text-xl text-primary color-blue"
+                      id="hourglass"
+                    />
+                    <span className="mr-auto font-normal opacity-60 text-sm/none">
+                      сверхурочные:
+                    </span>
+                    <b className="text-base/none min-w-max">8</b>
+                  </li>
+                  <li className="flex items-center justify-between gap-4">
+                    <Icon
+                      className="text-xl text-primary color-purple"
+                      id="hourglass"
+                    />
+                    <span className="mr-auto font-normal opacity-60 text-sm/none">
+                      пропуски:
+                    </span>
+                    <b className="text-base/none min-w-max">2</b>
+                  </li>
+                </ul>
+                {editingValue ? null : (
+                  <div className="grid grid-cols-2 gap-3 mt-4">
+                    <button
+                      className="btn btn-md btn-fade btn-gray"
+                      onClick={() => setOpenDialogDismissal(true)}
+                    >
+                      <Icon className="text-2xl" id="user" />
+                    </button>
+                    <button
+                      className="btn btn-md btn-fade btn-red"
+                      onClick={() => setOpenDialogRemove(true)}
+                    >
+                      <Icon className="text-2xl" id="trash" />
+                    </button>
+                  </div>
+                )}
               </div>
-              <ul className="flex flex-col gap-4">
-                <li className="flex items-center justify-between gap-4">
-                  <Icon
-                    className="text-xl text-primary color-yellow"
-                    id="star"
-                  />
-                  <span className="mr-auto font-normal opacity-60 text-sm/none">
-                    рейтинг дежурства:
-                  </span>
-                  <b className="text-base/none min-w-max">4.5</b>
-                </li>
-                <li className="flex items-center justify-between gap-4">
-                  <Icon
-                    className="text-xl text-primary color-blue"
-                    id="hourglass"
-                  />
-                  <span className="mr-auto font-normal opacity-60 text-sm/none">
-                    сверхурочные:
-                  </span>
-                  <b className="text-base/none min-w-max">8</b>
-                </li>
-                <li className="flex items-center justify-between gap-4">
-                  <Icon
-                    className="text-xl text-primary color-purple"
-                    id="hourglass"
-                  />
-                  <span className="mr-auto font-normal opacity-60 text-sm/none">
-                    пропуски:
-                  </span>
-                  <b className="text-base/none min-w-max">2</b>
-                </li>
-              </ul>
-              {editingValue ? null : (
-                <div className="grid grid-cols-2 gap-3 mt-4">
-                  <button
-                    className="btn btn-md btn-fade btn-gray"
-                    onClick={() => setOpenDialogDismissal(true)}
-                  >
-                    <Icon className="text-2xl" id="user" />
-                  </button>
-                  <button
-                    className="btn btn-md btn-fade btn-red"
-                    onClick={() => setOpenDialogRemove(true)}
-                  >
-                    <Icon className="text-2xl" id="trash" />
-                  </button>
-                </div>
-              )}
             </div>
           </div>
         </div>
         <div className="w-full lg:max-w-md ">
           <div
-            className={`flex flex-col gap-6 ${editingValue ? 'pointer-events-none' : null}`}
+            className={`flex flex-col gap-6 ${editingValue ? 'pointer-events-none' : ''}`}
           >
             <form
               className="flex flex-col w-full gap-6"
@@ -161,7 +164,7 @@ export const Employee = () => {
                 <LabelName>Дата трудоустройства</LabelName>
                 <div className="relative">
                   <InputCalendar
-                    className={`input input-calendar input-primary input-lg dark:input-fade ${formState.errors.date?.message ? 'input-error' : null}`}
+                    className={`input input-calendar input-primary input-lg dark:input-fade ${formState.errors.date?.message ? 'input-error' : ''}`}
                     date={new Date()}
                     setValue={setValue}
                     {...register('date', {
@@ -169,9 +172,7 @@ export const Employee = () => {
                     })}
                   />
                   {formState.errors.date?.message ? (
-                    <span className="error">
-                      {String(formState.errors.date?.message)}
-                    </span>
+                    <Error>{String(formState.errors.date?.message)}</Error>
                   ) : null}
                 </div>
               </div>
@@ -179,16 +180,14 @@ export const Employee = () => {
                 <LabelName>Логин</LabelName>
                 <div className="relative">
                   <input
-                    className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : null}`}
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.login?.message ? 'input-error' : ''}`}
                     type="text"
                     placeholder="Login"
                     defaultValue="Login"
                     {...register('login', { required: 'Введите логин' })}
                   />
                   {formState.errors.login?.message ? (
-                    <span className="error">
-                      {String(formState.errors.login?.message)}
-                    </span>
+                    <Error>{String(formState.errors.login?.message)}</Error>
                   ) : null}
                 </div>
               </label>
@@ -196,15 +195,13 @@ export const Employee = () => {
                 <LabelName>Фамилия</LabelName>
                 <div className="relative">
                   <InputText
-                    className={`input input-primary input-lg dark:input-fade ${formState.errors.surname?.message ? 'input-error' : null}`}
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.surname?.message ? 'input-error' : ''}`}
                     placeholder="Иванов"
                     defaultValue="Актищев"
                     {...register('surname', { required: 'Введите фамилию' })}
                   />
                   {formState.errors.surname?.message ? (
-                    <span className="error">
-                      {String(formState.errors.surname?.message)}
-                    </span>
+                    <Error>{String(formState.errors.surname?.message)}</Error>
                   ) : null}
                 </div>
               </label>
@@ -212,15 +209,13 @@ export const Employee = () => {
                 <LabelName>Имя</LabelName>
                 <div className="relative">
                   <InputText
-                    className={`input input-primary input-lg dark:input-fade ${formState.errors.name?.message ? 'input-error' : null}`}
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.name?.message ? 'input-error' : ''}`}
                     placeholder="Иван"
                     defaultValue="Александр"
                     {...register('name', { required: 'Введите имя' })}
                   />
                   {formState.errors.name?.message ? (
-                    <span className="error">
-                      {String(formState.errors.name?.message)}
-                    </span>
+                    <Error>{String(formState.errors.name?.message)}</Error>
                   ) : null}
                 </div>
               </label>
@@ -228,7 +223,7 @@ export const Employee = () => {
                 <LabelName>Отчество</LabelName>
                 <div className="relative">
                   <InputText
-                    className={`input input-primary input-lg dark:input-fade ${formState.errors.patronymic?.message ? 'input-error' : null}`}
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.patronymic?.message ? 'input-error' : ''}`}
                     placeholder="Иванович"
                     defaultValue="Михайлович"
                     {...register('patronymic', {
@@ -236,9 +231,9 @@ export const Employee = () => {
                     })}
                   />
                   {formState.errors.patronymic?.message ? (
-                    <span className="error">
+                    <Error>
                       {String(formState.errors.patronymic?.message)}
-                    </span>
+                    </Error>
                   ) : null}
                 </div>
               </label>
@@ -246,7 +241,7 @@ export const Employee = () => {
                 <LabelName>Должность</LabelName>
                 <div className="relative">
                   <Select
-                    className={`input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : null}`}
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.work?.message ? 'input-error' : ''}`}
                     placeholder="Выберите должность"
                     value={work}
                     {...register('work', { required: 'Введите должность' })}
@@ -302,9 +297,7 @@ export const Employee = () => {
                     </SelectButton>
                   </Select>
                   {formState.errors.work?.message ? (
-                    <span className="error">
-                      {String(formState.errors.work?.message)}
-                    </span>
+                    <Error>{String(formState.errors.work?.message)}</Error>
                   ) : null}
                 </div>
               </div>
@@ -312,7 +305,7 @@ export const Employee = () => {
                 <LabelName>Телефон</LabelName>
                 <div className="relative">
                   <InputTel
-                    className={`input input-primary input-lg dark:input-fade ${formState.errors.tel?.message ? 'input-error' : null}`}
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.tel?.message ? 'input-error' : ''}`}
                     defaultValue="+7 (988) 385-02-38"
                     {...register('tel', {
                       required: 'Введите номер телефона',
@@ -323,9 +316,7 @@ export const Employee = () => {
                     })}
                   />
                   {formState.errors.tel?.message ? (
-                    <span className="error">
-                      {String(formState.errors.tel?.message)}
-                    </span>
+                    <Error>{String(formState.errors.tel?.message)}</Error>
                   ) : null}
                 </div>
               </label>
@@ -333,7 +324,7 @@ export const Employee = () => {
                 <LabelName>E-Mail</LabelName>
                 <div className="relative">
                   <input
-                    className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : null}`}
+                    className={`input input-primary input-lg dark:input-fade ${formState.errors.email?.message ? 'input-error' : ''}`}
                     type="text"
                     placeholder="email@.com"
                     defaultValue="aktishch@gmail.com"
@@ -346,9 +337,7 @@ export const Employee = () => {
                     })}
                   />
                   {formState.errors.email?.message ? (
-                    <span className="error">
-                      {String(formState.errors.email?.message)}
-                    </span>
+                    <Error>{String(formState.errors.email?.message)}</Error>
                   ) : null}
                 </div>
               </label>
@@ -358,7 +347,7 @@ export const Employee = () => {
                     <LabelName>Пароль</LabelName>
                     <div className="relative">
                       <InputPassword
-                        className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : null}`}
+                        className={`input input-primary input-lg dark:input-fade ${formState.errors.password?.message ? 'input-error' : ''}`}
                         defaultValue="qwerty123456"
                         {...register('password', {
                           required: 'Введите пароль',
@@ -369,9 +358,9 @@ export const Employee = () => {
                         })}
                       />
                       {formState.errors.password?.message ? (
-                        <span className="error">
+                        <Error>
                           {String(formState.errors.password?.message)}
-                        </span>
+                        </Error>
                       ) : null}
                     </div>
                   </label>

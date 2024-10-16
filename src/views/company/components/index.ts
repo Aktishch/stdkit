@@ -1,4 +1,5 @@
-export * from './ButtonTop'
+export * from './Head'
+export * from './HeadButton'
 export * from './Table'
 export * from './TableHead'
 export * from './TableRow'
