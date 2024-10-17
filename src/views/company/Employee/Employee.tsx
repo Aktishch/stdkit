@@ -18,7 +18,12 @@ import {
   ButtonSubmit,
 } from '@components'
 import { DialogDismissal, DialogRemove } from '@dialogs'
-import { Head, HeadButton } from '@views/company/components'
+import {
+  BreadCrumbs,
+  BreadCrumbsItem,
+  Head,
+  HeadButton,
+} from '@views/company/components'
 
 export const Employee = () => {
   const [image, setImage] = useState<string | File | undefined>(
@@ -45,6 +50,10 @@ export const Employee = () => {
 
   return (
     <>
+      <BreadCrumbs>
+        <BreadCrumbsItem to="/lk/staff/">Сотрудники</BreadCrumbsItem>
+        <BreadCrumbsItem to="/lk/staff/employee/">О сотруднике</BreadCrumbsItem>
+      </BreadCrumbs>
       <Head>
         <Title>О сотруднике</Title>
         <HeadButton id="pen" onClick={editingToggle}>
@@ -250,51 +259,37 @@ export const Employee = () => {
                       title="Директор"
                       value={work}
                       onClick={(): void => setWork('Директор')}
-                    >
-                      Директор
-                    </SelectButton>
+                    />
                     <SelectButton
                       title="Project"
                       value={work}
                       onClick={(): void => setWork('Project')}
-                    >
-                      Project
-                    </SelectButton>
+                    />
                     <SelectButton
                       title="Front-End"
                       value={work}
                       onClick={(): void => setWork('Front-End')}
-                    >
-                      Front-End
-                    </SelectButton>
+                    />
                     <SelectButton
                       title="Back-end"
                       value={work}
                       onClick={(): void => setWork('Back-end')}
-                    >
-                      Back-end
-                    </SelectButton>
+                    />
                     <SelectButton
                       title="Designer"
                       value={work}
                       onClick={(): void => setWork('Designer')}
-                    >
-                      Designer
-                    </SelectButton>
+                    />
                     <SelectButton
                       title="SEO"
                       value={work}
                       onClick={(): void => setWork('SEO')}
-                    >
-                      SEO
-                    </SelectButton>
+                    />
                     <SelectButton
                       title="Content"
                       value={work}
                       onClick={(): void => setWork('Content')}
-                    >
-                      Content
-                    </SelectButton>
+                    />
                   </Select>
                   {formState.errors.work?.message ? (
                     <Error>{String(formState.errors.work?.message)}</Error>

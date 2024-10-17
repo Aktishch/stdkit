@@ -1,6 +1,8 @@
 import { useToggle } from '@hooks'
 import { Title } from '@components'
 import {
+  BreadCrumbs,
+  BreadCrumbsItem,
   Head,
   HeadButton,
   Table,
@@ -135,6 +137,9 @@ export const Time = () => {
 
   return (
     <>
+      <BreadCrumbs>
+        <BreadCrumbsItem to="/lk/time/">Рабочее время</BreadCrumbsItem>
+      </BreadCrumbs>
       <Head>
         <Title>
           Рабочее время{' '}

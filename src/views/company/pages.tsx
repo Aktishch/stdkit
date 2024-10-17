@@ -29,3 +29,9 @@ export const CompanyEvents = lazy(() =>
     default: module.Events,
   }))
 )
+
+export const CompanyNews = lazy(() =>
+  import('@views/company/News/News').then((module) => ({
+    default: module.News,
+  }))
+)

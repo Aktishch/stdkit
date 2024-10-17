@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { Loaded } from '@layout'
 
-export const NotFoundLayout = () => {
+export const LayoutNotFound = () => {
   return (
     <Suspense fallback={<Loaded />}>
       <section className="container flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-white dark:from-dark to-primary/50 dark:to-primary">
@@ -15,7 +15,7 @@ export const NotFoundLayout = () => {
         <Link
           className="btn btn-primary btn-lg btn-fill"
           draggable={false}
-          to="/lk"
+          to="/lk/"
         >
           Вернуться на главную
         </Link>

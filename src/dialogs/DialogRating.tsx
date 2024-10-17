@@ -50,7 +50,7 @@ export const DialogRating = ({
           <Icon className="text-6xl text-primary color-yellow" id="star"></Icon>
         </div>
         <h2 className="mb-6 font-medium text-center text-lg/normal">
-          Оцените работу сотрудника за данный период
+          Оцените работу сотрудника <br /> за данный период
         </h2>
         <form
           className="flex flex-col w-full gap-6"

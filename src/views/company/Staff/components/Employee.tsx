@@ -20,7 +20,7 @@ export const Employee = ({ className, item }: EmployeeProps) => {
   const { to, src, name, work, status, date } = item
 
   return (
-    <Link className={style} draggable={false} to={`/company/employee${to}`}>
+    <Link className={style} draggable={false} to={`/lk/staff/employee${to}`}>
       <TableRow className="duration-200 group-hover:bg-grey/50">
         <Avatar
           className="text-base lg:text-2xl size-7 lg:size-10"

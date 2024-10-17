@@ -103,51 +103,37 @@ export const Registration = () => {
                 title="Директор"
                 value={work}
                 onClick={(): void => setWork('Директор')}
-              >
-                Директор
-              </SelectButton>
+              />
               <SelectButton
                 title="Project"
                 value={work}
                 onClick={(): void => setWork('Project')}
-              >
-                Project
-              </SelectButton>
+              />
               <SelectButton
                 title="Front-End"
                 value={work}
                 onClick={(): void => setWork('Front-End')}
-              >
-                Front-End
-              </SelectButton>
+              />
               <SelectButton
                 title="Back-end"
                 value={work}
                 onClick={(): void => setWork('Back-end')}
-              >
-                Back-end
-              </SelectButton>
+              />
               <SelectButton
                 title="Designer"
                 value={work}
                 onClick={(): void => setWork('Designer')}
-              >
-                Designer
-              </SelectButton>
+              />
               <SelectButton
                 title="SEO"
                 value={work}
                 onClick={(): void => setWork('SEO')}
-              >
-                SEO
-              </SelectButton>
+              />
               <SelectButton
                 title="Content"
                 value={work}
                 onClick={(): void => setWork('Content')}
-              >
-                Content
-              </SelectButton>
+              />
             </Select>
             {formState.errors.work?.message ? (
               <Error>{String(formState.errors.work?.message)}</Error>
@@ -239,7 +225,7 @@ export const Registration = () => {
         <span className="mr-2 text-sm font-normal sm:text-base">
           Есть аккаунт?
         </span>
-        <ButtonUnderline to="/">Войти</ButtonUnderline>
+        <ButtonUnderline to="/login/">Войти</ButtonUnderline>
       </div>
     </>
   )

@@ -41,10 +41,10 @@ export const AvatarUploader = ({
     if (!file) {
       return
     } else if (!['image/jpeg', 'image/png'].includes(file.type)) {
-      setError('Только изображения (jpg, png)')
+      setError('Только (jpg, png)')
       return
     } else if (file?.size > 2 * Math.pow(1024, 2)) {
-      setError('Размер не более 2 мб')
+      setError('Размер не более 2мб')
       return
     }
 
@@ -55,9 +55,9 @@ export const AvatarUploader = ({
   return (
     <div className={style}>
       <Avatar className="size-[52px] text-4xl" src={src} />
-      <div className="relative">
+      <div className="relative w-full max-w-36">
         <label
-          className={`text-black dark:text-white text-sm sm:text-base btn btn-gray btn-contur btn-lg ${value ? 'pointer-events-none opacity-50' : ''}`}
+          className={`text-black dark:text-white text-base btn btn-gray btn-contur btn-lg ${value ? 'pointer-events-none opacity-50' : ''}`}
         >
           <input
             className="hidden"
@@ -65,7 +65,7 @@ export const AvatarUploader = ({
             name="image"
             onChange={onChangeHandler}
           />
-          {value ? 'Загружено' : 'Загрузить новое'}
+          {value ? 'Загружено' : 'Загрузить'}
         </label>
         {error !== undefined ? <Error>{error}</Error> : null}
       </div>

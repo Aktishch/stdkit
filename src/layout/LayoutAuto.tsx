@@ -2,13 +2,11 @@ import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Loaded, Header, Footer } from '@layout'
 
-export const CompanyLayout = () => {
+export const LayoutAuto = () => {
   return (
     <Suspense fallback={<Loaded />}>
       <Header />
-      <section className="container flex-grow sm:pt-10">
-        <Outlet />
-      </section>
+      <Outlet />
       <Footer />
     </Suspense>
   )

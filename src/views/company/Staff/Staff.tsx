@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { Title, Icon } from '@components'
-import { DialogStaff } from '@dialogs'
+import { DialogStaff, DialogResult } from '@dialogs'
 import {
+  BreadCrumbs,
+  BreadCrumbsItem,
   Head,
   HeadButton,
   Table,
@@ -10,11 +12,10 @@ import {
   Pagination,
 } from '@views/company/components'
 import { ButtonFiltering, Employee } from '@views/company/Staff/components'
-import { DialogResult } from '@dialogs'
 
 const data = [
   {
-    to: '',
+    to: '/',
     src: '/img/pictures/user.jpg',
     name: 'Актищев Александр',
     work: 'Front-End',
@@ -22,7 +23,7 @@ const data = [
     date: '29.08.2023',
   },
   {
-    to: '',
+    to: '/',
     src: '/img/pictures/user.jpg',
     name: 'Щербаков Иван',
     work: 'Designer',
@@ -30,7 +31,7 @@ const data = [
     date: '29.08.2023',
   },
   {
-    to: '',
+    to: '/',
     src: '/img/pictures/user.jpg',
     name: 'Ивлеев Евгений',
     work: 'Project',
@@ -38,7 +39,7 @@ const data = [
     date: '29.08.2023-29.08.2023',
   },
   {
-    to: '',
+    to: '/',
     src: undefined,
     name: 'Шаповалов Никита',
     work: 'Back-end',
@@ -53,6 +54,9 @@ export const Staff = () => {
 
   return (
     <>
+      <BreadCrumbs>
+        <BreadCrumbsItem to="/lk/staff/">Сотрудники</BreadCrumbsItem>
+      </BreadCrumbs>
       <Head>
         <Title>Сотрудники</Title>
         <HeadButton id="users" onClick={() => setOpenDialogStaff(true)}>

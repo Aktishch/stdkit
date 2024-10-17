@@ -1,3 +1,5 @@
+export * from './BreadCrumbs'
+export * from './BreadCrumbsItem'
 export * from './Head'
 export * from './HeadButton'
 export * from './Table'

@@ -60,7 +60,7 @@ export const Login = () => {
           <span className="mr-2 text-sm font-normal sm:text-base">
             Забыли пароль?
           </span>
-          <ButtonUnderline to="/recovery">Восстановить</ButtonUnderline>
+          <ButtonUnderline to="/recovery/">Восстановить</ButtonUnderline>
         </div>
         <ButtonSubmit
           className="btn btn-primary btn-lg btn-fill"
@@ -73,7 +73,7 @@ export const Login = () => {
         <span className="mr-2 text-sm font-normal sm:text-base">
           Нет аккаунта?
         </span>
-        <ButtonUnderline to="/registration">Зарегистрируйтесь</ButtonUnderline>
+        <ButtonUnderline to="/registration/">Зарегистрируйтесь</ButtonUnderline>
       </div>
     </>
   )

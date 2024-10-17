@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { Icon } from '@components'
 import { Loaded } from '@layout'
 
-export const AuthLayout = () => {
+export const LayoutAuth = () => {
   return (
     <Suspense fallback={<Loaded />}>
       <section className="container flex items-center justify-center min-h-screen bg-gradient-to-b from-white dark:from-dark to-primary/50 dark:to-primary">

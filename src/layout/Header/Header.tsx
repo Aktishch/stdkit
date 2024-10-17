@@ -15,20 +15,20 @@ export const Header = () => {
 
   return (
     <header className="container sticky top-0 left-0 right-0 z-30 flex items-center justify-between gap-3 py-2 bg-white border-b border-solid dark:bg-black sm:py-4 sm:gap-5 md:gap-10 xl:gap-24 lg:py-6 border-grey print:hidden">
-      <Link draggable="false" to="/lk">
+      <Link draggable="false" to="/lk/">
         <Icon className="w-20 h-7 sm:h-8 sm:w-28" id="logo" />
       </Link>
       <nav className="flex items-center gap-2 sm:gap-5 xl:gap-10 sm:mr-auto lg:mr-0">
-        <ButtonNav id="users" to="/company/staff">
+        <ButtonNav id="users" to="/lk/staff/">
           Сотрудники
         </ButtonNav>
-        <ButtonNav id="notification" to="/company/duty">
+        <ButtonNav id="notification" to="/lk/duty/">
           Дежурство
         </ButtonNav>
-        <ButtonNav id="hourglass" to="/company/time">
+        <ButtonNav id="hourglass" to="/lk/time/">
           Рабочее время
         </ButtonNav>
-        <ButtonNav id="medal" to="/company/events">
+        <ButtonNav id="medal" to="/lk/events/">
           Мероприятия
         </ButtonNav>
       </nav>
@@ -88,11 +88,11 @@ export const Header = () => {
               className="justify-start px-2 btn btn-primary btn-sm"
               as={NavLink}
               draggable={false}
-              to="/lk"
+              to="/lk/"
             >
               <Icon className="text-xl" id="settings" />
               <span className="ml-1 text-sm font-normal text-black dark:text-white">
-                Настройки
+                Главная
               </span>
             </MenuItem>
             <button

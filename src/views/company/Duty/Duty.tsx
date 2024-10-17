@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Icon, Title } from '@components'
 import { DialogDuty, DialogRating } from '@dialogs'
 import {
+  BreadCrumbs,
+  BreadCrumbsItem,
   Head,
   HeadButton,
   Table,
@@ -59,6 +61,9 @@ export const Duty = () => {
 
   return (
     <>
+      <BreadCrumbs>
+        <BreadCrumbsItem to="/lk/duty/">Дежурство</BreadCrumbsItem>
+      </BreadCrumbs>
       <Head>
         <Title>Дежурство</Title>
         <HeadButton

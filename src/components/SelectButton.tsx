@@ -12,7 +12,6 @@ export const SelectButton = ({
   className,
   title,
   value,
-  children,
   ...props
 }: SelectButtonProps) => {
   const style: string = twMerge(
@@ -23,7 +22,7 @@ export const SelectButton = ({
 
   return (
     <MenuItem className={style} as="button" type="button" {...props}>
-      {children}
+      {title}
     </MenuItem>
   )
 }

@@ -23,7 +23,7 @@ export const Code = () => {
       <Subtitle>
         На ваш e-mail отправили код подтверждения,{' '}
         <br className="hidden sm:block" />
-        введите его нижу, чтобы изменить пароль
+        введите его ниже, чтобы изменить пароль
       </Subtitle>
       <form
         className="flex flex-col gap-6"
