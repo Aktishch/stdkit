@@ -21,7 +21,7 @@ export const DialogResult = ({
           id={result ? 'success' : 'error'}
         />
         <h2 className="font-medium text-center uppercase mb-7 text-lg/normal">
-          {result ? 'Успешно отправлено!' : 'Произошла ошибка :('}
+          {result ? 'Всё прошло успешло!' : 'Произошла ошибка :('}
         </h2>
         <button
           className="btn btn-primary btn-lg btn-fill"

@@ -21,10 +21,10 @@ export const Sidebar = () => {
           </div>
         </div>
         <nav className="flex flex-col">
-          <ButtonNav id="settings" to="/lk/settings/">
+          <ButtonNav id="settings" to="/lk/settings">
             Настройки
           </ButtonNav>
-          <ButtonNav id="lock" to="/lk/password/">
+          <ButtonNav id="lock" to="/lk/password">
             Изменить пароль
           </ButtonNav>
           <a

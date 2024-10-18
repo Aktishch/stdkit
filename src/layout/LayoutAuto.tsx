@@ -1,10 +1,11 @@
 import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Loaded, Header, Footer } from '@layout'
+import { Header, Footer } from '@layout'
+import { Preloader } from '@components'
 
 export const LayoutAuto = () => {
   return (
-    <Suspense fallback={<Loaded />}>
+    <Suspense fallback={<Preloader />}>
       <Header />
       <Outlet />
       <Footer />

@@ -3,7 +3,6 @@ import { Icon, Title } from '@components'
 import { DialogDuty, DialogRating } from '@dialogs'
 import {
   BreadCrumbs,
-  BreadCrumbsItem,
   Head,
   HeadButton,
   Table,
@@ -58,12 +57,11 @@ export const Duty = () => {
   )
   const [openDialogDuty, setOpenDialogDuty] = useState(false)
   const [openDialogRating, setOpenDialogRating] = useState(false)
+  const routes = [{ path: '/lk/duty', breadcrumb: 'Дежурство' }]
 
   return (
     <>
-      <BreadCrumbs>
-        <BreadCrumbsItem to="/lk/duty/">Дежурство</BreadCrumbsItem>
-      </BreadCrumbs>
+      <BreadCrumbs routes={routes} />
       <Head>
         <Title>Дежурство</Title>
         <HeadButton

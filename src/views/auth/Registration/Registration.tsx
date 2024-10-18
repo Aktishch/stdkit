@@ -225,7 +225,7 @@ export const Registration = () => {
         <span className="mr-2 text-sm font-normal sm:text-base">
           Есть аккаунт?
         </span>
-        <ButtonUnderline to="/login/">Войти</ButtonUnderline>
+        <ButtonUnderline to="/login">Войти</ButtonUnderline>
       </div>
     </>
   )

@@ -5,14 +5,14 @@ import { useToggle } from '@hooks'
 import { Dialog, DialogProps, Icon, ButtonSubmit } from '@components'
 
 export interface DialogRemoveProps extends DialogProps {
-  employee: string
+  data: string
 }
 
 export const DialogRemove = ({
   className,
   open,
   onClose,
-  employee,
+  data,
 }: DialogRemoveProps) => {
   const { register, handleSubmit } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
@@ -34,17 +34,17 @@ export const DialogRemove = ({
           <Icon className="text-6xl text-red" id="trash"></Icon>
         </div>
         <h2 className="mb-2 font-medium text-lg/normal">
-          Вы точно хотите удалить этого сотрудника?
+          Вы точно хотите удалить?
         </h2>
         <p className="mb-6 font-normal text-sm/normal opacity-60">
-          (Вся информация о сотруднике <br /> будет удалена из базы)
+          (Вся информация будет удалена из базы)
         </p>
         <form
           className="grid w-full grid-cols-2 gap-4"
           onSubmit={handleSubmit(submitHandler)}
         >
           <input type="hidden" value="Удаление" {...register('form')} />
-          <input type="hidden" value={employee} {...register('employee')} />
+          <input type="hidden" value={data} {...register('data')} />
           <ButtonSubmit
             className="flex-grow btn btn-red btn-fill btn-lg"
             load={loadingValue}

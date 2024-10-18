@@ -17,13 +17,8 @@ import {
   AvatarUploader,
   ButtonSubmit,
 } from '@components'
-import { DialogDismissal, DialogRemove } from '@dialogs'
-import {
-  BreadCrumbs,
-  BreadCrumbsItem,
-  Head,
-  HeadButton,
-} from '@views/company/components'
+import { DialogDismissal, DialogRecover, DialogRemove } from '@dialogs'
+import { BreadCrumbs, Head, HeadButton } from '@views/company/components'
 
 export const Employee = () => {
   const [image, setImage] = useState<string | File | undefined>(
@@ -31,10 +26,15 @@ export const Employee = () => {
   )
   const [work, setWork] = useState('Front-End')
   const [openDialogDismissal, setOpenDialogDismissal] = useState(false)
+  const [openDialogRecover, setOpenDialogRecover] = useState(false)
   const [openDialogRemove, setOpenDialogRemove] = useState(false)
   const { register, handleSubmit, formState, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const [editingValue, , , editingToggle] = useToggle(true)
+  const routes = [
+    { path: '/lk/staff', breadcrumb: 'Сотрудники' },
+    { path: '/lk/staff/employee', breadcrumb: 'О сотруднике' },
+  ]
 
   const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
@@ -50,10 +50,7 @@ export const Employee = () => {
 
   return (
     <>
-      <BreadCrumbs>
-        <BreadCrumbsItem to="/lk/staff/">Сотрудники</BreadCrumbsItem>
-        <BreadCrumbsItem to="/lk/staff/employee/">О сотруднике</BreadCrumbsItem>
-      </BreadCrumbs>
+      <BreadCrumbs routes={routes} />
       <Head>
         <Title>О сотруднике</Title>
         <HeadButton id="pen" onClick={editingToggle}>
@@ -113,20 +110,36 @@ export const Employee = () => {
                   </li>
                 </ul>
                 {editingValue ? null : (
-                  <div className="grid grid-cols-2 gap-3 mt-4">
-                    <button
-                      className="btn btn-md btn-fade btn-gray"
-                      onClick={() => setOpenDialogDismissal(true)}
-                    >
-                      <Icon className="text-2xl" id="user" />
-                    </button>
-                    <button
-                      className="btn btn-md btn-fade btn-red"
-                      onClick={() => setOpenDialogRemove(true)}
-                    >
-                      <Icon className="text-2xl" id="trash" />
-                    </button>
-                  </div>
+                  <>
+                    <div className="grid grid-cols-2 gap-3 mt-4">
+                      <button
+                        className="btn btn-md btn-fade btn-gray"
+                        onClick={() => setOpenDialogDismissal(true)}
+                      >
+                        <Icon className="text-2xl" id="user" />
+                      </button>
+                      <button
+                        className="btn btn-md btn-fade btn-red"
+                        onClick={() => setOpenDialogRemove(true)}
+                      >
+                        <Icon className="text-2xl" id="trash" />
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 mt-4">
+                      <button
+                        className="btn btn-md btn-fade btn-gray"
+                        onClick={() => setOpenDialogRecover(true)}
+                      >
+                        <Icon className="text-2xl" id="user" />
+                      </button>
+                      <button
+                        className="btn btn-md btn-fade btn-red"
+                        onClick={() => setOpenDialogRemove(true)}
+                      >
+                        <Icon className="text-2xl" id="trash" />
+                      </button>
+                    </div>
+                  </>
                 )}
               </div>
             </div>
@@ -376,10 +389,15 @@ export const Employee = () => {
         onClose={setOpenDialogDismissal}
         employee="Актищев Александр"
       />
+      <DialogRecover
+        open={openDialogRecover}
+        onClose={setOpenDialogRecover}
+        employee="Актищев Александр"
+      />
       <DialogRemove
         open={openDialogRemove}
         onClose={setOpenDialogRemove}
-        employee="Актищев Александр"
+        data="Актищев Александр"
       />
     </>
   )

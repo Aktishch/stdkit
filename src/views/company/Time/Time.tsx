@@ -2,7 +2,6 @@ import { useToggle } from '@hooks'
 import { Title } from '@components'
 import {
   BreadCrumbs,
-  BreadCrumbsItem,
   Head,
   HeadButton,
   Table,
@@ -134,12 +133,11 @@ const data = [
 export const Time = () => {
   const monthLength: number[] = [...Array(31).keys()]
   const [editingValue, , , editingToggle] = useToggle(true)
+  const routes = [{ path: '/lk/time', breadcrumb: 'Рабочее время' }]
 
   return (
     <>
-      <BreadCrumbs>
-        <BreadCrumbsItem to="/lk/time/">Рабочее время</BreadCrumbsItem>
-      </BreadCrumbs>
+      <BreadCrumbs routes={routes} />
       <Head>
         <Title>
           Рабочее время{' '}

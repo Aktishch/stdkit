@@ -14,20 +14,26 @@ export interface InputCalendarProps
   setValue?: UseFormSetValue<DataForm>
 }
 
-const dateFormat = (dates: Dates): string => {
-  return dates !== null &&
-    typeof dates === 'object' &&
-    'toLocaleDateString' in dates
-    ? dates.toLocaleDateString()
-    : ''
-}
-
 const InputCalendarComponent = (
-  { className, date = null, setValue, ...props }: InputCalendarProps,
+  { className, date = null, value, setValue, ...props }: InputCalendarProps,
   ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   const style: string = twMerge('pr-12', className)
   const [dates, setDates] = useState<Dates>(date)
+
+  const dateFormat = (dates: Dates): string => {
+    if (
+      dates !== null &&
+      typeof dates === 'object' &&
+      'toLocaleDateString' in dates
+    ) {
+      return dates.toLocaleDateString()
+    } else if (value !== undefined) {
+      return String(value)
+    } else {
+      return ''
+    }
+  }
 
   useEffect((): void => setValue?.('date', dateFormat(dates)), [dates])
 

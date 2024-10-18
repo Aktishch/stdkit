@@ -1,11 +1,10 @@
 import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Icon } from '@components'
-import { Loaded } from '@layout'
+import { Icon, Preloader } from '@components'
 
 export const LayoutAuth = () => {
   return (
-    <Suspense fallback={<Loaded />}>
+    <Suspense fallback={<Preloader />}>
       <section className="container flex items-center justify-center min-h-screen bg-gradient-to-b from-white dark:from-dark to-primary/50 dark:to-primary">
         <div className="w-full sm:max-w-md card dark:bg-dark">
           <div className="px-4 pb-10 sm:px-8 pt-14 lg:pt-20 card-content">

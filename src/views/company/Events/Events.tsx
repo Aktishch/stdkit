@@ -3,7 +3,6 @@ import { Title } from '@components'
 import { DialogEvent, DialogResult } from '@dialogs'
 import {
   BreadCrumbs,
-  BreadCrumbsItem,
   Head,
   HeadButton,
   Pagination,
@@ -12,14 +11,14 @@ import { News } from '@views/company/Events/components'
 
 const data = [
   {
-    to: '/',
+    to: '',
     src: '/img/pictures/user.jpg',
     date: '29.08.2023',
     title: 'Наименование',
     text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, in! Itaque asperiores quia aliquid nostrum cupiditate minus voluptate nisi, nemo accusantium ratione numquam nulla voluptates praesentium, mollitia nobis at ea.',
   },
   {
-    to: '/',
+    to: '',
     src: undefined,
     date: '29.08.2023',
     title: 'Наименование',
@@ -30,12 +29,11 @@ const data = [
 export const Events = () => {
   const [openDialogEvent, setOpenDialogEvent] = useState(false)
   const [openDialogResult, setOpenDialogResult] = useState(false)
+  const routes = [{ path: '/lk/events', breadcrumb: 'Мероприятия' }]
 
   return (
     <>
-      <BreadCrumbs>
-        <BreadCrumbsItem to="/lk/events/">Мероприятия</BreadCrumbsItem>
-      </BreadCrumbs>
+      <BreadCrumbs routes={routes} />
       <Head>
         <Title>Мероприятия</Title>
         <HeadButton id="medal" onClick={() => setOpenDialogEvent(true)}>

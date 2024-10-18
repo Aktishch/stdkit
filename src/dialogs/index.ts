@@ -1,6 +1,7 @@
 export * from './DialogStaff'
 export * from './DialogDismissal'
 export * from './DialogRemove'
+export * from './DialogRecover'
 export * from './DialogRating'
 export * from './DialogDuty'
 export * from './DialogResult'

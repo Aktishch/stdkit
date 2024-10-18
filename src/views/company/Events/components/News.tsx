@@ -22,7 +22,7 @@ export const News = ({ className, item }: NewsProps) => {
       <Link
         className="pack pack-md bg-grey dark:bg-black"
         draggable={false}
-        to={`/company/news${to}`}
+        to={`/lk/events/news${to}`}
       >
         <Loader />
         {src === undefined || src === '' ? (
@@ -33,14 +33,14 @@ export const News = ({ className, item }: NewsProps) => {
           <Image className="image" src={src} />
         )}
       </Link>
-      <div className="px-4 py-4 sm:py-6 card-content">
+      <div className="px-2 py-4 sm:px-4 sm:py-6 card-content">
         <span className="mb-2 text-xs/none sm:text-sm/none opacity-70">
           {date}
         </span>
-        <h3 className="mb-1 text-base font-medium sm:mb-3 sm:text-lg">
+        <h3 className="mb-1 text-sm font-medium sm:text-base sm:mb-3 lg:text-lg">
           {title}
         </h3>
-        <p className="mb-4 font-normal sm:mb-6 text-sm/normal sm:text-base/normal line-clamp-3">
+        <p className="mb-4 font-normal sm:mb-6 text-xs/normal sm:text-sm/normal lg:text-base/normal line-clamp-3">
           {text}
         </p>
         <Link

@@ -15,6 +15,13 @@ import {
 } from '@components'
 
 export interface DialogEventProps extends DialogProps {
+  item?: {
+    src?: string | undefined
+    date: string
+    title: string
+    text: string
+    url?: string
+  }
   openResult?: () => void
 }
 
@@ -22,9 +29,10 @@ export const DialogEvent = ({
   className,
   open,
   onClose,
+  item,
   openResult,
 }: DialogEventProps) => {
-  const [image, setImage] = useState<string | File | undefined>()
+  const [image, setImage] = useState<string | File | undefined>(item?.src)
   const { register, handleSubmit, formState, setValue, reset } =
     useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
@@ -46,7 +54,9 @@ export const DialogEvent = ({
   return (
     <Dialog className={style} open={open} onClose={onClose}>
       <div className="px-4 py-6 bg-grey dark:bg-black/40">
-        <Title className="text-center">Создать мероприятие</Title>
+        <Title className="text-center">
+          {item ? 'Редактировать мероприятие' : 'Создать мероприятие'}
+        </Title>
       </div>
       <div className="px-4 pt-6 pb-10 sm:px-8 card-content">
         <form
@@ -55,7 +65,7 @@ export const DialogEvent = ({
         >
           <input
             type="hidden"
-            value="Создать мероприятие"
+            value={item ? 'Редактировать мероприятие' : 'Создать мероприятие'}
             {...register('form')}
           />
           <AvatarUploader
@@ -69,6 +79,7 @@ export const DialogEvent = ({
               <InputCalendar
                 className={`input input-calendar input-primary input-lg dark:input-fade ${formState.errors.date?.message ? 'input-error' : ''}`}
                 setValue={setValue}
+                value={item?.date}
                 {...register('date', {
                   required: 'Укажите дату',
                 })}
@@ -84,6 +95,7 @@ export const DialogEvent = ({
               <input
                 className={`input input-primary input-lg dark:input-fade ${formState.errors.title?.message ? 'input-error' : ''}`}
                 type="text"
+                defaultValue={item?.title}
                 placeholder="Название мероприятия"
                 {...register('title', { required: 'Введите название' })}
               />
@@ -97,6 +109,7 @@ export const DialogEvent = ({
             <div className="relative">
               <textarea
                 className={`input input-primary input-lg dark:input-fade h-40 ${formState.errors.title?.message ? 'input-error' : ''}`}
+                defaultValue={item?.text}
                 placeholder="Краткое описание мероприятия"
                 {...register('text', {
                   required: 'Введите описание',
@@ -111,11 +124,32 @@ export const DialogEvent = ({
               ) : null}
             </div>
           </label>
+          <label>
+            <LabelName>Ссылка (необязательно)</LabelName>
+            <div className="relative">
+              <input
+                className={`input input-primary input-lg dark:input-fade ${formState.errors.url?.message ? 'input-error' : ''}`}
+                type="text"
+                defaultValue={item?.url}
+                placeholder="https://example.com"
+                {...register('url', {
+                  pattern: {
+                    value:
+                      /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
+                    message: 'Некорректный url',
+                  },
+                })}
+              />
+              {formState.errors.url?.message ? (
+                <Error>{String(formState.errors.url?.message)}</Error>
+              ) : null}
+            </div>
+          </label>
           <ButtonSubmit
             className="btn btn-primary btn-lg btn-fill"
             load={loadingValue}
           >
-            Создать
+            {item ? 'Редактировать' : 'Создать'}
           </ButtonSubmit>
         </form>
       </div>
