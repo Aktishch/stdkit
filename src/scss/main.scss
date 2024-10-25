@@ -1,21 +1,15 @@
+@use "./ui-kit/fonts";
+@use "./ui-kit/basic";
+@use "./ui-kit/custom";
+@use "./ui-kit/container";
+@use "./ui-kit/card";
+@use "./ui-kit/load";
+@use "./ui-kit/image";
+@use "./ui-kit/icon";
+@use "./ui-kit/switch";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  @import "./ui-kit/fonts";
-  @import "./ui-kit/basic";
-  @import "./ui-kit/custom";
-}
-
-@layer components {
-  @import "./ui-kit/container";
-  @import "./ui-kit/icon";
-  @import "./ui-kit/load";
-  @import "./ui-kit/image";
-  @import "./ui-kit/card";
-  @import "./ui-kit/switch";
-}
 
 .color {
   &-default {

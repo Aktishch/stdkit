@@ -6,114 +6,116 @@
   color.channel($hex, "blue");
 }
 
-:root {
-  --tw-font-base: "Inter", Helvetica, sans-serif;
+@layer base {
+  :root {
+    --tw-font-base: "Inter", Helvetica, sans-serif;
 
-  @each $key,
-  $value in ("primary": #7352CF,
-    "black": #1F1F1F,
-    "white": #FFF,
-    "gray": #CDCDCD,
-    "grey": #EDEFF1,
-    "red": #ED2F4B,
-    "green": #D8EDD7,
-    "dark": #26283B) {
-    --color-#{$key}: #{rgb($value)};
+    @each $key,
+    $value in ("primary": #7352CF,
+      "black": #1F1F1F,
+      "white": #FFF,
+      "gray": #CDCDCD,
+      "grey": #EDEFF1,
+      "red": #ED2F4B,
+      "green": #D8EDD7,
+      "dark": #26283B) {
+      --color-#{$key}: #{rgb($value)};
+    }
+
+    @each $key,
+    $value in ("default": #7352CF,
+      "purple": #af1a4c,
+      "yellow": #d7a751,
+      "blue": #1289A7,
+      "orange": #d35400) {
+      --primary-#{$key}: #{rgb($value)};
+    }
   }
 
-  @each $key,
-  $value in ("default": #7352CF,
-    "purple": #af1a4c,
-    "yellow": #d7a751,
-    "blue": #1289A7,
-    "orange": #d35400) {
-    --primary-#{$key}: #{rgb($value)};
+  * {
+    -webkit-tap-highlight-color: transparent;
+
+    @apply m-0 p-0;
+
+    scrollbar: {
+      width: thin;
+      color: theme("colors.gray.DEFAULT") theme("colors.primary.DEFAULT");
+    }
   }
-}
 
-* {
-  -webkit-tap-highlight-color: transparent;
-
-  @apply m-0 p-0;
-
-  scrollbar: {
-    width: thin;
-    color: theme("colors.gray.DEFAULT") theme("colors.primary.DEFAULT");
+  html {
+    font-size: 16px !important;
   }
-}
 
-html {
-  font-size: 16px !important;
-}
-
-body {
-  @apply bg-white font-base text-black;
-}
-
-main {
-  @apply flex flex-col min-h-screen;
-}
-
-::selection {
-  @apply text-white bg-primary;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  &:empty {
-    @apply hidden;
+  body {
+    @apply bg-white font-base text-black;
   }
-}
 
-ul {
-  @apply list-none list-outside;
-}
-
-ol {
-  @apply list-decimal list-inside;
-}
-
-picture {
-  @apply static;
-}
-
-img {
-  @apply select-none;
-
-  &:is([src=""], [src="/"]) {
-    @apply hidden;
+  main {
+    @apply flex flex-col min-h-screen;
   }
-}
 
-address {
-  @apply not-italic;
-}
+  ::selection {
+    @apply text-white bg-primary;
+  }
 
-q {
-  quotes: "\201c""\201E";
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    &:empty {
+      @apply hidden;
+    }
+  }
 
-label {
-  @apply block;
-}
+  ul {
+    @apply list-none list-outside;
+  }
 
-a,
-button,
-input,
-textarea,
-select {
-  @apply outline-0;
-}
+  ol {
+    @apply list-decimal list-inside;
+  }
 
-textarea {
-  @apply overflow-auto resize-none;
-}
+  picture {
+    @apply static;
+  }
 
-select {
-  @apply appearance-none;
+  img {
+    @apply select-none;
+
+    &:is([src=""], [src="/"]) {
+      @apply hidden;
+    }
+  }
+
+  address {
+    @apply not-italic;
+  }
+
+  q {
+    quotes: "\201c""\201E";
+  }
+
+  label {
+    @apply block;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    @apply outline-0;
+  }
+
+  textarea {
+    @apply overflow-auto resize-none;
+  }
+
+  select {
+    @apply appearance-none;
+  }
 }

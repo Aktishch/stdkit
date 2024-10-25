@@ -1,78 +1,80 @@
-.loader {
-  @apply flex items-center justify-center absolute inset-0 pointer-events-none text-primary;
-
-  &-progress {
-    animation: progress 1800ms linear infinite;
-
-    @apply text-4xl;
-  }
-
-  &-icon {
-    animation: loader 1500ms ease-in-out infinite;
-  }
-}
-
-.preloader {
-  @apply flex items-center justify-center flex-wrap gap-1 text-primary w-16;
-
-  &-square {
-    animation: preloader 1000ms ease infinite;
-
-    &:nth-child(2) {
-      animation-delay: 250ms;
-    }
-
-    &:nth-child(3) {
-      animation-delay: 750ms;
-    }
-
-    &:nth-child(4) {
-      animation-delay: 500ms;
-    }
-
-    @apply bg-current opacity-40 size-7;
-  }
-}
-
-@keyframes progress {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes loader {
-  0% {
-    stroke: {
-      dasharray : 1px, 200px;
-      dashoffset: 0;
+@layer components {
+  @keyframes progress {
+    to {
+      transform: rotate(360deg);
     }
   }
 
-  50% {
-    stroke: {
-      dasharray : 100px, 200px;
-      dashoffset: -15px;
+  @keyframes loader {
+    0% {
+      stroke: {
+        dasharray : 1px, 200px;
+        dashoffset: 0;
+      }
+    }
+
+    50% {
+      stroke: {
+        dasharray : 100px, 200px;
+        dashoffset: -15px;
+      }
+    }
+
+    100% {
+      stroke: {
+        dasharray : 100px, 200px;
+        dashoffset: -125px;
+      }
     }
   }
 
-  100% {
-    stroke: {
-      dasharray : 100px, 200px;
-      dashoffset: -125px;
+  @keyframes preloader {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    25%,
+    50%,
+    75% {
+      opacity: 0.4;
     }
   }
-}
 
-@keyframes preloader {
+  .loader {
+    @apply flex items-center justify-center absolute inset-0 pointer-events-none text-primary;
 
-  0%,
-  100% {
-    opacity: 1;
+    &-progress {
+      animation: progress 1800ms linear infinite;
+
+      @apply text-4xl;
+    }
+
+    &-icon {
+      animation: loader 1500ms ease-in-out infinite;
+    }
   }
 
-  25%,
-  50%,
-  75% {
-    opacity: 0.4;
+  .preloader {
+    @apply flex items-center justify-center flex-wrap gap-1 text-primary w-16;
+
+    &-square {
+      animation: preloader 1000ms ease infinite;
+
+      &:nth-child(2) {
+        animation-delay: 250ms;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 750ms;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 500ms;
+      }
+
+      @apply bg-current opacity-40 size-7;
+    }
   }
 }

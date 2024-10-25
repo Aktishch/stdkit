@@ -1,9 +1,19 @@
-.calendar {
-  .react-calendar {
-    &__navigation {
-      @media (hover) {
-        & button:hover {
-          @apply bg-grey duration-200;
+@layer base {
+  .calendar {
+    .react-calendar {
+      &__navigation {
+        @media (hover) {
+          & button:hover {
+            @apply bg-grey duration-200;
+
+            .dark & {
+              @apply bg-black/50;
+            }
+          }
+        }
+
+        & button:focus {
+          @apply bg-grey;
 
           .dark & {
             @apply bg-black/50;
@@ -11,55 +21,47 @@
         }
       }
 
-      & button:focus {
-        @apply bg-grey;
+      &__tile {
+        @apply rounded-md;
 
-        .dark & {
-          @apply bg-black/50;
+        @media (hover) {
+          &:hover {
+            @apply bg-grey duration-200;
+
+            .dark & {
+              @apply bg-black/50;
+            }
+          }
         }
-      }
-    }
 
-    &__tile {
-      @apply rounded-md;
-
-      @media (hover) {
-        &:hover {
-          @apply bg-grey duration-200;
+        &--now {
+          @apply bg-gray;
 
           .dark & {
-            @apply bg-black/50;
+            @apply bg-black/80;
+          }
+        }
+
+        &--active {
+          &:focus {
+            @apply bg-primary;
+          }
+
+          @apply bg-primary pointer-events-none;
+        }
+
+        &--hasActive {
+          @apply bg-grey;
+
+          .dark & {
+            @apply bg-black/60;
           }
         }
       }
 
-      &--now {
-        @apply bg-gray;
-
-        .dark & {
-          @apply bg-black/80;
-        }
+      &__month-view__days__day--weekend {
+        @apply text-red;
       }
-
-      &--active {
-        &:focus {
-          @apply bg-primary;
-        }
-
-        @apply bg-primary pointer-events-none;
-      }
-
-      &--hasActive {
-        @apply bg-grey;
-
-        .dark & {
-          @apply bg-black/60;
-        }
-      }
-    }
-
-    &__month-view__days__day--weekend {
-      @apply text-red;
     }
   }
 }

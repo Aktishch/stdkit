@@ -1,12 +1,14 @@
-.image {
-  @apply absolute inset-0 max-w-none size-full object-cover;
+@layer components {
+  .image {
+    @apply absolute inset-0 max-w-none size-full object-cover;
 
-  &-rise {
-    transition: transform 300ms linear;
+    &-rise {
+      transition: transform 300ms linear;
 
-    @media(hover) {
-      &:hover {
-        @apply scale-110;
+      @media(hover) {
+        &:hover {
+          @apply scale-110;
+        }
       }
     }
   }
