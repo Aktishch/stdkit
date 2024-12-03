@@ -6,7 +6,7 @@ import {
   MenuItems,
   MenuItem,
   Icon,
-  Avatar,
+  Preview,
 } from '@components'
 import { ButtonNav, ButtonColor } from '@layout/Header/components'
 
@@ -43,7 +43,10 @@ export const Header = () => {
                 className={`text-sm mr-2 opacity-60 ease-linear transition-transform hidden sm:block ${active ? '-rotate-90' : ''}`}
                 id="arrow-left"
               />
-              <Avatar className="text-xl size-7" src="/img/pictures/user.jpg" />
+              <Preview
+                className="text-xl size-7"
+                src="/img/pictures/user.jpg"
+              />
             </>
           )}
         </MenuButton>

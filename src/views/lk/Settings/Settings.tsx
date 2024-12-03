@@ -10,7 +10,7 @@ import {
   InputTel,
   Select,
   SelectButton,
-  AvatarUploader,
+  ImageUploader,
   ButtonSubmit,
 } from '@components'
 import { DialogResult } from '@dialogs'
@@ -43,7 +43,7 @@ export const Settings = () => {
         onSubmit={handleSubmit(submitHandler)}
       >
         <input type="hidden" value="Настройки" {...register('form')} />
-        <AvatarUploader
+        <ImageUploader
           value={image}
           onChange={setImage}
           onClick={(): void => setImage(undefined)}

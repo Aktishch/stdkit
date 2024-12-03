@@ -1,4 +1,4 @@
-import { Icon, Avatar } from '@components'
+import { Icon, Preview } from '@components'
 import { ButtonNav } from '@layout/Sidebar/components'
 
 export const Sidebar = () => {
@@ -6,7 +6,7 @@ export const Sidebar = () => {
     <div className="w-full xs:max-w-64">
       <div className="md:sticky md:top-28 md:left-0 md:right-0">
         <div className="flex items-center mb-4 sm:mb-6">
-          <Avatar
+          <Preview
             className="mr-4 text-2xl size-10"
             src="/img/pictures/user.jpg"
             load={true}

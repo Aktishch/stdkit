@@ -5,7 +5,7 @@ import { useToggle } from '@hooks'
 import {
   Icon,
   Title,
-  Avatar,
+  Preview,
   LabelName,
   Error,
   InputPassword,
@@ -14,7 +14,7 @@ import {
   InputCalendar,
   Select,
   SelectButton,
-  AvatarUploader,
+  ImageUploader,
   ButtonSubmit,
 } from '@components'
 import { DialogDismissal, DialogRecover, DialogRemove } from '@dialogs'
@@ -63,7 +63,7 @@ export const Employee = () => {
             <div className="px-4 py-6 card dark:bg-dark">
               <div className="card-content">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <Avatar
+                  <Preview
                     className="mr-4 text-2xl size-10"
                     src="/img/pictures/user.jpg"
                     load={true}
@@ -158,7 +158,7 @@ export const Employee = () => {
                 value="Редактировать"
                 {...register('form')}
               />
-              <AvatarUploader
+              <ImageUploader
                 value={image}
                 onChange={setImage}
                 onClick={(): void => setImage(undefined)}

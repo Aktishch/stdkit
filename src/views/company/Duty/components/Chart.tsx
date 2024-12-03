@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils'
-import { Icon, Avatar } from '@components'
+import { Icon, Preview } from '@components'
 import { TableRow, TableCol } from '@views/company/components'
 
 export interface ChartProps extends Props {
@@ -30,7 +30,7 @@ export const Chart = ({ className, item, onClick }: ChartProps) => {
       <TableRow
         className={`duration-200 group-hover:bg-grey/50 ${active ? 'bg-grey/50 print:bg-transparent' : ''}`}
       >
-        <Avatar
+        <Preview
           className="text-base lg:text-2xl size-7 lg:size-10"
           src={src}
           load={true}

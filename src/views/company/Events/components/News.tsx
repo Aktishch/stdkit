@@ -26,11 +26,11 @@ export const News = ({ className, item }: NewsProps) => {
       >
         <Loader />
         {src === undefined || src === '' ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-primary">
+          <div className="absolute inset-0 flex items-center justify-center duration-300 ease-linear bg-primary hover:scale-110">
             <Icon className="w-20 text-white h-7 sm:h-8 sm:w-28" id="logo" />
           </div>
         ) : (
-          <Image className="image" src={src} />
+          <Image className="image image-rise" src={src} />
         )}
       </Link>
       <div className="px-2 py-4 sm:px-4 sm:py-6 card-content">

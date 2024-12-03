@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Props, getImagePreview } from '@utils'
-import { Icon, Error, Avatar } from '@components'
+import { Props, uploadFile } from '@utils'
+import { Icon, Error, Preview } from '@components'
 
-export interface AvatarUploaderProps extends Props {
+export interface ImageUploaderProps extends Props {
+  id?: string
   value?: string | File
   onChange?: (file: File) => void
   onClick?: () => void
 }
 
-export const AvatarUploader = ({
+export const ImageUploader = ({
   className,
+  id = 'user',
   value,
   onChange,
   onClick,
-}: AvatarUploaderProps) => {
+}: ImageUploaderProps) => {
   const [src, setSrc] = useState<string | undefined>()
   const [error, setError] = useState<string | undefined>()
   const style: string = twMerge(
@@ -31,7 +33,7 @@ export const AvatarUploader = ({
       return
     }
 
-    getImagePreview(value).then((dataurl: string): void => setSrc(dataurl))
+    uploadFile(value).then(({ url }): void => setSrc(url))
   }, [value])
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +56,7 @@ export const AvatarUploader = ({
 
   return (
     <div className={style}>
-      <Avatar className="size-[52px] text-4xl" src={src} />
+      <Preview src={src} id={id} />
       <div className="relative w-full max-w-36">
         <label
           className={`text-black dark:text-white text-base btn btn-gray btn-contur btn-lg ${value ? 'pointer-events-none opacity-50' : ''}`}

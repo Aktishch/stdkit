@@ -10,7 +10,7 @@ import {
   LabelName,
   Error,
   InputCalendar,
-  AvatarUploader,
+  ImageUploader,
   ButtonSubmit,
 } from '@components'
 
@@ -68,7 +68,8 @@ export const DialogEvent = ({
             value={item ? 'Редактировать мероприятие' : 'Создать мероприятие'}
             {...register('form')}
           />
-          <AvatarUploader
+          <ImageUploader
+            id="medal"
             value={image}
             onChange={setImage}
             onClick={(): void => setImage(undefined)}

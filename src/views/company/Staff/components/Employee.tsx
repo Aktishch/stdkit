@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils'
-import { Avatar } from '@components'
+import { Preview } from '@components'
 import { TableRow, TableCol } from '@views/company/components'
 
 export interface EmployeeProps extends Props {
@@ -22,7 +22,7 @@ export const Employee = ({ className, item }: EmployeeProps) => {
   return (
     <Link className={style} draggable={false} to={`/lk/staff/employee${to}`}>
       <TableRow className="duration-200 group-hover:bg-grey/50">
-        <Avatar
+        <Preview
           className="text-base lg:text-2xl size-7 lg:size-10"
           src={src}
           load={true}
