@@ -1,33 +1,17 @@
+import { ButtonSubmit, Dialog, DialogProps, Error, Icon, InputCalendar, LabelName } from '@components'
+import { useToggle } from '@hooks'
+import { DataForm } from '@utils'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
-import { DataForm } from '@utils'
-import { useToggle } from '@hooks'
-import {
-  Dialog,
-  DialogProps,
-  Icon,
-  LabelName,
-  Error,
-  InputCalendar,
-  ButtonSubmit,
-} from '@components'
 
 export interface DialogDismissalProps extends DialogProps {
   employee: string
 }
 
-export const DialogDismissal = ({
-  className,
-  open,
-  onClose,
-  employee,
-}: DialogDismissalProps) => {
+export const DialogDismissal = ({ className, open, onClose, employee }: DialogDismissalProps) => {
   const { register, handleSubmit, formState, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
-  const style: string = twMerge(
-    'max-w-96 card dark:bg-dark overflow-visible',
-    className
-  )
+  const style: string = twMerge('max-w-96 card dark:bg-dark overflow-visible', className)
 
   const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
     loadingOn()
@@ -44,16 +28,11 @@ export const DialogDismissal = ({
         <div className="flex items-center justify-center mb-6 size-28 bg-grey dark:bg-black/40 rounded-xl">
           <Icon className="text-6xl text-gray" id="user"></Icon>
         </div>
-        <h2 className="mb-2 font-medium text-center text-lg/normal">
-          Вы точно хотите уволить этого сотрудника?
-        </h2>
+        <h2 className="mb-2 font-medium text-center text-lg/normal">Вы точно хотите уволить этого сотрудника?</h2>
         <p className="mb-6 font-normal text-center text-sm/normal opacity-60">
           (Вся информация о сотруднике <br /> останется в базе данных)
         </p>
-        <form
-          className="flex flex-col w-full gap-6"
-          onSubmit={handleSubmit(submitHandler)}
-        >
+        <form className="flex flex-col w-full gap-6" onSubmit={handleSubmit(submitHandler)}>
           <input type="hidden" value="Увольнение" {...register('form')} />
           <input type="hidden" value={employee} {...register('employee')} />
           <div>
@@ -66,23 +45,14 @@ export const DialogDismissal = ({
                   required: 'Укажите дату',
                 })}
               />
-              {formState.errors.date?.message ? (
-                <Error>{String(formState.errors.date?.message)}</Error>
-              ) : null}
+              {formState.errors.date?.message ? <Error>{String(formState.errors.date?.message)}</Error> : null}
             </div>
           </div>
           <div className="grid w-full grid-cols-2 gap-4">
-            <ButtonSubmit
-              className="flex-grow btn btn-red btn-fill btn-lg"
-              load={loadingValue}
-            >
+            <ButtonSubmit className="grow btn btn-red btn-fill btn-lg" load={loadingValue}>
               Уволить
             </ButtonSubmit>
-            <button
-              className="flex-grow btn btn-primary btn-fade btn-lg"
-              type="button"
-              onClick={(): void => onClose(false)}
-            >
+            <button className="grow btn btn-primary btn-fade btn-lg" type="button" onClick={(): void => onClose(false)}>
               Отмена
             </button>
           </div>

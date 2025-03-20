@@ -1,14 +1,6 @@
-import { useToggle } from '@hooks'
 import { Title } from '@components'
-import {
-  BreadCrumbs,
-  Head,
-  HeadButton,
-  Table,
-  TableHead,
-  TableCol,
-  Pagination,
-} from '@views/company/components'
+import { useToggle } from '@hooks'
+import { BreadCrumbs, Head, HeadButton, Pagination, Table, TableCol, TableHead } from '@views/company/components'
 import { Month } from '@views/company/Time/components'
 
 const data = [
@@ -140,8 +132,7 @@ export const Time = () => {
       <BreadCrumbs routes={routes} />
       <Head>
         <Title>
-          Рабочее время{' '}
-          <span className="text-base font-normal opacity-60">(в часах)</span>
+          Рабочее время <span className="text-base font-normal opacity-60">(в часах)</span>
         </Title>
         <HeadButton id="hourglass" onClick={editingToggle}>
           {editingValue ? 'Заполнить' : 'Отмена'}
@@ -151,9 +142,7 @@ export const Time = () => {
         <div>
           <div className="flex items-center justify-between gap-5 mb-6">
             <Title>Сверхурочные</Title>
-            <span className="text-base font-medium sm:text-lg opacity-60">
-              Сентябрь
-            </span>
+            <span className="text-base font-medium sm:text-lg opacity-60">Сентябрь</span>
           </div>
           <Table minWidth="min-w-[1230px]">
             <TableHead className="px-4">
@@ -183,9 +172,7 @@ export const Time = () => {
         <div>
           <div className="flex items-center justify-between gap-5 mb-6">
             <Title>Пропуски</Title>
-            <span className="text-base font-medium sm:text-lg opacity-60">
-              Сентябрь
-            </span>
+            <span className="text-base font-medium sm:text-lg opacity-60">Сентябрь</span>
           </div>
           <Table minWidth="min-w-[1230px]">
             <TableHead className="px-4">

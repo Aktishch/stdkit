@@ -1,15 +1,9 @@
-import { useState, useEffect } from 'react'
+import { ButtonRating, ButtonSubmit, Dialog, DialogProps, Icon } from '@components'
+import { useToggle } from '@hooks'
+import { DataForm } from '@utils'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
-import { DataForm } from '@utils'
-import { useToggle } from '@hooks'
-import {
-  Dialog,
-  DialogProps,
-  Icon,
-  ButtonSubmit,
-  ButtonRating,
-} from '@components'
 
 export interface DialogRatingProps extends DialogProps {
   item: {
@@ -18,12 +12,7 @@ export interface DialogRatingProps extends DialogProps {
   }
 }
 
-export const DialogRating = ({
-  className,
-  open,
-  onClose,
-  item,
-}: DialogRatingProps) => {
+export const DialogRating = ({ className, open, onClose, item }: DialogRatingProps) => {
   const [rating, setRating] = useState(0)
   const { register, handleSubmit, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
@@ -52,53 +41,23 @@ export const DialogRating = ({
         <h2 className="mb-6 font-medium text-center text-lg/normal">
           Оцените работу сотрудника <br /> за данный период
         </h2>
-        <form
-          className="flex flex-col w-full gap-6"
-          onSubmit={handleSubmit(submitHandler)}
-        >
+        <form className="flex flex-col w-full gap-6" onSubmit={handleSubmit(submitHandler)}>
           <input type="hidden" value="Рейтинг" {...register('form')} />
           <input type="hidden" value={name} {...register('name')} />
           <input type="hidden" value={period} {...register('period')} />
           <input type="hidden" value={rating} {...register('rating')} />
           <div className="flex flex-row-reverse items-center justify-center gap-4">
-            <ButtonRating
-              value={5}
-              rating={rating}
-              onClick={(): void => setRating(5)}
-            />
-            <ButtonRating
-              value={4}
-              rating={rating}
-              onClick={(): void => setRating(4)}
-            />
-            <ButtonRating
-              value={3}
-              rating={rating}
-              onClick={(): void => setRating(3)}
-            />
-            <ButtonRating
-              value={2}
-              rating={rating}
-              onClick={(): void => setRating(2)}
-            />
-            <ButtonRating
-              value={1}
-              rating={rating}
-              onClick={(): void => setRating(1)}
-            />
+            <ButtonRating value={5} rating={rating} onClick={(): void => setRating(5)} />
+            <ButtonRating value={4} rating={rating} onClick={(): void => setRating(4)} />
+            <ButtonRating value={3} rating={rating} onClick={(): void => setRating(3)} />
+            <ButtonRating value={2} rating={rating} onClick={(): void => setRating(2)} />
+            <ButtonRating value={1} rating={rating} onClick={(): void => setRating(1)} />
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <ButtonSubmit
-              className="flex-grow btn btn-primary btn-fill btn-lg"
-              load={loadingValue}
-            >
+            <ButtonSubmit className="grow btn btn-primary btn-fill btn-lg" load={loadingValue}>
               Сохранить
             </ButtonSubmit>
-            <button
-              className="flex-grow btn btn-primary btn-fade btn-lg"
-              type="button"
-              onClick={(): void => onClose(false)}
-            >
+            <button className="grow btn btn-primary btn-fade btn-lg" type="button" onClick={(): void => onClose(false)}>
               Отмена
             </button>
           </div>

@@ -1,29 +1,27 @@
-import { useState, useEffect } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { DataForm } from '@utils'
-import { useToggle } from '@hooks'
 import {
-  Icon,
-  Title,
-  Preview,
-  LabelName,
+  ButtonSubmit,
   Error,
-  InputPassword,
-  InputText,
-  InputTel,
+  Icon,
+  ImageUploader,
   InputCalendar,
+  InputPassword,
+  InputTel,
+  InputText,
+  LabelName,
+  Preview,
   Select,
   SelectButton,
-  ImageUploader,
-  ButtonSubmit,
+  Title,
 } from '@components'
 import { DialogDismissal, DialogRecover, DialogRemove } from '@dialogs'
+import { useToggle } from '@hooks'
+import { DataForm } from '@utils'
 import { BreadCrumbs, Head, HeadButton } from '@views/company/components'
+import { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const Employee = () => {
-  const [image, setImage] = useState<string | File | undefined>(
-    '/img/pictures/user.jpg'
-  )
+  const [image, setImage] = useState<string | File | undefined>('/img/pictures/user.jpg')
   const [work, setWork] = useState('Front-End')
   const [openDialogDismissal, setOpenDialogDismissal] = useState(false)
   const [openDialogRecover, setOpenDialogRecover] = useState(false)
@@ -63,79 +61,44 @@ export const Employee = () => {
             <div className="px-4 py-6 card dark:bg-dark">
               <div className="card-content">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <Preview
-                    className="mr-4 text-2xl size-10"
-                    src="/img/pictures/user.jpg"
-                    load={true}
-                  />
+                  <Preview className="mr-4 text-2xl size-10" src="/img/pictures/user.jpg" load={true} />
                   <div className="flex flex-col overflow-hidden">
-                    <span className="font-normal truncate text-base/none">
-                      Актищев Александр
-                    </span>
-                    <span className="mt-2 font-normal opacity-50 text-sm/none">
-                      Front-end
-                    </span>
+                    <span className="font-normal truncate text-base/none">Актищев Александр</span>
+                    <span className="mt-2 font-normal opacity-50 text-sm/none">Front-end</span>
                   </div>
                 </div>
                 <ul className="flex flex-col gap-4">
                   <li className="flex items-center justify-between gap-4">
-                    <Icon
-                      className="text-xl text-primary color-yellow"
-                      id="star"
-                    />
-                    <span className="mr-auto font-normal opacity-60 text-sm/none">
-                      рейтинг дежурства:
-                    </span>
+                    <Icon className="text-xl text-primary color-yellow" id="star" />
+                    <span className="mr-auto font-normal opacity-60 text-sm/none">рейтинг дежурства:</span>
                     <b className="text-base/none min-w-max">4.5</b>
                   </li>
                   <li className="flex items-center justify-between gap-4">
-                    <Icon
-                      className="text-xl text-primary color-blue"
-                      id="hourglass"
-                    />
-                    <span className="mr-auto font-normal opacity-60 text-sm/none">
-                      сверхурочные:
-                    </span>
+                    <Icon className="text-xl text-primary color-blue" id="hourglass" />
+                    <span className="mr-auto font-normal opacity-60 text-sm/none">сверхурочные:</span>
                     <b className="text-base/none min-w-max">8</b>
                   </li>
                   <li className="flex items-center justify-between gap-4">
-                    <Icon
-                      className="text-xl text-primary color-purple"
-                      id="hourglass"
-                    />
-                    <span className="mr-auto font-normal opacity-60 text-sm/none">
-                      пропуски:
-                    </span>
+                    <Icon className="text-xl text-primary color-purple" id="hourglass" />
+                    <span className="mr-auto font-normal opacity-60 text-sm/none">пропуски:</span>
                     <b className="text-base/none min-w-max">2</b>
                   </li>
                 </ul>
                 {editingValue ? null : (
                   <>
                     <div className="grid grid-cols-2 gap-3 mt-4">
-                      <button
-                        className="btn btn-md btn-fade btn-gray"
-                        onClick={() => setOpenDialogDismissal(true)}
-                      >
+                      <button className="btn btn-md btn-fade btn-gray" onClick={() => setOpenDialogDismissal(true)}>
                         <Icon className="text-2xl" id="user" />
                       </button>
-                      <button
-                        className="btn btn-md btn-fade btn-red"
-                        onClick={() => setOpenDialogRemove(true)}
-                      >
+                      <button className="btn btn-md btn-fade btn-red" onClick={() => setOpenDialogRemove(true)}>
                         <Icon className="text-2xl" id="trash" />
                       </button>
                     </div>
                     <div className="grid grid-cols-2 gap-3 mt-4">
-                      <button
-                        className="btn btn-md btn-fade btn-gray"
-                        onClick={() => setOpenDialogRecover(true)}
-                      >
+                      <button className="btn btn-md btn-fade btn-gray" onClick={() => setOpenDialogRecover(true)}>
                         <Icon className="text-2xl" id="user" />
                       </button>
-                      <button
-                        className="btn btn-md btn-fade btn-red"
-                        onClick={() => setOpenDialogRemove(true)}
-                      >
+                      <button className="btn btn-md btn-fade btn-red" onClick={() => setOpenDialogRemove(true)}>
                         <Icon className="text-2xl" id="trash" />
                       </button>
                     </div>
@@ -146,23 +109,10 @@ export const Employee = () => {
           </div>
         </div>
         <div className="w-full lg:max-w-md ">
-          <div
-            className={`flex flex-col gap-6 ${editingValue ? 'pointer-events-none' : ''}`}
-          >
-            <form
-              className="flex flex-col w-full gap-6"
-              onSubmit={handleSubmit(submitHandler)}
-            >
-              <input
-                type="hidden"
-                value="Редактировать"
-                {...register('form')}
-              />
-              <ImageUploader
-                value={image}
-                onChange={setImage}
-                onClick={(): void => setImage(undefined)}
-              />
+          <div className={`flex flex-col gap-6 ${editingValue ? 'pointer-events-none' : ''}`}>
+            <form className="flex flex-col w-full gap-6" onSubmit={handleSubmit(submitHandler)}>
+              <input type="hidden" value="Редактировать" {...register('form')} />
+              <ImageUploader value={image} onChange={setImage} onClick={(): void => setImage(undefined)} />
               <div className="flex flex-wrap items-center justify-between gap-5">
                 <label className="flex items-center cursor-pointer">
                   <input
@@ -174,11 +124,7 @@ export const Employee = () => {
                   <span className="text-base font-normal">Дежурство</span>
                 </label>
                 <label className="flex items-center cursor-pointer">
-                  <input
-                    className="mr-2 switch switch-checkbox"
-                    type="checkbox"
-                    {...register('admin')}
-                  />
+                  <input className="mr-2 switch switch-checkbox" type="checkbox" {...register('admin')} />
                   <span className="text-base font-normal">Администратор</span>
                 </label>
               </div>
@@ -193,9 +139,7 @@ export const Employee = () => {
                       required: 'Укажите дату',
                     })}
                   />
-                  {formState.errors.date?.message ? (
-                    <Error>{String(formState.errors.date?.message)}</Error>
-                  ) : null}
+                  {formState.errors.date?.message ? <Error>{String(formState.errors.date?.message)}</Error> : null}
                 </div>
               </div>
               <label>
@@ -208,9 +152,7 @@ export const Employee = () => {
                     defaultValue="Login"
                     {...register('login', { required: 'Введите логин' })}
                   />
-                  {formState.errors.login?.message ? (
-                    <Error>{String(formState.errors.login?.message)}</Error>
-                  ) : null}
+                  {formState.errors.login?.message ? <Error>{String(formState.errors.login?.message)}</Error> : null}
                 </div>
               </label>
               <label>
@@ -236,9 +178,7 @@ export const Employee = () => {
                     defaultValue="Александр"
                     {...register('name', { required: 'Введите имя' })}
                   />
-                  {formState.errors.name?.message ? (
-                    <Error>{String(formState.errors.name?.message)}</Error>
-                  ) : null}
+                  {formState.errors.name?.message ? <Error>{String(formState.errors.name?.message)}</Error> : null}
                 </div>
               </label>
               <label>
@@ -253,9 +193,7 @@ export const Employee = () => {
                     })}
                   />
                   {formState.errors.patronymic?.message ? (
-                    <Error>
-                      {String(formState.errors.patronymic?.message)}
-                    </Error>
+                    <Error>{String(formState.errors.patronymic?.message)}</Error>
                   ) : null}
                 </div>
               </label>
@@ -268,45 +206,15 @@ export const Employee = () => {
                     value={work}
                     {...register('work', { required: 'Введите должность' })}
                   >
-                    <SelectButton
-                      title="Директор"
-                      value={work}
-                      onClick={(): void => setWork('Директор')}
-                    />
-                    <SelectButton
-                      title="Project"
-                      value={work}
-                      onClick={(): void => setWork('Project')}
-                    />
-                    <SelectButton
-                      title="Front-End"
-                      value={work}
-                      onClick={(): void => setWork('Front-End')}
-                    />
-                    <SelectButton
-                      title="Back-end"
-                      value={work}
-                      onClick={(): void => setWork('Back-end')}
-                    />
-                    <SelectButton
-                      title="Designer"
-                      value={work}
-                      onClick={(): void => setWork('Designer')}
-                    />
-                    <SelectButton
-                      title="SEO"
-                      value={work}
-                      onClick={(): void => setWork('SEO')}
-                    />
-                    <SelectButton
-                      title="Content"
-                      value={work}
-                      onClick={(): void => setWork('Content')}
-                    />
+                    <SelectButton title="Директор" value={work} onClick={(): void => setWork('Директор')} />
+                    <SelectButton title="Project" value={work} onClick={(): void => setWork('Project')} />
+                    <SelectButton title="Front-End" value={work} onClick={(): void => setWork('Front-End')} />
+                    <SelectButton title="Back-end" value={work} onClick={(): void => setWork('Back-end')} />
+                    <SelectButton title="Designer" value={work} onClick={(): void => setWork('Designer')} />
+                    <SelectButton title="SEO" value={work} onClick={(): void => setWork('SEO')} />
+                    <SelectButton title="Content" value={work} onClick={(): void => setWork('Content')} />
                   </Select>
-                  {formState.errors.work?.message ? (
-                    <Error>{String(formState.errors.work?.message)}</Error>
-                  ) : null}
+                  {formState.errors.work?.message ? <Error>{String(formState.errors.work?.message)}</Error> : null}
                 </div>
               </div>
               <label>
@@ -323,9 +231,7 @@ export const Employee = () => {
                       },
                     })}
                   />
-                  {formState.errors.tel?.message ? (
-                    <Error>{String(formState.errors.tel?.message)}</Error>
-                  ) : null}
+                  {formState.errors.tel?.message ? <Error>{String(formState.errors.tel?.message)}</Error> : null}
                 </div>
               </label>
               <label>
@@ -344,9 +250,7 @@ export const Employee = () => {
                       },
                     })}
                   />
-                  {formState.errors.email?.message ? (
-                    <Error>{String(formState.errors.email?.message)}</Error>
-                  ) : null}
+                  {formState.errors.email?.message ? <Error>{String(formState.errors.email?.message)}</Error> : null}
                 </div>
               </label>
               {editingValue ? null : (
@@ -366,16 +270,11 @@ export const Employee = () => {
                         })}
                       />
                       {formState.errors.password?.message ? (
-                        <Error>
-                          {String(formState.errors.password?.message)}
-                        </Error>
+                        <Error>{String(formState.errors.password?.message)}</Error>
                       ) : null}
                     </div>
                   </label>
-                  <ButtonSubmit
-                    className="w-full btn btn-primary btn-lg btn-fill sm:max-w-60"
-                    load={loadingValue}
-                  >
+                  <ButtonSubmit className="w-full btn btn-primary btn-lg btn-fill sm:max-w-60" load={loadingValue}>
                     Сохранить изменения
                   </ButtonSubmit>
                 </>
@@ -384,21 +283,9 @@ export const Employee = () => {
           </div>
         </div>
       </div>
-      <DialogDismissal
-        open={openDialogDismissal}
-        onClose={setOpenDialogDismissal}
-        employee="Актищев Александр"
-      />
-      <DialogRecover
-        open={openDialogRecover}
-        onClose={setOpenDialogRecover}
-        employee="Актищев Александр"
-      />
-      <DialogRemove
-        open={openDialogRemove}
-        onClose={setOpenDialogRemove}
-        data="Актищев Александр"
-      />
+      <DialogDismissal open={openDialogDismissal} onClose={setOpenDialogDismissal} employee="Актищев Александр" />
+      <DialogRecover open={openDialogRecover} onClose={setOpenDialogRecover} employee="Актищев Александр" />
+      <DialogRemove open={openDialogRemove} onClose={setOpenDialogRemove} data="Актищев Александр" />
     </>
   )
 }

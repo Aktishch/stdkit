@@ -1,7 +1,7 @@
+import { Icon } from '@components'
+import { useToggle } from '@hooks'
 import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { useToggle } from '@hooks'
-import { Icon } from '@components'
 
 const InputPasswordComponent = (
   { className, ...props }: React.InputHTMLAttributes<HTMLInputElement>,
@@ -25,10 +25,7 @@ const InputPasswordComponent = (
         type="button"
         onClick={passwordToggle}
       >
-        <Icon
-          className="text-2xl opacity-50"
-          id={passwordValue ? 'eye-visible' : 'eye-hidden'}
-        />
+        <Icon className="text-2xl opacity-50" id={passwordValue ? 'eye-visible' : 'eye-hidden'} />
       </button>
     </>
   )

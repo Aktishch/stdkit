@@ -1,5 +1,5 @@
-import { twMerge } from 'tailwind-merge'
 import { Dialog, DialogProps, Icon } from '@components'
+import { twMerge } from 'tailwind-merge'
 
 export const DialogDuty = ({ className, open, onClose }: DialogProps) => {
   const ratingLength: number[] = [...Array(5).keys()]
@@ -13,11 +13,7 @@ export const DialogDuty = ({ className, open, onClose }: DialogProps) => {
         </h2>
         <div className="flex flex-row-reverse items-center justify-center gap-4 mb-6">
           {ratingLength.map((_, index) => (
-            <Icon
-              className="text-4xl text-primary color-yellow"
-              id="star"
-              key={index}
-            />
+            <Icon className="text-4xl text-primary color-yellow" id="star" key={index} />
           ))}
         </div>
         <div className="text-base/normal opacity-80">

@@ -1,7 +1,7 @@
+import { Icon, Image, Loader } from '@components'
+import { Props } from '@utils'
 import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
-import { Props } from '@utils'
-import { Icon, Image, Loader } from '@components'
 
 export interface NewsProps extends Props {
   item: {
@@ -19,11 +19,7 @@ export const News = ({ className, item }: NewsProps) => {
 
   return (
     <div className={style}>
-      <Link
-        className="pack pack-md bg-grey dark:bg-black"
-        draggable={false}
-        to={`/lk/events/news${to}`}
-      >
+      <Link className="pack pack-md bg-grey dark:bg-black" draggable={false} to={`/lk/events/news${to}`}>
         <Loader />
         {src === undefined || src === '' ? (
           <div className="absolute inset-0 flex items-center justify-center duration-300 ease-linear bg-primary hover:scale-110">
@@ -34,20 +30,12 @@ export const News = ({ className, item }: NewsProps) => {
         )}
       </Link>
       <div className="px-2 py-4 sm:px-4 sm:py-6 card-content">
-        <span className="mb-2 text-xs/none sm:text-sm/none opacity-70">
-          {date}
-        </span>
-        <h3 className="mb-1 text-sm font-medium sm:text-base sm:mb-3 lg:text-lg">
-          {title}
-        </h3>
+        <span className="mb-2 text-xs/none sm:text-sm/none opacity-70">{date}</span>
+        <h3 className="mb-1 text-sm font-medium sm:text-base sm:mb-3 lg:text-lg">{title}</h3>
         <p className="mb-4 font-normal sm:mb-6 text-xs/normal sm:text-sm/normal lg:text-base/normal line-clamp-3">
           {text}
         </p>
-        <Link
-          className="mt-auto btn btn-primary btn-md btn-fill"
-          draggable={false}
-          to={`/lk/events/news${to}`}
-        >
+        <Link className="mt-auto btn btn-primary btn-md btn-fill" draggable={false} to={`/lk/events/news${to}`}>
           Читать
         </Link>
       </div>

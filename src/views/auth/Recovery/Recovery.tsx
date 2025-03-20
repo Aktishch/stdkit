@@ -1,8 +1,8 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { DataForm } from '@utils'
+import { ButtonSubmit, Error, LabelName } from '@components'
 import { useToggle } from '@hooks'
-import { LabelName, Error, ButtonSubmit } from '@components'
-import { Title, Subtitle } from '@views/auth/components'
+import { DataForm } from '@utils'
+import { Subtitle, Title } from '@views/auth/components'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const Recovery = () => {
   const { register, handleSubmit, formState } = useForm<DataForm>()
@@ -24,15 +24,8 @@ export const Recovery = () => {
         Введите e-mail и мы вышлем <br />
         код для смены пароля
       </Subtitle>
-      <form
-        className="flex flex-col gap-6"
-        onSubmit={handleSubmit(submitHandler)}
-      >
-        <input
-          type="hidden"
-          value="Восстановление пароля"
-          {...register('form')}
-        />
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit(submitHandler)}>
+        <input type="hidden" value="Восстановление пароля" {...register('form')} />
         <label>
           <LabelName>E-Mail</LabelName>
           <div className="relative">
@@ -48,15 +41,10 @@ export const Recovery = () => {
                 },
               })}
             />
-            {formState.errors.email?.message ? (
-              <Error>{String(formState.errors.email?.message)}</Error>
-            ) : null}
+            {formState.errors.email?.message ? <Error>{String(formState.errors.email?.message)}</Error> : null}
           </div>
         </label>
-        <ButtonSubmit
-          className="btn btn-primary btn-lg btn-fill"
-          load={loadingValue}
-        >
+        <ButtonSubmit className="btn btn-primary btn-lg btn-fill" load={loadingValue}>
           Восстановить
         </ButtonSubmit>
       </form>

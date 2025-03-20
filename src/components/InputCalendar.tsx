@@ -1,15 +1,14 @@
-import React, { useState, useEffect, forwardRef } from 'react'
+import { Icon, Menu, MenuButton, MenuItems } from '@components'
+import { DataForm } from '@utils'
+import React, { forwardRef, useEffect, useState } from 'react'
 import Calendar from 'react-calendar'
 import { UseFormSetValue } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
-import { DataForm } from '@utils'
-import { Menu, MenuButton, MenuItems, Icon } from '@components'
 
 type DatePiece = Date | null
 type Dates = DatePiece | [DatePiece, DatePiece]
 
-export interface InputCalendarProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputCalendarProps extends React.InputHTMLAttributes<HTMLInputElement> {
   date?: Dates
   setValue?: UseFormSetValue<DataForm>
 }
@@ -22,11 +21,7 @@ const InputCalendarComponent = (
   const [dates, setDates] = useState<Dates>(date)
 
   const dateFormat = (dates: Dates): string => {
-    if (
-      dates !== null &&
-      typeof dates === 'object' &&
-      'toLocaleDateString' in dates
-    ) {
+    if (dates !== null && typeof dates === 'object' && 'toLocaleDateString' in dates) {
       return dates.toLocaleDateString()
     } else if (value !== undefined) {
       return String(value)
@@ -40,14 +35,7 @@ const InputCalendarComponent = (
   return (
     <Menu className="relative">
       <MenuButton className="relative w-full">
-        <input
-          className={style}
-          type="text"
-          placeholder="00.00.0000"
-          value={dateFormat(dates)}
-          {...props}
-          ref={ref}
-        />
+        <input className={style} type="text" placeholder="00.00.0000" value={dateFormat(dates)} {...props} ref={ref} />
         <span className="absolute top-0 bottom-0 right-0 flex items-center justify-center w-12 h-full pointer-events-none">
           <Icon className="text-2xl opacity-50" id="calendar" />
         </span>

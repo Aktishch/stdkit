@@ -1,13 +1,8 @@
-import {
-  Link,
-  useNavigate,
-  useLocation,
-  NavigateFunction,
-} from 'react-router-dom'
-import useBreadcrumbs from 'use-react-router-breadcrumbs'
-import { twMerge } from 'tailwind-merge'
-import { Props } from '@utils'
 import { Icon } from '@components'
+import { Props } from '@utils'
+import { Link, NavigateFunction, useLocation, useNavigate } from 'react-router-dom'
+import { twMerge } from 'tailwind-merge'
+import useBreadcrumbs from 'use-react-router-breadcrumbs'
 
 export interface BreadCrumbsProps extends Props {
   routes: {
@@ -24,17 +19,11 @@ export const BreadCrumbs = ({ className, routes }: BreadCrumbsProps) => {
     { path: '/lk/', breadcrumb: 'Главная' },
     ...routes,
   ])
-  const style: string = twMerge(
-    'flex items-center gap-1 font-normal text-xs/none opacity-60 mb-4 lg:mb-7',
-    className
-  )
+  const style: string = twMerge('flex items-center gap-1 font-normal text-xs/none opacity-60 mb-4 lg:mb-7', className)
 
   return (
     <nav className={style}>
-      <button
-        className="rounded-full btn btn-primary"
-        onClick={(): void => navigate(-1)}
-      >
+      <button className="rounded-full btn btn-primary" onClick={(): void | Promise<void> => navigate(-1)}>
         <Icon className="text-2xl" id="arrow-back" />
       </button>
       {breadcrumbs.map(({ match, breadcrumb }) => {
@@ -42,9 +31,7 @@ export const BreadCrumbs = ({ className, routes }: BreadCrumbsProps) => {
           return match.pathname === '/' ? null : (
             <Link
               className={
-                match.pathname === location.pathname
-                  ? 'pointer-events-none'
-                  : 'hover:underline underline-offset-4'
+                match.pathname === location.pathname ? 'pointer-events-none' : 'hover:underline underline-offset-4'
               }
               draggable={false}
               to={match.pathname}

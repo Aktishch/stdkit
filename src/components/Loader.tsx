@@ -1,6 +1,6 @@
-import { twMerge } from 'tailwind-merge'
-import { Props } from '@utils'
 import { Icon } from '@components'
+import { Props } from '@utils'
+import { twMerge } from 'tailwind-merge'
 
 export const Loader = ({ className }: Props) => {
   const style: string = twMerge('loader', className)

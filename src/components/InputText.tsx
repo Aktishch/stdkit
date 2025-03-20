@@ -16,15 +16,7 @@ const InputTextComponent = (
     onInput?.(event)
   }
 
-  return (
-    <input
-      className={style}
-      type="text"
-      onInput={onInputHandler}
-      {...props}
-      ref={ref}
-    />
-  )
+  return <input className={style} type="text" onInput={onInputHandler} {...props} ref={ref} />
 }
 
 export const InputText = forwardRef(InputTextComponent)

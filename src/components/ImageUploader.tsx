@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { Error, Icon, Preview } from '@components'
 import { Props, uploadFile } from '@utils'
-import { Icon, Error, Preview } from '@components'
+import React, { useEffect, useState } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export interface ImageUploaderProps extends Props {
   id?: string
@@ -10,19 +10,10 @@ export interface ImageUploaderProps extends Props {
   onClick?: () => void
 }
 
-export const ImageUploader = ({
-  className,
-  id = 'user',
-  value,
-  onChange,
-  onClick,
-}: ImageUploaderProps) => {
+export const ImageUploader = ({ className, id = 'user', value, onChange, onClick }: ImageUploaderProps) => {
   const [src, setSrc] = useState<string | undefined>()
   const [error, setError] = useState<string | undefined>()
-  const style: string = twMerge(
-    'flex items-center justify-between xs:justify-start xs:gap-4 gap-2',
-    className
-  )
+  const style: string = twMerge('flex items-center justify-between xs:justify-start xs:gap-4 gap-2', className)
 
   useEffect((): void => {
     if (!value) {
@@ -61,21 +52,12 @@ export const ImageUploader = ({
         <label
           className={`text-black dark:text-white text-base btn btn-gray btn-contur btn-lg ${value ? 'pointer-events-none opacity-50' : ''}`}
         >
-          <input
-            className="hidden"
-            type="file"
-            name="image"
-            onChange={onChangeHandler}
-          />
+          <input className="hidden" type="file" name="image" onChange={onChangeHandler} />
           {value ? 'Загружено' : 'Загрузить'}
         </label>
         {error !== undefined ? <Error>{error}</Error> : null}
       </div>
-      <button
-        className="size-[52px] shrink-0 btn rounded-md btn-grey btn-fill"
-        disabled={!value}
-        onClick={onClick}
-      >
+      <button className="size-[52px] shrink-0 btn rounded-md btn-grey btn-fill" disabled={!value} onClick={onClick}>
         <Icon className="text-2xl text-red" id="trash" />
       </button>
     </div>

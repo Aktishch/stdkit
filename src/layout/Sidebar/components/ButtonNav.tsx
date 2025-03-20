@@ -1,7 +1,7 @@
+import { Icon } from '@components'
+import { Props } from '@utils'
 import { NavLink } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
-import { Props } from '@utils'
-import { Icon } from '@components'
 
 export interface ButtonNavProps extends Props {
   id: string

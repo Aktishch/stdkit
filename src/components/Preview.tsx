@@ -1,6 +1,6 @@
-import { twMerge } from 'tailwind-merge'
-import { Props } from '@utils'
 import { Icon, Image, Loader } from '@components'
+import { Props } from '@utils'
+import { twMerge } from 'tailwind-merge'
 
 export interface PreviewProps extends Props {
   src?: string | undefined
@@ -8,12 +8,7 @@ export interface PreviewProps extends Props {
   id?: string
 }
 
-export const Preview = ({
-  className,
-  src = undefined,
-  load = false,
-  id = 'user',
-}: PreviewProps) => {
+export const Preview = ({ className, src = undefined, load = false, id = 'user' }: PreviewProps) => {
   const style: string = twMerge(
     'relative rounded-full bg-grey dark:bg-dark shrink-0 overflow-hidden size-[52px] text-4xl',
     className

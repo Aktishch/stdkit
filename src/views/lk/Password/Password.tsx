@@ -1,15 +1,9 @@
+import { ButtonSubmit, Error, InputPassword, LabelName, Title } from '@components'
+import { DialogResult } from '@dialogs'
+import { useToggle } from '@hooks'
+import { DataForm } from '@utils'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { DataForm } from '@utils'
-import { useToggle } from '@hooks'
-import {
-  Title,
-  LabelName,
-  Error,
-  InputPassword,
-  ButtonSubmit,
-} from '@components'
-import { DialogResult } from '@dialogs'
 
 export const Password = () => {
   const [openDialogResult, setOpenDialogResult] = useState(false)
@@ -30,10 +24,7 @@ export const Password = () => {
   return (
     <>
       <Title className="mb-6 sm:mb-10">Изменить пароль</Title>
-      <form
-        className="flex flex-col gap-6"
-        onSubmit={handleSubmit(submitHandler)}
-      >
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit(submitHandler)}>
         <input type="hidden" value="Изменить пароль" {...register('form')} />
         <label>
           <LabelName>Пароль</LabelName>
@@ -48,9 +39,7 @@ export const Password = () => {
                 },
               })}
             />
-            {formState.errors.password?.message ? (
-              <Error>{String(formState.errors.password?.message)}</Error>
-            ) : null}
+            {formState.errors.password?.message ? <Error>{String(formState.errors.password?.message)}</Error> : null}
           </div>
         </label>
         <label>
@@ -66,15 +55,10 @@ export const Password = () => {
                 },
               })}
             />
-            {formState.errors.repeat?.message ? (
-              <Error>{String(formState.errors.repeat?.message)}</Error>
-            ) : null}
+            {formState.errors.repeat?.message ? <Error>{String(formState.errors.repeat?.message)}</Error> : null}
           </div>
         </label>
-        <ButtonSubmit
-          className="w-full btn btn-primary btn-lg btn-fill sm:max-w-60"
-          load={loadingValue}
-        >
+        <ButtonSubmit className="w-full btn btn-primary btn-lg btn-fill sm:max-w-60" load={loadingValue}>
           Сохранить изменения
         </ButtonSubmit>
       </form>
@@ -86,15 +70,10 @@ export const Password = () => {
           Пароль должен содержать <b>цифры (0-9)</b>
         </li>
         <li>
-          Пароль должен содержать{' '}
-          <b>латинские символы нижнего регистра (a-z)</b>
+          Пароль должен содержать <b>латинские символы нижнего регистра (a-z)</b>
         </li>
       </ul>
-      <DialogResult
-        open={openDialogResult}
-        onClose={setOpenDialogResult}
-        result={false}
-      />
+      <DialogResult open={openDialogResult} onClose={setOpenDialogResult} result={false} />
     </>
   )
 }

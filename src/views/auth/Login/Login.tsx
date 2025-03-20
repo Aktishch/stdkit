@@ -1,8 +1,8 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { DataForm } from '@utils'
+import { ButtonSubmit, Error, InputPassword, LabelName } from '@components'
 import { useToggle } from '@hooks'
-import { LabelName, Error, InputPassword, ButtonSubmit } from '@components'
+import { DataForm } from '@utils'
 import { ButtonUnderline } from '@views/auth/components'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const Login = () => {
   const { register, handleSubmit, formState } = useForm<DataForm>()
@@ -19,10 +19,7 @@ export const Login = () => {
 
   return (
     <>
-      <form
-        className="flex flex-col gap-6"
-        onSubmit={handleSubmit(submitHandler)}
-      >
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit(submitHandler)}>
         <input type="hidden" value="Авторизация" {...register('form')} />
         <label>
           <LabelName>Логин</LabelName>
@@ -33,9 +30,7 @@ export const Login = () => {
               placeholder="Login"
               {...register('login', { required: 'Введите логин' })}
             />
-            {formState.errors.login?.message ? (
-              <Error>{String(formState.errors.login?.message)}</Error>
-            ) : null}
+            {formState.errors.login?.message ? <Error>{String(formState.errors.login?.message)}</Error> : null}
           </div>
         </label>
         <label>
@@ -51,28 +46,19 @@ export const Login = () => {
                 },
               })}
             />
-            {formState.errors.password?.message ? (
-              <Error>{String(formState.errors.password?.message)}</Error>
-            ) : null}
+            {formState.errors.password?.message ? <Error>{String(formState.errors.password?.message)}</Error> : null}
           </div>
         </label>
         <div className="flex items-center justify-center">
-          <span className="mr-2 text-sm font-normal sm:text-base">
-            Забыли пароль?
-          </span>
+          <span className="mr-2 text-sm font-normal sm:text-base">Забыли пароль?</span>
           <ButtonUnderline to="/recovery">Восстановить</ButtonUnderline>
         </div>
-        <ButtonSubmit
-          className="btn btn-primary btn-lg btn-fill"
-          load={loadingValue}
-        >
+        <ButtonSubmit className="btn btn-primary btn-lg btn-fill" load={loadingValue}>
           Вход
         </ButtonSubmit>
       </form>
       <div className="flex items-center justify-center mt-6">
-        <span className="mr-2 text-sm font-normal sm:text-base">
-          Нет аккаунта?
-        </span>
+        <span className="mr-2 text-sm font-normal sm:text-base">Нет аккаунта?</span>
         <ButtonUnderline to="/registration">Зарегистрируйтесь</ButtonUnderline>
       </div>
     </>

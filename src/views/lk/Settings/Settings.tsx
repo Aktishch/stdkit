@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { DataForm } from '@utils'
-import { useToggle } from '@hooks'
 import {
-  Title,
-  LabelName,
+  ButtonSubmit,
   Error,
-  InputText,
+  ImageUploader,
   InputTel,
+  InputText,
+  LabelName,
   Select,
   SelectButton,
-  ImageUploader,
-  ButtonSubmit,
+  Title,
 } from '@components'
 import { DialogResult } from '@dialogs'
+import { useToggle } from '@hooks'
+import { DataForm } from '@utils'
+import { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const Settings = () => {
   const [image, setImage] = useState<string | File | undefined>()
@@ -38,16 +38,9 @@ export const Settings = () => {
   return (
     <>
       <Title className="mb-6 sm:mb-10">Настройки</Title>
-      <form
-        className="flex flex-col gap-6"
-        onSubmit={handleSubmit(submitHandler)}
-      >
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit(submitHandler)}>
         <input type="hidden" value="Настройки" {...register('form')} />
-        <ImageUploader
-          value={image}
-          onChange={setImage}
-          onClick={(): void => setImage(undefined)}
-        />
+        <ImageUploader value={image} onChange={setImage} onClick={(): void => setImage(undefined)} />
         <label>
           <LabelName>Логин</LabelName>
           <div className="relative">
@@ -58,9 +51,7 @@ export const Settings = () => {
               defaultValue="Login"
               {...register('login', { required: 'Введите логин' })}
             />
-            {formState.errors.login?.message ? (
-              <Error>{String(formState.errors.login?.message)}</Error>
-            ) : null}
+            {formState.errors.login?.message ? <Error>{String(formState.errors.login?.message)}</Error> : null}
           </div>
         </label>
         <label>
@@ -72,9 +63,7 @@ export const Settings = () => {
               defaultValue="Актищев"
               {...register('surname', { required: 'Введите фамилию' })}
             />
-            {formState.errors.surname?.message ? (
-              <Error>{String(formState.errors.surname?.message)}</Error>
-            ) : null}
+            {formState.errors.surname?.message ? <Error>{String(formState.errors.surname?.message)}</Error> : null}
           </div>
         </label>
         <label>
@@ -86,9 +75,7 @@ export const Settings = () => {
               defaultValue="Александр"
               {...register('name', { required: 'Введите имя' })}
             />
-            {formState.errors.name?.message ? (
-              <Error>{String(formState.errors.name?.message)}</Error>
-            ) : null}
+            {formState.errors.name?.message ? <Error>{String(formState.errors.name?.message)}</Error> : null}
           </div>
         </label>
         <label>
@@ -114,45 +101,15 @@ export const Settings = () => {
               value={work}
               {...register('work', { required: 'Введите должность' })}
             >
-              <SelectButton
-                title="Директор"
-                value={work}
-                onClick={(): void => setWork('Директор')}
-              />
-              <SelectButton
-                title="Project"
-                value={work}
-                onClick={(): void => setWork('Project')}
-              />
-              <SelectButton
-                title="Front-End"
-                value={work}
-                onClick={(): void => setWork('Front-End')}
-              />
-              <SelectButton
-                title="Back-end"
-                value={work}
-                onClick={(): void => setWork('Back-end')}
-              />
-              <SelectButton
-                title="Designer"
-                value={work}
-                onClick={(): void => setWork('Designer')}
-              />
-              <SelectButton
-                title="SEO"
-                value={work}
-                onClick={(): void => setWork('SEO')}
-              />
-              <SelectButton
-                title="Content"
-                value={work}
-                onClick={(): void => setWork('Content')}
-              />
+              <SelectButton title="Директор" value={work} onClick={(): void => setWork('Директор')} />
+              <SelectButton title="Project" value={work} onClick={(): void => setWork('Project')} />
+              <SelectButton title="Front-End" value={work} onClick={(): void => setWork('Front-End')} />
+              <SelectButton title="Back-end" value={work} onClick={(): void => setWork('Back-end')} />
+              <SelectButton title="Designer" value={work} onClick={(): void => setWork('Designer')} />
+              <SelectButton title="SEO" value={work} onClick={(): void => setWork('SEO')} />
+              <SelectButton title="Content" value={work} onClick={(): void => setWork('Content')} />
             </Select>
-            {formState.errors.work?.message ? (
-              <Error>{String(formState.errors.work?.message)}</Error>
-            ) : null}
+            {formState.errors.work?.message ? <Error>{String(formState.errors.work?.message)}</Error> : null}
           </div>
         </div>
         <label>
@@ -169,9 +126,7 @@ export const Settings = () => {
                 },
               })}
             />
-            {formState.errors.tel?.message ? (
-              <Error>{String(formState.errors.tel?.message)}</Error>
-            ) : null}
+            {formState.errors.tel?.message ? <Error>{String(formState.errors.tel?.message)}</Error> : null}
           </div>
         </label>
         <label>
@@ -190,23 +145,14 @@ export const Settings = () => {
                 },
               })}
             />
-            {formState.errors.email?.message ? (
-              <Error>{String(formState.errors.email?.message)}</Error>
-            ) : null}
+            {formState.errors.email?.message ? <Error>{String(formState.errors.email?.message)}</Error> : null}
           </div>
         </label>
-        <ButtonSubmit
-          className="w-full btn btn-primary btn-lg btn-fill sm:max-w-60"
-          load={loadingValue}
-        >
+        <ButtonSubmit className="w-full btn btn-primary btn-lg btn-fill sm:max-w-60" load={loadingValue}>
           Сохранить изменения
         </ButtonSubmit>
       </form>
-      <DialogResult
-        open={openDialogResult}
-        onClose={setOpenDialogResult}
-        result={true}
-      />
+      <DialogResult open={openDialogResult} onClose={setOpenDialogResult} result={true} />
     </>
   )
 }

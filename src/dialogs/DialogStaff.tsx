@@ -1,36 +1,30 @@
-import { useState, useEffect } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { twMerge } from 'tailwind-merge'
-import { DataForm } from '@utils'
-import { useToggle } from '@hooks'
 import {
+  ButtonSubmit,
   Dialog,
   DialogProps,
-  Title,
-  LabelName,
   Error,
-  InputPassword,
-  InputText,
-  InputTel,
   InputCalendar,
+  InputPassword,
+  InputTel,
+  InputText,
+  LabelName,
   Select,
   SelectButton,
-  ButtonSubmit,
+  Title,
 } from '@components'
+import { useToggle } from '@hooks'
+import { DataForm } from '@utils'
+import { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { twMerge } from 'tailwind-merge'
 
 export interface DialogStaffProps extends DialogProps {
   openResult?: () => void
 }
 
-export const DialogStaff = ({
-  className,
-  open,
-  onClose,
-  openResult,
-}: DialogStaffProps) => {
+export const DialogStaff = ({ className, open, onClose, openResult }: DialogStaffProps) => {
   const [work, setWork] = useState('')
-  const { register, handleSubmit, formState, setValue, reset } =
-    useForm<DataForm>()
+  const { register, handleSubmit, formState, setValue, reset } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const style: string = twMerge('max-w-md card dark:bg-dark', className)
 
@@ -54,15 +48,8 @@ export const DialogStaff = ({
         <Title className="text-center">Добавить сотрудника</Title>
       </div>
       <div className="px-4 pt-6 pb-10 sm:px-8 card-content">
-        <form
-          className="flex flex-col gap-6"
-          onSubmit={handleSubmit(submitHandler)}
-        >
-          <input
-            type="hidden"
-            value="Добавить сотрудника"
-            {...register('form')}
-          />
+        <form className="flex flex-col gap-6" onSubmit={handleSubmit(submitHandler)}>
+          <input type="hidden" value="Добавить сотрудника" {...register('form')} />
           <div>
             <LabelName>Дата трудоустройства</LabelName>
             <div className="relative">
@@ -73,9 +60,7 @@ export const DialogStaff = ({
                   required: 'Укажите дату',
                 })}
               />
-              {formState.errors.date?.message ? (
-                <Error>{String(formState.errors.date?.message)}</Error>
-              ) : null}
+              {formState.errors.date?.message ? <Error>{String(formState.errors.date?.message)}</Error> : null}
             </div>
           </div>
           <label>
@@ -87,9 +72,7 @@ export const DialogStaff = ({
                 placeholder="Login"
                 {...register('login', { required: 'Введите логин' })}
               />
-              {formState.errors.login?.message ? (
-                <Error>{String(formState.errors.login?.message)}</Error>
-              ) : null}
+              {formState.errors.login?.message ? <Error>{String(formState.errors.login?.message)}</Error> : null}
             </div>
           </label>
           <label>
@@ -100,9 +83,7 @@ export const DialogStaff = ({
                 placeholder="Иванов"
                 {...register('surname', { required: 'Введите фамилию' })}
               />
-              {formState.errors.surname?.message ? (
-                <Error>{String(formState.errors.surname?.message)}</Error>
-              ) : null}
+              {formState.errors.surname?.message ? <Error>{String(formState.errors.surname?.message)}</Error> : null}
             </div>
           </label>
           <label>
@@ -113,9 +94,7 @@ export const DialogStaff = ({
                 placeholder="Иван"
                 {...register('name', { required: 'Введите имя' })}
               />
-              {formState.errors.name?.message ? (
-                <Error>{String(formState.errors.name?.message)}</Error>
-              ) : null}
+              {formState.errors.name?.message ? <Error>{String(formState.errors.name?.message)}</Error> : null}
             </div>
           </label>
           <label>
@@ -140,45 +119,15 @@ export const DialogStaff = ({
                 value={work}
                 {...register('work', { required: 'Введите должность' })}
               >
-                <SelectButton
-                  title="Директор"
-                  value={work}
-                  onClick={(): void => setWork('Директор')}
-                />
-                <SelectButton
-                  title="Project"
-                  value={work}
-                  onClick={(): void => setWork('Project')}
-                />
-                <SelectButton
-                  title="Front-End"
-                  value={work}
-                  onClick={(): void => setWork('Front-End')}
-                />
-                <SelectButton
-                  title="Back-end"
-                  value={work}
-                  onClick={(): void => setWork('Back-end')}
-                />
-                <SelectButton
-                  title="Designer"
-                  value={work}
-                  onClick={(): void => setWork('Designer')}
-                />
-                <SelectButton
-                  title="SEO"
-                  value={work}
-                  onClick={(): void => setWork('SEO')}
-                />
-                <SelectButton
-                  title="Content"
-                  value={work}
-                  onClick={(): void => setWork('Content')}
-                />
+                <SelectButton title="Директор" value={work} onClick={(): void => setWork('Директор')} />
+                <SelectButton title="Project" value={work} onClick={(): void => setWork('Project')} />
+                <SelectButton title="Front-End" value={work} onClick={(): void => setWork('Front-End')} />
+                <SelectButton title="Back-end" value={work} onClick={(): void => setWork('Back-end')} />
+                <SelectButton title="Designer" value={work} onClick={(): void => setWork('Designer')} />
+                <SelectButton title="SEO" value={work} onClick={(): void => setWork('SEO')} />
+                <SelectButton title="Content" value={work} onClick={(): void => setWork('Content')} />
               </Select>
-              {formState.errors.work?.message ? (
-                <Error>{String(formState.errors.work?.message)}</Error>
-              ) : null}
+              {formState.errors.work?.message ? <Error>{String(formState.errors.work?.message)}</Error> : null}
             </div>
           </div>
           <label>
@@ -194,9 +143,7 @@ export const DialogStaff = ({
                   },
                 })}
               />
-              {formState.errors.tel?.message ? (
-                <Error>{String(formState.errors.tel?.message)}</Error>
-              ) : null}
+              {formState.errors.tel?.message ? <Error>{String(formState.errors.tel?.message)}</Error> : null}
             </div>
           </label>
           <label>
@@ -214,9 +161,7 @@ export const DialogStaff = ({
                   },
                 })}
               />
-              {formState.errors.email?.message ? (
-                <Error>{String(formState.errors.email?.message)}</Error>
-              ) : null}
+              {formState.errors.email?.message ? <Error>{String(formState.errors.email?.message)}</Error> : null}
             </div>
           </label>
           <label>
@@ -232,9 +177,7 @@ export const DialogStaff = ({
                   },
                 })}
               />
-              {formState.errors.password?.message ? (
-                <Error>{String(formState.errors.password?.message)}</Error>
-              ) : null}
+              {formState.errors.password?.message ? <Error>{String(formState.errors.password?.message)}</Error> : null}
             </div>
           </label>
           <label>
@@ -250,15 +193,10 @@ export const DialogStaff = ({
                   },
                 })}
               />
-              {formState.errors.repeat?.message ? (
-                <Error>{String(formState.errors.repeat?.message)}</Error>
-              ) : null}
+              {formState.errors.repeat?.message ? <Error>{String(formState.errors.repeat?.message)}</Error> : null}
             </div>
           </label>
-          <ButtonSubmit
-            className="btn btn-primary btn-lg btn-fill"
-            load={loadingValue}
-          >
+          <ButtonSubmit className="btn btn-primary btn-lg btn-fill" load={loadingValue}>
             Добавить
           </ButtonSubmit>
         </form>

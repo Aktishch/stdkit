@@ -1,10 +1,10 @@
+import { ButtonSubmit, Icon } from '@components'
+import { useToggle } from '@hooks'
+import { DataForm, Props } from '@utils'
+import { TableCol, TableRow } from '@views/company/components'
+import { InputHours } from '@views/company/Time/components'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
-import { Props, DataForm } from '@utils'
-import { useToggle } from '@hooks'
-import { Icon, ButtonSubmit } from '@components'
-import { TableRow, TableCol } from '@views/company/components'
-import { InputHours } from '@views/company/Time/components'
 
 export interface MonthProps extends Props {
   theme: string
@@ -20,20 +20,10 @@ export interface MonthProps extends Props {
   }
 }
 
-export const Month = ({
-  className,
-  theme,
-  month,
-  monthLength,
-  editing,
-  item,
-}: MonthProps) => {
+export const Month = ({ className, theme, month, monthLength, editing, item }: MonthProps) => {
   const { register, handleSubmit } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
-  const style: string = twMerge(
-    editing ? 'pointer-events-none' : null,
-    className
-  )
+  const style: string = twMerge(editing ? 'pointer-events-none' : null, className)
   const { name, dates } = item
 
   const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
@@ -74,10 +64,7 @@ export const Month = ({
         </div>
         <TableCol className="w-10 text-sm text-center">{getResult()}</TableCol>
         {editing ? null : (
-          <ButtonSubmit
-            className="rounded-full btn btn-primary btn-fill size-10 shrink-0"
-            load={loadingValue}
-          >
+          <ButtonSubmit className="rounded-full btn btn-primary btn-fill size-10 shrink-0" load={loadingValue}>
             <Icon className="text-2xl" id="success" />
           </ButtonSubmit>
         )}

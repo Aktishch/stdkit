@@ -22,21 +22,12 @@ const formatterValue = (value: string): string => {
 }
 
 const InputTelComponent = (
-  {
-    className,
-    onInput,
-    onKeyDown,
-    onPaste,
-    children,
-    ...props
-  }: React.InputHTMLAttributes<HTMLInputElement>,
+  { className, onInput, onKeyDown, onPaste, children, ...props }: React.InputHTMLAttributes<HTMLInputElement>,
   ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   const style: string = twMerge(className)
 
-  const onInputHandler = (
-    event: React.CompositionEvent<HTMLInputElement>
-  ): '' | undefined => {
+  const onInputHandler = (event: React.CompositionEvent<HTMLInputElement>): '' | undefined => {
     const input = event.target as HTMLInputElement
     const selection: number | null = input.selectionStart
     const value: string = getValue(input)
@@ -56,9 +47,7 @@ const InputTelComponent = (
     onInput?.(event)
   }
 
-  const onKeyDownHandler = (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ): void => {
+  const onKeyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>): void => {
     const input = event.target as HTMLInputElement
     const value: string = getValue(input)
 
@@ -67,9 +56,7 @@ const InputTelComponent = (
     onKeyDown?.(event)
   }
 
-  const onPasteHandler = (
-    event: React.ClipboardEvent<HTMLInputElement>
-  ): void => {
+  const onPasteHandler = (event: React.ClipboardEvent<HTMLInputElement>): void => {
     const input = event.target as HTMLInputElement
     const value: string = getValue(input)
     const pasted: DataTransfer | null = event.clipboardData

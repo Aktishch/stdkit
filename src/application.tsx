@@ -1,29 +1,17 @@
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { LayoutAuth, LayoutAuto, LayoutCompany, LayoutLk, LayoutNotFound } from '@layout'
 import { Theme } from '@providers'
+import { AuthCode, AuthLogin, AuthPassword, AuthRecovery, AuthRegistration } from '@views/auth/pages'
 import {
-  LayoutAuth,
-  LayoutAuto,
-  LayoutLk,
-  LayoutCompany,
-  LayoutNotFound,
-} from '@layout'
-import {
-  AuthLogin,
-  AuthRegistration,
-  AuthRecovery,
-  AuthCode,
-  AuthPassword,
-} from '@views/auth/pages'
-import { LkSettings, LkPassword } from '@views/lk/pages'
-import {
-  CompanyStaff,
-  CompanyEmployee,
   CompanyDuty,
-  CompanyTime,
+  CompanyEmployee,
   CompanyEvents,
   CompanyNews,
+  CompanyStaff,
+  CompanyTime,
 } from '@views/company/pages'
+import { LkPassword, LkSettings } from '@views/lk/pages'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import 'react-calendar/dist/Calendar.css'
 import './scss/main.scss'

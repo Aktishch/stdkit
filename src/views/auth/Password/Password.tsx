@@ -1,8 +1,8 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { DataForm } from '@utils'
+import { ButtonSubmit, Error, InputPassword, LabelName } from '@components'
 import { useToggle } from '@hooks'
-import { LabelName, Error, InputPassword, ButtonSubmit } from '@components'
-import { Title, Subtitle } from '@views/auth/components'
+import { DataForm } from '@utils'
+import { Subtitle, Title } from '@views/auth/components'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const Password = () => {
   const { register, handleSubmit, formState } = useForm<DataForm>()
@@ -21,10 +21,7 @@ export const Password = () => {
     <>
       <Title>Восстановление пароля</Title>
       <Subtitle>Придумайте новый пароль </Subtitle>
-      <form
-        className="flex flex-col gap-6"
-        onSubmit={handleSubmit(submitHandler)}
-      >
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit(submitHandler)}>
         <input type="hidden" value="Новый пароль" {...register('form')} />
         <label>
           <LabelName>Пароль</LabelName>
@@ -39,9 +36,7 @@ export const Password = () => {
                 },
               })}
             />
-            {formState.errors.password?.message ? (
-              <Error>{String(formState.errors.password?.message)}</Error>
-            ) : null}
+            {formState.errors.password?.message ? <Error>{String(formState.errors.password?.message)}</Error> : null}
           </div>
         </label>
         <label>
@@ -57,15 +52,10 @@ export const Password = () => {
                 },
               })}
             />
-            {formState.errors.repeat?.message ? (
-              <Error>{String(formState.errors.repeat?.message)}</Error>
-            ) : null}
+            {formState.errors.repeat?.message ? <Error>{String(formState.errors.repeat?.message)}</Error> : null}
           </div>
         </label>
-        <ButtonSubmit
-          className="btn btn-primary btn-lg btn-fill"
-          load={loadingValue}
-        >
+        <ButtonSubmit className="btn btn-primary btn-lg btn-fill" load={loadingValue}>
           Восстановить
         </ButtonSubmit>
       </form>

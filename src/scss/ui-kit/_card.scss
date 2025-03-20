@@ -3,7 +3,7 @@
     @apply flex flex-col relative bg-white rounded-3xl overflow-hidden shadow-md h-full duration-200;
 
     &-content {
-      @apply flex flex-col flex-grow;
+      @apply flex flex-col grow;
     }
   }
 }

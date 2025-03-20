@@ -1,13 +1,8 @@
-import { useState } from 'react'
 import { Title } from '@components'
 import { DialogEvent, DialogResult } from '@dialogs'
-import {
-  BreadCrumbs,
-  Head,
-  HeadButton,
-  Pagination,
-} from '@views/company/components'
+import { BreadCrumbs, Head, HeadButton, Pagination } from '@views/company/components'
 import { News } from '@views/company/Events/components'
+import { useState } from 'react'
 
 const data = [
   {
@@ -51,11 +46,7 @@ export const Events = () => {
         onClose={setOpenDialogEvent}
         openResult={(): void => setOpenDialogResult(true)}
       />
-      <DialogResult
-        open={openDialogResult}
-        onClose={setOpenDialogResult}
-        result={true}
-      />
+      <DialogResult open={openDialogResult} onClose={setOpenDialogResult} result={true} />
     </>
   )
 }

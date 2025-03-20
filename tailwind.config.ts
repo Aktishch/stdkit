@@ -1,7 +1,7 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from 'tailwindcss'
 
-const createColor = (variable) => {
-  return ({ opacityValue }) => {
+const createColor = (variable: string): any => {
+  return ({ opacityValue }: { opacityValue: undefined | number }): string => {
     return `rgba(var(--color-${variable}), ${opacityValue !== undefined ? opacityValue : 1})`
   }
 }
@@ -113,4 +113,4 @@ module.exports = {
     require('./plugins/button'),
     require('./plugins/pointer-coarse'),
   ],
-}
+} satisfies Config

@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom'
 
 export const LayoutCompany = () => {
   return (
-    <section className="container flex-grow sm:pt-10">
+    <section className="container grow sm:pt-10">
       <Outlet />
     </section>
   )

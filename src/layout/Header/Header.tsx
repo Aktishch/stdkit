@@ -1,14 +1,7 @@
-import { Link, NavLink } from 'react-router-dom'
 import { useTheme } from '@/providers'
-import {
-  Menu,
-  MenuButton,
-  MenuItems,
-  MenuItem,
-  Icon,
-  Preview,
-} from '@components'
-import { ButtonNav, ButtonColor } from '@layout/Header/components'
+import { Icon, Menu, MenuButton, MenuItem, MenuItems, Preview } from '@components'
+import { ButtonColor, ButtonNav } from '@layout/Header/components'
+import { Link, NavLink } from 'react-router-dom'
 
 export const Header = () => {
   const { themeToggle, themeValue, color, changeColor } = useTheme()
@@ -43,21 +36,14 @@ export const Header = () => {
                 className={`text-sm mr-2 opacity-60 ease-linear transition-transform hidden sm:block ${active ? '-rotate-90' : ''}`}
                 id="arrow-left"
               />
-              <Preview
-                className="text-xl size-7"
-                src="/img/pictures/user.jpg"
-              />
+              <Preview className="text-xl size-7" src="/img/pictures/user.jpg" />
             </>
           )}
         </MenuButton>
         <MenuItems className="absolute right-0 px-2 py-6 bg-white shadow-md dark:bg-dark top-12 sm:top-14 rounded-2xl w-44">
           <div className="flex flex-col px-2 mb-4 overflow-hidden">
-            <span className="font-normal truncate text-sm/none">
-              Актищев Александр
-            </span>
-            <span className="mt-2 font-normal opacity-50 text-xs/none">
-              Front-end
-            </span>
+            <span className="font-normal truncate text-sm/none">Актищев Александр</span>
+            <span className="mt-2 font-normal opacity-50 text-xs/none">Front-end</span>
           </div>
           <div className="flex items-center justify-between gap-1 px-2 mb-2">
             <ButtonColor
@@ -75,11 +61,7 @@ export const Header = () => {
               disabled={color === 'yellow'}
               onClick={(): void => changeColor('yellow')}
             />
-            <ButtonColor
-              className="color-blue"
-              disabled={color === 'blue'}
-              onClick={(): void => changeColor('blue')}
-            />
+            <ButtonColor className="color-blue" disabled={color === 'blue'} onClick={(): void => changeColor('blue')} />
             <ButtonColor
               className="color-orange"
               disabled={color === 'orange'}
@@ -87,38 +69,19 @@ export const Header = () => {
             />
           </div>
           <div className="flex flex-col">
-            <MenuItem
-              className="justify-start px-2 btn btn-primary btn-sm"
-              as={NavLink}
-              draggable={false}
-              to="/lk"
-            >
+            <MenuItem className="justify-start px-2 btn btn-primary btn-sm" as={NavLink} draggable={false} to="/lk">
               <Icon className="text-xl" id="settings" />
-              <span className="ml-1 text-sm font-normal text-black dark:text-white">
-                Главная
-              </span>
+              <span className="ml-1 text-sm font-normal text-black dark:text-white">Главная</span>
             </MenuItem>
-            <button
-              className="justify-start px-2 btn btn-primary btn-sm"
-              onClick={themeToggle}
-            >
+            <button className="justify-start px-2 btn btn-primary btn-sm" onClick={themeToggle}>
               <Icon className="text-xl" id="pallete" />
               <span className="ml-1 text-sm font-normal text-black dark:text-white">
-                Тема:{' '}
-                <span className="text-primary">
-                  {themeValue ? 'Тёмная' : 'Светлая'}
-                </span>
+                Тема: <span className="text-primary">{themeValue ? 'Тёмная' : 'Светлая'}</span>
               </span>
             </button>
-            <a
-              className="justify-start px-2 btn btn-red btn-sm"
-              draggable={false}
-              href="/"
-            >
+            <a className="justify-start px-2 btn btn-red btn-sm" draggable={false} href="/">
               <Icon className="text-xl" id="arrow-back" />
-              <span className="ml-1 text-sm font-normal text-black dark:text-white">
-                Выйти
-              </span>
+              <span className="ml-1 text-sm font-normal text-black dark:text-white">Выйти</span>
             </a>
           </div>
         </MenuItems>

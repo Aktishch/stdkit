@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect, useContext } from 'react'
 import { useToggle } from '@hooks'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 const colors = {
   default: 'color-default',
@@ -24,12 +24,8 @@ export const useTheme = () => useContext(ThemeContext)
 
 export const Theme = ({ children }: React.PropsWithChildren) => {
   const html = document.documentElement as HTMLElement
-  const [themeValue, , , themeToggle] = useToggle(
-    localStorage.getItem('theme') === 'dark'
-  )
-  const [color, setColor] = useState<Color>(
-    (localStorage.getItem('color') as Color) || colors.default
-  )
+  const [themeValue, , , themeToggle] = useToggle(localStorage.getItem('theme') === 'dark')
+  const [color, setColor] = useState<Color>((localStorage.getItem('color') as Color) || colors.default)
 
   const onKeyUpHandler = (event: KeyboardEvent): void => {
     if (event.altKey && event.code === 'Digit5') themeToggle()
@@ -42,8 +38,7 @@ export const Theme = ({ children }: React.PropsWithChildren) => {
   useEffect((): (() => void) | undefined => {
     document.addEventListener('keyup', onKeyUpHandler as EventListener)
 
-    return (): void =>
-      document.removeEventListener('keyup', onKeyUpHandler as EventListener)
+    return (): void => document.removeEventListener('keyup', onKeyUpHandler as EventListener)
   }, [])
 
   useEffect((): void => {
@@ -59,10 +54,6 @@ export const Theme = ({ children }: React.PropsWithChildren) => {
   }, [color])
 
   return (
-    <ThemeContext.Provider
-      value={{ themeValue, themeToggle, color, changeColor }}
-    >
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={{ themeValue, themeToggle, color, changeColor }}>{children}</ThemeContext.Provider>
   )
 }

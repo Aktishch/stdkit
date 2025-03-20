@@ -16,16 +16,7 @@ const InputNumberComponent = (
     onInput?.(event)
   }
 
-  return (
-    <input
-      className={style}
-      type="text"
-      placeholder="123456789"
-      onInput={onInputHandler}
-      {...props}
-      ref={ref}
-    />
-  )
+  return <input className={style} type="text" placeholder="123456789" onInput={onInputHandler} {...props} ref={ref} />
 }
 
 export const InputNumber = forwardRef(InputNumberComponent)

@@ -1,18 +1,9 @@
+import { ButtonSubmit, Dialog, DialogProps, Error, ImageUploader, InputCalendar, LabelName, Title } from '@components'
+import { useToggle } from '@hooks'
+import { DataForm } from '@utils'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
-import { DataForm } from '@utils'
-import { useToggle } from '@hooks'
-import {
-  Dialog,
-  DialogProps,
-  Title,
-  LabelName,
-  Error,
-  InputCalendar,
-  ImageUploader,
-  ButtonSubmit,
-} from '@components'
 
 export interface DialogEventProps extends DialogProps {
   item?: {
@@ -25,16 +16,9 @@ export interface DialogEventProps extends DialogProps {
   openResult?: () => void
 }
 
-export const DialogEvent = ({
-  className,
-  open,
-  onClose,
-  item,
-  openResult,
-}: DialogEventProps) => {
+export const DialogEvent = ({ className, open, onClose, item, openResult }: DialogEventProps) => {
   const [image, setImage] = useState<string | File | undefined>(item?.src)
-  const { register, handleSubmit, formState, setValue, reset } =
-    useForm<DataForm>()
+  const { register, handleSubmit, formState, setValue, reset } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const style: string = twMerge('max-w-md card dark:bg-dark', className)
 
@@ -54,26 +38,16 @@ export const DialogEvent = ({
   return (
     <Dialog className={style} open={open} onClose={onClose}>
       <div className="px-4 py-6 bg-grey dark:bg-black/40">
-        <Title className="text-center">
-          {item ? 'Редактировать мероприятие' : 'Создать мероприятие'}
-        </Title>
+        <Title className="text-center">{item ? 'Редактировать мероприятие' : 'Создать мероприятие'}</Title>
       </div>
       <div className="px-4 pt-6 pb-10 sm:px-8 card-content">
-        <form
-          className="flex flex-col gap-6"
-          onSubmit={handleSubmit(submitHandler)}
-        >
+        <form className="flex flex-col gap-6" onSubmit={handleSubmit(submitHandler)}>
           <input
             type="hidden"
             value={item ? 'Редактировать мероприятие' : 'Создать мероприятие'}
             {...register('form')}
           />
-          <ImageUploader
-            id="medal"
-            value={image}
-            onChange={setImage}
-            onClick={(): void => setImage(undefined)}
-          />
+          <ImageUploader id="medal" value={image} onChange={setImage} onClick={(): void => setImage(undefined)} />
           <div>
             <LabelName>Дата мероприятия</LabelName>
             <div className="relative">
@@ -85,9 +59,7 @@ export const DialogEvent = ({
                   required: 'Укажите дату',
                 })}
               />
-              {formState.errors.date?.message ? (
-                <Error>{String(formState.errors.date?.message)}</Error>
-              ) : null}
+              {formState.errors.date?.message ? <Error>{String(formState.errors.date?.message)}</Error> : null}
             </div>
           </div>
           <label>
@@ -100,9 +72,7 @@ export const DialogEvent = ({
                 placeholder="Название мероприятия"
                 {...register('title', { required: 'Введите название' })}
               />
-              {formState.errors.title?.message ? (
-                <Error>{String(formState.errors.title?.message)}</Error>
-              ) : null}
+              {formState.errors.title?.message ? <Error>{String(formState.errors.title?.message)}</Error> : null}
             </div>
           </label>
           <label>
@@ -120,9 +90,7 @@ export const DialogEvent = ({
                   },
                 })}
               />
-              {formState.errors.text?.message ? (
-                <Error>{String(formState.errors.text?.message)}</Error>
-              ) : null}
+              {formState.errors.text?.message ? <Error>{String(formState.errors.text?.message)}</Error> : null}
             </div>
           </label>
           <label>
@@ -141,15 +109,10 @@ export const DialogEvent = ({
                   },
                 })}
               />
-              {formState.errors.url?.message ? (
-                <Error>{String(formState.errors.url?.message)}</Error>
-              ) : null}
+              {formState.errors.url?.message ? <Error>{String(formState.errors.url?.message)}</Error> : null}
             </div>
           </label>
-          <ButtonSubmit
-            className="btn btn-primary btn-lg btn-fill"
-            load={loadingValue}
-          >
+          <ButtonSubmit className="btn btn-primary btn-lg btn-fill" load={loadingValue}>
             {item ? 'Редактировать' : 'Создать'}
           </ButtonSubmit>
         </form>

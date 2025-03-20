@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import { useToggle } from '@hooks'
-import { Title, Icon, Image, Loader } from '@components'
+import { Icon, Image, Loader, Title } from '@components'
 import { DialogEvent, DialogRemove, DialogResult } from '@dialogs'
+import { useToggle } from '@hooks'
 import { BreadCrumbs, Head, HeadButton } from '@views/company/components'
+import { useState } from 'react'
 
 export const News = () => {
   const [openDialogEvent, setOpenDialogEvent] = useState(false)
@@ -52,19 +52,14 @@ export const News = () => {
               </button>
             </div>
           )}
-          <span className="mb-2 text-xs/none sm:text-sm/none opacity-70">
-            29.08.2023
-          </span>
+          <span className="mb-2 text-xs/none sm:text-sm/none opacity-70">29.08.2023</span>
           <Title className="mb-6">Название новости</Title>
           <p className="font-normal text-sm/normal sm:text-base/normal">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
-            exercitationem cupiditate sunt voluptatibus? Quos, aut. Officiis,
-            quos sit saepe repellendus eum voluptatem, eius, sunt minima
-            similique placeat ea aliquid explicabo! Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit. Quidem exercitationem cupiditate sunt
-            voluptatibus? Quos, aut. Officiis, quos sit saepe repellendus eum
-            voluptatem, eius, sunt minima similique placeat ea aliquid
-            explicabo!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem exercitationem cupiditate sunt
+            voluptatibus? Quos, aut. Officiis, quos sit saepe repellendus eum voluptatem, eius, sunt minima similique
+            placeat ea aliquid explicabo! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
+            exercitationem cupiditate sunt voluptatibus? Quos, aut. Officiis, quos sit saepe repellendus eum voluptatem,
+            eius, sunt minima similique placeat ea aliquid explicabo!
           </p>
           <div className="flex mt-7">
             <a
@@ -90,16 +85,8 @@ export const News = () => {
         }}
         openResult={(): void => setOpenDialogResult(true)}
       />
-      <DialogRemove
-        open={openDialogRemove}
-        onClose={setOpenDialogRemove}
-        data="Название новости"
-      />
-      <DialogResult
-        open={openDialogResult}
-        onClose={setOpenDialogResult}
-        result={true}
-      />
+      <DialogRemove open={openDialogRemove} onClose={setOpenDialogRemove} data="Название новости" />
+      <DialogResult open={openDialogResult} onClose={setOpenDialogResult} result={true} />
     </>
   )
 }

@@ -284,16 +284,44 @@
     "editor.defaultFormatter": "MikeBovenlander.formate"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint":"explicit",
+      "source.fixAll.tslint": "explicit",
+      "source.fixAll.stylelint": "explicit",
+    },
+    "editor.formatOnSave": true
   },
   "[typescript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint":"explicit",
+      "source.fixAll.tslint": "explicit",
+      "source.fixAll.stylelint": "explicit",
+    },
+    "editor.formatOnSave": true
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint":"explicit",
+      "source.fixAll.tslint": "explicit",
+      "source.fixAll.stylelint": "explicit",
+    },
+    "editor.formatOnSave": true
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint":"explicit",
+      "source.fixAll.tslint": "explicit",
+      "source.fixAll.stylelint": "explicit",
+    },
+    "editor.formatOnSave": true
   },
   "files.exclude": {
     ".vscode": true,
@@ -301,15 +329,17 @@
     ".gitignore": true,
     "node_modules": true,
     ".stylelintrc": true,
-    "eslint.config.js": true,
+    "eslint.config.ts": true,
     "package-lock.json": true,
-    "postcss.config.js": true,
+    "postcss.config.ts": true,
     "prettier.config.js": true,
     "tsconfig.json": true,
     "tsconfig.node.json": true,
-    "vite.config.js": true,
+    "vite.config.ts": true,
     "src/vite-env.d.ts": true,
   },
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.inlineSuggest.enabled": true,
   "editor.detectIndentation": false,
   "editor.insertSpaces": true,
   "editor.indentSize": "tabSize",

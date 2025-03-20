@@ -1,16 +1,8 @@
-import { useState } from 'react'
-import { Title, Icon } from '@components'
-import { DialogStaff, DialogResult } from '@dialogs'
-import {
-  BreadCrumbs,
-  Head,
-  HeadButton,
-  Table,
-  TableHead,
-  TableCol,
-  Pagination,
-} from '@views/company/components'
+import { Icon, Title } from '@components'
+import { DialogResult, DialogStaff } from '@dialogs'
+import { BreadCrumbs, Head, HeadButton, Pagination, Table, TableCol, TableHead } from '@views/company/components'
 import { ButtonFiltering, Employee } from '@views/company/Staff/components'
+import { useState } from 'react'
 
 const data = [
   {
@@ -70,7 +62,7 @@ export const Staff = () => {
           <ButtonFiltering>Уволены</ButtonFiltering>
         </div>
         <div className="flex items-center justify-between gap-2 mb-6">
-          <div className="relative flex-grow">
+          <div className="relative grow">
             <input
               className="pl-12 input input-primary input-lg dark:input-fade"
               type="text"
@@ -81,10 +73,7 @@ export const Staff = () => {
               <Icon className="text-xl text-primary" id="search" />
             </div>
           </div>
-          <button
-            className="btn btn-primary rounded-md btn-fill size-[52px] shrink-0"
-            type="submit"
-          >
+          <button className="btn btn-primary rounded-md btn-fill size-[52px] shrink-0" type="submit">
             <Icon className="text-2xl" id="filter" />
           </button>
         </div>
@@ -94,9 +83,7 @@ export const Staff = () => {
             <TableCol className="w-44 lg:w-72">Сотрудник</TableCol>
             <TableCol className="w-20 lg:w-24">Должность</TableCol>
             <TableCol className="w-16 lg:w-24">Статус</TableCol>
-            <TableCol className="w-40 text-center lg:w-52">
-              Трудоустройство
-            </TableCol>
+            <TableCol className="w-40 text-center lg:w-52">Трудоустройство</TableCol>
           </TableHead>
           {data.map((item, index) => (
             <Employee item={item} key={index} />
@@ -109,11 +96,7 @@ export const Staff = () => {
         onClose={setOpenDialogStaff}
         openResult={(): void => setOpenDialogResult(true)}
       />
-      <DialogResult
-        open={openDialogResult}
-        onClose={setOpenDialogResult}
-        result={true}
-      />
+      <DialogResult open={openDialogResult} onClose={setOpenDialogResult} result={true} />
     </>
   )
 }

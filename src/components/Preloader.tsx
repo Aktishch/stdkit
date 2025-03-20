@@ -1,5 +1,5 @@
-import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils'
+import { twMerge } from 'tailwind-merge'
 
 export const Preloader = ({ className }: Props) => {
   const style: string = twMerge(

@@ -1,6 +1,6 @@
+import { Icon, Preloader } from '@components'
 import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Icon, Preloader } from '@components'
 
 export const LayoutAuth = () => {
   return (

@@ -1,5 +1,5 @@
-import { twMerge } from 'tailwind-merge'
 import { Props } from '@utils'
+import { twMerge } from 'tailwind-merge'
 
 export interface IconProps extends Props {
   id: string

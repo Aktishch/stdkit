@@ -1,6 +1,6 @@
+import { InputNumber } from '@components'
 import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { InputNumber } from '@components'
 
 export const InputHoursComponent = (
   { className, onInput, ...props }: React.InputHTMLAttributes<HTMLInputElement>,
@@ -15,16 +15,7 @@ export const InputHoursComponent = (
     onInput?.(event)
   }
 
-  return (
-    <InputNumber
-      className={style}
-      placeholder="0.1"
-      maxLength={3}
-      onInput={onInputHandler}
-      {...props}
-      ref={ref}
-    />
-  )
+  return <InputNumber className={style} placeholder="0.1" maxLength={3} onInput={onInputHandler} {...props} ref={ref} />
 }
 
 export const InputHours = forwardRef(InputHoursComponent)

@@ -1,13 +1,9 @@
+import { Icon, Menu, MenuButton, MenuItems } from '@components'
 import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Menu, MenuButton, MenuItems, Icon } from '@components'
 
 const SelectComponent = (
-  {
-    className,
-    children,
-    ...props
-  }: React.InputHTMLAttributes<HTMLInputElement>,
+  { className, children, ...props }: React.InputHTMLAttributes<HTMLInputElement>,
   ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   const style: string = twMerge('pr-12', className)

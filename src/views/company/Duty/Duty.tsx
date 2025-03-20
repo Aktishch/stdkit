@@ -1,16 +1,8 @@
-import { useState } from 'react'
 import { Icon, Title } from '@components'
 import { DialogDuty, DialogRating } from '@dialogs'
-import {
-  BreadCrumbs,
-  Head,
-  HeadButton,
-  Table,
-  TableHead,
-  TableCol,
-  Pagination,
-} from '@views/company/components'
+import { BreadCrumbs, Head, HeadButton, Pagination, Table, TableCol, TableHead } from '@views/company/components'
 import { Chart } from '@views/company/Duty/components'
+import { useState } from 'react'
 
 const data = [
   {
@@ -52,9 +44,7 @@ const data = [
 ]
 
 export const Duty = () => {
-  const [parameters, setParameters] = useState(
-    {} as { name: string; period: string }
-  )
+  const [parameters, setParameters] = useState({} as { name: string; period: string })
   const [openDialogDuty, setOpenDialogDuty] = useState(false)
   const [openDialogRating, setOpenDialogRating] = useState(false)
   const routes = [{ path: '/lk/duty', breadcrumb: 'Дежурство' }]
@@ -73,10 +63,7 @@ export const Duty = () => {
         </HeadButton>
       </Head>
       <div className="flex mb-6 print:hidden">
-        <button
-          className="btn btn-primary btn-fill btn-md"
-          onClick={() => setOpenDialogDuty(true)}
-        >
+        <button className="btn btn-primary btn-fill btn-md" onClick={() => setOpenDialogDuty(true)}>
           <Icon className="mr-2 text-xl text-primary color-yellow" id="star" />
           Требования
         </button>
@@ -89,9 +76,7 @@ export const Duty = () => {
             <TableCol className="w-44 lg:w-72">Сотрудник</TableCol>
             <TableCol className="w-20 lg:w-24">Должность</TableCol>
             <TableCol className="w-44 lg:w-48">Период дежурства</TableCol>
-            <TableCol className="w-32 text-center print:hidden">
-              Оценка
-            </TableCol>
+            <TableCol className="w-32 text-center print:hidden">Оценка</TableCol>
           </TableHead>
           {data.map((item, index) => (
             <Chart
@@ -110,11 +95,7 @@ export const Duty = () => {
         <Pagination className="mt-10 print:hidden" />
       </form>
       <DialogDuty open={openDialogDuty} onClose={setOpenDialogDuty} />
-      <DialogRating
-        open={openDialogRating}
-        onClose={setOpenDialogRating}
-        item={parameters}
-      />
+      <DialogRating open={openDialogRating} onClose={setOpenDialogRating} item={parameters} />
     </>
   )
 }

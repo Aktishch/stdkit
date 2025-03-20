@@ -1,7 +1,7 @@
+import { Preloader } from '@components'
+import { Footer, Header } from '@layout'
 import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Header, Footer } from '@layout'
-import { Preloader } from '@components'
 
 export const LayoutAuto = () => {
   return (
