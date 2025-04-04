@@ -1,16 +1,16 @@
 import { ButtonSubmit, Error, InputPassword, InputTel, InputText, LabelName, Select, SelectButton } from '@components'
 import { useToggle } from '@hooks'
-import { DataForm } from '@utils'
+import { DataForm, TSXComponent } from '@utils'
 import { ButtonUnderline } from '@views/auth/components'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-export const Registration = () => {
+export const Registration = (): TSXComponent => {
   const [work, setWork] = useState('')
   const { register, handleSubmit, formState, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
 
-  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm): Promise<void> => {
     loadingOn()
     console.log(data)
 

@@ -1,14 +1,9 @@
 import { Icon } from '@components'
-import { Props } from '@utils'
+import { ButtonNavProps, TSXComponent } from '@utils'
 import { NavLink } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 
-export interface ButtonNavProps extends Props {
-  id: string
-  to: string
-}
-
-export const ButtonNav = ({ className, to, id, children }: ButtonNavProps) => {
+export const ButtonNav = ({ className, to, id, children }: ButtonNavProps): TSXComponent => {
   return (
     <NavLink
       className={({ isActive }) =>

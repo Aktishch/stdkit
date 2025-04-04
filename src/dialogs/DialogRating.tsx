@@ -1,25 +1,18 @@
-import { ButtonRating, ButtonSubmit, Dialog, DialogProps, Icon } from '@components'
+import { ButtonRating, ButtonSubmit, Dialog, Icon } from '@components'
 import { useToggle } from '@hooks'
-import { DataForm } from '@utils'
+import { DataForm, DialogRatingProps, TSXComponent } from '@utils'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 
-export interface DialogRatingProps extends DialogProps {
-  item: {
-    name: string
-    period: string
-  }
-}
-
-export const DialogRating = ({ className, open, onClose, item }: DialogRatingProps) => {
+export const DialogRating = ({ className, open, onClose, item }: DialogRatingProps): TSXComponent => {
   const [rating, setRating] = useState(0)
   const { register, handleSubmit, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const { name, period } = item
   const style: string = twMerge('max-w-80 card dark:bg-dark', className)
 
-  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm): Promise<void> => {
     loadingOn()
     console.log(data)
 

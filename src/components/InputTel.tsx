@@ -1,3 +1,4 @@
+import { TSXComponent } from '@utils'
 import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -24,7 +25,7 @@ const formatterValue = (value: string): string => {
 const InputTelComponent = (
   { className, onInput, onKeyDown, onPaste, children, ...props }: React.InputHTMLAttributes<HTMLInputElement>,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+): TSXComponent => {
   const style: string = twMerge(className)
 
   const onInputHandler = (event: React.CompositionEvent<HTMLInputElement>): '' | undefined => {
@@ -85,4 +86,6 @@ const InputTelComponent = (
   )
 }
 
-export const InputTel = forwardRef(InputTelComponent)
+export const InputTel = forwardRef(InputTelComponent) as React.ForwardRefExoticComponent<
+  React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>
+>

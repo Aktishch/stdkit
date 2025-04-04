@@ -1,7 +1,8 @@
 import { Icon, Preview } from '@components'
 import { ButtonNav } from '@layout/Sidebar/components'
+import { TSXComponent } from '@utils'
 
-export const Sidebar = () => {
+export const Sidebar = (): TSXComponent => {
   return (
     <div className="w-full xs:max-w-64">
       <div className="md:sticky md:top-28 md:left-0 md:right-0">

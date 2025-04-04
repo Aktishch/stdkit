@@ -1,32 +1,27 @@
 import { ButtonSubmit, Icon } from '@components'
 import { useToggle } from '@hooks'
-import { DataForm, Props } from '@utils'
+import { DataForm, Props, TimeType, TSXComponent } from '@utils'
 import { TableCol, TableRow } from '@views/company/components'
 import { InputHours } from '@views/company/Time/components'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 
-export interface MonthProps extends Props {
+interface MonthProps extends Props {
   theme: string
+  year: string
   month: string
   monthLength: number[]
   editing: boolean
-  item: {
-    name: string
-    dates: {
-      value: number
-      weekend: boolean
-    }[]
-  }
+  item: TimeType
 }
 
-export const Month = ({ className, theme, month, monthLength, editing, item }: MonthProps) => {
+export const Month = ({ className, theme, year, month, monthLength, editing, item }: MonthProps): TSXComponent => {
   const { register, handleSubmit } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const style: string = twMerge(editing ? 'pointer-events-none' : null, className)
   const { name, dates } = item
 
-  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm): Promise<void> => {
     loadingOn()
     console.log(data)
 
@@ -48,6 +43,7 @@ export const Month = ({ className, theme, month, monthLength, editing, item }: M
   return (
     <form className={style} onSubmit={handleSubmit(submitHandler)}>
       <input type="hidden" value={theme} {...register('form')} />
+      <input type="hidden" value={year} {...register('year')} />
       <input type="hidden" value={month} {...register('month')} />
       <input type="hidden" value={name} {...register('name')} />
       <TableRow className="px-4">

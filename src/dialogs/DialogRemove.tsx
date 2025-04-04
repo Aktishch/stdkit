@@ -1,19 +1,15 @@
-import { ButtonSubmit, Dialog, DialogProps, Icon } from '@components'
+import { ButtonSubmit, Dialog, Icon } from '@components'
 import { useToggle } from '@hooks'
-import { DataForm } from '@utils'
+import { DataForm, DialogRemoveProps, TSXComponent } from '@utils'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 
-export interface DialogRemoveProps extends DialogProps {
-  data: string
-}
-
-export const DialogRemove = ({ className, open, onClose, data }: DialogRemoveProps) => {
+export const DialogRemove = ({ className, open, onClose, data }: DialogRemoveProps): TSXComponent => {
   const { register, handleSubmit } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const style: string = twMerge('max-w-96 card dark:bg-dark', className)
 
-  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm): Promise<void> => {
     loadingOn()
     console.log(data)
 

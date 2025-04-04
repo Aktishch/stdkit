@@ -1,12 +1,13 @@
 import { Icon } from '@components'
 import { useToggle } from '@hooks'
+import { TSXComponent } from '@utils'
 import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const InputPasswordComponent = (
   { className, ...props }: React.InputHTMLAttributes<HTMLInputElement>,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+): TSXComponent => {
   const [passwordValue, , , passwordToggle] = useToggle(true)
   const style: string = twMerge('pr-12', className)
 
@@ -31,4 +32,6 @@ const InputPasswordComponent = (
   )
 }
 
-export const InputPassword = forwardRef(InputPasswordComponent)
+export const InputPassword = forwardRef(InputPasswordComponent) as React.ForwardRefExoticComponent<
+  React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>
+>

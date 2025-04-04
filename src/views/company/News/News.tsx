@@ -1,10 +1,11 @@
 import { Icon, Image, Loader, Title } from '@components'
 import { DialogEvent, DialogRemove, DialogResult } from '@dialogs'
 import { useToggle } from '@hooks'
+import { TSXComponent } from '@utils'
 import { BreadCrumbs, Head, HeadButton } from '@views/company/components'
 import { useState } from 'react'
 
-export const News = () => {
+export const News = (): TSXComponent => {
   const [openDialogEvent, setOpenDialogEvent] = useState(false)
   const [openDialogRemove, setOpenDialogRemove] = useState(false)
   const [openDialogResult, setOpenDialogResult] = useState(false)

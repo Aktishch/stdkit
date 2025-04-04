@@ -1,9 +1,10 @@
 import { useTheme } from '@/providers'
 import { Icon, Menu, MenuButton, MenuItem, MenuItems, Preview } from '@components'
 import { ButtonColor, ButtonNav } from '@layout/Header/components'
+import { TSXComponent } from '@utils'
 import { Link, NavLink } from 'react-router-dom'
 
-export const Header = () => {
+export const Header = (): TSXComponent => {
   const { themeToggle, themeValue, color, changeColor } = useTheme()
 
   return (

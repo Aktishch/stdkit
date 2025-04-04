@@ -1,3 +1,2 @@
-export * from './data-form'
-export * from './props'
+export * from './types'
 export * from './upload-file'

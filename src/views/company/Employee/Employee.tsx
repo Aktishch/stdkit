@@ -15,13 +15,13 @@ import {
 } from '@components'
 import { DialogDismissal, DialogRecover, DialogRemove } from '@dialogs'
 import { useToggle } from '@hooks'
-import { DataForm } from '@utils'
+import { DataForm, SetImage, TSXComponent } from '@utils'
 import { BreadCrumbs, Head, HeadButton } from '@views/company/components'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-export const Employee = () => {
-  const [image, setImage] = useState<string | File | undefined>('/img/pictures/user.jpg')
+export const Employee = (): TSXComponent => {
+  const [image, setImage] = useState<SetImage>('/img/pictures/user.jpg')
   const [work, setWork] = useState('Front-End')
   const [openDialogDismissal, setOpenDialogDismissal] = useState(false)
   const [openDialogRecover, setOpenDialogRecover] = useState(false)
@@ -34,7 +34,7 @@ export const Employee = () => {
     { path: '/lk/staff/employee', breadcrumb: 'О сотруднике' },
   ]
 
-  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm): Promise<void> => {
     loadingOn()
     data.image = image
     console.log(data)

@@ -1,8 +1,8 @@
 import { Menu as Wrapper } from '@headlessui/react'
-import { Props } from '@utils'
+import { Props, TSXComponent } from '@utils'
 import { twMerge } from 'tailwind-merge'
 
-export const Menu = ({ className, children }: Props) => {
+export const Menu = ({ className, children }: Props): TSXComponent => {
   const style: string = twMerge('relative', className)
 
   return (

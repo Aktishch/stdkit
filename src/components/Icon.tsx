@@ -1,11 +1,7 @@
-import { Props } from '@utils'
+import { IconProps, TSXComponent } from '@utils'
 import { twMerge } from 'tailwind-merge'
 
-export interface IconProps extends Props {
-  id: string
-}
-
-export const Icon = ({ className, id }: IconProps) => {
+export const Icon = ({ className, id }: IconProps): TSXComponent => {
   const style: string = twMerge('icon', className)
 
   return (

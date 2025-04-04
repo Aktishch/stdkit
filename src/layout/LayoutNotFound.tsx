@@ -1,8 +1,9 @@
 import { Preloader } from '@components'
+import { TSXComponent } from '@utils'
 import { Suspense } from 'react'
 import { Link } from 'react-router-dom'
 
-export const LayoutNotFound = () => {
+export const LayoutNotFound = (): TSXComponent => {
   return (
     <Suspense fallback={<Preloader />}>
       <section className="container flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-white dark:from-dark to-primary/50 dark:to-primary">

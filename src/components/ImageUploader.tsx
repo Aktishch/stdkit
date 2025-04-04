@@ -1,16 +1,15 @@
 import { Error, Icon, Preview } from '@components'
-import { Props, uploadFile } from '@utils'
+import { ImageUploaderProps, TSXComponent, uploadFile } from '@utils'
 import React, { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export interface ImageUploaderProps extends Props {
-  id?: string
-  value?: string | File
-  onChange?: (file: File) => void
-  onClick?: () => void
-}
-
-export const ImageUploader = ({ className, id = 'user', value, onChange, onClick }: ImageUploaderProps) => {
+export const ImageUploader = ({
+  className,
+  id = 'user',
+  value,
+  onChange,
+  onClick,
+}: ImageUploaderProps): TSXComponent => {
   const [src, setSrc] = useState<string | undefined>()
   const [error, setError] = useState<string | undefined>()
   const style: string = twMerge('flex items-center justify-between xs:justify-start xs:gap-4 gap-2', className)

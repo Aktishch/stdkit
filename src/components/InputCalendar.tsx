@@ -1,26 +1,17 @@
 import { Icon, Menu, MenuButton, MenuItems } from '@components'
-import { DataForm } from '@utils'
+import { CalendarDate, InputCalendarProps, TSXComponent } from '@utils'
 import React, { forwardRef, useEffect, useState } from 'react'
 import Calendar from 'react-calendar'
-import { UseFormSetValue } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
-
-type DatePiece = Date | null
-type Dates = DatePiece | [DatePiece, DatePiece]
-
-export interface InputCalendarProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  date?: Dates
-  setValue?: UseFormSetValue<DataForm>
-}
 
 const InputCalendarComponent = (
   { className, date = null, value, setValue, ...props }: InputCalendarProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+): TSXComponent => {
   const style: string = twMerge('pr-12', className)
-  const [dates, setDates] = useState<Dates>(date)
+  const [dates, setDates] = useState<CalendarDate>(date)
 
-  const dateFormat = (dates: Dates): string => {
+  const dateFormat = (dates: CalendarDate): string => {
     if (dates !== null && typeof dates === 'object' && 'toLocaleDateString' in dates) {
       return dates.toLocaleDateString()
     } else if (value !== undefined) {
@@ -51,4 +42,6 @@ const InputCalendarComponent = (
   )
 }
 
-export const InputCalendar = forwardRef(InputCalendarComponent)
+export const InputCalendar = forwardRef(InputCalendarComponent) as React.ForwardRefExoticComponent<
+  InputCalendarProps & React.RefAttributes<HTMLInputElement>
+>

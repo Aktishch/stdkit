@@ -1,10 +1,11 @@
 import { Title } from '@components'
 import { DialogEvent, DialogResult } from '@dialogs'
+import { EventsType, TSXComponent } from '@utils'
 import { BreadCrumbs, Head, HeadButton, Pagination } from '@views/company/components'
 import { News } from '@views/company/Events/components'
 import { useState } from 'react'
 
-const data = [
+const data: EventsType[] = [
   {
     to: '',
     src: '/img/pictures/user.jpg',
@@ -21,7 +22,7 @@ const data = [
   },
 ]
 
-export const Events = () => {
+export const Events = (): TSXComponent => {
   const [openDialogEvent, setOpenDialogEvent] = useState(false)
   const [openDialogResult, setOpenDialogResult] = useState(false)
   const routes = [{ path: '/lk/events', breadcrumb: 'Мероприятия' }]

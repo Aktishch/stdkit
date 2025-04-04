@@ -11,18 +11,18 @@ import {
 } from '@components'
 import { DialogResult } from '@dialogs'
 import { useToggle } from '@hooks'
-import { DataForm } from '@utils'
+import { DataForm, SetImage, TSXComponent } from '@utils'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-export const Settings = () => {
-  const [image, setImage] = useState<string | File | undefined>()
+export const Settings = (): TSXComponent => {
+  const [image, setImage] = useState<SetImage>()
   const [work, setWork] = useState('Front-End')
   const [openDialogResult, setOpenDialogResult] = useState(false)
   const { register, handleSubmit, formState, setValue } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
 
-  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm): Promise<void> => {
     loadingOn()
     data.image = image
     console.log(data)

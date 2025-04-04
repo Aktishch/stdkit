@@ -1,7 +1,8 @@
-import { Dialog, DialogProps, Icon } from '@components'
+import { Dialog, Icon } from '@components'
+import { DialogProps, TSXComponent } from '@utils'
 import { twMerge } from 'tailwind-merge'
 
-export const DialogDuty = ({ className, open, onClose }: DialogProps) => {
+export const DialogDuty = ({ className, open, onClose }: DialogProps): TSXComponent => {
   const ratingLength: number[] = [...Array(5).keys()]
   const style: string = twMerge('max-w-96 card dark:bg-dark', className)
 

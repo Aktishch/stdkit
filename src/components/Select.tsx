@@ -1,11 +1,12 @@
 import { Icon, Menu, MenuButton, MenuItems } from '@components'
+import { TSXComponent } from '@utils'
 import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const SelectComponent = (
   { className, children, ...props }: React.InputHTMLAttributes<HTMLInputElement>,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+): TSXComponent => {
   const style: string = twMerge('pr-12', className)
 
   return (
@@ -30,4 +31,6 @@ const SelectComponent = (
   )
 }
 
-export const Select = forwardRef(SelectComponent)
+export const Select = forwardRef(SelectComponent) as React.ForwardRefExoticComponent<
+  React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>
+>

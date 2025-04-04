@@ -4,7 +4,7 @@
       &__navigation {
         @media (hover) {
           & button:hover {
-            @apply bg-grey duration-200;
+            @apply bg-grey transition;
 
             .dark & {
               @apply bg-black/50;
@@ -26,7 +26,7 @@
 
         @media (hover) {
           &:hover {
-            @apply bg-grey duration-200;
+            @apply bg-grey transition;
 
             .dark & {
               @apply bg-black/50;

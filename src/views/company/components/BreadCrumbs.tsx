@@ -1,17 +1,10 @@
 import { Icon } from '@components'
-import { Props } from '@utils'
+import { BreadCrumbsProps, TSXComponent } from '@utils'
 import { Link, NavigateFunction, useLocation, useNavigate } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 import useBreadcrumbs from 'use-react-router-breadcrumbs'
 
-export interface BreadCrumbsProps extends Props {
-  routes: {
-    path: string
-    breadcrumb: string
-  }[]
-}
-
-export const BreadCrumbs = ({ className, routes }: BreadCrumbsProps) => {
+export const BreadCrumbs = ({ className, routes }: BreadCrumbsProps): TSXComponent => {
   const navigate = useNavigate() as NavigateFunction
   const location = useLocation()
   const breadcrumbs = useBreadcrumbs([

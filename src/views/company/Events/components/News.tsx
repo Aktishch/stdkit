@@ -1,19 +1,13 @@
 import { Icon, Image, Loader } from '@components'
-import { Props } from '@utils'
+import { EventsType, Props, TSXComponent } from '@utils'
 import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 
-export interface NewsProps extends Props {
-  item: {
-    to: string
-    src?: string | undefined
-    date: string
-    title: string
-    text: string
-  }
+interface NewsProps extends Props {
+  item: EventsType
 }
 
-export const News = ({ className, item }: NewsProps) => {
+export const News = ({ className, item }: NewsProps): TSXComponent => {
   const style: string = twMerge('card dark:bg-dark', className)
   const { to, src, date, title, text } = item
 
@@ -22,11 +16,11 @@ export const News = ({ className, item }: NewsProps) => {
       <Link className="pack pack-md bg-grey dark:bg-black" draggable={false} to={`/lk/events/news${to}`}>
         <Loader />
         {src === undefined || src === '' ? (
-          <div className="absolute inset-0 flex items-center justify-center duration-300 ease-linear bg-primary hover:scale-110">
+          <div className="pack-image absolute inset-0 flex items-center justify-center bg-primary">
             <Icon className="w-20 text-white h-7 sm:h-8 sm:w-28" id="logo" />
           </div>
         ) : (
-          <Image className="image image-rise" src={src} />
+          <Image className="pack-image image" src={src} />
         )}
       </Link>
       <div className="px-2 py-4 sm:px-4 sm:py-6 card-content">

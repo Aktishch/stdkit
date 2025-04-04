@@ -1,9 +1,10 @@
 import { Title } from '@components'
 import { useToggle } from '@hooks'
+import { TimeType, TSXComponent } from '@utils'
 import { BreadCrumbs, Head, HeadButton, Pagination, Table, TableCol, TableHead } from '@views/company/components'
 import { Month } from '@views/company/Time/components'
 
-const data = [
+const data: TimeType[] = [
   {
     name: 'Актищев Александр',
     dates: [
@@ -122,7 +123,7 @@ const data = [
   },
 ]
 
-export const Time = () => {
+export const Time = (): TSXComponent => {
   const monthLength: number[] = [...Array(31).keys()]
   const [editingValue, , , editingToggle] = useToggle(true)
   const routes = [{ path: '/lk/time', breadcrumb: 'Рабочее время' }]
@@ -142,7 +143,7 @@ export const Time = () => {
         <div>
           <div className="flex items-center justify-between gap-5 mb-6">
             <Title>Сверхурочные</Title>
-            <span className="text-base font-medium sm:text-lg opacity-60">Сентябрь</span>
+            <span className="text-base font-medium sm:text-lg opacity-60">Сентябрь 2025</span>
           </div>
           <Table minWidth="min-w-[1230px]">
             <TableHead className="px-4">
@@ -160,6 +161,7 @@ export const Time = () => {
             {data.map((item, index) => (
               <Month
                 theme="Сверхурочные"
+                year="2025"
                 month="Сентябрь"
                 monthLength={monthLength}
                 editing={editingValue}
@@ -172,7 +174,7 @@ export const Time = () => {
         <div>
           <div className="flex items-center justify-between gap-5 mb-6">
             <Title>Пропуски</Title>
-            <span className="text-base font-medium sm:text-lg opacity-60">Сентябрь</span>
+            <span className="text-base font-medium sm:text-lg opacity-60">Сентябрь 2025</span>
           </div>
           <Table minWidth="min-w-[1230px]">
             <TableHead className="px-4">
@@ -190,6 +192,7 @@ export const Time = () => {
             {data.map((item, index) => (
               <Month
                 theme="Пропуски"
+                year="2025"
                 month="Сентябрь"
                 monthLength={monthLength}
                 editing={editingValue}

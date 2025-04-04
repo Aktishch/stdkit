@@ -1,11 +1,7 @@
-import { Props } from '@utils'
+import { TableProps, TSXComponent } from '@utils'
 import { twMerge } from 'tailwind-merge'
 
-export interface TableProps extends Props {
-  minWidth?: string | undefined
-}
-
-export const Table = ({ className, minWidth = undefined, children }: TableProps) => {
+export const Table = ({ className, minWidth = undefined, children }: TableProps): TSXComponent => {
   const style: string = twMerge('px-4 -mx-4 overflow-auto', className)
 
   return (

@@ -1,10 +1,11 @@
 import { Icon, Title } from '@components'
 import { DialogDuty, DialogRating } from '@dialogs'
+import { DutyType, TSXComponent } from '@utils'
 import { BreadCrumbs, Head, HeadButton, Pagination, Table, TableCol, TableHead } from '@views/company/components'
 import { Chart } from '@views/company/Duty/components'
 import { useState } from 'react'
 
-const data = [
+const data: DutyType[] = [
   {
     src: '/img/pictures/user.jpg',
     name: 'Актищев Александр',
@@ -43,7 +44,7 @@ const data = [
   },
 ]
 
-export const Duty = () => {
+export const Duty = (): TSXComponent => {
   const [parameters, setParameters] = useState({} as { name: string; period: string })
   const [openDialogDuty, setOpenDialogDuty] = useState(false)
   const [openDialogRating, setOpenDialogRating] = useState(false)

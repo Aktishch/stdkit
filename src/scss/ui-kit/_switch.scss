@@ -10,7 +10,7 @@
       @apply content-auto absolute top-1/2 left-1/2 bg-current -translate-x-1/2 -translate-y-1/2 scale-0 invisible rounded-inherit pointer-events-none size-full;
     }
 
-    @apply flex items-center justify-center relative text-primary border border-solid border-gray select-none appearance-none cursor-pointer ease-linear duration-200;
+    @apply flex items-center justify-center relative text-primary border border-solid border-gray select-none appearance-none cursor-pointer transition ease-linear duration-200;
 
     @media(hover) {
       &:hover {

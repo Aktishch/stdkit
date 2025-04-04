@@ -1,8 +1,9 @@
 import { Icon, Preloader } from '@components'
+import { TSXComponent } from '@utils'
 import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 
-export const LayoutAuth = () => {
+export const LayoutAuth = (): TSXComponent => {
   return (
     <Suspense fallback={<Preloader />}>
       <section className="container flex items-center justify-center min-h-screen bg-gradient-to-b from-white dark:from-dark to-primary/50 dark:to-primary">

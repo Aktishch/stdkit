@@ -1,12 +1,8 @@
 import { Loader } from '@components'
-import React from 'react'
+import { ButtonSubmitProps, TSXComponent } from '@utils'
 import { twMerge } from 'tailwind-merge'
 
-export interface ButtonSubmitProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  load?: boolean
-}
-
-export const ButtonSubmit = ({ className, load = false, children, ...props }: ButtonSubmitProps) => {
+export const ButtonSubmit = ({ className, load = false, children, ...props }: ButtonSubmitProps): TSXComponent => {
   const style: string = twMerge(className)
 
   return (

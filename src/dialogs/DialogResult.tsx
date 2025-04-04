@@ -1,11 +1,8 @@
-import { Dialog, DialogProps, Icon } from '@components'
+import { Dialog, Icon } from '@components'
+import { DialogResultProps, TSXComponent } from '@utils'
 import { twMerge } from 'tailwind-merge'
 
-export interface DialogResultProps extends DialogProps {
-  result: boolean
-}
-
-export const DialogResult = ({ className, open, onClose, result }: DialogResultProps) => {
+export const DialogResult = ({ className, open, onClose, result }: DialogResultProps): TSXComponent => {
   const style: string = twMerge('max-w-80 card dark:bg-dark', className)
 
   return (

@@ -12,23 +12,9 @@
 @tailwind utilities;
 
 .color {
-  &-default {
-    --color-primary: var(--primary-default);
-  }
-
-  &-purple {
-    --color-primary: var(--primary-purple);
-  }
-
-  &-yellow {
-    --color-primary: var(--primary-yellow);
-  }
-
-  &-blue {
-    --color-primary: var(--primary-blue);
-  }
-
-  &-orange {
-    --color-primary: var(--primary-orange);
+  @each $value in ("default", "purple", "yellow", "blue", "orange") {
+    &-#{$value} {
+      --color-primary: var(--primary-#{$value});
+    }
   }
 }

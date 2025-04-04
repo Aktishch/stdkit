@@ -1,9 +1,9 @@
 import { MenuItems as Items, Transition } from '@headlessui/react'
-import { Props } from '@utils'
+import { Props, TSXComponent } from '@utils'
 import { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export const MenuItems = ({ className, children }: Props) => {
+export const MenuItems = ({ className, children }: Props): TSXComponent => {
   const style: string = twMerge('focus-visible:outline-0', className)
 
   return (

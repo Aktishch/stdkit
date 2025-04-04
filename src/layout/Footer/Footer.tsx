@@ -1,6 +1,7 @@
 import { Icon } from '@components'
+import { TSXComponent } from '@utils'
 
-export const Footer = () => {
+export const Footer = (): TSXComponent => {
   const currentYear: number = new Date().getFullYear()
 
   return (

@@ -1,7 +1,7 @@
-import { Props } from '@utils'
+import { Props, TSXComponent } from '@utils'
 import { twMerge } from 'tailwind-merge'
 
-export const Preloader = ({ className }: Props) => {
+export const Preloader = ({ className }: Props): TSXComponent => {
   const style: string = twMerge(
     'inset-0 fixed z-10 flex items-center justify-center bg-white/50 dark:bg-dark/50',
     className

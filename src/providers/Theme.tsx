@@ -1,4 +1,5 @@
 import { useToggle } from '@hooks'
+import { ThemeContextProps, TSXComponent } from '@utils'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
 const colors = {
@@ -9,29 +10,22 @@ const colors = {
   orange: 'color-orange',
 }
 
-type Color = keyof typeof colors
+type ThemeColor = keyof typeof colors
 
-export interface ThemeContextProps {
-  themeValue: boolean
-  themeToggle: () => void
-  color: string
-  changeColor(value: string): void
-}
+const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps) as React.Context<ThemeContextProps>
 
-const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps)
+export const useTheme = (): ThemeContextProps => useContext(ThemeContext)
 
-export const useTheme = () => useContext(ThemeContext)
-
-export const Theme = ({ children }: React.PropsWithChildren) => {
+export const Theme = ({ children }: React.PropsWithChildren): TSXComponent => {
   const html = document.documentElement as HTMLElement
   const [themeValue, , , themeToggle] = useToggle(localStorage.getItem('theme') === 'dark')
-  const [color, setColor] = useState<Color>((localStorage.getItem('color') as Color) || colors.default)
+  const [color, setColor] = useState<ThemeColor>((localStorage.getItem('color') as ThemeColor) || colors.default)
 
   const onKeyUpHandler = (event: KeyboardEvent): void => {
     if (event.altKey && event.code === 'Digit5') themeToggle()
   }
 
-  const changeColor = (color: Color): void => {
+  const changeColor = (color: ThemeColor): void => {
     setColor(color)
   }
 

@@ -1,4 +1,4 @@
-export type UploadFile = {
+type UploadFile = {
   file: File
   url: string
 }

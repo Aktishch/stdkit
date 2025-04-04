@@ -1,7 +1,6 @@
 import {
   ButtonSubmit,
   Dialog,
-  DialogProps,
   Error,
   InputCalendar,
   InputPassword,
@@ -13,22 +12,18 @@ import {
   Title,
 } from '@components'
 import { useToggle } from '@hooks'
-import { DataForm } from '@utils'
+import { DataForm, DialogStaffProps, TSXComponent } from '@utils'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 
-export interface DialogStaffProps extends DialogProps {
-  openResult?: () => void
-}
-
-export const DialogStaff = ({ className, open, onClose, openResult }: DialogStaffProps) => {
+export const DialogStaff = ({ className, open, onClose, openResult }: DialogStaffProps): TSXComponent => {
   const [work, setWork] = useState('')
   const { register, handleSubmit, formState, setValue, reset } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const style: string = twMerge('max-w-md card dark:bg-dark', className)
 
-  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm): Promise<void> => {
     loadingOn()
     console.log(data)
 

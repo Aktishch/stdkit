@@ -1,10 +1,11 @@
 import { Icon, Title } from '@components'
 import { DialogResult, DialogStaff } from '@dialogs'
+import { StaffType, TSXComponent } from '@utils'
 import { BreadCrumbs, Head, HeadButton, Pagination, Table, TableCol, TableHead } from '@views/company/components'
 import { ButtonFiltering, Employee } from '@views/company/Staff/components'
 import { useState } from 'react'
 
-const data = [
+const data: StaffType[] = [
   {
     to: '',
     src: '/img/pictures/user.jpg',
@@ -39,7 +40,7 @@ const data = [
   },
 ]
 
-export const Staff = () => {
+export const Staff = (): TSXComponent => {
   const [openDialogStaff, setOpenDialogStaff] = useState(false)
   const [openDialogResult, setOpenDialogResult] = useState(false)
   const routes = [{ path: '/lk/staff', breadcrumb: 'Сотрудники' }]

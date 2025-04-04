@@ -1,9 +1,9 @@
 import { Icon } from '@components'
-import { Props } from '@utils'
+import { Props, TSXComponent } from '@utils'
 import { PaginationButton } from '@views/company/components'
 import { twMerge } from 'tailwind-merge'
 
-export const Pagination = ({ className }: Props) => {
+export const Pagination = ({ className }: Props): TSXComponent => {
   const style: string = twMerge('flex items-center justify-center sm:justify-stretch gap-2 sm:gap-3', className)
 
   return (

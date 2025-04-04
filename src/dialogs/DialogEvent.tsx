@@ -1,28 +1,17 @@
-import { ButtonSubmit, Dialog, DialogProps, Error, ImageUploader, InputCalendar, LabelName, Title } from '@components'
+import { ButtonSubmit, Dialog, Error, ImageUploader, InputCalendar, LabelName, Title } from '@components'
 import { useToggle } from '@hooks'
-import { DataForm } from '@utils'
+import { DataForm, DialogEventProps, SetImage, TSXComponent } from '@utils'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 
-export interface DialogEventProps extends DialogProps {
-  item?: {
-    src?: string | undefined
-    date: string
-    title: string
-    text: string
-    url?: string
-  }
-  openResult?: () => void
-}
-
-export const DialogEvent = ({ className, open, onClose, item, openResult }: DialogEventProps) => {
-  const [image, setImage] = useState<string | File | undefined>(item?.src)
+export const DialogEvent = ({ className, open, onClose, item, openResult }: DialogEventProps): TSXComponent => {
+  const [image, setImage] = useState<SetImage>(item?.src)
   const { register, handleSubmit, formState, setValue, reset } = useForm<DataForm>()
   const [loadingValue, loadingOn, loadingOff] = useToggle()
   const style: string = twMerge('max-w-md card dark:bg-dark', className)
 
-  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm) => {
+  const submitHandler: SubmitHandler<DataForm> = async (data: DataForm): Promise<void> => {
     loadingOn()
     data.image = image
     console.log(data)
